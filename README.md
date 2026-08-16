@@ -4,8 +4,7 @@ A small, dependency-free web tool for *Tom Clancy's The Division 2*: pick one or
 types (Hazard Protection, Armor on Kill, Skill Haste, …) and see every Brand Set and Gear Set
 that grants them, including full Gear Set 4-piece talents and Backpack/Chest amplifier talents.
 
-**Live page:** enable GitHub Pages for this repo (Settings → Pages → Source: `main` / `/ (root)`)
-and it will be served at `https://<your-username>.github.io/division-gear-db/`.
+**Live page:** https://mariokoehler.github.io/division-gear-db/
 
 ## What's here
 
