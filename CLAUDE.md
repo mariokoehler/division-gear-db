@@ -13,8 +13,6 @@ Backpack/Chest amplifier talents. Self-contained — no build step, no server, w
 **Live:** https://mariokoehler.github.io/division-gear-db/ (GitHub Pages, `main` branch, root).
 **Repo:** https://github.com/mariokoehler/division-gear-db (public).
 
-The user's real long-term goal (stated at project start) is a build-simulation tool for the game;
-this bonus finder is the first concrete piece of that.
 
 ## Hard constraint from the user, still in force
 
