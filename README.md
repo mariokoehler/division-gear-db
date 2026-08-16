@@ -16,27 +16,40 @@ and it will be served at `https://<your-username>.github.io/division-gear-db/`.
 
 ## Data sources & attribution
 
-This tool merges two community-maintained sources — there is no official API for this data:
+The bonus values and talent text in this dataset are extracted directly from *The Division 2*'s
+own game files: the Snowdrop engine's `.sdftoc`/`.sdfdata` archives, opened with the community tool
+[Hunter](https://tools.dtzxporter.com/) (raw file export enabled), which decompiles the game's
+plain-text config format (`.mgearbrand`, `.mgearset`, `.mtalent`). Attribute IDs referenced by
+these files were resolved to human-readable stat names by cross-matching against community wiki
+data, then applied back across the full dataset.
 
-- [mx-division-builds](https://github.com/mxswat/mx-division-builds) (CC BY-NC-SA 4.0) — used
-  for initial weapon/gear structure and cross-referencing.
-- [The Division Wiki](https://thedivision.fandom.com/) — Brand Sets and Gear Sets pages, fetched
-  via the MediaWiki API — the primary source for the bonus values and talent text in this dataset,
-  since it was more complete and caught brands the CSV source was missing.
+This was cross-checked against two community-maintained secondary sources:
 
-Because the wiki data is themselves CC BY-NC-SA–style community content and one upstream source
-is explicitly licensed CC BY-NC-SA 4.0, treat the **dataset** (`data/*.json` and the embedded copy
-in `index.html`) as **non-commercial, share-alike, attribution-required**. The tool's own code
-(HTML/CSS/JS you'd write yourself to reproduce this) is otherwise free to reuse — see `LICENSE`.
+- [mx-division-builds](https://github.com/mxswat/mx-division-builds) (CC BY-NC-SA 4.0)
+- [The Division Wiki](https://thedivision.fandom.com/) — Brand Sets and Gear Sets pages
+
+Cross-checking against the raw game files caught several brands whose in-game values had drifted
+from what the wiki documented (balance patches the wiki hadn't caught up on), and surfaced 12
+Brand Sets / Gear Sets that neither community source had documented at all.
+
+Because two of the upstream cross-reference sources are CC BY-NC-SA–style community content, treat
+the **dataset** (`data/*.json` and the embedded copy in `index.html`) as **non-commercial,
+share-alike, attribution-required**. The tool's own code (HTML/CSS/JS you'd write yourself to
+reproduce this) is otherwise free to reuse — see `LICENSE`.
 
 ## Known data gaps
 
-53 Brand Sets / Gear Sets are covered. Eight brand icons exist in the game's asset files with no
-bonus text documented in any source found so far: Hanau, Concentrated Company, Measured Assembly,
-Refactor, Tipping Scales, Unit Alloys, Urban Lookout, Virtuoso. These are flagged in a collapsible
-note on the page itself rather than silently omitted. Closing this gap fully would require
-extracting the game's own data files (Snowdrop `.sdftoc`/`.sdfdata` archives) with a tool like
-[Hunter](https://tools.dtzxporter.com/), which is a manual/GUI-driven process.
+64 Brand Sets / Gear Sets are covered (37 Brand Sets, 27 Gear Sets) — every brand/gear set
+identified in the game's own data files, including several never documented by any community
+source. Two small gaps remain, both flagged on the page itself:
+
+- **Unit Alloys** (Brand) — the 1-piece bonus is +5%, but the specific stat it applies to could
+  not be resolved from the exported attribute data.
+- **Refactor** (Gear Set) — the 4-piece talent name is confirmed ("Return to Sender") and its
+  Backpack/Chest amplifier talents are fully documented, but the base talent's own tooltip text
+  wasn't included in this particular file export.
+
+Both could be closed by re-exporting a couple of specific files from Hunter's raw-file browser.
 
 ## Updating the dataset
 
