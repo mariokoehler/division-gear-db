@@ -45,7 +45,33 @@ source. Two attribute/tooltip details that couldn't be resolved from the raw fil
 (Unit Alloys' 1-piece stat, Refactor's 4-piece talent tooltip) were confirmed directly in-game
 and folded in — no known gaps remain.
 
-## Updating the dataset
+## Updating the dataset (e.g. after a rebalance patch)
 
-Edit `data/combined_sets.json`, regenerate the minified version, then re-embed it into
-`index.html` in place of the `const DATA = [...]` line.
+1. In Hunter, open `hunter/sdf/pc/data/sdf.sdftoc` from the game install, enable **raw files** in
+   the file-type settings, and export. This produces a folder tree rooted at a `hunter/` directory
+   containing `game system data/juice/item/*.mgearset` and `game system data/juice/talent/*.mtalent`.
+2. Run:
+   ```
+   python tools/update_from_hunter_export.py --raw-dir "<path to the exported 'hunter' folder>"
+   ```
+   Run from anywhere; it locates the repo from its own location. This updates
+   `data/combined_sets.json` / `data/combined_sets_min.json` / `index.html`, and prints (and saves
+   to `tools/last_update_report.md`) a report of what changed: new/removed brands or gear sets,
+   every changed bonus value, any talent needing a manual text review, and any attribute type it
+   couldn't name.
+3. Read the report. If it lists **unresolved attribute UIDs**, look up what stat that attribute
+   represents (patch notes / wiki / in-game) and add it to `tools/attribute_uid_dictionary.json`
+   — permanently resolved from then on. If it lists **talents needing review**, the tool already
+   wrote a best-effort draft description into the JSON (numbers substituted in, wording not
+   polished) — clean up the wording by hand. **Structural warnings** mean something in the file
+   format itself didn't match what the script expects (e.g. a referenced file wasn't in the
+   export) — investigate before trusting that entry.
+4. Review the diff (`git diff`), then commit and push as usual. The script never commits or
+   pushes on its own.
+
+Why this works well for pure rebalances: every bonus value is keyed to a stable attribute ID
+that doesn't change even when its value does, and gear-set talent descriptions are only
+regenerated when the numbers backing them actually change (tracked via a hidden `_values`
+fingerprint per talent) — an unrelated patch touching other sets won't disturb hand-polished
+text elsewhere. New attribute types (e.g. a rebalance introducing a bonus that didn't exist
+before) are the one case that still needs a short manual lookup, once per new attribute.
