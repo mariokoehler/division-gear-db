@@ -141,13 +141,20 @@ def extract_field_text(body, field_name):
     return text
 
 
-def strip_color_tags(s):
+def strip_inline_markup(s):
     if s is None:
         return None
-    s = re.sub(r'</?color[^>]*>', '', s).strip()
-    # one item's name (The Hollow Man) carries a stray literal `"` before the closing tag in
-    # the source data itself -- a dev typo, not a real part of the display name. Names never
-    # legitimately contain quote marks once color tags are gone, so drop any leftover.
+    return re.sub(r'</?color[^>]*>', '', s).strip()
+
+
+def strip_color_tags(s):
+    """Name-specific cleanup: also drops stray literal quote marks, which is wrong for
+    descriptions/tooltips (which can legitimately quote in-game dialogue) but right for names --
+    one item's name (The Hollow Man) carries a stray literal `"` before the closing tag in the
+    source data itself, a dev typo, not a real part of the display name."""
+    s = strip_inline_markup(s)
+    if s is None:
+        return None
     return s.replace('"', '').strip()
 
 
@@ -303,10 +310,19 @@ def parse_preset_attributes(config_body):
 
 
 def parse_preset_talent(config_body):
+    """`myPresetTalent < uid=... > = <slug> <guid>` -- same shape as a Gear Set's 4pc talent
+    reference (`Talent "label" < uid=... > = <file_id> <guid>` in update_from_hunter_export.py),
+    where the FIRST token after `=` is the .mtalent file's own instance-id/slug (what
+    talent_index is keyed by) and the trailing hex GUID is a separate, unused identifier. Bug
+    history: an earlier version of this function stored the GUID as "ref_file" and looked talents
+    up by that instead of the slug, so the lookup could never hit -- every named-item talent
+    looked "missing" even when its .mtalent file was sitting right there in the export, keyed
+    under its slug. Verified against talent_gear_back_firecrackers.mtalent (Festive Delivery):
+    present, fully parseable, just never found because of the swapped key."""
     for qbody in _orange_quality_blocks(config_body, "QualityTalentSlots"):
         pt_m = re.search(r'myPresetTalent\s*<[^>]*>\s*=\s*(\S+)\s+([0-9A-Fa-f]+)', qbody)
         if pt_m:
-            return {"ref_name": pt_m.group(1), "ref_file": pt_m.group(2)}
+            return {"ref_file": pt_m.group(1)}
     return None
 
 
@@ -396,7 +412,7 @@ def build_named_items(raw_dir, uid_dict, brand_names, manual_overrides=None):
             if preset_talent:
                 t = talent_index.get(preset_talent["ref_file"])
                 if t:
-                    desc = naive_substitute(t["tooltip"], t["values"])
+                    desc = strip_inline_markup(naive_substitute(t["tooltip"], t["values"]))
                     talent = {"name": t["ui_name"] or "(unnamed)", "desc": desc}
                     talent_status = "datamined"
                 else:

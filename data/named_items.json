@@ -103,9 +103,11 @@
     "flavorText": "\"You get fireworks, and you get fireworks. Everybody gets fireworks!\"",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
-    "talentStatus": "needs_manual_research"
+    "talent": {
+      "name": "Fireworks Show",
+      "desc": "Concussion Grenades become Festive Grenades.\\n\\nHitting an enemy with a Festive Grenade will cause explosions to happen around two other enemies within 20m."
+    },
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_q_01_named",

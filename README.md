@@ -50,7 +50,7 @@ and folded in — no known gaps remain.
 62 Named Items are also covered, all with a resolved fixed attribute where they have one, and each
 showing its unique talent's name (Gloves/Holster/Kneepads/Mask items sometimes have both a fixed
 attribute and a talent). One gap remains, flagged directly on the affected cards rather than
-silently guessed at: 36 items' talent name and description couldn't be resolved because that
+silently guessed at: 35 items' talent name and description couldn't be resolved because that
 talent's `.mtalent` file wasn't present in the raw export used (shows as "name not yet
 catalogued"). See `tools/extract_named_items.py`'s docstring and `tools/named_items_report.md`
 (regenerated each run, gitignored) for the current list.

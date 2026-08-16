@@ -165,8 +165,18 @@ landmines:
   `myAttributeSlots` is simply absent). This is a real game-design fact, not a data gap — don't
   treat "no fixed attribute" on a Backpack/Chest card as an error.
 - **A unique talent**, when present, is `myTalentSlots → QualityTalentSlots Orange → mySlots →
-  ItemTalentSlot → myPresetTalent < uid=... > = <talent_instance_id> <file_id>` — same
-  `<file_id>.mtalent` lookup as Gear Set 4pc talents above, reuse `parse_mtalent_file`.
+  ItemTalentSlot → myPresetTalent < uid=... > = <slug> <guid>` — same two-token shape as a Gear
+  Set's 4pc talent reference (`Talent "label" < uid=... > = <file_id> <guid>`): the FIRST token
+  is the `.mtalent` file's own instance-id/slug (what `talent_index` is keyed by and what you
+  look the talent up by), the trailing hex GUID is a separate identifier that's captured by the
+  regex but never actually used for anything. **An earlier version of `parse_preset_talent` had
+  these swapped** — stored the GUID as `"ref_file"` and looked talents up by that — so the lookup
+  could never hit even when the referenced `.mtalent` file was sitting right there in the export
+  (caught by checking one specific "missing" talent, Festive Delivery's
+  `talent_gear_back_firecrackers`, by hand and finding it fully present and parseable). Fixed by keying off the first
+  token, same as the Gear Set script's established convention; recovered 1 of 43 named-item
+  talent references this way (the review-report's error text now shows the real slug too, not a
+  bare GUID, which also makes a genuinely-missing file easier to search for by hand later).
   **Landmine, found only after the user pointed out several talent-only Backpack/Chest items were
   showing no talent at all**: `QualityAttributeSlots`/`QualityTalentSlots`'s own instance label is
   **not reliably the quality name** — many blocks use a generic editor-default label instead
@@ -235,10 +245,14 @@ landmines:
   `extract_named_items.py` applies after parsing and logs as a `MANUAL_OVERRIDE` review note —
   persists across re-runs the same way `attribute_uid_dictionary.json` does for attribute names.
 - **Same "not every export is complete" caveat as Gear Sets, worse here**: as of the export this
-  was built from, 36 of 62 named items' unique-talent `.mtalent` file wasn't present (only
-  referenced) — flagged per-item in `tools/named_items_report.md` and on the item's own card in
-  the page ("not yet catalogued"). 7 items' talent name+description were recovered anyway via the
-  `contextComment`/`myDescription` fallback described above. Don't fabricate plausible-sounding
+  was built from, 35 of 62 named items' unique-talent `.mtalent` file wasn't present (only
+  referenced; 42 of 43 total talent references, once the `ref_file` lookup-key bug above was
+  fixed — the exported `talent/` folder holds 91 `.mtalent` files, 90 of them the
+  `talent_gearset_*` family used by Brand/Gear Sets and exactly 1 stray named-item talent that
+  happened to make it in) — flagged per-item in `tools/named_items_report.md` and on the item's
+  own card in the page ("not yet catalogued"). 8 items' talent name+description were recovered
+  anyway, 7 via the `contextComment`/`myDescription` fallback described above and 1 from its
+  `.mtalent` file actually being present. Don't fabricate plausible-sounding
   text to fill the rest in (see the "don't guess from the slug" note further down — it's tempting
   but proven unreliable); wait for a fuller export or in-game confirmation, same policy as the two
   Gear Set gaps below. (5
@@ -287,13 +301,14 @@ placeholder item name ("INSERT NAME HERE" → "The Gift") were resolved via user
 and are now permanently fixed in `tools/attribute_uid_dictionary.json` /
 `tools/named_items_manual_overrides.json` respectively. A follow-up parsing-bug fix (the
 `QualityAttributeSlots`/`QualityTalentSlots` label landmine, see above) then recovered one more
-fixed attribute and revealed that every Backpack/Chest item does carry a talent reference; 7 of
-those talent names are now resolved (up from 4), and each Named Item card shows the talent name
-as its own row (`Talent — <name>`) whether resolved or not, per the user's request, so it's
-visible/greppable even before the full description is catalogued. One gap remains, flagged
-in-page rather than guessed at: 36 items' unique talent text wasn't resolvable because their
-`.mtalent` file was missing from the raw export this was built from (see `README.md`'s Coverage
-section). Revisiting that just needs a fuller Hunter export re-run through
+fixed attribute and revealed that every Backpack/Chest item does carry a talent reference. A
+second bug fix (the `ref_file`/`ref_name` swapped lookup key, see above) recovered one more
+resolved talent (Festive Delivery); 8 talent names are now resolved in total (up from 4), and
+each Named Item card shows the talent name as its own row (`Talent — <name>`) whether resolved or
+not, per the user's request, so it's visible/greppable even before the full description is
+catalogued. One gap remains, flagged in-page rather than guessed at: 35 items' unique talent text
+wasn't resolvable because their `.mtalent` file was missing from the raw export this was built
+from (see `README.md`'s Coverage section). Revisiting that just needs a fuller Hunter export re-run through
 `tools/extract_named_items.py` — no code changes anticipated.
 
 A rebalance patch is expected in the next few weeks that will remove some bonuses (Shock
