@@ -47,11 +47,10 @@ source. Two attribute/tooltip details that couldn't be resolved from the raw fil
 (Unit Alloys' 1-piece stat, Refactor's 4-piece talent tooltip) were confirmed directly in-game
 and folded in — no known gaps remain.
 
-62 Named Items are also covered. Two gaps remain there, both flagged directly on the affected
-cards rather than silently guessed at: 5 items' guaranteed fixed attribute resolves to an
-attribute UID not yet in `tools/attribute_uid_dictionary.json` (shows as "Unknown Attribute"),
-and 18 items' unique talent text couldn't be resolved because that talent's `.mtalent` file
-wasn't present in the raw export used (shows as "not yet catalogued"). See `tools/extract_named_items.py`'s
+62 Named Items are also covered, all with a resolved fixed attribute where they have one. One gap
+remains, flagged directly on the affected cards rather than silently guessed at: 18 items' unique
+talent text couldn't be resolved because that talent's `.mtalent` file wasn't present in the raw
+export used (shows as "not yet catalogued"). See `tools/extract_named_items.py`'s
 docstring and `tools/named_items_report.md` (regenerated each run, gitignored) for the current list.
 
 ## Updating the dataset (e.g. after a rebalance patch)

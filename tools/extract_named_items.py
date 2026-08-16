@@ -325,7 +325,7 @@ def fallback_talent_from_description(description):
 # Main build
 # ---------------------------------------------------------------------------
 
-def build_named_items(raw_dir, uid_dict, brand_names):
+def build_named_items(raw_dir, uid_dict, brand_names, manual_overrides=None):
     item_dir = os.path.join(raw_dir, "game system data", "juice", "item")
     configs_dir = os.path.join(raw_dir, "game system data", "juice", "itemgeneration", "configs")
     talent_index, naive_substitute = build_talent_index(raw_dir)
@@ -345,6 +345,13 @@ def build_named_items(raw_dir, uid_dict, brand_names):
             # ArmorItem subclasses of another named item file with no myUIName of their own --
             # they inherit everything from that parent and add nothing new, so skip silently.
             continue
+
+        override = (manual_overrides or {}).get(entry["instance_id"])
+        if override and override.get("name"):
+            review_notes.append(("MANUAL_OVERRIDE", entry["name"],
+                                  "name replaced with manually-confirmed '%s' (%s)"
+                                  % (override["name"], override.get("note", "no note"))))
+            entry["name"] = override["name"]
 
         brand = brand_names.get(entry["brand_code"]) if entry["brand_code"] else None
 
@@ -398,6 +405,10 @@ def build_named_items(raw_dir, uid_dict, brand_names):
             drop_note = head or None
             flavor = None
 
+        source = "datamined" if talent_status != "from_description_fallback" else "datamined+description"
+        if override and override.get("name"):
+            source += "+manual_name_override"
+
         out = {
             "instance_id": entry["instance_id"],
             "name": entry["name"],
@@ -408,7 +419,7 @@ def build_named_items(raw_dir, uid_dict, brand_names):
             "dropNote": drop_note,
             "fixedAttributes": fixed_attrs,
             "talent": talent,
-            "source": "datamined" if talent_status != "from_description_fallback" else "datamined+description",
+            "source": source,
         }
         if talent_status == "MISSING":
             out["talentStatus"] = "needs_manual_research"
@@ -426,19 +437,21 @@ def main():
     repo_dir = args.repo_dir
     uid_dict_path = os.path.join(repo_dir, "tools", "attribute_uid_dictionary.json")
     combined_path = os.path.join(repo_dir, "data", "combined_sets.json")
+    overrides_path = os.path.join(repo_dir, "tools", "named_items_manual_overrides.json")
     out_path = os.path.join(repo_dir, "data", "named_items.json")
     min_path = os.path.join(repo_dir, "data", "named_items_min.json")
     report_path = os.path.join(repo_dir, "tools", "named_items_report.md")
 
     uid_dict = json.load(open(uid_dict_path, encoding='utf-8'))
     combined = json.load(open(combined_path, encoding='utf-8'))
+    manual_overrides = json.load(open(overrides_path, encoding='utf-8')) if os.path.exists(overrides_path) else {}
     brand_names = {}
     for e in combined:
         if e["kind"] == "Brand":
             code = e["instance_id"].replace("gear_brand_set_", "")
             brand_names[code.lower()] = e["name"]
 
-    items, unresolved, review_notes = build_named_items(args.raw_dir, uid_dict, brand_names)
+    items, unresolved, review_notes = build_named_items(args.raw_dir, uid_dict, brand_names, manual_overrides)
     items.sort(key=lambda e: (e["slot"], e["name"]))
 
     json.dump(items, open(out_path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)

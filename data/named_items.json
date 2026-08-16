@@ -134,21 +134,6 @@
     "source": "datamined"
   },
   {
-    "instance_id": "player_gear_back_g_named_02",
-    "name": "INSERT NAME HERE",
-    "slot": "Backpack",
-    "brand": "Providence Defense",
-    "isDarkZoneExclusive": true,
-    "flavorText": null,
-    "dropNote": null,
-    "fixedAttributes": [],
-    "talent": {
-      "name": "Perfect Vigilance",
-      "desc": "Increases total weapon damage by 30%. Taking damage disables this buff for 3s."
-    },
-    "source": "datamined+description"
-  },
-  {
     "instance_id": "player_gear_back_z_01_named",
     "name": "Lavoisier",
     "slot": "Backpack",
@@ -250,6 +235,21 @@
     "fixedAttributes": [],
     "talent": null,
     "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_back_g_named_02",
+    "name": "The Gift",
+    "slot": "Backpack",
+    "brand": "Providence Defense",
+    "isDarkZoneExclusive": true,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": {
+      "name": "Perfect Vigilance",
+      "desc": "Increases total weapon damage by 30%. Taking damage disables this buff for 3s."
+    },
+    "source": "datamined+description+manual_name_override"
   },
   {
     "instance_id": "player_gear_back_w_01_named",
@@ -596,7 +596,7 @@
     "flavorText": "\"Rip and Tear\"",
     "dropNote": null,
     "fixedAttributes": [
-      "Unknown Attribute (5D4179F15C13BC9000033F9CC5D321EC)",
+      "Melee Damage",
       "Pistol Damage"
     ],
     "talent": null,
@@ -667,7 +667,7 @@
     "flavorText": "\"No sudden movements.\"",
     "dropNote": null,
     "fixedAttributes": [
-      "Unknown Attribute (4F5DDEA2543FCB9300000DF59A13A4FB)"
+      "Reduced Threat"
     ],
     "talent": null,
     "source": "datamined"
@@ -695,7 +695,7 @@
     "flavorText": "“Ever heard of an atheist in a foxhole? Me neither.”",
     "dropNote": null,
     "fixedAttributes": [
-      "Unknown Attribute (5D31260057343AFB000096DB6D9D0179)"
+      "Damage to Targets Out of Cover"
     ],
     "talent": null,
     "source": "datamined"
@@ -764,7 +764,7 @@
     "flavorText": "“Through glass and steel; looking at you; a view so cruel.”",
     "dropNote": null,
     "fixedAttributes": [
-      "Unknown Attribute (5B17B22F5B3F23690003ECBDC6B8ECCC)"
+      "Scanner Pulse Haste"
     ],
     "talent": null,
     "source": "datamined"
@@ -792,7 +792,7 @@
     "flavorText": "“No whimper. No bang. Just silence. The end of all things.”",
     "dropNote": null,
     "fixedAttributes": [
-      "Unknown Attribute (5D4179F15B07D15900DC9EFAF5347F67)"
+      "Damage to Health"
     ],
     "talent": null,
     "source": "datamined"

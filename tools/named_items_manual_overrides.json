@@ -1,0 +1,6 @@
+{
+  "player_gear_back_g_named_02": {
+    "name": "The Gift",
+    "note": "Raw export's myUIName text is the unfilled dev placeholder 'INSERT NAME HERE' -- the real localization hadn't synced into this data snapshot. Confirmed in-game by the user, 2026-08-16."
+  }
+}

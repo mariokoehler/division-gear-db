@@ -196,13 +196,29 @@ landmines:
   further and literally spell out `Talent: <name>\n<description>` — when present, that's a usable
   fallback for a talent whose `.mtalent` file is otherwise missing from the export (see next
   point) — `fallback_talent_from_description` regexes for that pattern.
+- **The same unfilled-placeholder problem can hit `myUIName` itself, not just `myDescription`** —
+  one item's raw `text` value was literally `INSERT NAME HERE` (its real display name, "The
+  Gift", simply hadn't synced into this particular data snapshot at export time; `contextComment`
+  was empty too, and no separate localization/string-table export exists in the raw files to
+  cross-reference — `console scripts/localization/mygear.txt` despite its name is just a QA
+  console-spawn script, not a string table). This is a genuine content gap in the source, not
+  something parseable from data alone — it needs a human who's seen the item in-game. Rather than
+  leave it wrong forever or hand-edit the generated JSON (which the next `--raw-dir` re-run would
+  silently clobber), confirmed corrections like this go in
+  `tools/named_items_manual_overrides.json` (instance_id → `{"name": ..., "note": ...}`), which
+  `extract_named_items.py` applies after parsing and logs as a `MANUAL_OVERRIDE` review note —
+  persists across re-runs the same way `attribute_uid_dictionary.json` does for attribute names.
 - **Same "not every export is complete" caveat as Gear Sets, worse here**: as of the export this
   was built from, 18 of 62 named items' unique-talent `.mtalent` file wasn't present (only
-  referenced), and 5 fixed-attribute UIDs weren't resolvable via `attribute_uid_dictionary.json`.
-  Both are flagged per-item in `tools/named_items_report.md` and on the item's own card in the
-  page ("not yet catalogued" / "Unknown Attribute") — don't fabricate plausible-sounding text or
-  numbers to fill these in; wait for a fuller export or in-game confirmation, same policy as the
-  two Gear Set gaps below.
+  referenced) — flagged per-item in `tools/named_items_report.md` and on the item's own card in
+  the page ("not yet catalogued"). Don't fabricate plausible-sounding text to fill these in; wait
+  for a fuller export or in-game confirmation, same policy as the two Gear Set gaps below. (5
+  fixed-attribute UIDs had the same problem at first, but all 5 turned out to be ordinary
+  attribute-name gaps, not export gaps — the user identified each one from in-game knowledge and
+  they're now permanently resolved in `attribute_uid_dictionary.json`, same mechanism as any other
+  attribute. Notably 3 of the 5 — Reduced Threat, Damage to Targets Out of Cover, Melee Damage —
+  don't appear on *any* Brand Set or Gear Set in this dataset, confirming the user's original
+  suspicion that some named items carry bonuses unobtainable anywhere else.)
 - **Brand isn't always in `myGearBrand`** — items that subclass their own non-named base item
   (`ArmorItem foo_named < ... > : foo`) often don't redeclare it. Fall back to the file's own
   top-of-file `include ".../gearbrand/gearbrand_<code>.mgearbrand"` line, which is present
@@ -237,11 +253,14 @@ data quality — both are "file missing from a specific export" situations, not 
 
 62 Named Items were added this session (`index.html`'s `NAMED_ITEMS` array, fully integrated into
 the same bonus-type chip filter as Brands/Gear Sets, plus a "Named Items only" kind toggle — see
-the "Named Items" section above for the extraction pipeline). Two gaps remain, both flagged
-in-page rather than guessed at: 5 items' fixed attribute UID and 18 items' unique talent text
-weren't resolvable from the raw export this was built from (see `README.md`'s Coverage section).
-Revisiting either just needs a fuller Hunter export re-run through `tools/extract_named_items.py`
-— no code changes anticipated.
+the "Named Items" section above for the extraction pipeline). All 5 fixed-attribute UIDs and one
+placeholder item name ("INSERT NAME HERE" → "The Gift") were resolved via user in-game knowledge
+and are now permanently fixed in `tools/attribute_uid_dictionary.json` /
+`tools/named_items_manual_overrides.json` respectively. One gap remains, flagged in-page rather
+than guessed at: 18 items' unique talent text wasn't resolvable because their `.mtalent` file was
+missing from the raw export this was built from (see `README.md`'s Coverage section). Revisiting
+that just needs a fuller Hunter export re-run through `tools/extract_named_items.py` — no code
+changes anticipated.
 
 A rebalance patch is expected in the next few weeks that will remove some bonuses (Shock
 Resistance, Health, Incoming Repairs, Swap Speed), add a new one ("Protection from Elites"), and
