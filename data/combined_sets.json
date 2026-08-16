@@ -643,8 +643,8 @@
     "tiers": [
       {
         "pieces": 1,
-        "stat": "Unknown Attribute",
-        "text": "+5% (unresolved attribute)"
+        "stat": "Rate of Fire",
+        "text": "+5% Rate of Fire"
       },
       {
         "pieces": 2,
@@ -1396,7 +1396,7 @@
     "source": "datamined",
     "talent4": {
       "name": "Return to Sender",
-      "desc": "(Talent name confirmed from game files; full tooltip text was not included in this raw-file export.)"
+      "desc": "Receive repairs of 10% of the damage dealt by your Skills. Your allies receive repairs of 20% of the damage dealt by your Skills."
     },
     "backpackTalent": {
       "name": "Over-engineered",
@@ -1404,9 +1404,8 @@
     },
     "chestTalent": {
       "name": "Incresed Interest [sic - in-game typo]",
-      "desc": "Increases the repairs received from Return to Sender."
-    },
-    "incomplete": true
+      "desc": "Increases the repairs granted by Return to Sender from 10% to 25% for yourself, and from 20% to 35% for allies."
+    }
   },
   {
     "name": "Rigger",

@@ -37,19 +37,13 @@ the **dataset** (`data/*.json` and the embedded copy in `index.html`) as **non-c
 share-alike, attribution-required**. The tool's own code (HTML/CSS/JS you'd write yourself to
 reproduce this) is otherwise free to reuse — see `LICENSE`.
 
-## Known data gaps
+## Coverage
 
 64 Brand Sets / Gear Sets are covered (37 Brand Sets, 27 Gear Sets) — every brand/gear set
 identified in the game's own data files, including several never documented by any community
-source. Two small gaps remain, both flagged on the page itself:
-
-- **Unit Alloys** (Brand) — the 1-piece bonus is +5%, but the specific stat it applies to could
-  not be resolved from the exported attribute data.
-- **Refactor** (Gear Set) — the 4-piece talent name is confirmed ("Return to Sender") and its
-  Backpack/Chest amplifier talents are fully documented, but the base talent's own tooltip text
-  wasn't included in this particular file export.
-
-Both could be closed by re-exporting a couple of specific files from Hunter's raw-file browser.
+source. Two attribute/tooltip details that couldn't be resolved from the raw file export alone
+(Unit Alloys' 1-piece stat, Refactor's 4-piece talent tooltip) were confirmed directly in-game
+and folded in — no known gaps remain.
 
 ## Updating the dataset
 
