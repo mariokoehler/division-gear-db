@@ -104,7 +104,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_back_q_01_named",
@@ -131,7 +132,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_back_z_01_named",
@@ -234,7 +236,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_back_g_named_02",
@@ -287,7 +290,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_c1_01_named",
@@ -299,7 +303,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_v_01_named",
@@ -311,7 +316,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_a1_01_named",
@@ -323,7 +329,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_t_01_named",
@@ -335,7 +342,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_w_01_named",
@@ -347,7 +355,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_b1_01_named",
@@ -359,7 +368,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_n_01_named",
@@ -370,8 +380,11 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined"
+    "talent": {
+      "name": "Perfect Spark",
+      "desc": "Damaging an enemy with a skill increases total weapon damage by 20% for 15s."
+    },
+    "source": "datamined+description"
   },
   {
     "instance_id": "player_gear_chest_h1_named_01",
@@ -383,7 +396,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_u_01_named",
@@ -395,7 +409,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_j_named_01",
@@ -420,7 +435,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_a_01_named",
@@ -431,8 +447,11 @@
     "flavorText": null,
     "dropNote": "Unique reward from the Haven \"ivory key\" box for killing all the Warlock Hunters.",
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined"
+    "talent": {
+      "name": "Perfect Intimidate",
+      "desc": "While you have bonus armor, increases total weapon damage by 60% to enemies within 10m."
+    },
+    "source": "datamined+description"
   },
   {
     "instance_id": "player_gear_chest_m_01_named",
@@ -444,7 +463,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_b_01_named",
@@ -455,8 +475,11 @@
     "flavorText": null,
     "dropNote": "Warlock Campaign Boss - Charlie guaranteed drop on first kill.",
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined"
+    "talent": {
+      "name": "Perfect Vanguard",
+      "desc": "Deploying a shield makes it invulnerable for 6s and grants 60% of your armor as bonus armor to all other allies for 12s.\nCooldown: 30s."
+    },
+    "source": "datamined+description"
   },
   {
     "instance_id": "player_gear_chest_r_named_01",
@@ -481,7 +504,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_g1_01_named",
@@ -493,7 +517,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_g_02_named",
@@ -505,7 +530,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_chest_h_named_01",
@@ -517,7 +543,8 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": null,
-    "source": "datamined"
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
   },
   {
     "instance_id": "player_gear_gloves_d_named_01",
@@ -583,7 +610,9 @@
     "isDarkZoneExclusive": false,
     "flavorText": "\"Whaddya mean yer outta ammo? Dig around in that mess you call a holster and find something to shove in your gun and shoot!\"\n- True Sons platoon leader",
     "dropNote": null,
-    "fixedAttributes": [],
+    "fixedAttributes": [
+      "Ammo Capacity"
+    ],
     "talent": null,
     "source": "datamined"
   },

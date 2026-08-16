@@ -150,18 +150,44 @@ landmines:
   is exactly the item id's tokens plus one extra `config` token, in any order/position. Case can
   also mismatch entirely (`Player_gear_chest_z_01_named` item vs. its config's declared case).
 - **Inside that config**, under `myAttributeSlots → QualityAttributeSlots Orange → mySlots →
-  ItemAttributeSlot`: a slot with `myPresetAttribute <uid>` **and** `myPresetPercentage 100.0`
-  is a guaranteed, always-maxed bonus (the `myIsNamedAttribute TRUE/FALSE` flag on these is
-  inconsistent across items — don't rely on it, key off `myPresetPercentage` instead). The `Core`
-  slot (`myIsCoreAttribute TRUE`) also carries a `myPresetAttribute` but no percentage — that's
-  just the ordinary guaranteed core stat every item of that slot type has, not a named-only bonus;
-  exclude it. **Gloves/Holster/Kneepads/Mask items get 1–2 of these fixed bonuses; Backpack/Chest
-  items get none at all** — their named identity is purely a talent instead (confirmed by reading
-  several Backpack configs: `myAttributeSlots` is simply absent). This is a real game-design fact,
-  not a data gap — don't treat "no fixed attribute" on a Backpack/Chest card as an error.
+  ItemAttributeSlot`: a slot with `myPresetAttribute <uid>` **and a positive**
+  `myPresetPercentage` is a guaranteed, always-maxed bonus (the `myIsNamedAttribute TRUE/FALSE`
+  flag on these is inconsistent across items — don't rely on it, key off `myPresetPercentage`
+  instead, and specifically its *sign*: a **negative** value, seen as `-1.0`, is a sentinel for
+  "this slot's preset isn't actually active here" even though the field is present — e.g. a
+  random `ItemAttributeSlot` can carry `myPresetAttribute 000...000 myPresetPercentage -1.0`,
+  which must NOT be read as a real fixed bonus; the all-zero UID is also independently filtered
+  as a null placeholder). The `Core` slot (`myIsCoreAttribute TRUE`) also carries a
+  `myPresetAttribute` but no percentage — that's just the ordinary guaranteed core stat every
+  item of that slot type has, not a named-only bonus; exclude it. **Gloves/Holster/Kneepads/Mask
+  items get 1–2 of these fixed bonuses; Backpack/Chest items get none at all** — their named
+  identity is purely a talent instead (confirmed by reading several Backpack configs:
+  `myAttributeSlots` is simply absent). This is a real game-design fact, not a data gap — don't
+  treat "no fixed attribute" on a Backpack/Chest card as an error.
 - **A unique talent**, when present, is `myTalentSlots → QualityTalentSlots Orange → mySlots →
   ItemTalentSlot → myPresetTalent < uid=... > = <talent_instance_id> <file_id>` — same
   `<file_id>.mtalent` lookup as Gear Set 4pc talents above, reuse `parse_mtalent_file`.
+  **Landmine, found only after the user pointed out several talent-only Backpack/Chest items were
+  showing no talent at all**: `QualityAttributeSlots`/`QualityTalentSlots`'s own instance label is
+  **not reliably the quality name** — many blocks use a generic editor-default label instead
+  (`QualityTalentSlots "New QualityTalentSlots (0)"`, `QualityAttributeSlots "New
+  QualityAttributeSlots (0)"`) even though their *contents* are the real Orange-tier block (a
+  `myQuality Orange` field inside confirms it). A regex anchored on the literal label `Orange`
+  silently finds nothing for these — indistinguishable from "this item truly has no talent" — a
+  much worse failure mode than the already-flagged `MISSING_TALENT` case, because nothing gets
+  flagged for review at all. Match every `QualityAttributeSlots`/`QualityTalentSlots` block
+  regardless of its own label, then filter by the `myQuality Orange` field inside (see
+  `_orange_quality_blocks` in `extract_named_items.py`). Fixing this recovered a real fixed
+  attribute (Ammo Dump) and, more importantly, revealed that **every** Backpack/Chest named item
+  does carry a talent reference — the ones without a resolved name simply need their `.mtalent`
+  file, not a "no talent" verdict.
+- **Do not try to derive a talent's real display name from `myPresetTalent`'s `ref_name` slug**
+  (`talent_gloves_damage_done_increased_to_status_affected_perfect`-style tokens) when its
+  `.mtalent` file is missing. Checked directly against the 4 items whose real name *is* known
+  (via the description fallback) — the slug describes the underlying mechanic, not the flavor
+  name, and bears no resemblance whatsoever: that exact slug's real name is "Perfectly Wicked",
+  not anything containing "damage"/"status"/"increased". A humanized guess would be actively
+  misleading, worse than the honest "not yet catalogued" the page shows instead.
 - **The exact numeric value behind a fixed attribute isn't resolvable from this export.** The
   `AttributeListContainer` a preset attribute's UID belongs to (e.g. "NamedAttributes") is only a
   *reference*; the actual value range lives in
@@ -209,10 +235,13 @@ landmines:
   `extract_named_items.py` applies after parsing and logs as a `MANUAL_OVERRIDE` review note —
   persists across re-runs the same way `attribute_uid_dictionary.json` does for attribute names.
 - **Same "not every export is complete" caveat as Gear Sets, worse here**: as of the export this
-  was built from, 18 of 62 named items' unique-talent `.mtalent` file wasn't present (only
+  was built from, 36 of 62 named items' unique-talent `.mtalent` file wasn't present (only
   referenced) — flagged per-item in `tools/named_items_report.md` and on the item's own card in
-  the page ("not yet catalogued"). Don't fabricate plausible-sounding text to fill these in; wait
-  for a fuller export or in-game confirmation, same policy as the two Gear Set gaps below. (5
+  the page ("not yet catalogued"). 7 items' talent name+description were recovered anyway via the
+  `contextComment`/`myDescription` fallback described above. Don't fabricate plausible-sounding
+  text to fill the rest in (see the "don't guess from the slug" note further down — it's tempting
+  but proven unreliable); wait for a fuller export or in-game confirmation, same policy as the two
+  Gear Set gaps below. (5
   fixed-attribute UIDs had the same problem at first, but all 5 turned out to be ordinary
   attribute-name gaps, not export gaps — the user identified each one from in-game knowledge and
   they're now permanently resolved in `attribute_uid_dictionary.json`, same mechanism as any other
@@ -256,11 +285,16 @@ the same bonus-type chip filter as Brands/Gear Sets, plus a "Named Items only" k
 the "Named Items" section above for the extraction pipeline). All 5 fixed-attribute UIDs and one
 placeholder item name ("INSERT NAME HERE" → "The Gift") were resolved via user in-game knowledge
 and are now permanently fixed in `tools/attribute_uid_dictionary.json` /
-`tools/named_items_manual_overrides.json` respectively. One gap remains, flagged in-page rather
-than guessed at: 18 items' unique talent text wasn't resolvable because their `.mtalent` file was
-missing from the raw export this was built from (see `README.md`'s Coverage section). Revisiting
-that just needs a fuller Hunter export re-run through `tools/extract_named_items.py` — no code
-changes anticipated.
+`tools/named_items_manual_overrides.json` respectively. A follow-up parsing-bug fix (the
+`QualityAttributeSlots`/`QualityTalentSlots` label landmine, see above) then recovered one more
+fixed attribute and revealed that every Backpack/Chest item does carry a talent reference; 7 of
+those talent names are now resolved (up from 4), and each Named Item card shows the talent name
+as its own row (`Talent — <name>`) whether resolved or not, per the user's request, so it's
+visible/greppable even before the full description is catalogued. One gap remains, flagged
+in-page rather than guessed at: 36 items' unique talent text wasn't resolvable because their
+`.mtalent` file was missing from the raw export this was built from (see `README.md`'s Coverage
+section). Revisiting that just needs a fuller Hunter export re-run through
+`tools/extract_named_items.py` — no code changes anticipated.
 
 A rebalance patch is expected in the next few weeks that will remove some bonuses (Shock
 Resistance, Health, Incoming Repairs, Swap Speed), add a new one ("Protection from Elites"), and

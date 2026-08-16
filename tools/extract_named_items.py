@@ -264,30 +264,46 @@ def find_generation_config_block(configs_dir, item_instance_id):
     return None
 
 
+def _orange_quality_blocks(config_body, block_keyword):
+    """Yield the body of every `<block_keyword> <label> { ... myQuality Orange ... }` block.
+    The block's own <label> (its instance name, e.g. 'Orange' or 'Purple') is NOT reliable --
+    several configs use a generic editor-default label instead (`"New QualityTalentSlots (0)"`,
+    `"New QualityAttributeSlots (0)"`) even for the Orange-tier block, so anchoring the regex on
+    a literal `Orange` label silently finds nothing for those files (looks identical to "no
+    talent/attribute here" -- a real bug, not a data gap, until this generalized). Named items
+    are always Orange quality, so filter by the `myQuality Orange` field *inside* the block
+    instead of trusting its label."""
+    for qm in re.finditer(block_keyword + r'\s+(?:"[^"]*"|\S+)\s*\{', config_body):
+        body, _ = extract_braced(config_body, qm.end() - 1)
+        if re.search(r'myQuality\s+Orange\b', body):
+            yield body
+
+
 def parse_preset_attributes(config_body):
     """Return list of {uid, is_core} for every ItemAttributeSlot with a myPresetAttribute,
     restricted to the Orange QualityAttributeSlots block (named items are always Orange)."""
     out = []
-    for qm in re.finditer(r'QualityAttributeSlots\s+Orange\s*\{', config_body):
-        qbody, _ = extract_braced(config_body, qm.end() - 1)
+    for qbody in _orange_quality_blocks(config_body, "QualityAttributeSlots"):
         for sm in re.finditer(r'ItemAttributeSlot\s+(?:"[^"]*"|\S+)\s*\{', qbody):
             sbody, _ = extract_braced(qbody, sm.end() - 1)
             pa_m = re.search(r'myPresetAttribute\s+([0-9A-Fa-f]+)', sbody)
             if not pa_m:
                 continue
             is_core = 'myIsCoreAttribute TRUE' in sbody
-            has_pct = re.search(r'myPresetPercentage\s+([\-0-9.]+)', sbody)
+            pct_m = re.search(r'myPresetPercentage\s+([\-0-9.]+)', sbody)
+            # a negative value (seen as -1.0) is a sentinel for "not actually preset here" even
+            # though the field is present -- only a positive percentage means genuinely fixed.
+            has_pct = bool(pct_m) and float(pct_m.group(1)) > 0
             out.append({
                 "uid": pa_m.group(1),
                 "is_core": is_core,
-                "has_preset_percentage": bool(has_pct),
+                "has_preset_percentage": has_pct,
             })
     return out
 
 
 def parse_preset_talent(config_body):
-    for qm in re.finditer(r'QualityTalentSlots\s+Orange\s*\{', config_body):
-        qbody, _ = extract_braced(config_body, qm.end() - 1)
+    for qbody in _orange_quality_blocks(config_body, "QualityTalentSlots"):
         pt_m = re.search(r'myPresetTalent\s*<[^>]*>\s*=\s*(\S+)\s+([0-9A-Fa-f]+)', qbody)
         if pt_m:
             return {"ref_name": pt_m.group(1), "ref_file": pt_m.group(2)}
