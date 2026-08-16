@@ -1,3 +1,4 @@
 __pycache__/
 *.pyc
 tools/last_update_report.md
+tools/named_items_report.md

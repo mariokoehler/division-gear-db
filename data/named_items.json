@@ -1,0 +1,814 @@
+[
+  {
+    "instance_id": "player_gear_back_a_01_named",
+    "name": "Anarchist's Cookbook",
+    "slot": "Backpack",
+    "brand": "Golan Gear Ltd",
+    "isDarkZoneExclusive": true,
+    "flavorText": null,
+    "dropNote": "Warlock Campaign Boss - Alpha guaranteed drop on first kill.",
+    "fixedAttributes": [],
+    "talent": {
+      "name": "Perfectly Wicked",
+      "desc": "Applying a status effect increases total weapon damage by 20% for 15s."
+    },
+    "source": "datamined+description"
+  },
+  {
+    "instance_id": "player_gear_back_e1_01_named",
+    "name": "Axel",
+    "slot": "Backpack",
+    "brand": "Shiny Monkey Gear",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Don't fear your instincts, society taught you how to fail.\"",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_a1_01_named",
+    "name": "Backbone",
+    "slot": "Backpack",
+    "brand": "Lengmo",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Your first kill is hard. But it gets easier the more you do it.\"\n- The Strategist",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_v_01_named",
+    "name": "Battery Pack",
+    "slot": "Backpack",
+    "brand": "Empress International",
+    "isDarkZoneExclusive": false,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_i1_named_01",
+    "name": "Bulldog",
+    "slot": "Backpack",
+    "brand": "Royal Works",
+    "isDarkZoneExclusive": false,
+    "flavorText": "No sweat.",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_f1_01_named",
+    "name": "Cap'n",
+    "slot": "Backpack",
+    "brand": "Imminence Armaments",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Get behind me.\"",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_l_01_named",
+    "name": "Devil's Due",
+    "slot": "Backpack",
+    "brand": "Česká Výroba s.r.o.",
+    "isDarkZoneExclusive": true,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": {
+      "name": "Perfect Clutch",
+      "desc": "If you are below 50% armor, critical hits repair 3% missing armor."
+    },
+    "source": "datamined+description"
+  },
+  {
+    "instance_id": "player_gear_back_n_01_named",
+    "name": "Festive Delivery",
+    "slot": "Backpack",
+    "brand": "Grupo Sombra S.A.",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"You get fireworks, and you get fireworks. Everybody gets fireworks!\"",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_back_q_01_named",
+    "name": "Force Multiplier",
+    "slot": "Backpack",
+    "brand": "Hana-U Corporation",
+    "isDarkZoneExclusive": false,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": {
+      "name": "Perfect Combined Arms",
+      "desc": "Shooting an enemy increases total skill damage by 40% for 3s."
+    },
+    "source": "datamined+description"
+  },
+  {
+    "instance_id": "player_gear_back_x_01_named",
+    "name": "Hermano",
+    "slot": "Backpack",
+    "brand": "Arcabuz Brazos",
+    "isDarkZoneExclusive": false,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_back_g_named_02",
+    "name": "INSERT NAME HERE",
+    "slot": "Backpack",
+    "brand": "Providence Defense",
+    "isDarkZoneExclusive": true,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": {
+      "name": "Perfect Vigilance",
+      "desc": "Increases total weapon damage by 30%. Taking damage disables this buff for 3s."
+    },
+    "source": "datamined+description"
+  },
+  {
+    "instance_id": "player_gear_back_z_01_named",
+    "name": "Lavoisier",
+    "slot": "Backpack",
+    "brand": "Electrique",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"A piece of perfection, if you understand what you can do with it.\" Anonymous",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_u_01_named",
+    "name": "Liquid Engineer",
+    "slot": "Backpack",
+    "brand": "Golan Gear Ltd",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"Is that oil, or blood?\"\n\n- BTSU Combat Medic",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_t_01_named",
+    "name": "Matador",
+    "slot": "Backpack",
+    "brand": "Golan Gear Ltd",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"I used to dance with death itself, but grew tired of the performance. I think I prefer having the odds stacked against me instead.\"\n\n- The Bull",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_j1_01_named",
+    "name": "Momma Badger",
+    "slot": "Backpack",
+    "brand": "Edelweiss GPz",
+    "isDarkZoneExclusive": false,
+    "flavorText": "Not in my burrows.",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_k_named_01",
+    "name": "Percussive Maintenance",
+    "slot": "Backpack",
+    "brand": "Alps Summit Armament",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Have you tried turning it off and on again?”",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_b1_01_named",
+    "name": "Proxy",
+    "slot": "Backpack",
+    "brand": "Palisade Steelworks",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Hostile detected. Hostile eliminated.\"\n- Alexander Ortiz",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_e_named_01",
+    "name": "Strategic Alignment",
+    "slot": "Backpack",
+    "brand": "China Light Industries Corporation",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"I know this is going to look like we’re destroying everything. Don’t worry about it. We don’t make mistakes. Just happy accidents.”",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_y_01_named",
+    "name": "The Courier",
+    "slot": "Backpack",
+    "brand": "Habsburg Guard",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"May this carry your soul to paradise.\" The Priest",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_back_w_01_named",
+    "name": "The Setup",
+    "slot": "Backpack",
+    "brand": "Uzina Getica",
+    "isDarkZoneExclusive": true,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_back_d1_01_named",
+    "name": "Vigil",
+    "slot": "Backpack",
+    "brand": "Legatus S.p.A.",
+    "isDarkZoneExclusive": false,
+    "flavorText": "“Honor the fallen.”",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_chest_j1_01_named",
+    "name": "Benefactor",
+    "slot": "Chest",
+    "brand": "Edelweiss GPz",
+    "isDarkZoneExclusive": false,
+    "flavorText": "I can assure you we can all benefit from this.",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_c1_01_named",
+    "name": "Bober",
+    "slot": "Chest",
+    "brand": "Zwiadowka Sp. z o.o.",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"No way they can get me in this.\"\n- Diesel",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_v_01_named",
+    "name": "Caesar's Guard",
+    "slot": "Chest",
+    "brand": "Empress International",
+    "isDarkZoneExclusive": false,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_a1_01_named",
+    "name": "Carpenter",
+    "slot": "Chest",
+    "brand": "Lengmo",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"The things I break stay broken.\"\n- The Strategist",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_t_01_named",
+    "name": "Chainkiller",
+    "slot": "Chest",
+    "brand": "Golan Gear Ltd",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Ninety-nine bottles of beer on the wall, ninety-nine bottles of beer. Shoot one down, watch it explode, ninety-eight bottles of beer on the wall...\"\n\n- Bored True Sons marksman",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_w_01_named",
+    "name": "Closer",
+    "slot": "Chest",
+    "brand": "Uzina Getica",
+    "isDarkZoneExclusive": true,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_b1_01_named",
+    "name": "Combustor",
+    "slot": "Chest",
+    "brand": "Palisade Steelworks",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"My operatives would never be left alone in the field.\"\n- Natalya Sokolova",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_n_01_named",
+    "name": "Door-Kicker's Knock",
+    "slot": "Chest",
+    "brand": "Grupo Sombra S.A.",
+    "isDarkZoneExclusive": true,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_h1_named_01",
+    "name": "Equalizer",
+    "slot": "Chest",
+    "brand": "Unit Alloys",
+    "isDarkZoneExclusive": false,
+    "flavorText": "Building them up to bring them down,",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_u_01_named",
+    "name": "Everyday Carrier",
+    "slot": "Chest",
+    "brand": "Belstone Armory",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"What's in my everyday carry? As many armor plates as I can fit.\"\n\n- Agent Sanders",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_j_named_01",
+    "name": "Ferocious Calm",
+    "slot": "Chest",
+    "brand": "Fenris Group AB",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"The invention of the gun required a redefinition of courage from aggressive ferocity to calmness under fire.” - Robert L. O’Connell",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "Player_gear_chest_z_01_named",
+    "name": "Henri",
+    "slot": "Chest",
+    "brand": "Electrique",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"We live together, we learn together, we die together. But, first we make each other stronger.\" Anonymous",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_a_01_named",
+    "name": "Hunter-Killer",
+    "slot": "Chest",
+    "brand": "Golan Gear Ltd",
+    "isDarkZoneExclusive": false,
+    "flavorText": null,
+    "dropNote": "Unique reward from the Haven \"ivory key\" box for killing all the Warlock Hunters.",
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_m_01_named",
+    "name": "Impetus",
+    "slot": "Chest",
+    "brand": "Wyvern Wear",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Don't stop, can't stop, won't stop.\"",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_b_01_named",
+    "name": "Pointman",
+    "slot": "Chest",
+    "brand": "Paladin Synthetics",
+    "isDarkZoneExclusive": true,
+    "flavorText": null,
+    "dropNote": "Warlock Campaign Boss - Charlie guaranteed drop on first kill.",
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_r_named_01",
+    "name": "Pristine Example",
+    "slot": "Chest",
+    "brand": "Airaldi Holdings",
+    "isDarkZoneExclusive": false,
+    "flavorText": "“Only the first shot is clean. Everything after that is just messy.”",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_chest_i1_named_01",
+    "name": "Robin",
+    "slot": "Chest",
+    "brand": "Royal Works",
+    "isDarkZoneExclusive": false,
+    "flavorText": "I paid for all the guns so I'm going to use all of the guns.",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_g1_01_named",
+    "name": "Sleight",
+    "slot": "Chest",
+    "brand": "Urban Lookout",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"I'm feeling generous.\"",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_g_02_named",
+    "name": "The Sacrifice",
+    "slot": "Chest",
+    "brand": "Providence Defense",
+    "isDarkZoneExclusive": true,
+    "flavorText": "“Only after everything has been given, can you expect to receive. When the vessel is empty, the soul is complete.”",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_h_named_01",
+    "name": "Zero F’s",
+    "slot": "Chest",
+    "brand": "Badger Tuff",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"Here is the field where I grow my Fs, lo it lies fallow.\"",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_d_named_01",
+    "name": "Contractor's Gloves",
+    "slot": "Gloves",
+    "brand": "Petrov Defense Group",
+    "isDarkZoneExclusive": true,
+    "flavorText": "“Never met a man I couldn’t break. Apply enough pressure on a small enough point, and anything cracks.”",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Damage to Armor"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_511_named_01",
+    "name": "Deathgrips",
+    "slot": "Gloves",
+    "brand": "5.11 Tactical",
+    "isDarkZoneExclusive": true,
+    "flavorText": "“Most people are white-knuckling their way through life, stress levels off the charts. Working dead-end jobs, paying off their loans, student debts, fucking lattes. That shit will kill you without clarity in your life. And nothing brings clarity like hanging off the side of a mountain.”",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Armor on Kill"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_c1_01_named",
+    "name": "Eagle's Grasp",
+    "slot": "Gloves",
+    "brand": "Zwiadowka Sp. z o.o.",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Just wait until I get my hands on them.\"\n- Saint",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Weapon Handling"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_p_named_01",
+    "name": "Firm Handshake",
+    "slot": "Gloves",
+    "brand": "Sokolov Concern",
+    "isDarkZoneExclusive": true,
+    "flavorText": "“You can tell a lot about a person from their handshake. It’s also a great pathogenic delivery system.”",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Status Effects"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_h_named_01",
+    "name": "Ammo Dump",
+    "slot": "Holster",
+    "brand": "Badger Tuff",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Whaddya mean yer outta ammo? Dig around in that mess you call a holster and find something to shove in your gun and shoot!\"\n- True Sons platoon leader",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_m_named_02",
+    "name": "Claws Out",
+    "slot": "Holster",
+    "brand": "Wyvern Wear",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"Rip and Tear\"",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Unknown Attribute (5D4179F15C13BC9000033F9CC5D321EC)",
+      "Pistol Damage"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_c_named_02",
+    "name": "Forge",
+    "slot": "Holster",
+    "brand": "Richter & Kaiser GmbH",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"The space between is where you want to be. Not the hammer. Not the anvil. You are the impact; the energy. The potential. Bend or break, you will find purpose. And in purpose, there is truth.”",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Shield Health"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_x_01_named",
+    "name": "Pícaro’s Holster",
+    "slot": "Holster",
+    "brand": "Arcabuz Brazos",
+    "isDarkZoneExclusive": true,
+    "flavorText": null,
+    "dropNote": null,
+    "fixedAttributes": [
+      "Weapon Damage"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_h1_named_01",
+    "name": "Salvo",
+    "slot": "Holster",
+    "brand": "Unit Alloys",
+    "isDarkZoneExclusive": false,
+    "flavorText": "Gone in a flash.",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Rate of Fire"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_g1_01_named",
+    "name": "Spot-on",
+    "slot": "Holster",
+    "brand": "Urban Lookout",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"It's all in the hip.\"",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Accuracy"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_kneepads_f1_01_named",
+    "name": "Cloak",
+    "slot": "Kneepads",
+    "brand": "Imminence Armaments",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"No sudden movements.\"",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Unknown Attribute (4F5DDEA2543FCB9300000DF59A13A4FB)"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_kneepads_s_named_01",
+    "name": "Emperors Guard",
+    "slot": "Kneepads",
+    "brand": "Murakami Industries",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"Fall down seven times, get up eight\"",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Armor Regeneration"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_kneepads_f_named_01",
+    "name": "Fox's Prayer",
+    "slot": "Kneepads",
+    "brand": "Overlord Armaments",
+    "isDarkZoneExclusive": true,
+    "flavorText": "“Ever heard of an atheist in a foxhole? Me neither.”",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Unknown Attribute (5D31260057343AFB000096DB6D9D0179)"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_kneepads_e1_01_named",
+    "name": "Grease",
+    "slot": "Kneepads",
+    "brand": "Shiny Monkey Gear",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"I'm not in danger. I am the danger.\"",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Status Effects"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_kneepads_z_01_named",
+    "name": "Snowmaker",
+    "slot": "Kneepads",
+    "brand": "Electrique",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Like our friends down under, if we want Snow on Christmas we have to make it ourselves.\"",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_kneepads_l_01_named",
+    "name": "Turmoil",
+    "slot": "Kneepads",
+    "brand": "Česká Výroba s.r.o.",
+    "isDarkZoneExclusive": false,
+    "flavorText": "Never let them know your next move.",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "talent": null,
+    "source": "datamined",
+    "talentStatus": "needs_manual_research"
+  },
+  {
+    "instance_id": "player_gear_mask_b_named_02_xmas",
+    "name": "Chill Out",
+    "slot": "Mask",
+    "brand": "Paladin Synthetics",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Revenge is a dish best served cold.\"\n- Someone who remembers you",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_mask_b_named_01",
+    "name": "Nightwatcher",
+    "slot": "Mask",
+    "brand": "Paladin Synthetics",
+    "isDarkZoneExclusive": true,
+    "flavorText": "“Through glass and steel; looking at you; a view so cruel.”",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Unknown Attribute (5B17B22F5B3F23690003ECBDC6B8ECCC)"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_mask_i_named_01",
+    "name": "Punch Drunk",
+    "slot": "Mask",
+    "brand": "Douglas & Harding",
+    "isDarkZoneExclusive": true,
+    "flavorText": "“If the first shot doesn’t drop ‘em, the second one will. Or the third. Third’s usually good.”",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Headshot Damage"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_mask_dz_named_01",
+    "name": "The Hollow Man",
+    "slot": "Mask",
+    "brand": "Yaahl Gear",
+    "isDarkZoneExclusive": true,
+    "flavorText": "“No whimper. No bang. Just silence. The end of all things.”",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Unknown Attribute (5D4179F15B07D15900DC9EFAF5347F67)"
+    ],
+    "talent": null,
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_mask_d1_01_named",
+    "name": "Visionario",
+    "slot": "Mask",
+    "brand": "Legatus S.p.A.",
+    "isDarkZoneExclusive": false,
+    "flavorText": "“So far be distant; and good night, sweet friend.\"\n- A Midsummer Night’s Dream",
+    "dropNote": null,
+    "fixedAttributes": [
+      "Optimal Range"
+    ],
+    "talent": null,
+    "source": "datamined"
+  }
+]

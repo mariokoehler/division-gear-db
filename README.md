@@ -1,8 +1,9 @@
 # Division Gear DB — Gear Set Bonus Finder
 
 A small, dependency-free web tool for *Tom Clancy's The Division 2*: pick one or more bonus
-types (Hazard Protection, Armor on Kill, Skill Haste, …) and see every Brand Set and Gear Set
-that grants them, including full Gear Set 4-piece talents and Backpack/Chest amplifier talents.
+types (Hazard Protection, Armor on Kill, Skill Haste, …) and see every Brand Set, Gear Set, and
+Named Item that grants them, including full Gear Set 4-piece talents, Backpack/Chest amplifier
+talents, and each Named Item's own guaranteed fixed attribute and/or unique talent.
 
 **Live page:** https://mariokoehler.github.io/division-gear-db/
 
@@ -12,6 +13,8 @@ that grants them, including full Gear Set 4-piece talents and Backpack/Chest amp
   self-contained file. No build step, no server — it also works fine opened directly from disk.
 - `data/combined_sets.json` — the same dataset, pretty-printed, for reference/editing.
 - `data/combined_sets_min.json` — minified version, the one actually embedded into `index.html`.
+- `data/named_items.json` / `data/named_items_min.json` — Named Items (Deathgrips, Turmoil, etc.),
+  same pretty/minified split, embedded into `index.html` as a separate `NAMED_ITEMS` array.
 
 ## Data sources & attribution
 
@@ -44,6 +47,13 @@ source. Two attribute/tooltip details that couldn't be resolved from the raw fil
 (Unit Alloys' 1-piece stat, Refactor's 4-piece talent tooltip) were confirmed directly in-game
 and folded in — no known gaps remain.
 
+62 Named Items are also covered. Two gaps remain there, both flagged directly on the affected
+cards rather than silently guessed at: 5 items' guaranteed fixed attribute resolves to an
+attribute UID not yet in `tools/attribute_uid_dictionary.json` (shows as "Unknown Attribute"),
+and 18 items' unique talent text couldn't be resolved because that talent's `.mtalent` file
+wasn't present in the raw export used (shows as "not yet catalogued"). See `tools/extract_named_items.py`'s
+docstring and `tools/named_items_report.md` (regenerated each run, gitignored) for the current list.
+
 ## Updating the dataset (e.g. after a rebalance patch)
 
 1. In Hunter, open `hunter/sdf/pc/data/sdf.sdftoc` from the game install, enable **raw files** in
@@ -67,6 +77,21 @@ and folded in — no known gaps remain.
    export) — investigate before trusting that entry.
 4. Review the diff (`git diff`), then commit and push as usual. The script never commits or
    pushes on its own.
+
+### Updating Named Items
+
+Separate script, same raw export, same landmines (see `CLAUDE.md`'s Named Items section for the
+schema this parses — item file → its `ItemGenerationConfig` → preset attribute/talent):
+
+```
+python tools/extract_named_items.py --raw-dir "<path to the exported 'hunter' folder>"
+```
+
+This regenerates `data/named_items.json` / `data/named_items_min.json` and
+`tools/named_items_report.md`, but **unlike** `update_from_hunter_export.py` it does **not**
+touch `index.html` itself — after reviewing the report, re-embed the new minified JSON by
+replacing the `const NAMED_ITEMS = [...]` line in `index.html`'s `<script>` block by hand (or
+with a small find/replace), then review the diff before committing.
 
 Why this works well for pure rebalances: every bonus value is keyed to a stable attribute ID
 that doesn't change even when its value does, and gear-set talent descriptions are only

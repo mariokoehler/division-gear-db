@@ -7,8 +7,9 @@ doing anything else here.
 ## What this is
 
 A single-page tool for *Tom Clancy's The Division 2* (`index.html`): pick one or more bonus types
-and see every Brand Set / Gear Set that grants them, including Gear Set 4-piece talents and
-Backpack/Chest amplifier talents. Self-contained — no build step, no server, works from `file://`.
+and see every Brand Set / Gear Set / Named Item that grants them, including Gear Set 4-piece
+talents, Backpack/Chest amplifier talents, and each Named Item's own guaranteed fixed attribute
+and/or unique talent. Self-contained — no build step, no server, works from `file://`.
 
 **Live:** https://mariokoehler.github.io/division-gear-db/ (GitHub Pages, `main` branch, root).
 **Repo:** https://github.com/mariokoehler/division-gear-db (public).
@@ -31,6 +32,13 @@ or from files the user has explicitly exported/copied elsewhere (e.g. `E:\Temp\H
 - `tools/attribute_uid_dictionary.json` — persisted, accumulating map of attribute UID → stat
   name (e.g. `"Health"`). This is the thing that makes future updates mostly automatic; see below.
 - `tools/last_update_report.md` — gitignored, regenerated each run, not meant to be committed.
+- `data/named_items.json` / `data/named_items_min.json` — Named Items (Deathgrips, Turmoil, etc.),
+  embedded in `index.html` as a second array, `const NAMED_ITEMS = [...]`.
+- `tools/extract_named_items.py` — regenerates the two files above from the same kind of raw
+  export. Unlike `update_from_hunter_export.py` it does **not** touch `index.html` itself — the
+  `NAMED_ITEMS` line has to be re-pasted in by hand after review. See "Named Items" section below
+  for the schema this parses, and "Updating Named Items" in `README.md` for run instructions.
+- `tools/named_items_report.md` — gitignored, regenerated each run, not meant to be committed.
 
 ## Where the data actually comes from
 
@@ -115,6 +123,92 @@ Key facts, each learned the hard way:
   flagged warning) rather than deleting good data — don't "fix" that behavior into silently
   dropping fields.
 
+## Named Items — datamining notes
+
+"Named Items" are the individually-named armor pieces (Deathgrips, Turmoil, etc.) — see
+`tools/extract_named_items.py`. Distinct pipeline from Brand/Gear Sets above, with its own
+landmines:
+
+- **Item files live at** `game system data/juice/item/player_gear_<slot>_*_named*.mitem`
+  (`<slot>` ∈ back/chest/gloves/holster/kneepads/mask — the six armor slots this tool covers;
+  weapons have named variants too but are out of scope, same as the rest of the tool). Filter to
+  exactly `player_gear_*_named*` — the same directory also has `blueprint_player_gear_*_named*`
+  (crafting recipes), `appearance_player_gear_*_named*` (cosmetic skins), and
+  `layer_gear_*_named*` (cosmetic layers), none of which are the actual item definition. A
+  handful of matches (`*_alpha`, `*_charlie` suffixes) are campaign-tier variants that subclass
+  another named item file and add no `myUIName` of their own — they're not new items, skip them
+  silently rather than treating a missing name as a parse failure.
+- **The fixed/guaranteed bonus and any unique talent live in the item's `ItemGenerationConfig`**,
+  not the `.mitem` file itself. Chain: item's `myItemGenerationConfig` → a `*_config_link` file
+  (this one's usually empty, a dead end) → the real `ItemGenerationConfig` block, which lives
+  somewhere in `game system data/juice/itemgeneration/configs/configs_gear_<slot>_code1_data*.mitemgenerationconfigs`
+  (~20 near-duplicate files per slot; just index every `ItemGenerationConfig` declaration once).
+  **The declared config name's relationship to the item's own instance id is not consistent** —
+  seen in the wild: `<item_id>_config`, `<item_id_minus_"_named">_config_named`, even one literal
+  authoring typo merging tokens into `_namedconfig`. Don't guess a naming transform; instead
+  match by **token multiset** — split both on `_`, lowercase, sort — since every real config name
+  is exactly the item id's tokens plus one extra `config` token, in any order/position. Case can
+  also mismatch entirely (`Player_gear_chest_z_01_named` item vs. its config's declared case).
+- **Inside that config**, under `myAttributeSlots → QualityAttributeSlots Orange → mySlots →
+  ItemAttributeSlot`: a slot with `myPresetAttribute <uid>` **and** `myPresetPercentage 100.0`
+  is a guaranteed, always-maxed bonus (the `myIsNamedAttribute TRUE/FALSE` flag on these is
+  inconsistent across items — don't rely on it, key off `myPresetPercentage` instead). The `Core`
+  slot (`myIsCoreAttribute TRUE`) also carries a `myPresetAttribute` but no percentage — that's
+  just the ordinary guaranteed core stat every item of that slot type has, not a named-only bonus;
+  exclude it. **Gloves/Holster/Kneepads/Mask items get 1–2 of these fixed bonuses; Backpack/Chest
+  items get none at all** — their named identity is purely a talent instead (confirmed by reading
+  several Backpack configs: `myAttributeSlots` is simply absent). This is a real game-design fact,
+  not a data gap — don't treat "no fixed attribute" on a Backpack/Chest card as an error.
+- **A unique talent**, when present, is `myTalentSlots → QualityTalentSlots Orange → mySlots →
+  ItemTalentSlot → myPresetTalent < uid=... > = <talent_instance_id> <file_id>` — same
+  `<file_id>.mtalent` lookup as Gear Set 4pc talents above, reuse `parse_mtalent_file`.
+- **The exact numeric value behind a fixed attribute isn't resolvable from this export.** The
+  `AttributeListContainer` a preset attribute's UID belongs to (e.g. "NamedAttributes") is only a
+  *reference*; the actual value range lives in
+  `game system data/juice/itemgeneration/attributelists/*.mitemgenerationattributelists`, and that
+  whole directory was absent from every raw export used so far (only `configlinks/` and `configs/`
+  came through). So a named item's fixed bonus can only be reported as *which stat*, not *how
+  much* — that's an inherent export gap, not a parsing bug; don't spend time trying to derive it
+  from `configs/` alone.
+- **`myUIName`/`myDescription` field parsing needs its own escaping logic**, separate from the
+  gear-set parser's `extract_localized_text` (which only handles the simple `text = \"...\"`
+  case). Named items' `text = ` value can be delimited by **either** an unescaped quote of the
+  *other* type (`text = '<color name=\"x\">Name</color>'`, when nested inside a `myUIName "..."`
+  wrapper) **or** a backslash-escaped quote of the *same* type
+  (`text = \"...\"`, when nested inside a wrapper using the same quote char) — which one depends
+  on the specific field, not the file. A value that itself embeds a quoted `<color name="...">`
+  attribute then gets escaped *again* on top of that, e.g. `\\"` (escaped-backslash followed by
+  unescaped quote, read left-to-right) rather than a clean `\"` — character-by-character
+  quote-depth tracking is genuinely ambiguous here. The approach that works (see
+  `extract_marked_value` in `extract_named_items.py`): after finding the `text = `/
+  `contextComment = ` marker, search pragmatically for the known trailing marker (`, type` /
+  `, enabled`) in whichever quote representation matches the opening, then unescape *both* quote
+  types in the captured span (not just the delimiter's own) — mirrors the fallback strategy
+  `update_from_hunter_export.py`'s talent-tooltip parser already uses successfully. One item
+  (`player_gear_mask_dz_named_01` — The Hollow Man) has a literal stray `\"` inside the name value
+  itself in the source data (a dev typo, not a real part of the name) — strip any leftover quote
+  character from the final cleaned name.
+- **A handful of older (Y1-era) named items never got their real `myDescription` written** — its
+  `text` field is literally the placeholder string `"INSERT TEXT HERE"`, and the actual
+  drop-source/talent info lives only in that same field's `contextComment` (an internal dev note,
+  same string but a different sub-key). Extract both; fall back to `contextComment` whenever
+  `text` is empty or one of these obvious placeholders. A few of those `contextComment`s go
+  further and literally spell out `Talent: <name>\n<description>` — when present, that's a usable
+  fallback for a talent whose `.mtalent` file is otherwise missing from the export (see next
+  point) — `fallback_talent_from_description` regexes for that pattern.
+- **Same "not every export is complete" caveat as Gear Sets, worse here**: as of the export this
+  was built from, 18 of 62 named items' unique-talent `.mtalent` file wasn't present (only
+  referenced), and 5 fixed-attribute UIDs weren't resolvable via `attribute_uid_dictionary.json`.
+  Both are flagged per-item in `tools/named_items_report.md` and on the item's own card in the
+  page ("not yet catalogued" / "Unknown Attribute") — don't fabricate plausible-sounding text or
+  numbers to fill these in; wait for a fuller export or in-game confirmation, same policy as the
+  two Gear Set gaps below.
+- **Brand isn't always in `myGearBrand`** — items that subclass their own non-named base item
+  (`ArmorItem foo_named < ... > : foo`) often don't redeclare it. Fall back to the file's own
+  top-of-file `include ".../gearbrand/gearbrand_<code>.mgearbrand"` line, which is present
+  regardless of inheritance; join `<code>` (lowercased) against the Brand entries already in
+  `data/combined_sets.json` by stripping their `gear_brand_set_` prefix — same brand namespace.
+
 ## Data provenance / licensing
 
 The dataset was originally bootstrapped from two community sources before being replaced by direct
@@ -136,10 +230,18 @@ content, distinct from the tool's own MIT-licensed code — see `LICENSE` and `R
 
 ## Current known state (as of the last session)
 
-64 entries (37 Brand Sets, 27 Gear Sets), fully datamined, cross-checked, all previously-missing
-brands/sets resolved. Two minor export-coverage gaps exist (documented in `README.md`'s Coverage
-section and inline in the page's "Data notes") but don't affect displayed data quality — both are
-"file missing from a specific export" situations, not unresolved data.
+64 Brand Set / Gear Set entries (37 Brand Sets, 27 Gear Sets), fully datamined, cross-checked, all
+previously-missing brands/sets resolved. Two minor export-coverage gaps exist (documented in
+`README.md`'s Coverage section and inline in the page's "Data notes") but don't affect displayed
+data quality — both are "file missing from a specific export" situations, not unresolved data.
+
+62 Named Items were added this session (`index.html`'s `NAMED_ITEMS` array, fully integrated into
+the same bonus-type chip filter as Brands/Gear Sets, plus a "Named Items only" kind toggle — see
+the "Named Items" section above for the extraction pipeline). Two gaps remain, both flagged
+in-page rather than guessed at: 5 items' fixed attribute UID and 18 items' unique talent text
+weren't resolvable from the raw export this was built from (see `README.md`'s Coverage section).
+Revisiting either just needs a fuller Hunter export re-run through `tools/extract_named_items.py`
+— no code changes anticipated.
 
 A rebalance patch is expected in the next few weeks that will remove some bonuses (Shock
 Resistance, Health, Incoming Repairs, Swap Speed), add a new one ("Protection from Elites"), and
