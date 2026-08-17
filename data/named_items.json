@@ -57,8 +57,11 @@
     "flavorText": "\"Don't fear your instincts, society taught you how to fail.\"",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Energize",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -87,8 +90,11 @@
     "flavorText": "\"Your first kill is hard. But it gets easier the more you do it.\"\n- The Strategist",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfectly Unstoppable Force",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -117,8 +123,11 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfectly Calculated",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -147,8 +156,11 @@
     "flavorText": "No sweat.",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Composure",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -177,8 +189,11 @@
     "flavorText": "\"Get behind me.\"",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Leadership",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -303,8 +318,11 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Overclock",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -333,8 +351,11 @@
     "flavorText": "\"A piece of perfection, if you understand what you can do with it.\" Anonymous",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Galvanize",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -363,8 +384,11 @@
     "flavorText": "\"Is that oil, or blood?\"\n\n- BTSU Combat Medic",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Bloodsucker",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -393,8 +417,11 @@
     "flavorText": "\"I used to dance with death itself, but grew tired of the performance. I think I prefer having the odds stacked against me instead.\"\n\n- The Bull",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Adrenaline Rush",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -423,8 +450,11 @@
     "flavorText": "Not in my burrows.",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Safeguard",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -453,8 +483,11 @@
     "flavorText": "\"Have you tried turning it off and on again?”",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Tech Support",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -483,8 +516,11 @@
     "flavorText": "\"Hostile detected. Hostile eliminated.\"\n- Alexander Ortiz",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfectly Tamper Proof",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -513,8 +549,11 @@
     "flavorText": "\"I know this is going to look like we’re destroying everything. Don’t worry about it. We don’t make mistakes. Just happy accidents.”",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Shock and Awe",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -543,8 +582,11 @@
     "flavorText": "\"May this carry your soul to paradise.\" The Priest",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Creeping Death",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -605,8 +647,11 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfectly Opportunistic",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -635,8 +680,11 @@
     "flavorText": "“Honor the fallen.”",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Versatile",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -665,8 +713,11 @@
     "flavorText": "I can assure you we can all benefit from this.",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Empathic Resolve",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -695,8 +746,11 @@
     "flavorText": "\"No way they can get me in this.\"\n- Diesel",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Entrench",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -725,8 +779,11 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfectly Skilled",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -755,8 +812,11 @@
     "flavorText": "\"The things I break stay broken.\"\n- The Strategist",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Mad Bomber",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -785,8 +845,11 @@
     "flavorText": "\"Ninety-nine bottles of beer on the wall, ninety-nine bottles of beer. Shoot one down, watch it explode, ninety-eight bottles of beer on the wall...\"\n\n- Bored True Sons marksman",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Headhunter",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -815,8 +878,11 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Spotter",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -845,8 +911,11 @@
     "flavorText": "\"My operatives would never be left alone in the field.\"\n- Natalya Sokolova",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Explosive Delivery",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -907,8 +976,11 @@
     "flavorText": "Building them up to bring them down,",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Obliterate",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -937,8 +1009,11 @@
     "flavorText": "\"What's in my everyday carry? As many armor plates as I can fit.\"\n\n- Agent Sanders",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfectly Efficient",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -967,8 +1042,11 @@
     "flavorText": "\"The invention of the gun required a redefinition of courage from aggressive ferocity to calmness under fire.” - Robert L. O’Connell",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Overwatch",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -997,8 +1075,11 @@
     "flavorText": "\"We live together, we learn together, we die together. But, first we make each other stronger.\" Anonymous",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Companion",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -1059,8 +1140,11 @@
     "flavorText": "\"Don't stop, can't stop, won't stop.\"",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Kinetic Momentum",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -1121,8 +1205,11 @@
     "flavorText": "“Only the first shot is clean. Everything after that is just messy.”",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Focus",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -1151,8 +1238,11 @@
     "flavorText": "I paid for all the guns so I'm going to use all of the guns.",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Gunslinger",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -1181,8 +1271,11 @@
     "flavorText": "\"I'm feeling generous.\"",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Protected Reload",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -1211,8 +1304,11 @@
     "flavorText": "“Only after everything has been given, can you expect to receive. When the vessel is empty, the soul is complete.”",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfect Glass Cannon",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -1241,8 +1337,11 @@
     "flavorText": "\"Here is the field where I grow my Fs, lo it lies fallow.\"",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Perfectly Unbreakable",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -1706,8 +1805,11 @@
     "flavorText": "\"Like our friends down under, if we want Snow on Christmas we have to make it ourselves.\"",
     "dropNote": null,
     "fixedAttributes": [],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Flurry",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {
@@ -1739,8 +1841,11 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
-    "talent": null,
-    "source": "datamined",
+    "talent": {
+      "name": "Bewildered",
+      "desc": null
+    },
+    "source": "datamined+manual_talent_name_override",
     "talentStatus": "needs_manual_research"
   },
   {

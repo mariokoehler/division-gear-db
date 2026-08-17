@@ -325,6 +325,25 @@ Named Item card renderer distinguishes them by `pieces === null` ("Fixed" label)
 count (rendered the same `Npc` style as Brand/Gear Set cards, brand name already shown in the
 card's subtitle line).
 
+The same session then closed out the "35 items' unique talent text wasn't resolvable" gap
+mentioned above, partially: the user supplied the confirmed real talent *name* (not description)
+for all 35, sourced from their own in-game knowledge, as a plain name -- talent-name list.
+`tools/named_items_manual_overrides.json` now supports a `talentName` (+ `talentNote`) key per
+instance_id alongside the pre-existing `name` key, applied in `extract_named_items.py` only when
+a talent is otherwise fully unresolved (referenced `.mtalent` file missing *and* no description
+fallback) -- deliberately name-only, not a guessed description: `talent_status` becomes
+`"manual_name_only"`, `out["talent"] = {"name": ..., "desc": None}`, and `talentStatus` is still
+set to `"needs_manual_research"` so the page's existing `b.talent.desc` check keeps showing "Full
+talent text not yet catalogued." for the description instead of inventing one. This needed no
+index.html changes at all -- the existing `if (b.talent)` / `if (b.talent && b.talent.desc)`
+branches already handled a name-without-desc talent correctly once the data supported it. All 62
+items with a unique talent now show a real name on their card; 43 items have a talent at all (the
+remaining 19 are Gloves/Holster/Kneepads/Mask items with only a Fixed attribute, no talent), of
+which 8 have the full datamined description and 35 have a confirmed name only. Re-running `extract_named_items.py` against a fuller future export will
+naturally upgrade any of the 35 to a full datamined description without touching the overrides
+file, since the datamined path is tried first and only falls through to the override when the
+`.mtalent` file is still missing.
+
 A rebalance patch is expected in the next few weeks that will remove some bonuses (Shock
 Resistance, Health, Incoming Repairs, Swap Speed), add a new one ("Protection from Elites"), and
 reshuffle which stat appears on which brand/set. The update script is designed to handle this

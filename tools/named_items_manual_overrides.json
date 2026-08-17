@@ -2,5 +2,145 @@
   "player_gear_back_g_named_02": {
     "name": "The Gift",
     "note": "Raw export's myUIName text is the unfilled dev placeholder 'INSERT NAME HERE' -- the real localization hadn't synced into this data snapshot. Confirmed in-game by the user, 2026-08-16."
+  },
+  "player_gear_back_a1_01_named": {
+    "talentName": "Perfectly Unstoppable Force",
+    "talentNote": "Talent name (for 'Backbone') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_b1_01_named": {
+    "talentName": "Perfectly Tamper Proof",
+    "talentNote": "Talent name (for 'Proxy') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_d1_01_named": {
+    "talentName": "Perfect Versatile",
+    "talentNote": "Talent name (for 'Vigil') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_e1_01_named": {
+    "talentName": "Perfect Energize",
+    "talentNote": "Talent name (for 'Axel') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_e_named_01": {
+    "talentName": "Perfect Shock and Awe",
+    "talentNote": "Talent name (for 'Strategic Alignment') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_f1_01_named": {
+    "talentName": "Perfect Leadership",
+    "talentNote": "Talent name (for 'Cap'n') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_i1_named_01": {
+    "talentName": "Perfect Composure",
+    "talentNote": "Talent name (for 'Bulldog') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_j1_01_named": {
+    "talentName": "Perfect Safeguard",
+    "talentNote": "Talent name (for 'Momma Badger') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_k_named_01": {
+    "talentName": "Perfect Tech Support",
+    "talentNote": "Talent name (for 'Percussive Maintenance') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_t_01_named": {
+    "talentName": "Perfect Adrenaline Rush",
+    "talentNote": "Talent name (for 'Matador') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_u_01_named": {
+    "talentName": "Perfect Bloodsucker",
+    "talentNote": "Talent name (for 'Liquid Engineer') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_v_01_named": {
+    "talentName": "Perfectly Calculated",
+    "talentNote": "Talent name (for 'Battery Pack') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_w_01_named": {
+    "talentName": "Perfectly Opportunistic",
+    "talentNote": "Talent name (for 'The Setup') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_x_01_named": {
+    "talentName": "Perfect Overclock",
+    "talentNote": "Talent name (for 'Hermano') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_y_01_named": {
+    "talentName": "Perfect Creeping Death",
+    "talentNote": "Talent name (for 'The Courier') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_z_01_named": {
+    "talentName": "Perfect Galvanize",
+    "talentNote": "Talent name (for 'Lavoisier') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_a1_01_named": {
+    "talentName": "Perfect Mad Bomber",
+    "talentNote": "Talent name (for 'Carpenter') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_b1_01_named": {
+    "talentName": "Perfect Explosive Delivery",
+    "talentNote": "Talent name (for 'Combustor') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_c1_01_named": {
+    "talentName": "Perfect Entrench",
+    "talentNote": "Talent name (for 'Bober') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_g1_01_named": {
+    "talentName": "Perfect Protected Reload",
+    "talentNote": "Talent name (for 'Sleight') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_g_02_named": {
+    "talentName": "Perfect Glass Cannon",
+    "talentNote": "Talent name (for 'The Sacrifice') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_h1_named_01": {
+    "talentName": "Perfect Obliterate",
+    "talentNote": "Talent name (for 'Equalizer') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_h_named_01": {
+    "talentName": "Perfectly Unbreakable",
+    "talentNote": "Talent name (for 'Zero F's') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_i1_named_01": {
+    "talentName": "Perfect Gunslinger",
+    "talentNote": "Talent name (for 'Robin') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_j1_01_named": {
+    "talentName": "Perfect Empathic Resolve",
+    "talentNote": "Talent name (for 'Benefactor') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_j_named_01": {
+    "talentName": "Perfect Overwatch",
+    "talentNote": "Talent name (for 'Ferocious Calm') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_m_01_named": {
+    "talentName": "Perfect Kinetic Momentum",
+    "talentNote": "Talent name (for 'Impetus') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_r_named_01": {
+    "talentName": "Perfect Focus",
+    "talentNote": "Talent name (for 'Pristine Example') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_t_01_named": {
+    "talentName": "Perfect Headhunter",
+    "talentNote": "Talent name (for 'Chainkiller') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_u_01_named": {
+    "talentName": "Perfectly Efficient",
+    "talentNote": "Talent name (for 'Everyday Carrier') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_v_01_named": {
+    "talentName": "Perfectly Skilled",
+    "talentNote": "Talent name (for 'Caesar's Guard') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_chest_w_01_named": {
+    "talentName": "Perfect Spotter",
+    "talentNote": "Talent name (for 'Closer') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "Player_gear_chest_z_01_named": {
+    "talentName": "Perfect Companion",
+    "talentNote": "Talent name (for 'Henri') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_kneepads_l_01_named": {
+    "talentName": "Bewildered",
+    "talentNote": "Talent name (for 'Turmoil') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_kneepads_z_01_named": {
+    "talentName": "Flurry",
+    "talentNote": "Talent name (for 'Snowmaker') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
   }
 }

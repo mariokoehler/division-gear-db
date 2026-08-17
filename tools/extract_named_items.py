@@ -428,12 +428,29 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
                         talent = {"name": fb["name"], "desc": fb["desc"]}
                         talent_status = "from_description_fallback"
                     else:
-                        talent_status = "MISSING"
-                        review_notes.append((
-                            "MISSING_TALENT", entry["name"],
-                            "unique talent file '%s.mtalent' referenced but not present in "
-                            "this export -- needs manual research" % preset_talent["ref_file"],
-                        ))
+                        override_talent_name = (override or {}).get("talentName")
+                        if override_talent_name:
+                            # Talent NAME confirmed by the user from in-game knowledge (see
+                            # named_items_manual_overrides.json) even though the .mtalent file
+                            # itself -- and so the full description -- is still missing from
+                            # every export seen so far. Keep talent_status as MISSING-equivalent
+                            # ("manual_name_only") so the page still shows "full text not yet
+                            # catalogued" instead of fabricating a description from the name.
+                            talent = {"name": override_talent_name, "desc": None}
+                            talent_status = "manual_name_only"
+                            review_notes.append((
+                                "MANUAL_OVERRIDE_TALENT_NAME", entry["name"],
+                                "talent name manually confirmed as '%s' (file '%s.mtalent' still "
+                                "missing from export; description remains unresolved)"
+                                % (override_talent_name, preset_talent["ref_file"]),
+                            ))
+                        else:
+                            talent_status = "MISSING"
+                            review_notes.append((
+                                "MISSING_TALENT", entry["name"],
+                                "unique talent file '%s.mtalent' referenced but not present in "
+                                "this export -- needs manual research" % preset_talent["ref_file"],
+                            ))
 
         flavor = entry["description"]
         drop_note = None
@@ -447,6 +464,8 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
         source = "datamined" if talent_status != "from_description_fallback" else "datamined+description"
         if override and override.get("name"):
             source += "+manual_name_override"
+        if talent_status == "manual_name_only":
+            source += "+manual_talent_name_override"
 
         out = {
             "instance_id": entry["instance_id"],
@@ -461,7 +480,9 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
             "talent": talent,
             "source": source,
         }
-        if talent_status == "MISSING":
+        if talent_status in ("MISSING", "manual_name_only"):
+            # Also covers manual_name_only: the name is confirmed but desc is still None, so the
+            # page's "full text not yet catalogued" placeholder should still render for it.
             out["talentStatus"] = "needs_manual_research"
         output.append(out)
 
@@ -503,9 +524,10 @@ def main():
     lines.append("# Named items extraction report\n")
     lines.append("Total named items found: %d\n" % len(items))
     with_talent = sum(1 for i in items if i["talent"])
+    with_full_talent = sum(1 for i in items if i["talent"] and i["talent"].get("desc"))
     missing_talent = sum(1 for i in items if i.get("talentStatus") == "needs_manual_research")
-    lines.append("With a resolved unique talent: %d" % with_talent)
-    lines.append("Talent referenced but needing manual research: %d\n" % missing_talent)
+    lines.append("With a talent name resolved: %d (full description: %d)" % (with_talent, with_full_talent))
+    lines.append("Talent referenced but full description still needing manual research: %d\n" % missing_talent)
     lines.append("## Review notes (%d)\n" % len(review_notes))
     for kind, name, detail in review_notes:
         lines.append("- [%s] %s: %s" % (kind, name, detail))

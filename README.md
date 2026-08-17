@@ -53,12 +53,12 @@ showing its unique talent's name (Gloves/Holster/Kneepads/Mask items sometimes h
 attribute and a talent). Each Named Item also belongs to a civilian brand and shows that brand's
 normal 1pc/2pc/3pc bonuses alongside its own "Fixed" bonus, so e.g. the Salvo holster (Unit
 Alloys) shows up whether you filter by its own Fixed "Rate of Fire" or by any of Unit Alloys'
-brand bonuses (Assault Rifle Damage, Magazine Size). One gap remains, flagged directly on the
-affected cards rather than
-silently guessed at: 35 items' talent name and description couldn't be resolved because that
-talent's `.mtalent` file wasn't present in the raw export used (shows as "name not yet
-catalogued"). See `tools/extract_named_items.py`'s docstring and `tools/named_items_report.md`
-(regenerated each run, gitignored) for the current list.
+brand bonuses (Assault Rifle Damage, Magazine Size). All 62 items now show a real talent name —
+for 35 of them the talent's `.mtalent` file still isn't present in any raw export used so far, so
+the name comes from `tools/named_items_manual_overrides.json` (confirmed by the user's own
+in-game knowledge) rather than datamining, and the full description is flagged "Full talent text
+not yet catalogued" instead of being guessed at. See `tools/extract_named_items.py`'s docstring
+and `tools/named_items_report.md` (regenerated each run, gitignored) for the current list.
 
 ## Updating the dataset (e.g. after a rebalance patch)
 
