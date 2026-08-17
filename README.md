@@ -3,7 +3,8 @@
 A small, dependency-free web tool for *Tom Clancy's The Division 2*: pick one or more bonus
 types (Hazard Protection, Armor on Kill, Skill Haste, …) and see every Brand Set, Gear Set, and
 Named Item that grants them, including full Gear Set 4-piece talents, Backpack/Chest amplifier
-talents, and each Named Item's own guaranteed fixed attribute and/or unique talent.
+talents, each Named Item's own guaranteed fixed attribute and/or unique talent, and the normal
+brand bonuses each Named Item also gets from its civilian brand.
 
 **Live page:** https://mariokoehler.github.io/division-gear-db/
 
@@ -49,7 +50,11 @@ and folded in — no known gaps remain.
 
 62 Named Items are also covered, all with a resolved fixed attribute where they have one, and each
 showing its unique talent's name (Gloves/Holster/Kneepads/Mask items sometimes have both a fixed
-attribute and a talent). One gap remains, flagged directly on the affected cards rather than
+attribute and a talent). Each Named Item also belongs to a civilian brand and shows that brand's
+normal 1pc/2pc/3pc bonuses alongside its own "Fixed" bonus, so e.g. the Salvo holster (Unit
+Alloys) shows up whether you filter by its own Fixed "Rate of Fire" or by any of Unit Alloys'
+brand bonuses (Assault Rifle Damage, Magazine Size). One gap remains, flagged directly on the
+affected cards rather than
 silently guessed at: 35 items' talent name and description couldn't be resolved because that
 talent's `.mtalent` file wasn't present in the raw export used (shows as "name not yet
 catalogued"). See `tools/extract_named_items.py`'s docstring and `tools/named_items_report.md`

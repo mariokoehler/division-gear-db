@@ -4,6 +4,23 @@
     "name": "Anarchist's Cookbook",
     "slot": "Backpack",
     "brand": "Golan Gear Ltd",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Status Effects",
+        "text": "+10% Status Effects"
+      },
+      {
+        "pieces": 2,
+        "stat": "Armor Regeneration",
+        "text": "+1.5% Armor Regeneration"
+      },
+      {
+        "pieces": 3,
+        "stat": "Total Armor",
+        "text": "+10% Total Armor"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": null,
     "dropNote": "Warlock Campaign Boss - Alpha guaranteed drop on first kill.",
@@ -19,6 +36,23 @@
     "name": "Axel",
     "slot": "Backpack",
     "brand": "Shiny Monkey Gear",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Duration",
+        "text": "+15% Skill Duration"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Efficiency",
+        "text": "+5% Skill Efficiency"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Repair",
+        "text": "+52% Skill Repair"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Don't fear your instincts, society taught you how to fail.\"",
     "dropNote": null,
@@ -32,6 +66,23 @@
     "name": "Backbone",
     "slot": "Backpack",
     "brand": "Lengmo",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Explosive Resistance",
+        "text": "+20% Explosive Resistance"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Health",
+        "text": "+20% Skill Health"
+      },
+      {
+        "pieces": 3,
+        "stat": "LMG Damage",
+        "text": "+30% LMG Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Your first kill is hard. But it gets easier the more you do it.\"\n- The Strategist",
     "dropNote": null,
@@ -45,6 +96,23 @@
     "name": "Battery Pack",
     "slot": "Backpack",
     "brand": "Empress International",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Health",
+        "text": "+10% Skill Health"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Damage",
+        "text": "+10% Skill Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Efficiency",
+        "text": "+8% Skill Efficiency"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": null,
     "dropNote": null,
@@ -58,6 +126,23 @@
     "name": "Bulldog",
     "slot": "Backpack",
     "brand": "Royal Works",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Weapon Handling",
+        "text": "+5% Weapon Handling"
+      },
+      {
+        "pieces": 2,
+        "stat": "Magazine Size",
+        "text": "+32% Magazine Size"
+      },
+      {
+        "pieces": 3,
+        "stat": "Critical Hit Damage",
+        "text": "+13% Critical Hit Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "No sweat.",
     "dropNote": null,
@@ -71,6 +156,23 @@
     "name": "Cap'n",
     "slot": "Backpack",
     "brand": "Imminence Armaments",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Weapon Damage",
+        "text": "+5% Weapon Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Increased Threat",
+        "text": "+100% Increased Threat"
+      },
+      {
+        "pieces": 3,
+        "stat": "Pistol Damage",
+        "text": "+60% Pistol Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Get behind me.\"",
     "dropNote": null,
@@ -84,6 +186,23 @@
     "name": "Devil's Due",
     "slot": "Backpack",
     "brand": "Česká Výroba s.r.o.",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Critical Hit Chance",
+        "text": "+8% Critical Hit Chance"
+      },
+      {
+        "pieces": 2,
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
+      },
+      {
+        "pieces": 3,
+        "stat": "Health",
+        "text": "+90% Health"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": null,
     "dropNote": null,
@@ -99,6 +218,23 @@
     "name": "Festive Delivery",
     "slot": "Backpack",
     "brand": "Grupo Sombra S.A.",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Critical Hit Damage",
+        "text": "+13% Critical Hit Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Explosive Damage",
+        "text": "+20% Explosive Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Headshot Damage",
+        "text": "+13% Headshot Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"You get fireworks, and you get fireworks. Everybody gets fireworks!\"",
     "dropNote": null,
@@ -114,6 +250,23 @@
     "name": "Force Multiplier",
     "slot": "Backpack",
     "brand": "Hana-U Corporation",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Haste",
+        "text": "+10% Skill Haste"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Damage",
+        "text": "+10% Skill Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Weapon Damage",
+        "text": "+15% Weapon Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": null,
     "dropNote": null,
@@ -129,6 +282,23 @@
     "name": "Hermano",
     "slot": "Backpack",
     "brand": "Arcabuz Brazos",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Haste",
+        "text": "+10% Skill Haste"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Tier",
+        "text": "+1 Skill Tier"
+      },
+      {
+        "pieces": 3,
+        "stat": "Magazine Size",
+        "text": "+50% Magazine Size"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": null,
     "dropNote": null,
@@ -142,6 +312,23 @@
     "name": "Lavoisier",
     "slot": "Backpack",
     "brand": "Electrique",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Status Effects",
+        "text": "+10% Status Effects"
+      },
+      {
+        "pieces": 2,
+        "stat": "Shock Resistance",
+        "text": "+20% Shock Resistance"
+      },
+      {
+        "pieces": 3,
+        "stat": "SMG Damage",
+        "text": "+30% SMG Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"A piece of perfection, if you understand what you can do with it.\" Anonymous",
     "dropNote": null,
@@ -155,6 +342,23 @@
     "name": "Liquid Engineer",
     "slot": "Backpack",
     "brand": "Golan Gear Ltd",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Status Effects",
+        "text": "+10% Status Effects"
+      },
+      {
+        "pieces": 2,
+        "stat": "Armor Regeneration",
+        "text": "+1.5% Armor Regeneration"
+      },
+      {
+        "pieces": 3,
+        "stat": "Total Armor",
+        "text": "+10% Total Armor"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"Is that oil, or blood?\"\n\n- BTSU Combat Medic",
     "dropNote": null,
@@ -168,6 +372,23 @@
     "name": "Matador",
     "slot": "Backpack",
     "brand": "Golan Gear Ltd",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Status Effects",
+        "text": "+10% Status Effects"
+      },
+      {
+        "pieces": 2,
+        "stat": "Armor Regeneration",
+        "text": "+1.5% Armor Regeneration"
+      },
+      {
+        "pieces": 3,
+        "stat": "Total Armor",
+        "text": "+10% Total Armor"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"I used to dance with death itself, but grew tired of the performance. I think I prefer having the odds stacked against me instead.\"\n\n- The Bull",
     "dropNote": null,
@@ -181,6 +402,23 @@
     "name": "Momma Badger",
     "slot": "Backpack",
     "brand": "Edelweiss GPz",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Repair",
+        "text": "+18% Skill Repair"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Haste",
+        "text": "+20% Skill Haste"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Efficiency",
+        "text": "+8% Skill Efficiency"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "Not in my burrows.",
     "dropNote": null,
@@ -194,6 +432,23 @@
     "name": "Percussive Maintenance",
     "slot": "Backpack",
     "brand": "Alps Summit Armament",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Repair",
+        "text": "+18% Skill Repair"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Duration",
+        "text": "+30% Skill Duration"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Haste",
+        "text": "+30% Skill Haste"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Have you tried turning it off and on again?”",
     "dropNote": null,
@@ -207,6 +462,23 @@
     "name": "Proxy",
     "slot": "Backpack",
     "brand": "Palisade Steelworks",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Armor on Kill",
+        "text": "+10% Armor on Kill"
+      },
+      {
+        "pieces": 2,
+        "stat": "Health",
+        "text": "+60% Health"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Tier",
+        "text": "+1 Skill Tier"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Hostile detected. Hostile eliminated.\"\n- Alexander Ortiz",
     "dropNote": null,
@@ -220,6 +492,23 @@
     "name": "Strategic Alignment",
     "slot": "Backpack",
     "brand": "China Light Industries Corporation",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Explosive Damage",
+        "text": "+15% Explosive Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Haste",
+        "text": "+20% Skill Haste"
+      },
+      {
+        "pieces": 3,
+        "stat": "Status Effects",
+        "text": "+25% Status Effects"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"I know this is going to look like we’re destroying everything. Don’t worry about it. We don’t make mistakes. Just happy accidents.”",
     "dropNote": null,
@@ -233,6 +522,23 @@
     "name": "The Courier",
     "slot": "Backpack",
     "brand": "Habsburg Guard",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Headshot Damage",
+        "text": "+13% Headshot Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Marksman Rifle Damage",
+        "text": "+20% Marksman Rifle Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Status Effects",
+        "text": "+25% Status Effects"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"May this carry your soul to paradise.\" The Priest",
     "dropNote": null,
@@ -246,6 +552,23 @@
     "name": "The Gift",
     "slot": "Backpack",
     "brand": "Providence Defense",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Headshot Damage",
+        "text": "+13% Headshot Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Critical Hit Chance",
+        "text": "+8% Critical Hit Chance"
+      },
+      {
+        "pieces": 3,
+        "stat": "Critical Hit Damage",
+        "text": "+13% Critical Hit Damage"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": null,
     "dropNote": null,
@@ -261,6 +584,23 @@
     "name": "The Setup",
     "slot": "Backpack",
     "brand": "Uzina Getica",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Total Armor",
+        "text": "+5% Total Armor"
+      },
+      {
+        "pieces": 2,
+        "stat": "Armor on Kill",
+        "text": "+10% Armor on Kill"
+      },
+      {
+        "pieces": 3,
+        "stat": "Hazard Protection",
+        "text": "+30% Hazard Protection"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": null,
     "dropNote": null,
@@ -274,6 +614,23 @@
     "name": "Vigil",
     "slot": "Backpack",
     "brand": "Legatus S.p.A.",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Swap Speed",
+        "text": "+30% Swap Speed"
+      },
+      {
+        "pieces": 2,
+        "stat": "Optimal Range",
+        "text": "+70% Optimal Range"
+      },
+      {
+        "pieces": 3,
+        "stat": "Weapon Damage",
+        "text": "+15% Weapon Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "“Honor the fallen.”",
     "dropNote": null,
@@ -287,6 +644,23 @@
     "name": "Benefactor",
     "slot": "Chest",
     "brand": "Edelweiss GPz",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Repair",
+        "text": "+18% Skill Repair"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Haste",
+        "text": "+20% Skill Haste"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Efficiency",
+        "text": "+8% Skill Efficiency"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "I can assure you we can all benefit from this.",
     "dropNote": null,
@@ -300,6 +674,23 @@
     "name": "Bober",
     "slot": "Chest",
     "brand": "Zwiadowka Sp. z o.o.",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Magazine Size",
+        "text": "+15% Magazine Size"
+      },
+      {
+        "pieces": 2,
+        "stat": "Rifle Damage",
+        "text": "+20% Rifle Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Weapon Handling",
+        "text": "+30% Weapon Handling"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"No way they can get me in this.\"\n- Diesel",
     "dropNote": null,
@@ -313,6 +704,23 @@
     "name": "Caesar's Guard",
     "slot": "Chest",
     "brand": "Empress International",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Health",
+        "text": "+10% Skill Health"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Damage",
+        "text": "+10% Skill Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Efficiency",
+        "text": "+8% Skill Efficiency"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": null,
     "dropNote": null,
@@ -326,6 +734,23 @@
     "name": "Carpenter",
     "slot": "Chest",
     "brand": "Lengmo",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Explosive Resistance",
+        "text": "+20% Explosive Resistance"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Health",
+        "text": "+20% Skill Health"
+      },
+      {
+        "pieces": 3,
+        "stat": "LMG Damage",
+        "text": "+30% LMG Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"The things I break stay broken.\"\n- The Strategist",
     "dropNote": null,
@@ -339,6 +764,23 @@
     "name": "Chainkiller",
     "slot": "Chest",
     "brand": "Golan Gear Ltd",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Status Effects",
+        "text": "+10% Status Effects"
+      },
+      {
+        "pieces": 2,
+        "stat": "Armor Regeneration",
+        "text": "+1.5% Armor Regeneration"
+      },
+      {
+        "pieces": 3,
+        "stat": "Total Armor",
+        "text": "+10% Total Armor"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Ninety-nine bottles of beer on the wall, ninety-nine bottles of beer. Shoot one down, watch it explode, ninety-eight bottles of beer on the wall...\"\n\n- Bored True Sons marksman",
     "dropNote": null,
@@ -352,6 +794,23 @@
     "name": "Closer",
     "slot": "Chest",
     "brand": "Uzina Getica",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Total Armor",
+        "text": "+5% Total Armor"
+      },
+      {
+        "pieces": 2,
+        "stat": "Armor on Kill",
+        "text": "+10% Armor on Kill"
+      },
+      {
+        "pieces": 3,
+        "stat": "Hazard Protection",
+        "text": "+30% Hazard Protection"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": null,
     "dropNote": null,
@@ -365,6 +824,23 @@
     "name": "Combustor",
     "slot": "Chest",
     "brand": "Palisade Steelworks",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Armor on Kill",
+        "text": "+10% Armor on Kill"
+      },
+      {
+        "pieces": 2,
+        "stat": "Health",
+        "text": "+60% Health"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Tier",
+        "text": "+1 Skill Tier"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"My operatives would never be left alone in the field.\"\n- Natalya Sokolova",
     "dropNote": null,
@@ -378,6 +854,23 @@
     "name": "Door-Kicker's Knock",
     "slot": "Chest",
     "brand": "Grupo Sombra S.A.",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Critical Hit Damage",
+        "text": "+13% Critical Hit Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Explosive Damage",
+        "text": "+20% Explosive Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Headshot Damage",
+        "text": "+13% Headshot Damage"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": null,
     "dropNote": null,
@@ -393,6 +886,23 @@
     "name": "Equalizer",
     "slot": "Chest",
     "brand": "Unit Alloys",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Rate of Fire",
+        "text": "+5% Rate of Fire"
+      },
+      {
+        "pieces": 2,
+        "stat": "Assault Rifle Damage",
+        "text": "+20% Assault Rifle Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Magazine Size",
+        "text": "+50% Magazine Size"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "Building them up to bring them down,",
     "dropNote": null,
@@ -406,6 +916,23 @@
     "name": "Everyday Carrier",
     "slot": "Chest",
     "brand": "Belstone Armory",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Armor Regeneration",
+        "text": "+1% Armor Regeneration"
+      },
+      {
+        "pieces": 2,
+        "stat": "Armor on Kill",
+        "text": "+10% Armor on Kill"
+      },
+      {
+        "pieces": 3,
+        "stat": "Incoming Repairs",
+        "text": "+45% Incoming Repairs"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"What's in my everyday carry? As many armor plates as I can fit.\"\n\n- Agent Sanders",
     "dropNote": null,
@@ -419,6 +946,23 @@
     "name": "Ferocious Calm",
     "slot": "Chest",
     "brand": "Fenris Group AB",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Assault Rifle Damage",
+        "text": "+10% Assault Rifle Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Reload Speed",
+        "text": "+30% Reload Speed"
+      },
+      {
+        "pieces": 3,
+        "stat": "Stability",
+        "text": "+50% Stability"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"The invention of the gun required a redefinition of courage from aggressive ferocity to calmness under fire.” - Robert L. O’Connell",
     "dropNote": null,
@@ -432,6 +976,23 @@
     "name": "Henri",
     "slot": "Chest",
     "brand": "Electrique",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Status Effects",
+        "text": "+10% Status Effects"
+      },
+      {
+        "pieces": 2,
+        "stat": "Shock Resistance",
+        "text": "+20% Shock Resistance"
+      },
+      {
+        "pieces": 3,
+        "stat": "SMG Damage",
+        "text": "+30% SMG Damage"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"We live together, we learn together, we die together. But, first we make each other stronger.\" Anonymous",
     "dropNote": null,
@@ -445,6 +1006,23 @@
     "name": "Hunter-Killer",
     "slot": "Chest",
     "brand": "Golan Gear Ltd",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Status Effects",
+        "text": "+10% Status Effects"
+      },
+      {
+        "pieces": 2,
+        "stat": "Armor Regeneration",
+        "text": "+1.5% Armor Regeneration"
+      },
+      {
+        "pieces": 3,
+        "stat": "Total Armor",
+        "text": "+10% Total Armor"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": null,
     "dropNote": "Unique reward from the Haven \"ivory key\" box for killing all the Warlock Hunters.",
@@ -460,6 +1038,23 @@
     "name": "Impetus",
     "slot": "Chest",
     "brand": "Wyvern Wear",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Damage",
+        "text": "+8% Skill Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Status Effects",
+        "text": "+18% Status Effects"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Duration",
+        "text": "+45% Skill Duration"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Don't stop, can't stop, won't stop.\"",
     "dropNote": null,
@@ -473,6 +1068,23 @@
     "name": "Pointman",
     "slot": "Chest",
     "brand": "Paladin Synthetics",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Total Armor",
+        "text": "+5% Total Armor"
+      },
+      {
+        "pieces": 2,
+        "stat": "Health",
+        "text": "+60% Health"
+      },
+      {
+        "pieces": 3,
+        "stat": "Armor Regeneration",
+        "text": "+2% Armor Regeneration"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": null,
     "dropNote": "Warlock Campaign Boss - Charlie guaranteed drop on first kill.",
@@ -488,6 +1100,23 @@
     "name": "Pristine Example",
     "slot": "Chest",
     "brand": "Airaldi Holdings",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Marksman Rifle Damage",
+        "text": "+10% Marksman Rifle Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Headshot Damage",
+        "text": "+13% Headshot Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Damage to Armor",
+        "text": "+5% Damage to Armor"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "“Only the first shot is clean. Everything after that is just messy.”",
     "dropNote": null,
@@ -501,6 +1130,23 @@
     "name": "Robin",
     "slot": "Chest",
     "brand": "Royal Works",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Weapon Handling",
+        "text": "+5% Weapon Handling"
+      },
+      {
+        "pieces": 2,
+        "stat": "Magazine Size",
+        "text": "+32% Magazine Size"
+      },
+      {
+        "pieces": 3,
+        "stat": "Critical Hit Damage",
+        "text": "+13% Critical Hit Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "I paid for all the guns so I'm going to use all of the guns.",
     "dropNote": null,
@@ -514,6 +1160,23 @@
     "name": "Sleight",
     "slot": "Chest",
     "brand": "Urban Lookout",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Accuracy",
+        "text": "+10% Accuracy"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Duration",
+        "text": "+30% Skill Duration"
+      },
+      {
+        "pieces": 3,
+        "stat": "Marksman Rifle Damage",
+        "text": "+30% Marksman Rifle Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"I'm feeling generous.\"",
     "dropNote": null,
@@ -527,6 +1190,23 @@
     "name": "The Sacrifice",
     "slot": "Chest",
     "brand": "Providence Defense",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Headshot Damage",
+        "text": "+13% Headshot Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Critical Hit Chance",
+        "text": "+8% Critical Hit Chance"
+      },
+      {
+        "pieces": 3,
+        "stat": "Critical Hit Damage",
+        "text": "+13% Critical Hit Damage"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "“Only after everything has been given, can you expect to receive. When the vessel is empty, the soul is complete.”",
     "dropNote": null,
@@ -540,6 +1220,23 @@
     "name": "Zero F’s",
     "slot": "Chest",
     "brand": "Badger Tuff",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Shotgun Damage",
+        "text": "+10% Shotgun Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Total Armor",
+        "text": "+5% Total Armor"
+      },
+      {
+        "pieces": 3,
+        "stat": "Armor on Kill",
+        "text": "+15% Armor on Kill"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"Here is the field where I grow my Fs, lo it lies fallow.\"",
     "dropNote": null,
@@ -553,6 +1250,23 @@
     "name": "Contractor's Gloves",
     "slot": "Gloves",
     "brand": "Petrov Defense Group",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "LMG Damage",
+        "text": "+10% LMG Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Weapon Handling",
+        "text": "+15% Weapon Handling"
+      },
+      {
+        "pieces": 3,
+        "stat": "Ammo Capacity",
+        "text": "+50% Ammo Capacity"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "“Never met a man I couldn’t break. Apply enough pressure on a small enough point, and anything cracks.”",
     "dropNote": null,
@@ -567,6 +1281,23 @@
     "name": "Deathgrips",
     "slot": "Gloves",
     "brand": "5.11 Tactical",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Health",
+        "text": "+30% Health"
+      },
+      {
+        "pieces": 2,
+        "stat": "Incoming Repairs",
+        "text": "+30% Incoming Repairs"
+      },
+      {
+        "pieces": 3,
+        "stat": "Hazard Protection",
+        "text": "+30% Hazard Protection"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "“Most people are white-knuckling their way through life, stress levels off the charts. Working dead-end jobs, paying off their loans, student debts, fucking lattes. That shit will kill you without clarity in your life. And nothing brings clarity like hanging off the side of a mountain.”",
     "dropNote": null,
@@ -581,6 +1312,23 @@
     "name": "Eagle's Grasp",
     "slot": "Gloves",
     "brand": "Zwiadowka Sp. z o.o.",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Magazine Size",
+        "text": "+15% Magazine Size"
+      },
+      {
+        "pieces": 2,
+        "stat": "Rifle Damage",
+        "text": "+20% Rifle Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Weapon Handling",
+        "text": "+30% Weapon Handling"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Just wait until I get my hands on them.\"\n- Saint",
     "dropNote": null,
@@ -595,6 +1343,23 @@
     "name": "Firm Handshake",
     "slot": "Gloves",
     "brand": "Sokolov Concern",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "SMG Damage",
+        "text": "+10% SMG Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Critical Hit Damage",
+        "text": "+13% Critical Hit Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Critical Hit Chance",
+        "text": "+8% Critical Hit Chance"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "“You can tell a lot about a person from their handshake. It’s also a great pathogenic delivery system.”",
     "dropNote": null,
@@ -609,6 +1374,23 @@
     "name": "Ammo Dump",
     "slot": "Holster",
     "brand": "Badger Tuff",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Shotgun Damage",
+        "text": "+10% Shotgun Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Total Armor",
+        "text": "+5% Total Armor"
+      },
+      {
+        "pieces": 3,
+        "stat": "Armor on Kill",
+        "text": "+15% Armor on Kill"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Whaddya mean yer outta ammo? Dig around in that mess you call a holster and find something to shove in your gun and shoot!\"\n- True Sons platoon leader",
     "dropNote": null,
@@ -623,6 +1405,23 @@
     "name": "Claws Out",
     "slot": "Holster",
     "brand": "Wyvern Wear",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Damage",
+        "text": "+8% Skill Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Status Effects",
+        "text": "+18% Status Effects"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Duration",
+        "text": "+45% Skill Duration"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"Rip and Tear\"",
     "dropNote": null,
@@ -638,6 +1437,23 @@
     "name": "Forge",
     "slot": "Holster",
     "brand": "Richter & Kaiser GmbH",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Incoming Repairs",
+        "text": "+15% Incoming Repairs"
+      },
+      {
+        "pieces": 2,
+        "stat": "Explosive Resistance",
+        "text": "+40% Explosive Resistance"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Repair",
+        "text": "+52% Skill Repair"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"The space between is where you want to be. Not the hammer. Not the anvil. You are the impact; the energy. The potential. Bend or break, you will find purpose. And in purpose, there is truth.”",
     "dropNote": null,
@@ -652,6 +1468,23 @@
     "name": "Pícaro’s Holster",
     "slot": "Holster",
     "brand": "Arcabuz Brazos",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Haste",
+        "text": "+10% Skill Haste"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Tier",
+        "text": "+1 Skill Tier"
+      },
+      {
+        "pieces": 3,
+        "stat": "Magazine Size",
+        "text": "+50% Magazine Size"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": null,
     "dropNote": null,
@@ -666,6 +1499,23 @@
     "name": "Salvo",
     "slot": "Holster",
     "brand": "Unit Alloys",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Rate of Fire",
+        "text": "+5% Rate of Fire"
+      },
+      {
+        "pieces": 2,
+        "stat": "Assault Rifle Damage",
+        "text": "+20% Assault Rifle Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Magazine Size",
+        "text": "+50% Magazine Size"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "Gone in a flash.",
     "dropNote": null,
@@ -680,6 +1530,23 @@
     "name": "Spot-on",
     "slot": "Holster",
     "brand": "Urban Lookout",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Accuracy",
+        "text": "+10% Accuracy"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Duration",
+        "text": "+30% Skill Duration"
+      },
+      {
+        "pieces": 3,
+        "stat": "Marksman Rifle Damage",
+        "text": "+30% Marksman Rifle Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"It's all in the hip.\"",
     "dropNote": null,
@@ -694,6 +1561,23 @@
     "name": "Cloak",
     "slot": "Kneepads",
     "brand": "Imminence Armaments",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Weapon Damage",
+        "text": "+5% Weapon Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Increased Threat",
+        "text": "+100% Increased Threat"
+      },
+      {
+        "pieces": 3,
+        "stat": "Pistol Damage",
+        "text": "+60% Pistol Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"No sudden movements.\"",
     "dropNote": null,
@@ -708,6 +1592,23 @@
     "name": "Emperors Guard",
     "slot": "Kneepads",
     "brand": "Murakami Industries",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Duration",
+        "text": "+15% Skill Duration"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Repair",
+        "text": "+35% Skill Repair"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Damage",
+        "text": "+18% Skill Damage"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "\"Fall down seven times, get up eight\"",
     "dropNote": null,
@@ -722,6 +1623,23 @@
     "name": "Fox's Prayer",
     "slot": "Kneepads",
     "brand": "Overlord Armaments",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Rifle Damage",
+        "text": "+10% Rifle Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Accuracy",
+        "text": "+30% Accuracy"
+      },
+      {
+        "pieces": 3,
+        "stat": "Weapon Handling",
+        "text": "+30% Weapon Handling"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "“Ever heard of an atheist in a foxhole? Me neither.”",
     "dropNote": null,
@@ -736,6 +1654,23 @@
     "name": "Grease",
     "slot": "Kneepads",
     "brand": "Shiny Monkey Gear",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Duration",
+        "text": "+15% Skill Duration"
+      },
+      {
+        "pieces": 2,
+        "stat": "Skill Efficiency",
+        "text": "+5% Skill Efficiency"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Repair",
+        "text": "+52% Skill Repair"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"I'm not in danger. I am the danger.\"",
     "dropNote": null,
@@ -750,6 +1685,23 @@
     "name": "Snowmaker",
     "slot": "Kneepads",
     "brand": "Electrique",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Status Effects",
+        "text": "+10% Status Effects"
+      },
+      {
+        "pieces": 2,
+        "stat": "Shock Resistance",
+        "text": "+20% Shock Resistance"
+      },
+      {
+        "pieces": 3,
+        "stat": "SMG Damage",
+        "text": "+30% SMG Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Like our friends down under, if we want Snow on Christmas we have to make it ourselves.\"",
     "dropNote": null,
@@ -763,6 +1715,23 @@
     "name": "Turmoil",
     "slot": "Kneepads",
     "brand": "Česká Výroba s.r.o.",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Critical Hit Chance",
+        "text": "+8% Critical Hit Chance"
+      },
+      {
+        "pieces": 2,
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
+      },
+      {
+        "pieces": 3,
+        "stat": "Health",
+        "text": "+90% Health"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "Never let them know your next move.",
     "dropNote": null,
@@ -779,6 +1748,23 @@
     "name": "Chill Out",
     "slot": "Mask",
     "brand": "Paladin Synthetics",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Total Armor",
+        "text": "+5% Total Armor"
+      },
+      {
+        "pieces": 2,
+        "stat": "Health",
+        "text": "+60% Health"
+      },
+      {
+        "pieces": 3,
+        "stat": "Armor Regeneration",
+        "text": "+2% Armor Regeneration"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "\"Revenge is a dish best served cold.\"\n- Someone who remembers you",
     "dropNote": null,
@@ -791,6 +1777,23 @@
     "name": "Nightwatcher",
     "slot": "Mask",
     "brand": "Paladin Synthetics",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Total Armor",
+        "text": "+5% Total Armor"
+      },
+      {
+        "pieces": 2,
+        "stat": "Health",
+        "text": "+60% Health"
+      },
+      {
+        "pieces": 3,
+        "stat": "Armor Regeneration",
+        "text": "+2% Armor Regeneration"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "“Through glass and steel; looking at you; a view so cruel.”",
     "dropNote": null,
@@ -805,6 +1808,23 @@
     "name": "Punch Drunk",
     "slot": "Mask",
     "brand": "Douglas & Harding",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Pistol Damage",
+        "text": "+20% Pistol Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Stability",
+        "text": "+30% Stability"
+      },
+      {
+        "pieces": 3,
+        "stat": "Accuracy",
+        "text": "+50% Accuracy"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "“If the first shot doesn’t drop ‘em, the second one will. Or the third. Third’s usually good.”",
     "dropNote": null,
@@ -819,6 +1839,23 @@
     "name": "The Hollow Man",
     "slot": "Mask",
     "brand": "Yaahl Gear",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Hazard Protection",
+        "text": "+10% Hazard Protection"
+      },
+      {
+        "pieces": 2,
+        "stat": "Weapon Damage",
+        "text": "+10% Weapon Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Pulse Resistance",
+        "text": "+40% Pulse Resistance"
+      }
+    ],
     "isDarkZoneExclusive": true,
     "flavorText": "“No whimper. No bang. Just silence. The end of all things.”",
     "dropNote": null,
@@ -833,6 +1870,23 @@
     "name": "Visionario",
     "slot": "Mask",
     "brand": "Legatus S.p.A.",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Swap Speed",
+        "text": "+30% Swap Speed"
+      },
+      {
+        "pieces": 2,
+        "stat": "Optimal Range",
+        "text": "+70% Optimal Range"
+      },
+      {
+        "pieces": 3,
+        "stat": "Weapon Damage",
+        "text": "+15% Weapon Damage"
+      }
+    ],
     "isDarkZoneExclusive": false,
     "flavorText": "“So far be distant; and good night, sweet friend.\"\n- A Midsummer Night’s Dream",
     "dropNote": null,

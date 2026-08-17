@@ -357,7 +357,7 @@ def fallback_talent_from_description(description):
 # Main build
 # ---------------------------------------------------------------------------
 
-def build_named_items(raw_dir, uid_dict, brand_names, manual_overrides=None):
+def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overrides=None):
     item_dir = os.path.join(raw_dir, "game system data", "juice", "item")
     configs_dir = os.path.join(raw_dir, "game system data", "juice", "itemgeneration", "configs")
     talent_index, naive_substitute = build_talent_index(raw_dir)
@@ -386,6 +386,13 @@ def build_named_items(raw_dir, uid_dict, brand_names, manual_overrides=None):
             entry["name"] = override["name"]
 
         brand = brand_names.get(entry["brand_code"]) if entry["brand_code"] else None
+        # Every named item is also a member of its civilian brand and gets that brand's normal
+        # piece-count bonuses on top of its own "Fixed" attribute/talent -- e.g. Salvo (a Unit
+        # Alloys holster) grants Unit Alloys' 2pc Assault Rifle Damage and 3pc Magazine Size the
+        # same as any other Unit Alloys piece would, even though only Rate of Fire is Salvo's own
+        # guaranteed "Fixed" stat. Carried through so the page can surface named items under a
+        # search for those brand-level bonuses too, not just their unique Fixed one.
+        brand_bonus_tiers = brand_tiers.get(entry["brand_code"], []) if entry["brand_code"] else []
 
         fixed_attrs = []
         talent = None
@@ -446,6 +453,7 @@ def build_named_items(raw_dir, uid_dict, brand_names, manual_overrides=None):
             "name": entry["name"],
             "slot": entry["slot"],
             "brand": brand,
+            "brandBonuses": brand_bonus_tiers,
             "isDarkZoneExclusive": entry["is_dz"],
             "flavorText": flavor,
             "dropNote": drop_note,
@@ -478,12 +486,14 @@ def main():
     combined = json.load(open(combined_path, encoding='utf-8'))
     manual_overrides = json.load(open(overrides_path, encoding='utf-8')) if os.path.exists(overrides_path) else {}
     brand_names = {}
+    brand_tiers = {}
     for e in combined:
         if e["kind"] == "Brand":
-            code = e["instance_id"].replace("gear_brand_set_", "")
-            brand_names[code.lower()] = e["name"]
+            code = e["instance_id"].replace("gear_brand_set_", "").lower()
+            brand_names[code] = e["name"]
+            brand_tiers[code] = e["tiers"]
 
-    items, unresolved, review_notes = build_named_items(args.raw_dir, uid_dict, brand_names, manual_overrides)
+    items, unresolved, review_notes = build_named_items(args.raw_dir, uid_dict, brand_names, brand_tiers, manual_overrides)
     items.sort(key=lambda e: (e["slot"], e["name"]))
 
     json.dump(items, open(out_path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)

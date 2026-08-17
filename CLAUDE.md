@@ -311,6 +311,20 @@ wasn't resolvable because their `.mtalent` file was missing from the raw export 
 from (see `README.md`'s Coverage section). Revisiting that just needs a fuller Hunter export re-run through
 `tools/extract_named_items.py` — no code changes anticipated.
 
+A later session (from a different machine, raw export at `C:\Temp\raw_files\raw_files\hunter`)
+added each Named Item's civilian-brand bonuses (1pc/2pc/3pc, e.g. Unit Alloys' Assault Rifle
+Damage/Magazine Size) alongside its own "Fixed" bonus and talent — previously a named item like
+the Unit Alloys holster Salvo only surfaced under a search for its own Fixed stat (Rate of Fire),
+not under the brand bonuses it also gets simply by being Unit Alloys-branded (Assault Rifle
+Damage, Magazine Size). `extract_named_items.py`'s `build_named_items()` now also takes a
+`brand_tiers` dict (brand code → the Brand entry's `tiers` list, sourced from
+`combined_sets.json`) and writes it to each item's `brandBonuses` field in `named_items.json`.
+`index.html`'s `NAMED_ITEM_ENTRIES` folds `fixedAttributes` (pieces: null) and `brandBonuses`
+(real pieces count) into one `tiers` array so the existing chip-filter logic needs no change; the
+Named Item card renderer distinguishes them by `pieces === null` ("Fixed" label) vs. a real piece
+count (rendered the same `Npc` style as Brand/Gear Set cards, brand name already shown in the
+card's subtitle line).
+
 A rebalance patch is expected in the next few weeks that will remove some bonuses (Shock
 Resistance, Health, Incoming Repairs, Swap Speed), add a new one ("Protection from Elites"), and
 reshuffle which stat appears on which brand/set. The update script is designed to handle this
