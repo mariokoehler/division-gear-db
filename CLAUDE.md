@@ -349,3 +349,98 @@ Resistance, Health, Incoming Repairs, Swap Speed), add a new one ("Protection fr
 reshuffle which stat appears on which brand/set. The update script is designed to handle this
 without help *except* for naming the one new attribute type the first time it's seen — see
 `tools/attribute_uid_dictionary.json` and the "Updating the dataset" section of `README.md`.
+
+## 2026-08-18 session: a much fuller Hunter export turned out to fix bugs, not just add data
+
+The user re-exported raw files with Hunter and got a dramatically larger tree (`hunter/` alone
+had ~2M files this time, vs. a much smaller export before) at `E:\Temp\Hunter\raw_files\hunter`.
+Re-running `update_from_hunter_export.py` against it changed **nothing** in
+`data/combined_sets.json` (0 added/removed/changed, 0 unresolved UIDs) — the existing 64-entry
+Brand/Gear Set dataset was already fully correct. The one remaining structural warning (Ongoing
+Directive's backpack companion talent) was independently confirmed still genuinely missing by
+searching the full export directly for anything ongoingdirective-related: only `_5piece`,
+`_6piece`, and `_chest` `.mtalent` files exist, no `_back` file at all. That's a real content gap
+in every export seen so far, not a lookup bug.
+
+Named Items told a very different story. Re-running `extract_named_items.py` against the same
+export took "35 items' talent text unresolvable" (the previous session's understanding, believed
+to be a genuine export gap) down to **zero** — all 43 items that have a unique talent now show
+its full datamined name *and* description, not just a manually-recalled name. That number jump
+came from finding and fixing four real, pre-existing bugs that this fuller export happened to be
+the first thing to actually exercise:
+
+1. **`parse_mtalent_file`'s instance-id regex didn't handle subclass syntax.** "Perfect"-tier
+   talent files (the very ones behind most named items' unique talents) declare
+   `Talent <id> < uid=... > : <base_talent> { ... }` — a `: <base_talent>` subclass clause between
+   the uid and the opening brace that the regex (`Talent\s+(\S+)\s*<[^>]*>\s*\{`) never accounted
+   for, so it silently returned `None` for every one of them (106 files in this export) even
+   though the files were sitting right there. This — not a missing export — was the real root
+   cause of the previous session's "35 items still unresolvable" gap. Fixed by making the
+   subclass clause optional in the regex: `(?:\s*:\s*\S+\s*)?` before the `\{`.
+2. **`extract_localized_text` only handled one `text = ` quote-delimiter style.** It assumed
+   `text = \"...\"` (backslash-escaped double quote) always; Perfect-tier talents' `myUIName`
+   fields use `text = '...'` (bare single quote) instead, same ambiguity
+   `extract_marked_value` in `extract_named_items.py` already handled for item names/descriptions
+   — ported that same both-styles logic in here too (shared by gear-set *and* talent parsing).
+3. **The `index.html` DATA-embed regex was greedy + `DOTALL`, and silently deleted `NAMED_ITEMS`
+   on every run.** `const DATA = \[.*\];` with `re.DOTALL` matches from `const DATA = [` through
+   the *last* `];` anywhere in the rest of the file — i.e., straight through `NAMED_ITEMS`'s own
+   closing bracket, since both consts are adjacent single-line minified-JSON declarations. This
+   was **confirmed to actually happen** to a committed `index.html` while re-running the script
+   this session (`NAMED_ITEMS` count went from 2 to 0 after one run) — caught before it was
+   committed, via `git checkout -- index.html` to recover, but it means every *previous* run of
+   `update_from_hunter_export.py` had this same live landmine. Fixed by scoping the match to
+   `[^\n]*` instead of `.*`/`DOTALL` — both consts are guaranteed single-line, so this makes the
+   cross-array match structurally impossible rather than just less likely.
+4. **`re.sub`/`re.subn` interpret backslash escapes in a *string* replacement.** Both the DATA and
+   NAMED_ITEMS embed steps passed the new minified JSON as a plain string replacement; the `re`
+   module treats `\n`, `\g<...>`, etc. in a string replacement the same way it would in a pattern.
+   Named items' flavor/tooltip text legitimately contains literal `\n` (e.g. Backbone: `"...you do
+   it."\n- The Strategist`), which was silently turned into a *real* embedded newline mid-JSON,
+   corrupting the embed (confirmed by direct byte inspection: source JSON had zero raw newlines,
+   the written `index.html` had one, in exactly that spot). Root-caused *after* initially
+   suspecting Bash tool shell-quoting — a minimal repro without any shell involved reproduced it
+   from `re.sub` alone. Fixed by passing a replacement *function* (`lambda m: new_line`) instead of
+   a string; a function's return value is inserted verbatim with no escape processing. This
+   pattern is now used for both embed steps in both scripts — don't revert to a string replacement
+   here even for a "quick" edit.
+5. **`naive_substitute` double-appended `%`.** Its percent heuristic (`abs(v) < 5` → format as
+   `%` and append a literal `%`) assumed the talent-tooltip template never already had its own
+   `%` after `{n}` — true for every previously-resolved gear-set talent, false for several
+   Perfect-tier ones (`"...by {0}%..."` in the template *plus* the heuristic's own appended `%` →
+   `"7%%"`). Fixed by peeking at the template's next character and skipping the append when it's
+   already `%`. Verified zero regressions against the existing (already-`%%`-free) gear-set
+   dataset before and after.
+
+`extract_named_items.py` now also auto-embeds into `index.html` itself, the same way
+`update_from_hunter_export.py` already did for `DATA` (using the same newline-scoped-match +
+replacement-function pattern from fixes #3/#4 above) — this closes out what used to be a
+documented *manual* re-embed step, which is exactly what triggered the bug #4 corruption in the
+first place when done by hand this session. `README.md`'s "Updating Named Items" section reflects
+this; there is no more manual re-embed step.
+
+Net effect on data quality: all 62 named items still resolve exactly as before structurally (62
+items, 43 with a talent, 19 Gloves/Holster/Kneepads/Mask-only with no talent), but all 43 talents
+now carry a full datamined description instead of 8 full + 35 name-only.
+`tools/named_items_manual_overrides.json`'s `talentName` entries are now inert for every item
+(the datamined path resolves first and wins) but were deliberately left in place rather than
+pruned, per the file's own established role as a safety net if a future export ever regresses —
+consistent with the project's standing "never delete good data" approach. Two of the 35 previously
+manually-recalled names turned out to be slightly wrong once compared against the real datamined
+text: Carpenter's talent is "**Perfectly** Mad Bomber" (not "Perfect Mad Bomber"), Combustor's is
+"**Perfectly** Explosive Delivery" (not "Perfect Explosive Delivery") — minor recall slips, now
+silently corrected since datamined data takes priority automatically.
+
+Also investigated whether the fuller export's newly-present
+`game system data/juice/itemgeneration/attributelists/*.mitemgenerationattributelists`
+(completely absent from every export used before, previously assumed to be the reason a named
+item's *exact* fixed-attribute value couldn't be reported) would close that gap. It doesn't, but
+not because of missing data this time: the relevant `AttributeListContainer NamedAttributes`
+blocks hold `myRangeMin`/`myRangeMax` as **gear-score-dependent curve formulas**
+(`ItemGenerationBracketedCurveFormula`, referencing named brackets like `Percent_1_To_10` defined
+by `myMaxPower`/`myA`/`myB`/`myC` per level range), not flat numbers — there is no single "the
+value" to extract without first picking a target gear score to evaluate the curve at. This is a
+real structural/design fact about how the game generates item stats, not an export gap, so
+"which stat, not how much" for a named item's Fixed attribute is now a deliberate, understood
+scope limit rather than an open question — no curve-evaluation work was attempted this session
+(would be a real feature addition, not a bug fix, and wasn't asked for).

@@ -420,7 +420,7 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
                 t = talent_index.get(preset_talent["ref_file"])
                 if t:
                     desc = strip_inline_markup(naive_substitute(t["tooltip"], t["values"]))
-                    talent = {"name": t["ui_name"] or "(unnamed)", "desc": desc}
+                    talent = {"name": strip_color_tags(t["ui_name"]) or "(unnamed)", "desc": desc}
                     talent_status = "datamined"
                 else:
                     fb = fallback_talent_from_description(entry["description"])
@@ -520,6 +520,26 @@ def main():
     json.dump(items, open(out_path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     json.dump(items, open(min_path, "w", encoding="utf-8"), separators=(",", ":"), ensure_ascii=False)
 
+    html_path = os.path.join(repo_dir, "index.html")
+    min_json = open(min_path, encoding="utf-8").read()
+    html = open(html_path, encoding="utf-8").read()
+    new_line = "const NAMED_ITEMS = " + min_json + ";"
+    # [^\n]* (never DOTALL .*) and a replacement *function* (never a plain string) are both
+    # load-bearing -- see the matching comment in update_from_hunter_export.py's own DATA-embed
+    # code, which had both bugs and was confirmed to have silently corrupted a committed
+    # index.html before the fix: a DOTALL greedy match spans past this array's own line ending to
+    # the LAST "];" in the file, and re.sub/re.subn interpret backslash escapes (\n, \g<...>) in a
+    # *string* replacement, turning named items' legitimate literal "\n" flavor-text sequences
+    # into real embedded newlines that break the JSON mid-array. This used to be a manual,
+    # undocumented-gotcha re-embed step; doing it here the same safe way DATA already is removes
+    # that whole failure mode.
+    html2, n = re.subn(r"const NAMED_ITEMS = \[[^\n]*\];", lambda m: new_line, html, count=1)
+    structural_notes = []
+    if n == 1:
+        open(html_path, "w", encoding="utf-8").write(html2)
+    else:
+        structural_notes.append(("STRUCTURAL", "index.html", "could not find 'const NAMED_ITEMS = [...]' to replace"))
+
     lines = []
     lines.append("# Named items extraction report\n")
     lines.append("Total named items found: %d\n" % len(items))
@@ -528,8 +548,9 @@ def main():
     missing_talent = sum(1 for i in items if i.get("talentStatus") == "needs_manual_research")
     lines.append("With a talent name resolved: %d (full description: %d)" % (with_talent, with_full_talent))
     lines.append("Talent referenced but full description still needing manual research: %d\n" % missing_talent)
-    lines.append("## Review notes (%d)\n" % len(review_notes))
-    for kind, name, detail in review_notes:
+    all_notes = review_notes + structural_notes
+    lines.append("## Review notes (%d)\n" % len(all_notes))
+    for kind, name, detail in all_notes:
         lines.append("- [%s] %s: %s" % (kind, name, detail))
     lines.append("\n## Unresolved attribute UIDs (%d)\n" % len(unresolved))
     for uid in sorted(unresolved):
@@ -548,6 +569,7 @@ def main():
     report = "\n".join(lines) + "\n"
     open(report_path, "w", encoding="utf-8").write(report)
     print("Wrote %d named items to %s" % (len(items), out_path))
+    print("Re-embedded NAMED_ITEMS into %s" % html_path if n == 1 else "WARNING: index.html NOT updated -- see report")
     print("Report: %s" % report_path)
 
 

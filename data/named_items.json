@@ -27,9 +27,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfectly Wicked",
-      "desc": "Applying a status effect increases total weapon damage by 20% for 15s."
+      "desc": "Applying a status effect increases total weapon damage by 18% for 27s."
     },
-    "source": "datamined+description"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_e1_01_named",
@@ -59,10 +59,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Energize",
-      "desc": null
+      "desc": "(no tooltip text found)"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_a1_01_named",
@@ -92,10 +91,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfectly Unstoppable Force",
-      "desc": null
+      "desc": "Killing an enemy increases total weapon damage by 7% for 15s. Stacks up to 5 times.\nGrenade kills add 2 stacks."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_v_01_named",
@@ -125,10 +123,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfectly Calculated",
-      "desc": null
+      "desc": "Kills from cover reduce skill cooldowns by 15%."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_i1_named_01",
@@ -158,10 +155,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Composure",
-      "desc": null
+      "desc": "While in cover, increases total weapon damage by 20%."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_f1_01_named",
@@ -191,10 +187,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Leadership",
-      "desc": null
+      "desc": "Performing a cover to cover grants 20% of your armor as bonus armor to you and all allies for 10s.  \n\nThis is tripled if you end within 10m of an enemy.\n\nCooldown: 10s"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_l_01_named",
@@ -224,9 +219,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Clutch",
-      "desc": "If you are below 50% armor, critical hits repair 3% missing armor."
+      "desc": "Critical hits repair 20% missing armor while below 2.5% armor."
     },
-    "source": "datamined+description"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_n_01_named",
@@ -256,7 +251,7 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Fireworks Show",
-      "desc": "Concussion Grenades become Festive Grenades.\\n\\nHitting an enemy with a Festive Grenade will cause explosions to happen around two other enemies within 20m."
+      "desc": "Concussion Grenades become Festive Grenades.\n\nHitting an enemy with a Festive Grenade will cause explosions to happen around two other enemies within 20m."
     },
     "source": "datamined"
   },
@@ -288,9 +283,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Combined Arms",
-      "desc": "Shooting an enemy increases total skill damage by 40% for 3s."
+      "desc": "Shooting an enemy increases total skill damage by 30% for 300%s."
     },
-    "source": "datamined+description"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_x_01_named",
@@ -320,10 +315,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Overclock",
-      "desc": null
+      "desc": "(no tooltip text found)"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_z_01_named",
@@ -353,10 +347,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Galvanize",
-      "desc": null
+      "desc": "Applying a Blind, Ensnare, Confuse, or Shock to an enemy grants 50% of your armor as bonus armor to you and all allies within 30m of that enemy for 10s."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_u_01_named",
@@ -386,10 +379,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Bloodsucker",
-      "desc": null
+      "desc": "Killing an enemy adds a stack of +12% bonus armor for 10s. Max stack is 10."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_t_01_named",
@@ -419,10 +411,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Adrenaline Rush",
-      "desc": null
+      "desc": "Whenever you are within 10m of an enemy, gain 23% bonus armor for 5s.  Stacks up to 300% times. \n\nCooldown: 5s"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_j1_01_named",
@@ -452,10 +443,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Safeguard",
-      "desc": null
+      "desc": "While at full armor, increases total skill repair by 160%."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_k_named_01",
@@ -485,10 +475,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Tech Support",
-      "desc": null
+      "desc": "Skill kills increase total skill damage by 25% for 27s."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_b1_01_named",
@@ -518,10 +507,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfectly Tamper Proof",
-      "desc": null
+      "desc": "Enemies that walk within 300%m of your hive, turret, remote pulse or decoy are shocked.\n\nArm time: 200%s\nCooldown per skill: 8s"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_e_named_01",
@@ -551,10 +539,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Shock and Awe",
-      "desc": null
+      "desc": "Applying a status effect to an enemy increases total skill damage and repair by 20% for 27s."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_y_01_named",
@@ -584,10 +571,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Creeping Death",
-      "desc": null
+      "desc": "(no tooltip text found)"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_g_named_02",
@@ -617,9 +603,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Vigilance",
-      "desc": "Increases total weapon damage by 30%. Taking damage disables this buff for 3s."
+      "desc": "Increases total weapon damage by 25%. Taking damage disables this buff for 300%s."
     },
-    "source": "datamined+description+manual_name_override"
+    "source": "datamined+manual_name_override"
   },
   {
     "instance_id": "player_gear_back_w_01_named",
@@ -649,10 +635,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfectly Opportunistic",
-      "desc": null
+      "desc": "Enemies you hit take 15% more damage from all sources for 5s."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_back_d1_01_named",
@@ -682,10 +667,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Versatile",
-      "desc": null
+      "desc": "Amplifies total weapon damage for 10s when swapping between your primary and secondary weapons if they are different.\n\n45% to enemies within 15m for Shotguns and SMGs.\n\n40% to enemies further than 25m for Rifles and Marksman Rifles.\n\n15% to enemies between 15-25m for LMGs and Assault Rifles.\n\nAt most once per 5s per weapon type."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_j1_01_named",
@@ -715,10 +699,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Empathic Resolve",
-      "desc": null
+      "desc": "Repairing an ally increases their total weapon and skill damage by 3%-20% for 20s.  1%-15% if self.\n\nEffectiveness increased by your skill tier."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_c1_01_named",
@@ -748,10 +731,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Entrench",
-      "desc": null
+      "desc": "If you are below 30% armor, headshots from cover repair 30% of your armor.\n\nCooldown: 100%s"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_v_01_named",
@@ -781,10 +763,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfectly Skilled",
-      "desc": null
+      "desc": "Skill kills have a 30% chance to reset skill cooldowns."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_a1_01_named",
@@ -813,11 +794,10 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": {
-      "name": "Perfect Mad Bomber",
-      "desc": null
+      "name": "Perfectly Mad Bomber",
+      "desc": "Grenade radius is increased by +75%.  \n\nGrenades that kill an enemy are refunded.\n\nGrenades can now be \"cooked\" by holding the fire button, making them explode earlier.\n \nGain +15% bonus armor while aiming grenades."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_t_01_named",
@@ -847,10 +827,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Headhunter",
-      "desc": null
+      "desc": "(no tooltip text found)"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_w_01_named",
@@ -880,10 +859,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Spotter",
-      "desc": null
+      "desc": "Amplifies total weapon and skill damage by 20% to pulsed enemies."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_b1_01_named",
@@ -912,11 +890,10 @@
     "dropNote": null,
     "fixedAttributes": [],
     "talent": {
-      "name": "Perfect Explosive Delivery",
-      "desc": null
+      "name": "Perfectly Explosive Delivery",
+      "desc": "Whenever you throw a skill, 150% seconds after landing, it creates an explosion damaging enemies within 5m.\nAfterwards, explosions will occur every 5s.\n\nDamage scales with skill tier dealing 25%-100% damage of a concussion grenade."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_n_01_named",
@@ -946,9 +923,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Spark",
-      "desc": "Damaging an enemy with a skill increases total weapon damage by 20% for 15s."
+      "desc": "Damaging enemies with a skill increases total weapon damage by 18% for 20s."
     },
-    "source": "datamined+description"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_h1_named_01",
@@ -978,10 +955,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Obliterate",
-      "desc": null
+      "desc": "Critical hits increase total weapon damage by 1% for 10s. Stacks up to 24 times."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_u_01_named",
@@ -1011,10 +987,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfectly Efficient",
-      "desc": null
+      "desc": "Using an armor kit has a 75% chance to not consume the armor kit.\n\nSpecialization armor kit bonuses are increased by 100%.\n\nRequires 10 seconds to arm talent"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_j_named_01",
@@ -1044,10 +1019,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Overwatch",
-      "desc": null
+      "desc": "(no tooltip text found)"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "Player_gear_chest_z_01_named",
@@ -1077,10 +1051,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Companion",
-      "desc": null
+      "desc": "While you are within 10m of an ally or skill, total weapon damage is increased by 20%"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_a_01_named",
@@ -1110,9 +1083,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Intimidate",
-      "desc": "While you have bonus armor, increases total weapon damage by 60% to enemies within 10m."
+      "desc": "While you have bonus armor, gain 1 stack each second up to a max of 10. Each stack increases weapon damage by 4% to enemies within 10m.\n\nAll stacks are lost when you have no bonus armor."
     },
-    "source": "datamined+description"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_m_01_named",
@@ -1142,10 +1115,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Kinetic Momentum",
-      "desc": null
+      "desc": "When in combat, each skill generates a stack while active or not on cooldown.\n\nStacks increase your total skill damage by 1.5% and total skill repair by 2%. Up to 18 stacks per skill. Lost when on cooldown."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_b_01_named",
@@ -1175,9 +1147,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Vanguard",
-      "desc": "Deploying a shield makes it invulnerable for 6s and grants 60% of your armor as bonus armor to all other allies for 12s.\nCooldown: 30s."
+      "desc": "Deploying a shield makes it invulnerable for 5s and grants 50% of your armor as bonus armor to all other allies for 20s.  \n\nCooldown: 25s"
     },
-    "source": "datamined+description"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_r_named_01",
@@ -1207,10 +1179,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Focus",
-      "desc": null
+      "desc": "Increases total weapon damage by 6% every second you are aiming while scoped 8x or higher, up to 60%."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_i1_named_01",
@@ -1240,10 +1211,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Gunslinger",
-      "desc": null
+      "desc": "Weapon swapping increases total weapon damage by 28% for 5s.  This buff is lost for 5s if you weapon swap while it is active."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_g1_01_named",
@@ -1273,10 +1243,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Protected Reload",
-      "desc": null
+      "desc": "Grants +40% bonus armor while reloading.\n\nGrants 0%-30% of your armor as bonus armor to all other allies when they are reloading, based on your <img src=\"hunter/baked/ui/loose_images/ui_player_defense.dds\"> core attribute."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_g_02_named",
@@ -1306,10 +1275,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfect Glass Cannon",
-      "desc": null
+      "desc": "All damage you deal is amplified by 30%.  All damage you take is amplified by 60%."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_chest_h_named_01",
@@ -1339,10 +1307,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Perfectly Unbreakable",
-      "desc": null
+      "desc": "When your armor is depleted, repair 100% of your armor. \n\nCooldown: 55s"
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_gloves_d_named_01",
@@ -1807,10 +1774,9 @@
     "fixedAttributes": [],
     "talent": {
       "name": "Flurry",
-      "desc": null
+      "desc": "Every Status Effect you apply will also apply snowfall to the target."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_kneepads_l_01_named",
@@ -1843,10 +1809,9 @@
     ],
     "talent": {
       "name": "Bewildered",
-      "desc": null
+      "desc": "When dealing Weapon Damage to an enemy, 50% of the damage will be dealt to another enemy within 30m instead. When there are no enemies nearby, deal damage normally.\nDoes not apply to Armor Plates."
     },
-    "source": "datamined+manual_talent_name_override",
-    "talentStatus": "needs_manual_research"
+    "source": "datamined"
   },
   {
     "instance_id": "player_gear_mask_b_named_02_xmas",

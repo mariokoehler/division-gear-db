@@ -55,16 +55,33 @@ def extract_braced(s, start):
 
 
 def extract_localized_text(field_line):
-    """Given a line like myUIName "... text = \\"Some Name\\", type = ..." return the text value."""
-    marker = "text " + chr(61) + " " + chr(92) + chr(34)  # text = \"
+    """Given a line like myUIName "... text = \\"Some Name\\", type = ..." return the text value.
+    The `text = ` value can be delimited either by a backslash-escaped quote of the same type as
+    the enclosing field's own quotes (text=\\"...\\", the common case) or an unescaped quote of
+    the *other* type (text='...', seen on Perfect-tier .mtalent files) -- same ambiguity already
+    handled by extract_marked_value in extract_named_items.py; mirror that approach here rather
+    than assume one delimiter style."""
+    marker = "text " + chr(61) + " "  # text =
     i = field_line.find(marker)
     if i == -1:
         return None
-    start = i + len(marker)
-    end = field_line.find(chr(92) + chr(34), start)  # \"
-    if end == -1:
+    rest = field_line[i + len(marker):]
+    if rest[:1] == chr(92):
+        quote, opening_len = rest[1:2], 2
+    else:
+        quote, opening_len = rest[:1], 1
+    if quote not in ('"', "'"):
         return None
-    return field_line[start:end]
+    opening = rest[:opening_len]
+    end = rest.find(opening + ", type", opening_len)
+    if end == -1:
+        end = rest.rfind(opening)
+    if end < opening_len:
+        return None
+    raw = rest[opening_len:end]
+    for q in ('"', "'"):
+        raw = raw.replace(chr(92) + chr(92) + q, q).replace(chr(92) + q, q)
+    return raw.replace(chr(92) + 'n', chr(10))
 
 
 # ---------------------------------------------------------------------------
@@ -114,7 +131,10 @@ def parse_mgearset_file(path):
 
 def parse_mtalent_file(path):
     text = open(path, encoding='utf-8', errors='replace').read()
-    m = re.search(r'Talent\s+(\S+)\s*<[^>]*>\s*\{', text)
+    # "Perfect"-tier talents subclass their base talent (`Talent <id> < uid=... > : <base_id>
+    # { ... }`) instead of declaring a bare block -- the optional `: base_id` must be allowed or
+    # the instance-id match silently fails on every one of them (106 files in one export).
+    m = re.search(r'Talent\s+(\S+)\s*<[^>]*>\s*(?::\s*\S+\s*)?\{', text)
     if not m:
         return None
     instance_id = m.group(1)
@@ -142,7 +162,13 @@ def parse_mtalent_file(path):
                     end = rest.rfind(quote)
                 tooltip = rest[1:end] if end > 0 else None
                 if tooltip:
-                    tooltip = tooltip.replace(chr(92) + chr(34), chr(34))
+                    # Perfect-tier talents' tooltips can contain a literal `\n` line break (e.g.
+                    # "Stacks up to 5 times.\nGrenade kills add 2 stacks.") -- unescaping only the
+                    # quote and leaving `\n` as two literal characters left a stray backslash+n in
+                    # 48 talent descriptions once this codepath started actually being exercised
+                    # by the newly-resolved Perfect-tier talents; no existing gear-set talent
+                    # tooltip happened to contain one, so this was previously a dormant bug.
+                    tooltip = tooltip.replace(chr(92) + chr(34), chr(34)).replace(chr(92) + 'n', chr(10))
 
     # base (non-PVP) myBonusList, in file order
     values = []
@@ -261,7 +287,14 @@ def naive_substitute(template, values):
             return m.group(0)
         v = values[idx]
         if abs(v) < 5:
-            return "%s%%" % ("%g" % round(v * 100, 2))
+            num = "%g" % round(v * 100, 2)
+            # Some templates already carry their own literal "%" right after the placeholder
+            # (e.g. Perfect-tier talents: "...by {0}%..."); appending another produced "7%%".
+            # No pre-existing gear-set talent template does both (0 "%%" in combined_sets today),
+            # so this only changes output for templates that already supply their own "%".
+            if template[m.end():m.end() + 1] == '%':
+                return num
+            return num + "%"
         return "%g" % v
     return re.sub(r'\{(\d+)\}', repl, template)
 
@@ -487,7 +520,18 @@ def main():
     min_json = open(min_path, encoding="utf-8").read()
     html = open(html_path, encoding="utf-8").read()
     new_line = "const DATA = " + min_json + ";"
-    html2, n = re.subn(r"const DATA = \[.*\];", new_line, html, count=1, flags=re.DOTALL)
+    # [^\n]* (not DOTALL .*) is load-bearing: DATA and NAMED_ITEMS are each single minified-JSON
+    # lines back to back. A DOTALL `.*` greedily matches past DATA's own line ending straight
+    # through to the LAST "];" in the file -- i.e. NAMED_ITEMS's own closing bracket -- silently
+    # deleting the entire NAMED_ITEMS array on every run. Confirmed this actually happened to a
+    # committed index.html before this fix; excluding newlines from the match makes that bug
+    # structurally impossible regardless of what else follows DATA in the file.
+    # A plain-string replacement is also load-bearing: re.sub/subn interpret backslash escapes
+    # (\n, \g<...>, etc.) INSIDE a string replacement, same as a raw regex pattern would -- so any
+    # dataset text containing a literal `\n` (a multi-line talent tooltip, say) would silently
+    # turn into a real embedded newline in the page, corrupting the JSON. A replacement *function*
+    # is inserted verbatim with no escape processing, which is what we actually want here.
+    html2, n = re.subn(r"const DATA = \[[^\n]*\];", lambda m: new_line, html, count=1)
     if n == 1:
         open(html_path, "w", encoding="utf-8").write(html2)
     else:

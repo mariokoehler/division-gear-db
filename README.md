@@ -49,16 +49,25 @@ source. Two attribute/tooltip details that couldn't be resolved from the raw fil
 and folded in — no known gaps remain.
 
 62 Named Items are also covered, all with a resolved fixed attribute where they have one, and each
-showing its unique talent's name (Gloves/Holster/Kneepads/Mask items sometimes have both a fixed
-attribute and a talent). Each Named Item also belongs to a civilian brand and shows that brand's
-normal 1pc/2pc/3pc bonuses alongside its own "Fixed" bonus, so e.g. the Salvo holster (Unit
-Alloys) shows up whether you filter by its own Fixed "Rate of Fire" or by any of Unit Alloys'
-brand bonuses (Assault Rifle Damage, Magazine Size). All 62 items now show a real talent name —
-for 35 of them the talent's `.mtalent` file still isn't present in any raw export used so far, so
-the name comes from `tools/named_items_manual_overrides.json` (confirmed by the user's own
-in-game knowledge) rather than datamining, and the full description is flagged "Full talent text
-not yet catalogued" instead of being guessed at. See `tools/extract_named_items.py`'s docstring
-and `tools/named_items_report.md` (regenerated each run, gitignored) for the current list.
+showing its unique talent's name and full description (Gloves/Holster/Kneepads/Mask items
+sometimes have both a fixed attribute and a talent; Backpack/Chest items only ever have a talent —
+that's a real game-design fact, not a data gap). Each Named Item also belongs to a civilian brand
+and shows that brand's normal 1pc/2pc/3pc bonuses alongside its own "Fixed" bonus, so e.g. the
+Salvo holster (Unit Alloys) shows up whether you filter by its own Fixed "Rate of Fire" or by any
+of Unit Alloys' brand bonuses (Assault Rifle Damage, Magazine Size). All 43 items that have a
+unique talent now show its real, fully datamined name and description — a fuller Hunter export
+(2026-08-18) resolved the remaining 35 that had previously only been name-confirmed by the user's
+own in-game knowledge via `tools/named_items_manual_overrides.json` (that file still exists and is
+still consulted first-to-last-resort, it's just not needed for any of the 62 items right now; see
+its own inline comments). One genuine gap remains: Ongoing Directive's backpack companion talent
+still has no `.mtalent` file in any export seen so far (confirmed by direct search, not just a
+lookup miss) — everything else was a bug in the extraction scripts, not missing source data; see
+`tools/extract_named_items.py`'s docstring and `tools/named_items_report.md` (regenerated each
+run, gitignored) for the current list. A named item's *exact* fixed-attribute number (vs. just
+which stat) still isn't reported: the relevant `itemgeneration/attributelists/` files are present
+in the fuller export, but the "value" there is a gear-score-dependent curve/formula, not a flat
+number — reporting a single fixed percentage wouldn't actually be accurate without a target gear
+score to evaluate it at, so this is a deliberate scope limit now, not an export gap.
 
 ## Updating the dataset (e.g. after a rebalance patch)
 
@@ -93,11 +102,13 @@ schema this parses — item file → its `ItemGenerationConfig` → preset attri
 python tools/extract_named_items.py --raw-dir "<path to the exported 'hunter' folder>"
 ```
 
-This regenerates `data/named_items.json` / `data/named_items_min.json` and
-`tools/named_items_report.md`, but **unlike** `update_from_hunter_export.py` it does **not**
-touch `index.html` itself — after reviewing the report, re-embed the new minified JSON by
-replacing the `const NAMED_ITEMS = [...]` line in `index.html`'s `<script>` block by hand (or
-with a small find/replace), then review the diff before committing.
+This regenerates `data/named_items.json` / `data/named_items_min.json`, re-embeds the new
+minified JSON into `index.html`'s own `const NAMED_ITEMS = [...]` line, and writes
+`tools/named_items_report.md`. (This used to be a manual re-embed step; it turned out to be a real
+landmine — a naive find/replace here can silently corrupt the page, see the comment above the
+substitution code in both this script and `update_from_hunter_export.py` for what actually went
+wrong and why the fix is a same-line-only match plus a replacement *function*, not a plain
+string.) Review the diff before committing either way.
 
 Why this works well for pure rebalances: every bonus value is keyed to a stable attribute ID
 that doesn't change even when its value does, and gear-set talent descriptions are only
