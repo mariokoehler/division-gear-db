@@ -25,6 +25,12 @@
     "flavorText": null,
     "dropNote": "Warlock Campaign Boss - Alpha guaranteed drop on first kill.",
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfectly Wicked",
       "desc": "Applying a status effect increases total weapon damage by 18% for 27s."
@@ -57,9 +63,15 @@
     "flavorText": "\"Don't fear your instincts, society taught you how to fail.\"",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfect Energize",
-      "desc": "(no tooltip text found)"
+      "desc": "Using an armor kit grants +1 skill tier for 15s. If already at skill tier 6, grants overcharge.\n\nCooldown: 60s"
     },
     "source": "datamined"
   },
@@ -89,6 +101,12 @@
     "flavorText": "\"Your first kill is hard. But it gets easier the more you do it.\"\n- The Strategist",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfectly Unstoppable Force",
       "desc": "Killing an enemy increases total weapon damage by 7% for 15s. Stacks up to 5 times.\nGrenade kills add 2 stacks."
@@ -121,6 +139,12 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfectly Calculated",
       "desc": "Kills from cover reduce skill cooldowns by 15%."
@@ -153,6 +177,12 @@
     "flavorText": "No sweat.",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Composure",
       "desc": "While in cover, increases total weapon damage by 20%."
@@ -185,6 +215,12 @@
     "flavorText": "\"Get behind me.\"",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Leadership",
       "desc": "Performing a cover to cover grants 20% of your armor as bonus armor to you and all allies for 10s.  \n\nThis is tripled if you end within 10m of an enemy.\n\nCooldown: 10s"
@@ -217,6 +253,12 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Clutch",
       "desc": "Critical hits repair 20% missing armor while below 2.5% armor."
@@ -249,6 +291,12 @@
     "flavorText": "\"You get fireworks, and you get fireworks. Everybody gets fireworks!\"",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Fireworks Show",
       "desc": "Concussion Grenades become Festive Grenades.\n\nHitting an enemy with a Festive Grenade will cause explosions to happen around two other enemies within 20m."
@@ -281,11 +329,17 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfect Combined Arms",
       "desc": "Shooting an enemy increases total skill damage by 30% for 300%s."
     },
-    "source": "datamined"
+    "source": "datamined+manual_core_override"
   },
   {
     "instance_id": "player_gear_back_x_01_named",
@@ -313,9 +367,15 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfect Overclock",
-      "desc": "(no tooltip text found)"
+      "desc": "Allies within 15m of your deployed skills, gain +30% reload speed and reduces their active cooldowns by 60%s each second."
     },
     "source": "datamined"
   },
@@ -345,6 +405,12 @@
     "flavorText": "\"A piece of perfection, if you understand what you can do with it.\" Anonymous",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfect Galvanize",
       "desc": "Applying a Blind, Ensnare, Confuse, or Shock to an enemy grants 50% of your armor as bonus armor to you and all allies within 30m of that enemy for 10s."
@@ -377,6 +443,12 @@
     "flavorText": "\"Is that oil, or blood?\"\n\n- BTSU Combat Medic",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfect Bloodsucker",
       "desc": "Killing an enemy adds a stack of +12% bonus armor for 10s. Max stack is 10."
@@ -409,6 +481,12 @@
     "flavorText": "\"I used to dance with death itself, but grew tired of the performance. I think I prefer having the odds stacked against me instead.\"\n\n- The Bull",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Adrenaline Rush",
       "desc": "Whenever you are within 10m of an enemy, gain 23% bonus armor for 5s.  Stacks up to 300% times. \n\nCooldown: 5s"
@@ -441,6 +519,12 @@
     "flavorText": "Not in my burrows.",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfect Safeguard",
       "desc": "While at full armor, increases total skill repair by 160%."
@@ -473,6 +557,12 @@
     "flavorText": "\"Have you tried turning it off and on again?”",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfect Tech Support",
       "desc": "Skill kills increase total skill damage by 25% for 27s."
@@ -505,6 +595,12 @@
     "flavorText": "\"Hostile detected. Hostile eliminated.\"\n- Alexander Ortiz",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfectly Tamper Proof",
       "desc": "Enemies that walk within 300%m of your hive, turret, remote pulse or decoy are shocked.\n\nArm time: 200%s\nCooldown per skill: 8s"
@@ -537,6 +633,12 @@
     "flavorText": "\"I know this is going to look like we’re destroying everything. Don’t worry about it. We don’t make mistakes. Just happy accidents.”",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfect Shock and Awe",
       "desc": "Applying a status effect to an enemy increases total skill damage and repair by 20% for 27s."
@@ -569,9 +671,15 @@
     "flavorText": "\"May this carry your soul to paradise.\" The Priest",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfect Creeping Death",
-      "desc": "(no tooltip text found)"
+      "desc": "When you apply a status effect, it is also applied to all enemies within 10m of your target.  \n\nCooldown: 10s"
     },
     "source": "datamined"
   },
@@ -601,6 +709,12 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Vigilance",
       "desc": "Increases total weapon damage by 25%. Taking damage disables this buff for 300%s."
@@ -633,6 +747,12 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfectly Opportunistic",
       "desc": "Enemies you hit take 15% more damage from all sources for 5s."
@@ -665,6 +785,12 @@
     "flavorText": "“Honor the fallen.”",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Versatile",
       "desc": "Amplifies total weapon damage for 10s when swapping between your primary and secondary weapons if they are different.\n\n45% to enemies within 15m for Shotguns and SMGs.\n\n40% to enemies further than 25m for Rifles and Marksman Rifles.\n\n15% to enemies between 15-25m for LMGs and Assault Rifles.\n\nAt most once per 5s per weapon type."
@@ -697,6 +823,12 @@
     "flavorText": "I can assure you we can all benefit from this.",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfect Empathic Resolve",
       "desc": "Repairing an ally increases their total weapon and skill damage by 3%-20% for 20s.  1%-15% if self.\n\nEffectiveness increased by your skill tier."
@@ -729,6 +861,12 @@
     "flavorText": "\"No way they can get me in this.\"\n- Diesel",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Entrench",
       "desc": "If you are below 30% armor, headshots from cover repair 30% of your armor.\n\nCooldown: 100%s"
@@ -761,6 +899,12 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfectly Skilled",
       "desc": "Skill kills have a 30% chance to reset skill cooldowns."
@@ -793,6 +937,12 @@
     "flavorText": "\"The things I break stay broken.\"\n- The Strategist",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfectly Mad Bomber",
       "desc": "Grenade radius is increased by +75%.  \n\nGrenades that kill an enemy are refunded.\n\nGrenades can now be \"cooked\" by holding the fire button, making them explode earlier.\n \nGain +15% bonus armor while aiming grenades."
@@ -825,9 +975,15 @@
     "flavorText": "\"Ninety-nine bottles of beer on the wall, ninety-nine bottles of beer. Shoot one down, watch it explode, ninety-eight bottles of beer on the wall...\"\n\n- Bored True Sons marksman",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Headhunter",
-      "desc": "(no tooltip text found)"
+      "desc": "After killing an enemy with a headshot, your next weapon hit within 30s deals an additional 150% of that killing blow's damage.\n\nDamage is capped to 8% of your weapon damage. This is raised to 12.5% if your headshot damage is greater than 150%."
     },
     "source": "datamined"
   },
@@ -857,6 +1013,12 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfect Spotter",
       "desc": "Amplifies total weapon and skill damage by 20% to pulsed enemies."
@@ -889,6 +1051,12 @@
     "flavorText": "\"My operatives would never be left alone in the field.\"\n- Natalya Sokolova",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfectly Explosive Delivery",
       "desc": "Whenever you throw a skill, 150% seconds after landing, it creates an explosion damaging enemies within 5m.\nAfterwards, explosions will occur every 5s.\n\nDamage scales with skill tier dealing 25%-100% damage of a concussion grenade."
@@ -921,11 +1089,17 @@
     "flavorText": null,
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Spark",
       "desc": "Damaging enemies with a skill increases total weapon damage by 18% for 20s."
     },
-    "source": "datamined"
+    "source": "datamined+manual_core_override"
   },
   {
     "instance_id": "player_gear_chest_h1_named_01",
@@ -953,6 +1127,12 @@
     "flavorText": "Building them up to bring them down,",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Obliterate",
       "desc": "Critical hits increase total weapon damage by 1% for 10s. Stacks up to 24 times."
@@ -985,6 +1165,12 @@
     "flavorText": "\"What's in my everyday carry? As many armor plates as I can fit.\"\n\n- Agent Sanders",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfectly Efficient",
       "desc": "Using an armor kit has a 75% chance to not consume the armor kit.\n\nSpecialization armor kit bonuses are increased by 100%.\n\nRequires 10 seconds to arm talent"
@@ -1017,9 +1203,15 @@
     "flavorText": "\"The invention of the gun required a redefinition of courage from aggressive ferocity to calmness under fire.” - Robert L. O’Connell",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Overwatch",
-      "desc": "(no tooltip text found)"
+      "desc": "After staying in cover for 8s, increases you and your allies' total weapon and skill damage by 14% as long as you remain in cover or in a cover-to-cover move."
     },
     "source": "datamined"
   },
@@ -1049,6 +1241,12 @@
     "flavorText": "\"We live together, we learn together, we die together. But, first we make each other stronger.\" Anonymous",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfect Companion",
       "desc": "While you are within 10m of an ally or skill, total weapon damage is increased by 20%"
@@ -1081,6 +1279,12 @@
     "flavorText": null,
     "dropNote": "Unique reward from the Haven \"ivory key\" box for killing all the Warlock Hunters.",
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfect Intimidate",
       "desc": "While you have bonus armor, gain 1 stack each second up to a max of 10. Each stack increases weapon damage by 4% to enemies within 10m.\n\nAll stacks are lost when you have no bonus armor."
@@ -1113,6 +1317,12 @@
     "flavorText": "\"Don't stop, can't stop, won't stop.\"",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Perfect Kinetic Momentum",
       "desc": "When in combat, each skill generates a stack while active or not on cooldown.\n\nStacks increase your total skill damage by 1.5% and total skill repair by 2%. Up to 18 stacks per skill. Lost when on cooldown."
@@ -1145,6 +1355,12 @@
     "flavorText": null,
     "dropNote": "Warlock Campaign Boss - Charlie guaranteed drop on first kill.",
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfect Vanguard",
       "desc": "Deploying a shield makes it invulnerable for 5s and grants 50% of your armor as bonus armor to all other allies for 20s.  \n\nCooldown: 25s"
@@ -1177,6 +1393,12 @@
     "flavorText": "“Only the first shot is clean. Everything after that is just messy.”",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Focus",
       "desc": "Increases total weapon damage by 6% every second you are aiming while scoped 8x or higher, up to 60%."
@@ -1209,6 +1431,12 @@
     "flavorText": "I paid for all the guns so I'm going to use all of the guns.",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Gunslinger",
       "desc": "Weapon swapping increases total weapon damage by 28% for 5s.  This buff is lost for 5s if you weapon swap while it is active."
@@ -1241,6 +1469,12 @@
     "flavorText": "\"I'm feeling generous.\"",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Protected Reload",
       "desc": "Grants +40% bonus armor while reloading.\n\nGrants 0%-30% of your armor as bonus armor to all other allies when they are reloading, based on your <img src=\"hunter/baked/ui/loose_images/ui_player_defense.dds\"> core attribute."
@@ -1273,6 +1507,12 @@
     "flavorText": "“Only after everything has been given, can you expect to receive. When the vessel is empty, the soul is complete.”",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Perfect Glass Cannon",
       "desc": "All damage you deal is amplified by 30%.  All damage you take is amplified by 60%."
@@ -1305,6 +1545,12 @@
     "flavorText": "\"Here is the field where I grow my Fs, lo it lies fallow.\"",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": {
       "name": "Perfectly Unbreakable",
       "desc": "When your armor is depleted, repair 100% of your armor. \n\nCooldown: 55s"
@@ -1339,6 +1585,12 @@
     "fixedAttributes": [
       "Damage to Armor"
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1369,6 +1621,12 @@
     "dropNote": null,
     "fixedAttributes": [
       "Armor on Kill"
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
     ],
     "talent": null,
     "source": "datamined"
@@ -1401,6 +1659,12 @@
     "fixedAttributes": [
       "Weapon Handling"
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1432,6 +1696,12 @@
     "fixedAttributes": [
       "Status Effects"
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1462,6 +1732,12 @@
     "dropNote": null,
     "fixedAttributes": [
       "Ammo Capacity"
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
     ],
     "talent": null,
     "source": "datamined"
@@ -1495,6 +1771,12 @@
       "Melee Damage",
       "Pistol Damage"
     ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1525,6 +1807,12 @@
     "dropNote": null,
     "fixedAttributes": [
       "Shield Health"
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
     ],
     "talent": null,
     "source": "datamined"
@@ -1557,6 +1845,12 @@
     "fixedAttributes": [
       "Weapon Damage"
     ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1587,6 +1881,12 @@
     "dropNote": null,
     "fixedAttributes": [
       "Rate of Fire"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
     ],
     "talent": null,
     "source": "datamined"
@@ -1619,6 +1919,12 @@
     "fixedAttributes": [
       "Accuracy"
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1649,6 +1955,12 @@
     "dropNote": null,
     "fixedAttributes": [
       "Reduced Threat"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
     ],
     "talent": null,
     "source": "datamined"
@@ -1681,6 +1993,12 @@
     "fixedAttributes": [
       "Armor Regeneration"
     ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1711,6 +2029,12 @@
     "dropNote": null,
     "fixedAttributes": [
       "Damage to Targets Out of Cover"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
     ],
     "talent": null,
     "source": "datamined"
@@ -1743,6 +2067,12 @@
     "fixedAttributes": [
       "Status Effects"
     ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1772,6 +2102,12 @@
     "flavorText": "\"Like our friends down under, if we want Snow on Christmas we have to make it ourselves.\"",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "talent": {
       "name": "Flurry",
       "desc": "Every Status Effect you apply will also apply snowfall to the target."
@@ -1807,6 +2143,12 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": {
       "name": "Bewildered",
       "desc": "When dealing Weapon Damage to an enemy, 50% of the damage will be dealt to another enemy within 30m instead. When there are no enemies nearby, deal damage normally.\nDoes not apply to Armor Plates."
@@ -1839,6 +2181,12 @@
     "flavorText": "\"Revenge is a dish best served cold.\"\n- Someone who remembers you",
     "dropNote": null,
     "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1869,6 +2217,12 @@
     "dropNote": null,
     "fixedAttributes": [
       "Scanner Pulse Haste"
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
     ],
     "talent": null,
     "source": "datamined"
@@ -1901,6 +2255,12 @@
     "fixedAttributes": [
       "Headshot Damage"
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1932,6 +2292,12 @@
     "fixedAttributes": [
       "Damage to Health"
     ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "talent": null,
     "source": "datamined"
   },
@@ -1962,6 +2328,12 @@
     "dropNote": null,
     "fixedAttributes": [
       "Optimal Range"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
     ],
     "talent": null,
     "source": "datamined"

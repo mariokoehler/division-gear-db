@@ -1,10 +1,11 @@
 # Division Gear DB — Gear Set Bonus Finder
 
 A small, dependency-free web tool for *Tom Clancy's The Division 2*: pick one or more bonus
-types (Hazard Protection, Armor on Kill, Skill Haste, …) and see every Brand Set, Gear Set, and
-Named Item that grants them, including full Gear Set 4-piece talents, Backpack/Chest amplifier
-talents, each Named Item's own guaranteed fixed attribute and/or unique talent, and the normal
-brand bonuses each Named Item also gets from its civilian brand.
+types (Hazard Protection, Armor on Kill, Skill Haste, …) and see every Brand Set, Gear Set, Named
+Item, and Exotic Item that grants them, including full Gear Set 4-piece talents, Backpack/Chest
+amplifier talents, each Named/Exotic Item's own guaranteed attribute(s) and/or unique talent, the
+normal brand bonuses each Named Item also gets from its civilian brand, and each Named/Exotic
+Item's Core attribute (Red/Offensive, Blue/Defensive, Yellow/Utility).
 
 **Live page:** https://mariokoehler.github.io/division-gear-db/
 
@@ -16,6 +17,8 @@ brand bonuses each Named Item also gets from its civilian brand.
 - `data/combined_sets_min.json` — minified version, the one actually embedded into `index.html`.
 - `data/named_items.json` / `data/named_items_min.json` — Named Items (Deathgrips, Turmoil, etc.),
   same pretty/minified split, embedded into `index.html` as a separate `NAMED_ITEMS` array.
+- `data/exotic_items.json` / `data/exotic_items_min.json` — Exotic Items (Catharsis, Memento,
+  etc.), same pretty/minified split, embedded into `index.html` as a separate `EXOTIC_ITEMS` array.
 
 ## Data sources & attribution
 
@@ -69,6 +72,34 @@ in the fuller export, but the "value" there is a gear-score-dependent curve/form
 number — reporting a single fixed percentage wouldn't actually be accurate without a target gear
 score to evaluate it at, so this is a deliberate scope limit now, not an export gap.
 
+28 Exotic Items are also covered (Catharsis, Memento, Deathgrips-tier gear but at Exotic quality,
+etc.) — the small pool of gear pieces whose talent never appears on any other Brand Set, Gear Set,
+or Named Item. Every exotic always carries exactly two guaranteed bonus *types* plus its unique
+talent, all fully datamined with real names and descriptions. Unlike a Named Item's Fixed
+attribute, an exotic's actual rolled value is always random by design, so only the stat type is
+shown, never a number — that's not a data gap, it's how the game generates these items. One item
+(Acosta's Kneepads) is missing both bonus types in this export (flagged, not guessed at). A few
+items found in the game's own data are deliberately excluded: an unreleased kneepad piece whose
+name is literally the placeholder text "TBD", a pair of gloves whose entire generation config is a
+dead `NULLREFERENCE`, and Investor (a real, released mask) — confirmed by the user to be
+intentionally fully-random by design (its own talent text says "This item can feature any Core
+Attribute" / "features a third random Attribute"), so it simply doesn't fit this database's
+"always X and Y" model. See `tools/extract_exotic_items.py`'s docstring and
+`tools/exotic_items_report.md` (regenerated each run, gitignored) for the current list.
+
+Every Named and Exotic Item also shows its **Core attribute** (Red/Offensive, Blue/Defensive,
+Yellow/Utility — a real property of every item, never optional in-game). All 28 Exotic Items and
+all 62 Named Items show one; Backpack/Chest named items don't carry it in their own dedicated
+config (talent only) so it's inherited from the regular civilian-brand piece the named item is
+based on instead, confirmed correct in-game by the user for Chainkiller (Red) and Closer (Blue).
+2 items (Force Multiplier, Door-Kicker's Knock) can't be resolved that way — their underlying base
+piece itself rolls a random core in this data — so those two are confirmed instead from the user's
+own in-game knowledge (Yellow and Red) via `tools/named_items_manual_overrides.json`, same
+mechanism already used for talent names. A handful of exotic Backpacks (Memento,
+confirmed directly by the user, plus Harrier Pride and Ninja Bike Messenger Bag, which share the
+exact same data structure) genuinely support all three cores simultaneously rather than just one
+— a real design quirk, not a data error.
+
 ## Updating the dataset (e.g. after a rebalance patch)
 
 1. In Hunter, open `hunter/sdf/pc/data/sdf.sdftoc` from the game install, enable **raw files** in
@@ -116,3 +147,19 @@ regenerated when the numbers backing them actually change (tracked via a hidden 
 fingerprint per talent) — an unrelated patch touching other sets won't disturb hand-polished
 text elsewhere. New attribute types (e.g. a rebalance introducing a bonus that didn't exist
 before) are the one case that still needs a short manual lookup, once per new attribute.
+
+### Updating Exotic Items
+
+Sibling script to `extract_named_items.py`, reusing almost all of its parsing machinery (see
+`CLAUDE.md`'s Exotic Items section for what's actually different: no civilian brand, bonus TYPES
+without values since the roll is always random, and the Core-attribute extraction shared with
+Named Items):
+
+```
+python tools/extract_exotic_items.py --raw-dir "<path to the exported 'hunter' folder>"
+```
+
+Same self-embedding behavior as `extract_named_items.py` — regenerates
+`data/exotic_items.json` / `data/exotic_items_min.json`, re-embeds into `index.html`'s own
+`const EXOTIC_ITEMS = [...]` line, and writes `tools/exotic_items_report.md`. Review the diff
+before committing.

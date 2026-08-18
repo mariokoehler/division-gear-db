@@ -117,12 +117,17 @@ def extract_context_comment(field_str):
     return extract_marked_value(field_str, "contextComment = ", ", enabled")
 
 
-def extract_field_text(body, field_name):
+def extract_field_text(body, field_name, allow_comment_fallback=True):
     """Find `<field_name> "..."` (or '...') at top level of body and return its text= value,
     falling back to its contextComment= (an internal dev note) when text is empty or an obvious
     unfilled-localization placeholder -- a handful of older named items (Y1-era) never got their
     real in-game description written and instead carry the actual drop-source/talent info only
-    in that dev comment."""
+    in that dev comment. That fallback only makes sense for myDescription: a name field's
+    contextComment is an internal editor label for the field/feature (e.g. "Y7S2.3 Climax Exotic
+    Gear Piece Name"), never a usable display name -- pass allow_comment_fallback=False for
+    myUIName so a real placeholder like "TBD" stays visible as "TBD" instead of silently becoming
+    that unrelated label, which would otherwise slip straight past any caller's placeholder-name
+    check."""
     m = re.search(re.escape(field_name) + r'\s+["\']', body)
     if not m:
         return None
@@ -134,7 +139,7 @@ def extract_field_text(body, field_name):
     end = nl if nl != -1 else len(body)
     line = body[start:end]
     text = extract_text_value(line)
-    if text is None or text.strip().upper() in ("", "INSERT TEXT HERE", "TBD", "TODO"):
+    if allow_comment_fallback and (text is None or text.strip().upper() in ("", "INSERT TEXT HERE", "TBD", "TODO")):
         comment = extract_context_comment(line)
         if comment and comment.strip():
             return comment.strip()
@@ -174,9 +179,30 @@ def parse_named_item_file(path):
     if not m:
         return None
     instance_id = m.group(1)
+    # Backpack/Chest named items' own dedicated ItemGenerationConfig only ever carries a talent --
+    # no myAttributeSlots block at all, so no Core to resolve there (see "Core attribute" section
+    # of CLAUDE.md). The real civilian-brand piece this named item's model/identity is drawn from
+    # (and whose own config can carry an explicit, non-random preset Core the named item inherits)
+    # is reliably the SAME instance_id with "_named" removed -- e.g.
+    # `player_gear_chest_t_01_named` -> `player_gear_chest_t_01` (Chainkiller's real base,
+    # confirmed correct in-game by the user, 2026-08-18) or `player_gear_back_g_named_02` ->
+    # `player_gear_back_g_02` ("_named" isn't always a trailing suffix). This was originally tried
+    # via the ArmorItem's own `: base_id` subclass declaration instead, but that often points at
+    # the generic `player_gear_<slot>_template` even when a real, correctly-related base item
+    # exists under this naming convention (e.g. Closer: `: player_gear_chest_template`, yet
+    # `player_gear_chest_w_01` is real, has an explicit Blue core, and -- after the user corrected
+    # an initial wrong recollection sourced from a screenshot of someone else's recalibrated item
+    # -- IS Closer's real default core). Verified zero disagreements between the two approaches
+    # across the full dataset wherever both resolve; this one just resolves strictly more of them.
+    # Not reliable for every item: a few named items' stripped id has no matching file at all, and
+    # even when one exists its own Core slot is sometimes itself unpresented (randomized on
+    # regular drops of that base item, in which case there's genuinely nothing fixed to inherit).
+    base_id = re.sub(r'_named', '', instance_id, flags=re.IGNORECASE)
+    if base_id == instance_id:
+        base_id = None
     body, _ = extract_braced(text, m.end() - 1)
 
-    name = strip_color_tags(extract_field_text(body, "myUIName"))
+    name = strip_color_tags(extract_field_text(body, "myUIName", allow_comment_fallback=False))
     description = extract_field_text(body, "myDescription")
 
     fname = os.path.basename(path)
@@ -214,6 +240,7 @@ def parse_named_item_file(path):
         "brand_code": brand_code,
         "is_dz": is_dz,
         "config_link_name": config_link_name,
+        "base_id": base_id,
     }
 
 
@@ -271,26 +298,62 @@ def find_generation_config_block(configs_dir, item_instance_id):
     return None
 
 
-def _orange_quality_blocks(config_body, block_keyword):
-    """Yield the body of every `<block_keyword> <label> { ... myQuality Orange ... }` block.
+def _quality_blocks(config_body, block_keyword, quality="Orange"):
+    """Yield the body of every `<block_keyword> <label> { ... myQuality <quality> ... }` block.
     The block's own <label> (its instance name, e.g. 'Orange' or 'Purple') is NOT reliable --
     several configs use a generic editor-default label instead (`"New QualityTalentSlots (0)"`,
-    `"New QualityAttributeSlots (0)"`) even for the Orange-tier block, so anchoring the regex on
-    a literal `Orange` label silently finds nothing for those files (looks identical to "no
-    talent/attribute here" -- a real bug, not a data gap, until this generalized). Named items
-    are always Orange quality, so filter by the `myQuality Orange` field *inside* the block
-    instead of trusting its label."""
+    `"New QualityAttributeSlots (0)"`) even for the tier we actually want, so anchoring the regex
+    on a literal label silently finds nothing for those files (looks identical to "no
+    talent/attribute here" -- a real bug, not a data gap, until this generalized). Named items are
+    always Orange quality and Exotics are always Exotic quality, so filter by the `myQuality`
+    field *inside* the block instead of trusting its label."""
     for qm in re.finditer(block_keyword + r'\s+(?:"[^"]*"|\S+)\s*\{', config_body):
         body, _ = extract_braced(config_body, qm.end() - 1)
-        if re.search(r'myQuality\s+Orange\b', body):
+        if re.search(r'myQuality\s+' + re.escape(quality) + r'\b', body):
             yield body
 
 
-def parse_preset_attributes(config_body):
+CORE_COLOR_BY_STAT = {
+    "Weapon Damage": "Red",
+    "Total Armor": "Blue",
+    "Skill Tier": "Yellow",
+}
+
+
+def parse_core_attributes(config_body, uid_dict, quality="Orange"):
+    """Return every active Core attribute on this item, resolved to {stat, color}, deduped by
+    UID. Most items have exactly one Core-tagged slot; a handful of exotics genuinely have
+    2-3 simultaneously (confirmed in-game by the user for the Memento backpack, which always has
+    all three) -- `myPresetPercentage`'s sign does NOT reliably distinguish an active core from a
+    decoy here (Memento's real, always-active Total Armor core slot is marked -1.0, the same
+    sentinel that means "inactive" everywhere else in this codebase), so every myIsCoreAttribute
+    TRUE slot found is treated as active regardless of its percentage value -- unlike
+    parse_preset_attributes's regular (non-core) attribute slots, where the sign is the correct
+    and only signal."""
+    seen = {}
+    for qbody in _quality_blocks(config_body, "QualityAttributeSlots", quality):
+        for sm in re.finditer(r'ItemAttributeSlot\s+(?:"[^"]*"|\S+)\s*\{', qbody):
+            sbody, _ = extract_braced(qbody, sm.end() - 1)
+            if 'myIsCoreAttribute TRUE' not in sbody:
+                continue
+            pa_m = re.search(r'myPresetAttribute\s+([0-9A-Fa-f]+)', sbody)
+            if not pa_m or re.match(r'^0+$', pa_m.group(1)):
+                continue
+            uid = pa_m.group(1)
+            if uid in seen:
+                continue
+            stat = uid_dict.get(uid)
+            seen[uid] = {"stat": stat or ("Unknown Attribute (%s)" % uid), "color": CORE_COLOR_BY_STAT.get(stat)}
+    order = {"Red": 0, "Blue": 1, "Yellow": 2}
+    return sorted(seen.values(), key=lambda c: order.get(c["color"], 9))
+
+
+def parse_preset_attributes(config_body, quality="Orange"):
     """Return list of {uid, is_core} for every ItemAttributeSlot with a myPresetAttribute,
-    restricted to the Orange QualityAttributeSlots block (named items are always Orange)."""
+    restricted to the given QualityAttributeSlots block (named items are always Orange, exotics
+    are always Exotic quality)."""
     out = []
-    for qbody in _orange_quality_blocks(config_body, "QualityAttributeSlots"):
+    for qbody in _quality_blocks(config_body, "QualityAttributeSlots", quality):
         for sm in re.finditer(r'ItemAttributeSlot\s+(?:"[^"]*"|\S+)\s*\{', qbody):
             sbody, _ = extract_braced(qbody, sm.end() - 1)
             pa_m = re.search(r'myPresetAttribute\s+([0-9A-Fa-f]+)', sbody)
@@ -309,7 +372,7 @@ def parse_preset_attributes(config_body):
     return out
 
 
-def parse_preset_talent(config_body):
+def parse_preset_talent(config_body, quality="Orange"):
     """`myPresetTalent < uid=... > = <slug> <guid>` -- same shape as a Gear Set's 4pc talent
     reference (`Talent "label" < uid=... > = <file_id> <guid>` in update_from_hunter_export.py),
     where the FIRST token after `=` is the .mtalent file's own instance-id/slug (what
@@ -319,7 +382,7 @@ def parse_preset_talent(config_body):
     looked "missing" even when its .mtalent file was sitting right there in the export, keyed
     under its slug. Verified against talent_gear_back_firecrackers.mtalent (Festive Delivery):
     present, fully parseable, just never found because of the swapped key."""
-    for qbody in _orange_quality_blocks(config_body, "QualityTalentSlots"):
+    for qbody in _quality_blocks(config_body, "QualityTalentSlots", quality):
         pt_m = re.search(r'myPresetTalent\s*<[^>]*>\s*=\s*(\S+)\s+([0-9A-Fa-f]+)', qbody)
         if pt_m:
             return {"ref_file": pt_m.group(1)}
@@ -331,14 +394,8 @@ def parse_preset_talent(config_body):
 # ---------------------------------------------------------------------------
 
 def build_talent_index(raw_dir):
-    talent_dir = os.path.join(raw_dir, "game system data", "juice", "talent")
-    from update_from_hunter_export import parse_mtalent_file, naive_substitute
-    index = {}
-    for path in glob.glob(os.path.join(talent_dir, "*.mtalent")):
-        parsed = parse_mtalent_file(path)
-        if parsed:
-            index[parsed["instance_id"]] = parsed
-    return index, naive_substitute
+    from update_from_hunter_export import build_talent_index as _build_talent_index, naive_substitute
+    return _build_talent_index(raw_dir), naive_substitute
 
 
 DESC_TALENT_RE = re.compile(r'Talent:\s*([^\n]+)\n(.+)$', re.DOTALL)
@@ -397,12 +454,37 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
         fixed_attrs = []
         talent = None
         talent_status = None
+        cores = []
+        core_manual_override = False
 
         config_body = find_generation_config_block(configs_dir, entry["instance_id"])
         if config_body is None:
             review_notes.append(("STRUCTURAL", entry["name"],
                                   "no ItemGenerationConfig found for '%s'" % entry["instance_id"]))
         else:
+            cores = parse_core_attributes(config_body, uid_dict)
+            if not cores and entry.get("base_id"):
+                # See parse_named_item_file's comment on base_id -- Backpack/Chest items' own
+                # config never has a Core, only their specific (non-template) base item might.
+                base_config = find_generation_config_block(configs_dir, entry["base_id"])
+                if base_config is not None:
+                    cores = parse_core_attributes(base_config, uid_dict)
+                    if cores:
+                        review_notes.append(("CORE_FROM_BASE_ITEM", entry["name"],
+                                              "no Core in this item's own config -- inherited from "
+                                              "its base item '%s' instead" % entry["base_id"]))
+            if not cores and override and override.get("core"):
+                # Last resort for the couple of items where even the base item's own Core slot is
+                # unpresented in this export (Force Multiplier, Door-Kicker's Knock) -- the color
+                # alone is enough to reconstruct a {stat, color} entry via CORE_COLOR_BY_STAT.
+                color = override["core"]
+                stat = next((s for s, c in CORE_COLOR_BY_STAT.items() if c == color), None)
+                if stat:
+                    cores = [{"stat": stat, "color": color}]
+                    core_manual_override = True
+                    review_notes.append(("MANUAL_OVERRIDE_CORE", entry["name"],
+                                          "Core (%s) confirmed by the user, unresolvable from this "
+                                          "export (%s)" % (color, override.get("coreNote", "no note"))))
             for slot in parse_preset_attributes(config_body):
                 if slot["is_core"] or not slot["has_preset_percentage"]:
                     continue
@@ -466,6 +548,8 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
             source += "+manual_name_override"
         if talent_status == "manual_name_only":
             source += "+manual_talent_name_override"
+        if core_manual_override:
+            source += "+manual_core_override"
 
         out = {
             "instance_id": entry["instance_id"],
@@ -477,6 +561,7 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
             "flavorText": flavor,
             "dropNote": drop_note,
             "fixedAttributes": fixed_attrs,
+            "cores": cores,
             "talent": talent,
             "source": source,
         }

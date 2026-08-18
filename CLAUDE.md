@@ -7,9 +7,10 @@ doing anything else here.
 ## What this is
 
 A single-page tool for *Tom Clancy's The Division 2* (`index.html`): pick one or more bonus types
-and see every Brand Set / Gear Set / Named Item that grants them, including Gear Set 4-piece
-talents, Backpack/Chest amplifier talents, and each Named Item's own guaranteed fixed attribute
-and/or unique talent. Self-contained — no build step, no server, works from `file://`.
+and see every Brand Set / Gear Set / Named Item / Exotic Item that grants them, including Gear Set
+4-piece talents, Backpack/Chest amplifier talents, each Named/Exotic Item's own guaranteed
+attribute(s) and/or unique talent, and each Named/Exotic Item's Core attribute (Red/Offensive,
+Blue/Defensive, Yellow/Utility). Self-contained — no build step, no server, works from `file://`.
 
 **Live:** https://mariokoehler.github.io/division-gear-db/ (GitHub Pages, `main` branch, root).
 **Repo:** https://github.com/mariokoehler/division-gear-db (public).
@@ -35,10 +36,18 @@ or from files the user has explicitly exported/copied elsewhere (e.g. `E:\Temp\H
 - `data/named_items.json` / `data/named_items_min.json` — Named Items (Deathgrips, Turmoil, etc.),
   embedded in `index.html` as a second array, `const NAMED_ITEMS = [...]`.
 - `tools/extract_named_items.py` — regenerates the two files above from the same kind of raw
-  export. Unlike `update_from_hunter_export.py` it does **not** touch `index.html` itself — the
-  `NAMED_ITEMS` line has to be re-pasted in by hand after review. See "Named Items" section below
-  for the schema this parses, and "Updating Named Items" in `README.md` for run instructions.
+  export, and re-embeds the result into `index.html`'s own `NAMED_ITEMS` line itself (this used to
+  be a manual re-embed step; it turned out to be a real landmine, see the 2026-08-18 session notes
+  below for what actually went wrong). See "Named Items" section below for the schema this parses,
+  and "Updating Named Items" in `README.md` for run instructions.
 - `tools/named_items_report.md` — gitignored, regenerated each run, not meant to be committed.
+- `data/exotic_items.json` / `data/exotic_items_min.json` — Exotic Items (Catharsis, Memento,
+  etc.), embedded in `index.html` as a third array, `const EXOTIC_ITEMS = [...]`.
+- `tools/extract_exotic_items.py` — sibling to `extract_named_items.py`, reusing almost all of its
+  parsing machinery; also self-embeds into `index.html`'s own `EXOTIC_ITEMS` line. See "Exotic
+  Items" section below for what's different from Named Items, and "Updating Exotic Items" in
+  `README.md` for run instructions.
+- `tools/exotic_items_report.md` — gitignored, regenerated each run, not meant to be committed.
 
 ## Where the data actually comes from
 
@@ -267,6 +276,162 @@ landmines:
   top-of-file `include ".../gearbrand/gearbrand_<code>.mgearbrand"` line, which is present
   regardless of inheritance; join `<code>` (lowercased) against the Brand entries already in
   `data/combined_sets.json` by stripping their `gear_brand_set_` prefix — same brand namespace.
+
+## Core attribute — shared by Named Items and Exotic Items
+
+Every armor piece has a "Core" attribute determining its archetype: Red/Offensive, Blue/Defensive,
+or Yellow/Utility. Confirmed to map to exactly 3 stats across the whole dataset:
+`CORE_COLOR_BY_STAT` in `extract_named_items.py` — Weapon Damage → Red, Total Armor → Blue, Skill
+Tier → Yellow. The "Total Armor" UID used here (`5D4179F15AC362CC0001190A8D09DA48`) is a
+*different* UID from the "Total Armor" used for the `+X% Total Armor` bonus attribute elsewhere in
+the dataset (`5D4179F15996CE00000035FD0AA3A56A`) — two separate internal encodings of the same
+real-world stat, both correctly named the same thing in `attribute_uid_dictionary.json`. Confirmed
+by internal field names, not guessed: the UID's own `AttributeData` block is literally named
+`Armor` with curves `CoreArmorMin`/`CoreArmorMax`, and the user independently confirmed "Total
+Armor" as the real name from in-game knowledge (2026-08-18).
+
+Extraction (`parse_core_attributes` in `extract_named_items.py`, shared by both pipelines): scan
+the item's own quality-tier `QualityAttributeSlots` block (Orange for named items, Exotic for
+exotics — **do not** scan all 4 quality tiers the way an early exploratory pass did, see below for
+why) for every `ItemAttributeSlot` with `myIsCoreAttribute TRUE`, resolve each one's
+`myPresetAttribute` UID, dedupe by UID.
+
+Two landmines, both discovered the hard way:
+- **A named item's Core UID can genuinely differ across quality tiers** (Green/Blue/Purple showing
+  one stat, Orange showing a different one — seen on Caesar's Guard and Henri). An early
+  exploratory pass that aggregated across all 4 tiers read this as "these items have 2 cores,"
+  which was wrong — named items are always Orange quality in practice, so only the Orange tier's
+  value is meaningful. Restricting to Orange-only (which the real `parse_core_attributes` already
+  does via `_quality_blocks`'s `quality` parameter) resolves this cleanly.
+- **Backpack/Chest named items' own dedicated config has no Core at all** (same "no fixed bonus
+  either" fact already documented above — talent only, no `myAttributeSlots` block). This does
+  NOT mean these 19 items have no Core in-game (they do — every item does, per the user, who
+  called this out explicitly after the first pass shipped these as "this slot doesn't roll one",
+  which was simply wrong). The real Core lives on the regular, non-named civilian-brand piece
+  these items' model/identity is drawn from, reliably found by stripping `_named` out of the named
+  item's own instance_id (e.g. `player_gear_chest_t_01_named` → `player_gear_chest_t_01`; `_named`
+  isn't always a trailing suffix, e.g. `player_gear_back_g_named_02` → `player_gear_back_g_02`, so
+  a plain substring removal anywhere in the id is the right approach, not a suffix-anchored regex).
+  `parse_named_item_file` computes this `base_id`; `build_named_items` falls back to
+  `parse_core_attributes` on the base item's own config when the named item's own is empty. This
+  was tried two ways before landing here: first via the ArmorItem's own `: base_id` subclass
+  declaration in the `.mitem` file, which works (confirmed correct for Chainkiller, Red) but
+  sometimes subclasses the generic `player_gear_<slot>_template` even when a real, correctly-named
+  base item exists (e.g. Closer subclasses `: player_gear_chest_template`, yet
+  `player_gear_chest_w_01` is real and has an explicit Core) — the `_named`-stripping approach
+  resolves strictly more cases and was verified to never disagree with the subclass approach
+  wherever both resolve, so it fully replaced it. Even so, 2 of 62 named items (Force Multiplier,
+  Door-Kicker's Knock) can't be resolved this way: their base item exists and has a Core *slot*,
+  but that slot has no `myPresetAttribute` at all — i.e. even the regular, non-named drop of that
+  piece rolls a random core, so there's nothing fixed in the data to inherit. Confirmed instead
+  from the user's own in-game knowledge (Yellow and Red respectively, 2026-08-18) via
+  `tools/named_items_manual_overrides.json`'s `core`/`coreNote` keys, applied in
+  `build_named_items` as a last-resort fallback after both datamined attempts come up empty --
+  same override mechanism already used for talent names, resolved to a `{stat, color}` entry via
+  a reverse lookup through `CORE_COLOR_BY_STAT`. All 62 named items now show a confirmed Core.
+- **A user's own screenshot-sourced recollection can be wrong, and datamined defaults can still be
+  right** — worth remembering given how much of this project's Core work otherwise leans on
+  in-game confirmation to catch bad extraction logic. The user first stated Closer was Red from a
+  screenshot; the naming-strip approach said Blue and was initially set aside as contradicted.
+  The user later corrected themselves: Division 2 lets players recalibrate an item's Core after
+  acquisition, and the screenshot showed someone else's recalibrated copy, not the item's real
+  default. Blue was right all along. Lesson for future sessions: an item's Core as shown by a
+  screenshot or a single anecdote isn't necessarily its *default* (datamined) Core — worth asking
+  specifically "on an unmodified/un-recalibrated copy" when confirming this stat, not just "what
+  does it show in your inventory."
+- **`myPresetPercentage`'s sign does NOT reliably distinguish an active core from a decoy** on
+  multi-slot exotics, unlike its role on regular (non-core) attribute slots elsewhere in this
+  codebase. A few exotic Backpacks (Memento, and — sharing the exact same data shape — Harrier
+  Pride and Ninja Bike Messenger Bag) declare 3 `myIsCoreAttribute TRUE` slots simultaneously, one
+  per possible core color, with percentages that don't consistently follow the usual "-1.0 =
+  inactive" convention (Memento's real, always-active Total Armor slot is itself marked -1.0, the
+  same sentinel value that means "inactive" everywhere else). The user confirmed directly
+  (2026-08-18) that Memento genuinely has all three cores, always — this is a real in-game design
+  quirk (a small number of exotics can equip any core), not random junk data. `parse_core_attributes`
+  therefore treats **every** `myIsCoreAttribute TRUE` slot as active regardless of its percentage,
+  deliberately different from how regular (non-core) attribute slots are filtered. Harrier Pride
+  and Ninja Bike Messenger Bag are assumed to behave the same way (same structure, not independently
+  confirmed) — flag if a future in-game check finds otherwise.
+
+## Exotic Items — datamining notes
+
+Distinct item category from Named Items: gear whose *unique talent* never appears on any Brand
+Set, Gear Set, or Named Item, and which always carries exactly two guaranteed bonus **types** (not
+values — the roll is always random by design, unlike a Named Item's guaranteed-max Fixed
+attribute). `tools/extract_exotic_items.py` reuses almost all of `extract_named_items.py`'s
+parsing machinery directly (imported, not copied) — the schema turned out to be nearly identical:
+
+- **Item files**: `game system data/juice/item/player_gear_*exotic*.mitem` (note: no `_named`
+  requirement in the glob — exotics use their own naming, e.g. `player_gear_mask_exotic_03`).
+  Same `blueprint_*`/`_aprilfools` exclusions as Named Items. `parse_named_item_file` (from
+  `extract_named_items.py`) parses these directly with **no changes needed** — slot detection from
+  filename tokens, name/description extraction, and DZ-tag detection (some exotics genuinely are
+  DZ Elite Boss drops, e.g. Catharsis) all just work. The one field that must be **ignored**:
+  `parse_named_item_file`'s brand-fallback logic (matching the file's own top-of-file gearbrand
+  include) picks up unrelated shared-asset includes for exotics — e.g. Catharsis's file includes
+  `gearbrand_set_c.mgearbrand`, which is NOT actually Catharsis's brand. Exotics simply don't have
+  a civilian brand; don't wire the returned `brand_code` into anything for this category.
+- **Config lookup**: same `find_generation_config_block` token-multiset matching as Named Items,
+  unchanged — exotics' real configs live in the same `itemgeneration/configs/` directory (a
+  dedicated `configs_exotics_code1_data*.mitemgenerationconfigs` family also exists but turned out
+  to be unnecessary; the regular per-slot config files already have what's needed).
+- **Talent**: exactly one `ItemTalentSlot` under `QualityTalentSlots Exotic` (not `Orange`) —
+  `parse_preset_talent`/`_quality_blocks` both take a `quality` parameter for this (defaults to
+  `"Orange"` for Named Items' existing callers, pass `"Exotic"` explicitly for this pipeline).
+- **Bonus slots**: `ItemAttributeSlot`s (excluding the Core one) with a `myPresetAttribute` —
+  reuses `parse_preset_attributes(config_body, quality="Exotic")` directly, but **deliberately
+  does not check `has_preset_percentage`** the way Named Items' Fixed-attribute extraction does:
+  an exotic's guaranteed bonus slot never carries `myPresetPercentage` at all (there's nothing to
+  gate on — the type is fixed, the value stays random). Only the null/placeholder-UID sentinel
+  (`00000...`) is filtered, same as everywhere else.
+- **Core**: `parse_core_attributes(config_body, uid_dict, quality="Exotic")` — see the "Core
+  attribute" section above, this is exactly where the "not everything follows the percentage-sign
+  convention" and "some items have several simultaneously" complications were found.
+- **Excluded items** (`EXCLUDED_INSTANCE_IDS` / placeholder-name check / config-not-found in
+  `extract_exotic_items.py`), none guessed at, all either structurally detected or user-confirmed:
+  - `player_gear_gloves_exotic_02` ("Rathbone's Gloves") — `myItemGenerationConfig` is a literal
+    `NULLREFERENCE` in its own `.mitem` file. Detected automatically: `find_generation_config_block`
+    returns `None` for it, and — unlike Named Items, where a missing config has so far always meant
+    "genuinely real item, this one file just isn't in the export" and the item is still included
+    with empty fields — Exotics **skip the item entirely** on a missing config, since this
+    specific case is a dead, unfinished item, not an export gap.
+  - `player_gear_kneepads_exotic_04` — `myUIName`'s `text` value is literally `"TBD"`. Caught by
+    a placeholder-name check, but only after fixing a real bug in the shared `extract_field_text`
+    helper: its contextComment-fallback (designed for `myDescription`, where a handful of Y1-era
+    named items' real drop-source info only exists in that dev comment) was also being applied to
+    `myUIName`, silently replacing "TBD" with this item's *contextComment* — an internal editor
+    label ("Y7S2.3 Climax Exotic Gear Piece Name"), not a real display name — before any
+    placeholder check ever saw the raw "TBD" value. Fixed by adding an
+    `allow_comment_fallback` parameter to `extract_field_text`, defaulting to `True` (unchanged
+    behavior for `myDescription`) but passed `False` for `parse_named_item_file`'s `myUIName` call.
+    Verified zero named-item names changed as a result (the one existing case that relies on
+    seeing a raw placeholder, "INSERT NAME HERE" → "The Gift" via manual override, already worked
+    before this fix too, because that specific item's contextComment happened to be empty).
+  - `player_gear_mask_exotic_06` ("Investor") — a real, released Y8S1 item, confirmed by the user
+    (2026-08-18) via its own talent text to be intentionally fully-random: "This item can feature
+    any Core Attribute" / "features a third random Attribute instead of a mod slot" / cannot roll
+    certain attributes. It simply doesn't fit this database's "always X and Y" model — no generic
+    structural signal distinguishes it from a real gap, so it's excluded by instance_id with a
+    comment rather than guessed at.
+- **Two more bugs surfaced by exotic-item flavor/description text specifically, both fixed in
+  shared code** (`update_from_hunter_export.py`, so both this pipeline and the gear-set one
+  benefit):
+  - `extract_braced`'s quote-tracking desynced on text containing an apostrophe combined with a
+    nested `\\"..."` escape (an escaped-backslash immediately followed by a genuinely unescaped
+    quote, one level deeper than the common case) — read as closing the *outer* field's string
+    early, then everything after silently miscounted braces until the file appeared unbalanced
+    (hit on 9 of 31 candidate exotic files). Since no field in this format legitimately spans
+    multiple lines, the fix resets quote-tracking state at every newline rather than trying to
+    correctly model arbitrarily-nested escaping. (Separately: `extract_named_items.py` already had
+    its own more targeted local override of `extract_braced` for a related pattern, predating this
+    session — that one skips whole `myXxx "..."` lines wholesale rather than char-scanning them,
+    and was never actually affected by this specific bug; only a throwaway exploration script that
+    imported the wrong module's copy of the function hit it.)
+  - `naive_substitute`'s percent-formatting heuristic and `parse_mtalent_file`'s tooltip parser had
+    two more quote/escape gaps of the same family as the ones already documented in the 2026-08-18
+    session notes below — see that section for the fixes (double-`%` and a second, distinct
+    quote-style gap in the hand-rolled tooltip parser, since consolidated to reuse
+    `extract_localized_text` instead of maintaining a third copy of the same logic).
 
 ## Data provenance / licensing
 
@@ -517,3 +682,62 @@ a public tool. The `tools/_explore_maxvalues*.py` scripts used for this investig
 throwaway and deleted; nothing in the shipped pipeline changed. If revisited, the honest starting
 point is "the modifier/multiplier story is more complicated than `pct/100 × qualityModifier`, and
 `myPresetPercentage` values above 100 need their own explanation" — not the formula above.
+
+### Later the same session: Core attribute + Exotic Items added
+
+In the same conversation, the user asked for two more things: (1) show each Named Item's Core
+attribute (Red/Offensive, Blue/Defensive, Yellow/Utility) on its card, and (2) add a whole new
+"Exotic Items" category (Catharsis, Memento, etc.) — gear with a unique talent that never appears
+elsewhere, and (per the user) usually a small fixed set of guaranteed bonus *types* with randomized
+values. Both landed; full technical detail is in the "Core attribute" and "Exotic Items —
+datamining notes" sections above (placed with the other datamining reference material, not here,
+since that's where a future session will look for it) — this entry just records what happened and
+why, chronologically.
+
+Cores turned out to need two rounds of correction before shipping. The first exploratory pass
+(scanning all 4 quality tiers of a named item's config) found what looked like 2 multi-core named
+items (Caesar's Guard, Henri) — turned out to be a false positive from not restricting to the
+Orange tier (a named item's Core UID can genuinely differ *across* quality tiers; only Orange is
+real). The user then confirmed a genuine multi-core case among the exotics instead: Memento
+(a Backpack) really does have all three cores, always — which broke the working assumption that
+`myPresetPercentage`'s sign reliably marks an active vs. decoy core slot (Memento's real, always-
+active Blue slot is itself marked with the usual "-1.0 = inactive" sentinel). Ended up treating
+every `myIsCoreAttribute TRUE` slot as active, full stop, for the core-extraction path specifically
+— confirmed correct for Memento, assumed (not independently confirmed) for the two structurally
+identical Harrier Pride and Ninja Bike Messenger Bag.
+
+Exotic Items came together faster than expected, mostly because `extract_named_items.py`'s
+existing parsing machinery turned out to need almost no changes — `parse_named_item_file`,
+`find_generation_config_block`, `parse_preset_attributes`, and the whole talent-resolution path
+all worked on exotic `.mitem`/config files with zero or one-line changes (see "Exotic Items —
+datamining notes" above for specifics). The real work was three bugs the exotic files' flavor/name
+text happened to be the first thing to exercise: a second `extract_braced` quote-desync pattern (9
+files), a second distinct quote-style gap in the talent-tooltip parser (fixed by consolidating it
+to reuse `extract_localized_text` instead of maintaining a third near-duplicate quote parser), and
+a `myUIName` placeholder ("TBD") being silently overwritten by an unrelated internal editor label
+before any placeholder check could see it (fixed with an `allow_comment_fallback` parameter,
+verified zero effect on any existing Named Item's name). Net result: 28 real Exotic Items, all 28
+with a fully datamined talent, one item (Acosta's Kneepads) with an honestly-flagged bonus-type
+gap instead of a guess, and three confirmed-unreleased/random items (Rathbone's Gloves, a "TBD"
+kneepad, and Investor) correctly excluded rather than shown broken or fabricated.
+
+**Third round, after a screenshot from the user showed the shipped page**: two real UI/data
+problems. (1) Core badges rendered in a row and could overflow a card's edge, hidden behind its
+neighbor, on longer combinations like "Yellow — Skill Tier" — fixed by stacking them in a column
+instead (guaranteed to fit the card's own width regardless of label length). (2) The user pointed
+out Chainkiller and Closer both have a Red core in-game, contradicting what the page showed (no
+core badge at all for either, alongside 17 other Backpack/Chest named items) — this was flagged
+as "did you just not find it" rather than accepted as the documented design fact from earlier
+("these items don't have a Core"), and the user was right to push: it *was* a bug, not a design
+fact. Root cause and fix are in the "Core attribute" section above (the `_named`-stripping
+base-item fallback, replacing an earlier ArmorItem-subclass attempt that resolved fewer cases).
+Worth calling out here specifically because the *user's own confirmation was itself wrong* for
+Closer (Red) on the first pass — sourced from a screenshot of someone else's item after using
+Division 2's in-game Core recalibration feature, not the item's un-modified default — and they
+caught and corrected this themselves once the datamined answer (Blue) didn't match. The datamined
+default turned out to be the reliable ground truth once the extraction bug was actually fixed;
+17 of 19 previously-blank named items now show a confirmed-correct Core this way. The final 2
+(Force Multiplier, Door-Kicker's Knock) genuinely can't be datamined — even their base item's own
+Core rolls randomly in this data — so the user checked both in-game directly (Yellow and Red) and
+those went into `named_items_manual_overrides.json` as a last-resort fallback, same mechanism
+already used for talent names. All 62 named items and all 28 exotic items now show a Core.

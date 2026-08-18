@@ -142,5 +142,13 @@
   "player_gear_kneepads_z_01_named": {
     "talentName": "Flurry",
     "talentNote": "Talent name (for 'Snowmaker') confirmed by the user from in-game knowledge, 2026-08-17 -- the unique talent's .mtalent file (and its full description text) is still missing from every raw export used so far."
+  },
+  "player_gear_back_q_01_named": {
+    "core": "Yellow",
+    "coreNote": "Core attribute (for 'Force Multiplier') confirmed by the user from in-game knowledge, 2026-08-18 -- unresolvable from this export because even the regular, non-named base item this named item is drawn from (player_gear_back_q_01) has its own Core slot unpresented (randomized on regular drops), so there's nothing fixed to datamine."
+  },
+  "player_gear_chest_n_01_named": {
+    "core": "Red",
+    "coreNote": "Core attribute (for 'Door-Kicker's Knock') confirmed by the user from in-game knowledge, 2026-08-18 -- unresolvable from this export because even the regular, non-named base item this named item is drawn from (player_gear_chest_n_01) has no Core slot at all in its own config."
   }
 }

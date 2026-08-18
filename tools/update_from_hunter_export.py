@@ -35,7 +35,19 @@ def extract_braced(s, start):
     string_quote = None  # '"' or "'" while inside a string literal, else None
     while i < len(s):
         c = s[i]
-        if string_quote:
+        # Some text fields nest another level of escaping on top of the field's own quoting
+        # (e.g. a myDescription value containing `\\"..."` -- an escaped-backslash immediately
+        # followed by a genuinely unescaped quote, one level deeper than usual) which desyncs a
+        # simple single-level quote tracker: it reads that inner unescaped quote as closing the
+        # *outer* myDescription string early, then everything after silently miscounts braces
+        # until the file appears unbalanced (seen on 9 exotic-item files with an apostrophe +
+        # escaped-backslash-quote combination in their flavor text). No field in this format
+        # legitimately spans multiple lines, so a still-open string_quote at a newline is always
+        # a mis-tracking artifact, never real data -- reset there rather than trying to correctly
+        # model arbitrarily-nested escaping.
+        if c == '\n':
+            string_quote = None
+        elif string_quote:
             if c == '\\':
                 i += 2
                 continue
@@ -134,10 +146,11 @@ def parse_mtalent_file(path):
     # "Perfect"-tier talents subclass their base talent (`Talent <id> < uid=... > : <base_id>
     # { ... }`) instead of declaring a bare block -- the optional `: base_id` must be allowed or
     # the instance-id match silently fails on every one of them (106 files in one export).
-    m = re.search(r'Talent\s+(\S+)\s*<[^>]*>\s*(?::\s*\S+\s*)?\{', text)
+    m = re.search(r'Talent\s+(\S+)\s*<[^>]*>\s*(?::\s*(\S+)\s*)?\{', text)
     if not m:
         return None
     instance_id = m.group(1)
+    base_id = m.group(2)
     body, _ = extract_braced(text, m.end() - 1)
 
     name_line_m = re.search(r'myUIName\s+"[^\n]*"', body)
@@ -149,26 +162,13 @@ def parse_mtalent_file(path):
     tip_line_m = re.search(r'myToolTipText\s+[\'"][^\n]*[\'"]', body)
     tooltip = None
     if tip_line_m:
-        line = tip_line_m.group(0)
-        marker = "text " + chr(61) + " "
-        i = line.find(marker)
-        if i != -1:
-            rest = line[i + len(marker):]
-            quote = rest[0] if rest[:1] in ("'", chr(34)) else None
-            if quote:
-                # find the matching closing quote followed by , type OR end
-                end = rest.find(quote + ", type")
-                if end == -1:
-                    end = rest.rfind(quote)
-                tooltip = rest[1:end] if end > 0 else None
-                if tooltip:
-                    # Perfect-tier talents' tooltips can contain a literal `\n` line break (e.g.
-                    # "Stacks up to 5 times.\nGrenade kills add 2 stacks.") -- unescaping only the
-                    # quote and leaving `\n` as two literal characters left a stray backslash+n in
-                    # 48 talent descriptions once this codepath started actually being exercised
-                    # by the newly-resolved Perfect-tier talents; no existing gear-set talent
-                    # tooltip happened to contain one, so this was previously a dormant bug.
-                    tooltip = tooltip.replace(chr(92) + chr(34), chr(34)).replace(chr(92) + 'n', chr(10))
+        # Reuse extract_localized_text rather than a second hand-rolled quote-delimiter parser --
+        # a hand-rolled copy here only ever handled the "text = " value being delimited by an
+        # unescaped quote of the *other* type (`text = '...'`), not an escaped quote of the *same*
+        # type (`text = \"...`, equally common), which left every myToolTipText using the latter
+        # style with a None tooltip (seen on Ferocious Calm's Perfect Overwatch, whose own
+        # tooltip line is real and present but simply used that other, unhandled style).
+        tooltip = extract_localized_text(tip_line_m.group(0))
 
     # base (non-PVP) myBonusList, in file order
     values = []
@@ -202,6 +202,7 @@ def parse_mtalent_file(path):
         "values": values,
         "requires_talent": requires_talent,
         "requires_talent_name": requires_talent_name,
+        "base_id": base_id,
     }
 
 
@@ -213,6 +214,20 @@ def build_talent_index(raw_dir):
         parsed = parse_mtalent_file(path)
         if parsed:
             index[parsed["instance_id"]] = parsed
+
+    # A "Perfect"-tier talent's own file often carries no myToolTipText at all for the base/PvE
+    # tier (only a myTalentOverrides > TalentOverride PVP > myOverrideToolTipText) -- it relies on
+    # inheriting its parent's tooltip *template* via the `: base_id` subclass reference, only its
+    # own myBonusList numbers actually change. Without this, such a talent resolves a real name
+    # but a placeholder "(no tooltip text found)" description with no way to tell it apart from a
+    # genuinely-missing one (seen on 5 of 62 named items' talents once the subclass-syntax fix
+    # above started finding these files at all). Keep the child's own already-extracted `values`;
+    # only borrow the parent's tooltip string.
+    for entry in index.values():
+        if entry["tooltip"] is None and entry.get("base_id"):
+            base = index.get(entry["base_id"])
+            if base and base["tooltip"] is not None:
+                entry["tooltip"] = base["tooltip"]
     return index
 
 

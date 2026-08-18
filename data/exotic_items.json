@@ -1,0 +1,630 @@
+[
+  {
+    "instance_id": "player_gear_back_exotic_04",
+    "name": "Birdie's Quick Fix Pack",
+    "slot": "Backpack",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Get up, we're out of body bags.\"",
+    "bonuses": [
+      "Skill Haste",
+      "Skill Repair"
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Combat Medic",
+      "desc": "+80% Revive Speed\n-50% Weakened Debuff timer\nProvides +50% Damage Resistance to both agents while reviving or being revived, and for 10s after a successful revive.\nSuccessful revives provide +1 Skill Tier for 5s. Revives at Skill Tier 6 grant Overcharge for 15s."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_back_exotic_05",
+    "name": "Harrier Pride",
+    "slot": "Backpack",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"Where Eagles score!\"",
+    "bonuses": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      },
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      },
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Rebalance",
+      "desc": "Getting kills and hitting enemies 300% times builds Red stacks. Each stack provides 0.5% Weapon Damage.\n\nGetting hit 300% times builds Blue stacks. Each stack provides 0.5% Damage Resistance.\n\nUpon reaching 80 stacks in total, lose all stacks and receive a separate bonus of 0.5% Damage Resistance per Red stack and 0.5% Weapon Damage per Blue stack until the next time the stack cap is reached."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_back_exotic_02",
+    "name": "Memento",
+    "slot": "Backpack",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"I took from those who watched, hunted, and collected, until only their shadows remained. Now my watch has ended, so yours may begin.\"\n\n- Inscription by an unknown author",
+    "bonuses": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      },
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      },
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Kill Confirmed",
+      "desc": "Enemies you kill drop a trophy on death. Collecting trophies provides both a short and long term buff, the first of which scales with the number of core attributes equipped, and lasts 10s.\n\n<img src=\"hunter/baked/ui/loose_images/ui_player_offense.dds\"> - +5% Weapon Damage\n<img src=\"hunter/baked/ui/loose_images/ui_player_defense.dds\"> - +10% Bonus Armor \n<img src=\"hunter/baked/ui/loose_images/ui_player_utility.dds\"> - +5% Skill Efficiency\n\nFor every trophy collected, gain an additional +1% weapon damage, +1% skill efficiency, and +0.1% armor regeneration for 300s.\n\nMaximum 30 stacks."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "Player_gear_back_exotic_ninja",
+    "name": "Ninja Bike Messenger Bag",
+    "slot": "Backpack",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"From the depths of hell, this has been resurrected as if it cannot die.\" The Priest",
+    "bonuses": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      },
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      },
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Versatile",
+      "desc": "Slots in with any equipped Gear Set and or Brand Set item to fulfill a requirement towards unlocking a Gear Sets bonus. Can unlock bonuses from multiple sets simultaneously."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_exotic_05",
+    "name": "Beacon",
+    "slot": "Chest",
+    "isDarkZoneExclusive": false,
+    "flavorText": "With me.",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Bond",
+      "desc": "Both you and Allies receive +30% Critical Hit Damage, +15% Skill Efficiency and +2% Armor Regen when an Ally is within 10m of you.\n\nReceive +15% Critical Hit Damage, +7.5% Skill Efficiency and +1% Armor Regen when one of your Skills is within 10m of you.\n\nOnly the highest group of buffs can be active at one time."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_exotic_03",
+    "name": "Collector",
+    "slot": "Chest",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Let's see the Division glue you back together after this.\"\n- The Strategist",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Hoarder",
+      "desc": "+300% Grenade Capacity\n+50% Grenade Radius\n+35% Grenade Damage\n+25% Grenade Damage for each extra enemy caught in the blast"
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_exotic_04",
+    "name": "Provocator",
+    "slot": "Chest",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"One does not simply wear red into battle. A red knight is not afraid but ready to provoke .\" - Anonymous",
+    "bonuses": [
+      "Armor Regeneration",
+      "Hazard Protection"
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
+    "talent": {
+      "name": "Challenger",
+      "desc": "Receive +25% Damage Resistence from enemies within 20m."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_exotic_02",
+    "name": "Ridgeway's Pride",
+    "slot": "Chest",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"You can tell a lot about a man by the way he bleeds. Me? I bleed for my country, and nothing else.\"\n\n- General Antwon Ridgeway",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Bleeding Edge",
+      "desc": "Shooting enemies within 15m applies bleed to the target.\n\nRepair 3%-48% of your armor per second for every enemy that is bleeding within 15m.\n\nRepair strength per number of bleeding enemies:\n\n1:3% 2:6% 3:12% 4:24% 5:48%"
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_exotic_01",
+    "name": "Tardigrade Armor System",
+    "slot": "Chest",
+    "isDarkZoneExclusive": true,
+    "flavorText": "An evolution of the reactive armor concept, ablative nano-plating was initially designed as a prototype technology for self-repairing heat shields on aircraft repeatedly entering and exiting planetary atmospheres.",
+    "bonuses": [
+      "Explosive Resistance",
+      "Armor Regeneration"
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
+    "talent": {
+      "name": "Ablative Nano-Plating",
+      "desc": "Whenever your or any ally's armor breaks, they gain 80% of your armor as bonus armor for 10s.\n\nCooldown per ally: 45s\n\nKilling an enemy with your specialization weapon removes this cooldown for all allies."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_exotic_01",
+    "name": "BTSU Datagloves",
+    "slot": "Gloves",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"Pop always told me, 'Son, you're only as good as the tools you work with.' So I chose to work with the organization with the best tools.\"\n - Galveston",
+    "bonuses": [
+      "Skill Haste",
+      "Skill Repair"
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Transference Overclock",
+      "desc": "Detonating a Booster or Artificer Hive refreshes all allies' skill cooldowns and grants them overcharge for 15s. This can occur at most once per 120s."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_exotic_03",
+    "name": "Bloody Knuckles",
+    "slot": "Gloves",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"A broken watch is still a good memento.\" 13",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Over the top",
+      "desc": "Damaging an enemy with a grenade or striking an enemy with a melee attack activates Seeing Red\n\nSeeing Red grants +25% weapon damage and +100% to melee damage. \n\nSeeing Red lasts 20 seconds and has a 60 second cooldown after completion.\n\nWhile in cooldown, damaging  an enemy with a melee attack or hitting an enemy with the effect of a grenade will complete the cooldown instantly."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_exotic_05",
+    "name": "Exodus Gloves",
+    "slot": "Gloves",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"I'd like to make a withdrawal.\"",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Smoke Screen",
+      "desc": "On Armor break, drop a Smoke Bomb at your feet, concealing you from enemies for 300%s.\nCooldown: 40s"
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_exotic_06",
+    "name": "Overdogs",
+    "slot": "Gloves",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Start from the bottom and make your way up.\"",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Weakest Link",
+      "desc": "Amplifies Weapon Damage by 30% to the lowest ranking enemies within the Tier hierarchy.\n\nTier 1: Hunter, Rogue, Leader, Tank, Shield, Heavy Weapons, RPG, Medic, Controller, Warhound, Marauder\n\nTier 2: Support, Engineer, Bodyguard, Immobilizer, Bomber, Mini Tank, Drone Operator\n\nTier 3: Any other enemy or skill proxy"
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_exotic_04",
+    "name": "Rugged Gauntlets",
+    "slot": "Gloves",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Can't say I invented this, but at least I had a hand in it.\"\n- Calvin McManus",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Iron Grip",
+      "desc": "-50% Recoil Penalty when hip-firing.\n-50% Recoil Penalty when blind-firing from cover."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_exotic_05",
+    "name": "Centurion's Scabbard",
+    "slot": "Holster",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"It's better to have more than one gun in your holster.\"",
+    "bonuses": [
+      "Weapon Handling",
+      "Critical Hit Chance"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Counter",
+      "desc": "Swapping weapons will give the following groups of bonuses one by one, in order:\n\n1. +20% Rate of Fire, +20% Weapon Damage\n2. +50% Magazine Size, +50% Reload Speed\n\nThe bonuses remain active for 12s or until the next weapon swap.\nSwapping to your sidearm will not trigger the next group of bonuses."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_exotic_01",
+    "name": "Dodge City Gunslinger’s Holster",
+    "slot": "Holster",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Fast is fine, but accuracy is everything. In a gun fight... You need to take your time in a hurry.\"\n\n- Wyatt Earp",
+    "bonuses": [
+      "Weapon Handling",
+      "Headshot Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Quick Draw",
+      "desc": "While your pistol is holstered, gain a stacking buff every 30%s, up to 100.\n\nWhen you swap to it, your first shot consumes the buff and deals +10% damage per stack."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_exotic_02",
+    "name": "Imperial Dynasty",
+    "slot": "Holster",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Symbols are important. Look at the phoenix you wear on your sleeve. The dragon bears a similar significance to me.\"\n- Faye Lau",
+    "bonuses": [
+      "Status Effects",
+      "Hazard Protection"
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Dragon's Glare",
+      "desc": "While in combat, applies burn to the enemy closet to you within 20m.\n\nCooldown: 35s"
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_exotic_06",
+    "name": "Nimble Holster",
+    "slot": "Holster",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Run for your life.\"",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Bob and Weave",
+      "desc": "Receive repairs of 5% of your Total Armor for every 1m run in cover-to-cover.\nDamage taken while doing a cover-to-cover is healed over 10s."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_exotic_04_ShokerPunch",
+    "name": "Shocker Punch",
+    "slot": "Holster",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"After getting sucker punched at the mall, I came up with a shocking solution.\" Anonymous",
+    "bonuses": [
+      "Explosive Resistance",
+      "Hazard Protection"
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
+    "talent": {
+      "name": "Defibrillator",
+      "desc": "While \"Shocker Punch\" is equipped, the stun received by the agent from the Shock status effect will be reduced by 50%.\n\nUsing a shield will give 100% to melee damage.\n\nUsing St. Elmo's Engine with the holster will give 100% extra melee dmg and will make the next melee attack to apply Shock to the target.\n\nUsing all three items will offer all of the above mentioned bonuses and the Shock from the melee attack will have a 5m radius, starting from the first target.\n\n15 seconds cooldown."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_holster_exotic_03",
+    "name": "Waveform",
+    "slot": "Holster",
+    "isDarkZoneExclusive": true,
+    "flavorText": "Graphite layers are suffused throughout the holster kevlar weave, that when the wearer moves creates an inductive oscillating electromagnetic field. This field allows for remote charging of electrical devices.",
+    "bonuses": [
+      "Skill Damage",
+      "Skill Haste"
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Alternating Current",
+      "desc": "Generate a stack of 2.5% skill damage on one of your skills every second, capping at 10 stacks. After 10 seconds at the cap the stacks transfer to your other skill. The process then repeats ad-infinitum."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_kneepads_exotic_03",
+    "name": "Acosta's Kneepads",
+    "slot": "Kneepads",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"They got their asses caught by the JTF, but they don't have my mad parkour skills.\"\n- Eva Acosta",
+    "bonuses": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
+    "talent": {
+      "name": "Escape Plan",
+      "desc": "Vaulting grants +10% Movement Speed for 300%s.\nAfter not moving for 5s, receive +20% Movement Speed for 5s.\nBeing applied a Status Effect grants +10% Movement Speed for 5s.\nMax Movement Speed bonus is 20%. The bonuses do not stack with Movement Speed bonuses from other sources.\n-50% Movement Impairment penalty from Status Effects."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_kneepads_exotic_02",
+    "name": "NinjaBike Messenger Kneepads",
+    "slot": "Kneepads",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"Parkour! Parkour!\"\n- an over-enthusiastic NinjaBike messenger",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Parkour!",
+      "desc": "Performing a cover to cover or vaulting reloads your drawn weapon."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_kneepads_exotic_05",
+    "name": "Nurse's Kneepads",
+    "slot": "Kneepads",
+    "isDarkZoneExclusive": false,
+    "flavorText": "Sit still.",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Impervious",
+      "desc": "Both you and Allies within 10m of you receive +40% Hazard Protection."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_mask_exotic_03",
+    "name": "Catharsis",
+    "slot": "Mask",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"The establishment does everything in its power to ensure that revolutionary rage is redirected into empty outlets which provide pressure releases for desires that could become dangerous if allowed to progress.\"\n\n- George L. Jackson",
+    "bonuses": [
+      "Incoming Repairs",
+      "Armor Regeneration"
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
+    "talent": {
+      "name": "Vicious Cycle",
+      "desc": "Taking damage builds stacks to a cap of 30. Each stack grants 1.5% Weapon Damage. Taking damage at max stacks triggers a purge, removing all stacks and Status Effects and then dropping a healing cloud which restores 5% of Max Armor for 10s to all allies in the cloud."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_mask_exotic_01",
+    "name": "Coyote’s Mask",
+    "slot": "Mask",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"Lived through this bullet. I'll live through yours.\"\n- Coyote",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Pack Instincts",
+      "desc": "You and all allies gain a bonus based on the distance of the last enemy you hit.\n\n0-15m: +25% critical hit damage\n15-25m: +10% critical hit damage and +10% critical hit chance\n25m+: +25% critical hit chance"
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_mask_exotic_04",
+    "name": "The Catalyst",
+    "slot": "Mask",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"We're still being tested. The only constant variable is fire.\"",
+    "bonuses": [
+      "Hazard Protection",
+      "Status Effects"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Chemical Agent",
+      "desc": "Catalysis\nDealing and receiving status effects (Burn, Bleed, Shock, EMP/Disrupt, Poison, and Blind/Disorient) builds stacks of Catalysis to a maximum of 12. Each stack grants:\n    +2% weapon damage\n    +2% status effects\n\nEach enemy within 25 meters that is affected by a status effect grants +100% stack/sec. Being affected by status effects grants +200% stacks/sec.\nStacks decay at 100% stack/sec after 5s if no enemies in the radius or you are affected by status effects.\n\nReactant\nAt max stacks, killing a status-affected enemy grants bonuses for 5s:\n    +25% bonus armor\n    +20% reload speed\n\nStabilizer\nWhile burning, you can maintain ADS without disruption."
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_mask_exotic_05",
+    "name": "Tinkerer",
+    "slot": "Mask",
+    "isDarkZoneExclusive": false,
+    "flavorText": "\"Why not both?\"",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Abridged",
+      "desc": "If your Primary and Secondary weapons are not Exotic or Named and of the same type, the Secondary Weapon's talent will also be applied to the Primary Weapon.\nDoes not apply to Talents that include weapon swapping,"
+    },
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_mask_exotic_02",
+    "name": "Vile",
+    "slot": "Mask",
+    "isDarkZoneExclusive": true,
+    "flavorText": "\"You cling to life like a rebellious teen resisting curfew. But death is patient... and so am I.\"\n\n- Dr. Vilis, BTSU Physician",
+    "bonuses": [
+      "Status Effects",
+      "Hazard Protection"
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Toxic Delivery",
+      "desc": "Status effects also apply a damage over time debuff for 10s.\n\nTotal damage dealt is equal to 50% of your concussion grenade damage and increased by your status effect attributes."
+    },
+    "source": "datamined"
+  }
+]
