@@ -444,3 +444,76 @@ real structural/design fact about how the game generates item stats, not an expo
 "which stat, not how much" for a named item's Fixed attribute is now a deliberate, understood
 scope limit rather than an open question — no curve-evaluation work was attempted this session
 (would be a real feature addition, not a bug fix, and wasn't asked for).
+
+### Follow-up the same session: attempted max-gear-score fixed-value extraction, dropped it
+
+The user asked, given the curve system above, whether the *max gear score* value specifically
+could be shown (sidestepping the "which target gear score" ambiguity by always picking the
+highest one). This got much further than expected but ultimately didn't reach a trustworthy
+formula, and was deliberately dropped rather than shipped — worth recording so a future attempt
+doesn't have to redo the same archaeology from scratch.
+
+**What was found**, tracing a named item's Fixed attribute end to end:
+- A config's Orange-tier `ItemAttributeSlot` has `myPresetAttribute <uid>` and
+  `myPresetPercentage <n>` (see the "Named Items" section above for the slot structure itself).
+  `myPresetPercentage` is **not** a 0–100 position within the attribute's roll range like its name
+  suggests — real values seen include `210.0`, `900.0`, `400.0`, `220.0`, `145.0`, `214.0`, not
+  just the expected `100.0`. What it actually represents is still unresolved.
+- The slot's `myPossibleAttributeLists` entry has the same two-uid reference shape seen elsewhere
+  in this codebase (talent refs, gear-set 4pc refs): `AttributeListContainer "List 0" <
+  uid=LOCAL_INSTANCE_ID > = SomeName TARGET_GUID`. The **trailing GUID**, not the `<uid=...>` one,
+  is the actual `AttributeListContainer`'s own identity — got this backwards on the first attempt
+  (mirrors the exact same class of bug documented above for `parse_preset_talent`'s `ref_file`
+  history). There are 957 distinct containers by their own uid but only ~72 distinct *ref-names*
+  (`NamedAttributes`, `GlovesOffense`, etc.) reused across many files/slot-families — matching by
+  ref-name alone silently picks an arbitrary wrong container.
+- A container declaration can itself be a pure alias with no body: `AttributeListContainer
+  KneepadsOffense < uid=X > = OffensiveGearStatsBase Y` (no `{...}` following) — the real
+  `AttributeData` entries live in whatever `Y` resolves to, which can itself be another alias.
+  This indirection wasn't present on the "named item exclusive" pools (`NamedAttributes`,
+  `GlovesNamed`, etc.) but *was* present for stats shared with regular random rolls (crit
+  chance/damage, weapon handling, headshot damage) — named items borrow those items' general
+  attribute pools rather than having their own.
+- Inside an `AttributeData` block, `myRangeMin`/`myRangeMax` are each either an inline one-off
+  `ItemGenerationBracketedCurveFormula { myA myB myC }` or a reference (`= CurveName <guid>`) to a
+  shared named `ItemGenerationBracketedCurve` with multiple brackets keyed by `myMaxPower`
+  (observed labels: "1-30 MIN", "31-40", "41-50" — read as character-level-ish brackets, though
+  never confirmed). The **last** bracket has no `myMaxPower` (unbounded) and, for every curve
+  actually used by a named item's Fixed attribute, had `myA = myB = 0` — i.e. flattens to a
+  constant (`myC`) once "power" is high enough, which is what "max gear score" should read off of.
+  This part seems solid: re-verified same-file curve definitions aren't silently diverging across
+  the ~20 near-duplicate attributelist files for the handful actually checked.
+- `AttributeData` blocks can carry `myQualityModifiers { QualityCurveModifier Orange { myModifier
+  1.2 } }` — a real per-quality multiplier — but **only** on the shared/general pools, not on the
+  `NamedAttributes`-flavored ones (which declare the Orange block with no `myModifier` field at
+  all, i.e. implicitly 1.0). Missing this the first time around was why an initial pass looked
+  much worse than it should have.
+
+**Where it broke down**: tested `value = topBracketC(myRangeMax's curve) × (myPresetPercentage /
+100) × qualityModifier(Orange, default 1.0)` against 6 real values the user confirmed in-game
+(2026-08-18) and it matched exactly for only 2 of them:
+
+| item | stat | formula result | real value |
+|---|---|---|---|
+| Salvo | Rate of Fire | 5% | 5% ✅ |
+| Turmoil | Crit Hit Chance | 6% | 6% ✅ |
+| Deathgrips | Armor on Kill | 9% | 10% ❌ |
+| The Hollow Man | Damage to Health | 13.05% | 14% ❌ |
+| Turmoil | Crit Hit Damage | 10.8% | 12% ❌ |
+| Forge | Shield Health | 81% | 50% ❌ |
+| Claws Out | Melee Damage | 800% | 500% ❌ |
+
+The two large misses (Forge, Claws Out) are exactly the two items whose `myPresetPercentage` is
+far from 100 (`900.0`, `400.0`), so whatever that field means, it clearly isn't a simple linear
+multiplier once it's away from 100 — real/computed ratios for those two (0.617, 0.625) are
+suspiciously close to each other, hinting at *some* consistent non-linear relationship, but two
+data points isn't enough to fit one with any confidence. The small ~1-point misses on otherwise
+"clean" `pct=100` cases are unexplained too, and don't share an obvious common cause with each
+other (ruled out: wrong-file curve lookup, missing quality modifier, rounding).
+
+**Decision**: presented this table to the user and they chose to drop it rather than ship a
+partially-wrong formula or a caveated "approximate" range — 2-out-of-7 confidence is too low for
+a public tool. The `tools/_explore_maxvalues*.py` scripts used for this investigation were
+throwaway and deleted; nothing in the shipped pipeline changed. If revisited, the honest starting
+point is "the modifier/multiplier story is more complicated than `pct/100 × qualityModifier`, and
+`myPresetPercentage` values above 100 need their own explanation" — not the formula above.
