@@ -61,7 +61,12 @@ Not a public API — there isn't one. The dataset is datamined directly from the
    data files (`.mgearbrand`, `.mgearset`, `.mtalent`) only show up once that's turned on. Without
    it you only see animation/image/sound/model, which looks like the data isn't there at all (this
    cost real time the first time around).
-3. Export those raw files, then `tools/update_from_hunter_export.py` parses them.
+3. Export those raw files, then `tools/update_from_hunter_export.py` parses them. A full raw-file
+   export is ~2 million files / ~50GB, but every script in this repo only ever reads 3 folders
+   under `hunter/game system data/juice/`: `item/`, `talent/`, and `itemgeneration/configs/` (NOT
+   the rest of `itemgeneration/` — `configlinks/`/`attributelists/`/etc. are never read). See
+   "Updating the dataset" in `README.md` for the full breakdown (why each folder is needed, file
+   counts) — export just these three for a future run instead of everything.
 
 ## The Snowdrop text-config format — what took a long time to learn
 

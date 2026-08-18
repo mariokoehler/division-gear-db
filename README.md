@@ -113,8 +113,31 @@ shows only entries with that Core otherwise.
 ## Updating the dataset (e.g. after a rebalance patch)
 
 1. In Hunter, open `hunter/sdf/pc/data/sdf.sdftoc` from the game install, enable **raw files** in
-   the file-type settings, and export. This produces a folder tree rooted at a `hunter/` directory
-   containing `game system data/juice/item/*.mgearset` and `game system data/juice/talent/*.mtalent`.
+   the file-type settings, and export. This produces a folder tree rooted at a `hunter/` directory.
+
+   **You don't need to export all of it.** A full raw-file export is ~2 million files / ~50GB, but
+   every script in this repo only ever reads from exactly 3 folders under
+   `hunter/game system data/juice/`:
+   - `item/` — every `.mgearset` (Brand/Gear Set definitions) and `.mitem` file (Named Items,
+     Exotic Items, Gear Set pieces, and the regular non-named "base" items a few of those are
+     modeled on/inherit their Core from) all live in this one folder, ~9,900 files.
+   - `talent/` — every `.mtalent` file (4pc/companion/unique/exotic talent text), ~800 files.
+   - `itemgeneration/configs/` — every `.mitemgenerationconfigs` file (the actual bonus-value and
+     Core-attribute data referenced by items above), ~300 files. Note this is a *subfolder* of
+     `itemgeneration/`, not the whole thing — its siblings (`configlinks/`, `attributelists/`,
+     `attributecurves/`, `talentlists/`, `settings/`) are never read by anything in this repo and
+     can be skipped even if `itemgeneration/` itself isn't further splittable in Hunter's own
+     export UI (they add up to over 1,000 extra files if included, more than `configs/` itself).
+
+   Together these three come to roughly 11,000 files — under 1% of a full export. Everything else
+   is safe to leave out: every other top-level folder the exporter offers (`animation/`,
+   `baked_animsys/`, `megascans/`, `rogue/`, `snowdrop/`, etc.), and every other subfolder inside
+   `hunter/` itself too (`hunter/sdf/`, `hunter/ui/`, `hunter/baked/`, `hunter/game system
+   data/fruit/`, `hunter/game system data/rejuice/`, and so on) — only the 3 specific
+   `game system data/juice/...` paths above are ever opened by any script here. This list reflects
+   what the current extraction scripts actually read (verified by grep, not guessed) as of
+   2026-08-18 — if a future rebalance or new feature needs data from elsewhere, a future session
+   updating this repo would need to revisit it, but it's a solid default until then.
 2. Run:
    ```
    python tools/update_from_hunter_export.py --raw-dir "<path to the exported 'hunter' folder>"
