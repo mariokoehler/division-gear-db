@@ -871,6 +871,12 @@
         "text": "+30% Headshot Damage"
       }
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Dead Man's Hand",
@@ -918,6 +924,12 @@
         "pieces": 3,
         "stat": "Total Armor",
         "text": "+15% Total Armor"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
       }
     ],
     "source": "datamined",
@@ -974,6 +986,12 @@
         "text": "+15% Weapon Handling"
       }
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "On Point",
@@ -1016,6 +1034,12 @@
         "pieces": 3,
         "stat": "Skill Repair",
         "text": "+40% Skill Repair"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
       }
     ],
     "source": "datamined",
@@ -1061,6 +1085,12 @@
         "pieces": 3,
         "stat": "Weapon Handling",
         "text": "+30% Weapon Handling"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
       }
     ],
     "source": "datamined",
@@ -1122,6 +1152,20 @@
         "text": "+5% Skill Efficiency"
       }
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      },
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      },
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Core Exercise",
@@ -1167,6 +1211,12 @@
         "pieces": 3,
         "stat": "Hazard Protection",
         "text": "+30% Hazard Protection"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
       }
     ],
     "source": "datamined",
@@ -1219,6 +1269,12 @@
         "text": "+50% Shield Health"
       }
     ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Makeshift Repairs",
@@ -1266,6 +1322,12 @@
         "pieces": 3,
         "stat": "Skill Duration",
         "text": "+30% Skill Duration"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
       }
     ],
     "source": "datamined",
@@ -1316,6 +1378,12 @@
         "pieces": 3,
         "stat": "Skill Repair",
         "text": "+30% Skill Repair"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
       }
     ],
     "source": "datamined",
@@ -1369,6 +1437,12 @@
         "text": "+15% Weapon Handling"
       }
     ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Heartstopper",
@@ -1419,6 +1493,12 @@
         "pieces": 3,
         "stat": "Headshot Damage",
         "text": "+30% Headshot Damage"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
       }
     ],
     "source": "datamined",
@@ -1474,6 +1554,12 @@
         "text": "+50% Health on Kill"
       }
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Apex Predator",
@@ -1527,6 +1613,12 @@
         "text": "+40% Explosive Resistance"
       }
     ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Huddle",
@@ -1572,6 +1664,12 @@
         "pieces": 3,
         "stat": "Critical Hit Damage",
         "text": "+20% Critical Hit Damage"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
       }
     ],
     "source": "datamined",
@@ -1622,6 +1720,12 @@
         "text": "+30% Reload Speed"
       }
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Rules of Engagement",
@@ -1665,6 +1769,12 @@
         "text": "+40% Burn Damage"
       }
     ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Ortiz Incinerator Turret Prototype",
@@ -1706,6 +1816,12 @@
         "pieces": 3,
         "stat": "Skill Repair",
         "text": "+60% Skill Repair"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
       }
     ],
     "source": "datamined",
@@ -1759,6 +1875,16 @@
         "text": "+25% Skill Damage"
       }
     ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      },
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Return to Sender",
@@ -1805,6 +1931,12 @@
         "text": "+15% Skill Duration"
       }
     ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Tend and Befriend",
@@ -1845,6 +1977,12 @@
         "pieces": 3,
         "stat": "Rate of Fire",
         "text": "+15% Rate of Fire"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
       }
     ],
     "source": "datamined",
@@ -1900,6 +2038,16 @@
         "text": "+40% Pulse Resistance"
       }
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      },
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Hackstep Protocol",
@@ -1947,6 +2095,12 @@
         "pieces": 3,
         "stat": "Weapon Damage",
         "text": "+10% Weapon Damage"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
       }
     ],
     "source": "datamined",
@@ -2003,6 +2157,12 @@
         "text": "+30% LMG Damage"
       }
     ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
     "source": "datamined",
     "talent4": {
       "name": "Throttle Control",
@@ -2048,6 +2208,12 @@
         "pieces": 3,
         "stat": "Magazine Size",
         "text": "+30% Magazine Size"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
       }
     ],
     "source": "datamined",
@@ -2100,6 +2266,12 @@
         "pieces": 3,
         "stat": "Reload Speed",
         "text": "+30% Reload Speed"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
       }
     ],
     "source": "datamined",
@@ -2166,6 +2338,12 @@
         "pieces": 3,
         "stat": "Weapon Damage",
         "text": "+15% Weapon Damage"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
       }
     ],
     "source": "datamined",

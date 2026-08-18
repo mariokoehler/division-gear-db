@@ -277,7 +277,7 @@ landmines:
   regardless of inheritance; join `<code>` (lowercased) against the Brand entries already in
   `data/combined_sets.json` by stripping their `gear_brand_set_` prefix — same brand namespace.
 
-## Core attribute — shared by Named Items and Exotic Items
+## Core attribute — shared by Named Items, Exotic Items, and Gear Sets
 
 Every armor piece has a "Core" attribute determining its archetype: Red/Offensive, Blue/Defensive,
 or Yellow/Utility. Confirmed to map to exactly 3 stats across the whole dataset:
@@ -352,6 +352,46 @@ Two landmines, both discovered the hard way:
   deliberately different from how regular (non-core) attribute slots are filtered. Harrier Pride
   and Ninja Bike Messenger Bag are assumed to behave the same way (same structure, not independently
   confirmed) — flag if a future in-game check finds otherwise.
+
+**Gear Sets** (Striker's Battlegear, Foundry Bulwark, etc.) also have a Core per piece, prompted by
+the user pointing out the tool was missing this entirely for Gear Sets even after Named/Exotic
+Items already had it (`tools/update_from_hunter_export.py`'s `parse_gearset_items` +
+`parse_gearset_cores`, called from `build_dataset` for every Gear Set entry — Brand entries
+deliberately do NOT get a `cores` field at all, since a civilian brand spans many different items
+with no single fixed Core, unlike a curated 6-piece Gear Set or a specific Named/Exotic item):
+- **A Gear Set's 6 pieces are `myQuality GearSet`, not `Orange`** — easy to miss since every other
+  quality-scoped lookup in this codebase (Named Items, Exotics) defaults to `"Orange"`. Passing
+  `quality="GearSet"` to `parse_core_attributes` was the whole fix; without it every piece silently
+  resolved to zero cores, indistinguishable from "genuinely no Core data" until checked by hand.
+- **A Gear Set's own `.mgearset` file lists its 6 concrete pieces directly**: `myItems { Item Mask
+  < uid=... > = player_gear_set_j_mask_01 <guid>; Item Chest = ...; ... }` — one clean, reliable
+  slot→instance_id map (`parse_gearset_items`), no fragile naming-convention guessing needed the
+  way Named Items' Backpack/Chest base-item fallback required.
+- **Circular import**: `parse_gearset_cores` needs `find_generation_config_block` and
+  `parse_core_attributes`, both defined in `extract_named_items.py` — which already imports FROM
+  `update_from_hunter_export.py` at its own top level. A top-level `from extract_named_items import
+  ...` in `update_from_hunter_export.py` would create a real cycle; the import is deferred inside
+  `parse_gearset_cores` itself (function-local, resolved at call time once both modules are fully
+  loaded) to avoid it.
+- **24 of 27 Gear Sets share one single Core across all 6 pieces** (confirmed correct in-game by
+  the user for Striker's Battlegear = Red, Foundry Bulwark = Blue), but 3 are real exceptions, not
+  bugs, verified individually before trusting them:
+  - **Refactor** and **System Corruption** each genuinely split two different Cores 4pc/2pc across
+    their pieces (e.g. Refactor: Mask/Chest/Holster = Yellow, Back/Gloves/Kneepads = Blue) — every
+    piece's own Core slot has an explicit, non-random `myPresetAttribute`, just not the same one
+    across all 6, so this is real per-piece data, not a lookup bug.
+  - **Core Strength** is a deliberately flexible set — confirmed two ways: its own 4-piece talent
+    tooltip literally says "All pieces except the Backpack feature random Cores" (found by reading
+    the extracted talent text, not guessed), and the data matches exactly: 5 of its 6 pieces have
+    `myPresetAttribute 00000...0` (the same null-UID sentinel used everywhere else in this codebase
+    for "not actually preset"), while its Backpack alone declares all three Cores simultaneously
+    active — the identical "flexible core" pattern already documented above for a few exotic
+    Backpacks (Memento etc.).
+  - Given these exceptions, `parse_gearset_cores` returns the **union of every Core resolved across
+    all 6 pieces**, deduped by color, rather than asserting a single Core per set. This reduces to
+    the single common case for 24/27 sets and reads correctly for the 3 exceptions too ("these are
+    the Core(s) found across this set's pieces") without fabricating a single answer that isn't
+    real for them.
 
 ## Exotic Items — datamining notes
 
@@ -741,3 +781,21 @@ default turned out to be the reliable ground truth once the extraction bug was a
 Core rolls randomly in this data — so the user checked both in-game directly (Yellow and Red) and
 those went into `named_items_manual_overrides.json` as a last-resort fallback, same mechanism
 already used for talent names. All 62 named items and all 28 exotic items now show a Core.
+
+**Fourth round**: two more asks, both landed cleanly. (1) A dedicated Red/Blue/Yellow filter row
+next to the existing kind toggle — entries with no `cores` field at all (Brand entries) drop out of
+the results entirely when a specific color is selected, everything else filters down to just that
+color; trivial once every relevant entry already carried a `cores` array from the earlier rounds.
+(2) The user pointed out Gear Sets (Striker's Battlegear, Foundry Bulwark) also have a fixed Core
+per piece, which the tool didn't show at all yet. This turned into real, useful new territory
+rather than a copy-paste of the Named Item logic — full technical detail is in the "Core
+attribute" section above. Short version: Gear Set pieces use `myQuality GearSet` (not `Orange`,
+the default every other quality-scoped lookup in this codebase assumes), each set's `.mgearset`
+file cleanly lists its 6 concrete pieces via `myItems`, and — most interestingly — 3 of the 27 sets
+turned out to have genuinely non-uniform Cores across their pieces rather than the single shared
+Core the other 24 have (Refactor and System Corruption split two Cores by slot; Core Strength is
+deliberately flexible, confirmed by its own talent text literally saying "All pieces except the
+Backpack feature random Cores"). Handled with one general rule — union of every Core resolved
+across a set's 6 pieces — rather than special-casing the 3 exceptions, which reduces to the single
+common case automatically for the other 24. All 27 Gear Sets now show a Core; Brand entries
+deliberately don't (a civilian brand isn't one fixed item, so there's no single Core to show).

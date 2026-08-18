@@ -363,6 +363,56 @@ def build_talent_field(role_key, four_pc_talent, companion, old_by_key, join_key
         }, ("changed" if old_talent else "new")
 
 
+def parse_gearset_items(text):
+    """Parse a `.mgearset` file's `myItems { Item <Slot> < uid=... > = <item_id> <guid>; ... }`
+    block into {slot: item_instance_id}. Distinct from the Brand/Gear Set *bonus* data the rest of
+    this module extracts -- this is the actual per-slot item roster a Gear Set is made of, needed
+    to look up each piece's own Core attribute (see parse_gearset_cores below)."""
+    m = re.search(r'myItems\s*\{', text)
+    if not m:
+        return {}
+    body, _ = extract_braced(text, m.end() - 1)
+    return {slot: iid for slot, iid in re.findall(r'Item\s+(\S+)\s*<[^>]*>\s*=\s*(\S+)', body)}
+
+
+def parse_gearset_cores(raw_dir, gearset_instance_id, uid_dict):
+    """A Gear Set's 6 pieces are ordinary items in their own right (myQuality GearSet, not Orange
+    -- easy to miss, `parse_core_attributes` defaults to Orange for named items) and each has its
+    own Core attribute the same way a Named/Exotic Item does. Confirmed in-game by the user
+    (2026-08-18): Striker's Battlegear is always Red, Foundry Bulwark always Blue. Verified against
+    the full dataset: 24 of 27 Gear Sets have one single Core shared by all 6 pieces; 3 are real
+    exceptions rather than bugs -- Refactor and System Corruption genuinely split 4pc/2pc across
+    two different Cores by slot (each piece's own Core is an explicit, non-random preset, just not
+    the same one), and Core Strength is a deliberately flexible set (its name says as much): five
+    of its pieces have a null/unpresented Core slot (randomized on drop, same as an ordinary item),
+    and its Backpack explicitly declares all three Cores simultaneously active, the exact same
+    "flexible core" pattern already seen on a few multi-core exotic Backpacks (Memento etc.).
+    Rather than special-case any of this, returns the union of every Core resolved across all 6
+    pieces, deduped by color -- which reduces to the single common case for 24/27 sets, and reads
+    correctly as "these are the Core(s) you'll find across this set's pieces" for the exceptions
+    too, without asserting a single Core that isn't real for them.
+
+    Deferred import (not at module top) to avoid a circular import: extract_named_items.py already
+    imports from this module at its own top level."""
+    from extract_named_items import find_generation_config_block, parse_core_attributes
+    item_dir = os.path.join(raw_dir, "game system data", "juice", "item")
+    configs_dir = os.path.join(raw_dir, "game system data", "juice", "itemgeneration", "configs")
+    path = os.path.join(item_dir, gearset_instance_id + ".mgearset")
+    if not os.path.exists(path):
+        return []
+    text = open(path, encoding="utf-8", errors="replace").read()
+    items = parse_gearset_items(text)
+    seen = {}
+    for slot, iid in items.items():
+        cbody = find_generation_config_block(configs_dir, iid)
+        if cbody is None:
+            continue
+        for c in parse_core_attributes(cbody, uid_dict, quality="GearSet"):
+            seen[c["color"]] = c
+    order = {"Red": 0, "Blue": 1, "Yellow": 2}
+    return sorted(seen.values(), key=lambda c: order.get(c["color"], 9))
+
+
 def build_dataset(raw_dir, uid_dict, old_by_key, used_name_fallback):
     item_dir = os.path.join(raw_dir, "game system data", "juice", "item")
     talent_index = build_talent_index(raw_dir)
@@ -399,6 +449,7 @@ def build_dataset(raw_dir, uid_dict, old_by_key, used_name_fallback):
             "name": entry["ui_name"].strip(),
             "kind": "Gear Set",
             "tiers": tiers,
+            "cores": parse_gearset_cores(raw_dir, entry["instance_id"], uid_dict),
             "source": "datamined",
         }
 
