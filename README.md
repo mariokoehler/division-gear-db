@@ -196,3 +196,20 @@ Same self-embedding behavior as `extract_named_items.py` — regenerates
 `data/exotic_items.json` / `data/exotic_items_min.json`, re-embeds into `index.html`'s own
 `const EXOTIC_ITEMS = [...]` line, and writes `tools/exotic_items_report.md`. Review the diff
 before committing.
+
+### Updating All Talents (the "Talent Browser" tab)
+
+Distinct pipeline from the three above: instead of following a reference from a gear-set/item
+file to one specific talent, this walks *every* `.mtalent` file in the export and classifies it
+(see `CLAUDE.md`'s "All Talents" section for the exclusion rules and slot/weapon-type
+classification taxonomy):
+
+```
+python tools/extract_all_talents.py --raw-dir "<path to the exported 'hunter' folder>"
+```
+
+Regenerates `data/all_talents.json` / `data/all_talents_min.json`, re-embeds into `index.html`'s
+own `const ALL_TALENTS = [...]` line (same function-replacement, same-line-only match as the
+other two self-embedding scripts), and writes `tools/all_talents_report.md`. Review the report's
+exclusion counts before committing — a rebalance patch that renames a file or changes a talent's
+naming convention could shift something between the "included" and "other/excluded" buckets.

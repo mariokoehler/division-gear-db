@@ -10,7 +10,9 @@ A single-page tool for *Tom Clancy's The Division 2* (`index.html`): pick one or
 and see every Brand Set / Gear Set / Named Item / Exotic Item that grants them, including Gear Set
 4-piece talents, Backpack/Chest amplifier talents, each Named/Exotic Item's own guaranteed
 attribute(s) and/or unique talent, and each Named/Exotic Item's Core attribute (Red/Offensive,
-Blue/Defensive, Yellow/Utility). Self-contained — no build step, no server, works from `file://`.
+Blue/Defensive, Yellow/Utility). A second "Talent Browser" tab within the same page (a view
+switcher, not a second HTML page) lists the full weapon/gear Talent catalog, filterable by gear
+slot / weapon type. Self-contained — no build step, no server, works from `file://`.
 
 **Live:** https://mariokoehler.github.io/division-gear-db/ (GitHub Pages, `main` branch, root).
 **Repo:** https://github.com/mariokoehler/division-gear-db (public).
@@ -48,6 +50,12 @@ or from files the user has explicitly exported/copied elsewhere (e.g. `E:\Temp\H
   Items" section below for what's different from Named Items, and "Updating Exotic Items" in
   `README.md` for run instructions.
 - `tools/exotic_items_report.md` — gitignored, regenerated each run, not meant to be committed.
+- `data/all_talents.json` / `data/all_talents_min.json` — the full weapon/gear Talent catalog
+  behind the page's "Talent Browser" tab, embedded as `const ALL_TALENTS = [...]`.
+- `tools/extract_all_talents.py` — walks every `.mtalent` file in a raw export (not just the ones
+  referenced by a specific Brand/Gear Set/Named/Exotic Item) and classifies each one; self-embeds
+  into `index.html` the same way the two scripts above do. See "All Talents" below.
+- `tools/all_talents_report.md` — gitignored, regenerated each run, not meant to be committed.
 
 ## Where the data actually comes from
 
@@ -477,6 +485,162 @@ parsing machinery directly (imported, not copied) — the schema turned out to b
     session notes below — see that section for the fixes (double-`%` and a second, distinct
     quote-style gap in the hand-rolled tooltip parser, since consolidated to reuse
     `extract_localized_text` instead of maintaining a third copy of the same logic).
+
+## All Talents — the "Talent Browser" tab
+
+A second view within the same page (`index.html`'s view-tabs — no second HTML page, just two
+`<div>`s toggled by JS), added on the user's request for a full catalog of every weapon/gear
+Talent, not just the ones already reachable by following a reference from a Brand/Gear
+Set/Named/Exotic Item. `tools/extract_all_talents.py` walks *every* `.mtalent` file in the export
+(769 files as of the export this was built from) and classifies each one, rather than being
+handed a specific instance_id to look up — a fundamentally different traversal from the other
+three pipelines, all of which start from a known reference and resolve outward.
+
+- **Output**: `data/all_talents.json` / `data/all_talents_min.json`, embedded as
+  `const ALL_TALENTS = [...]` (same landmines as the other two self-embedding scripts apply here
+  too — same-line-only regex match, function replacement not string replacement, see the
+  2026-08-18 session notes below for why both matter).
+- **Schema per talent**: `{id, name, description, kind, slot, weaponType, tier}`. `kind` is one of
+  `gear` / `weapon` / `exotic-gear` / `exotic-weapon` / `exotic-other` / `other`. `slot` and
+  `weaponType` are mutually exclusive — a talent has one or neither, never both — but `slot` can
+  itself be a `" / "`-joined pair (currently only `"Backpack / Chest"`, ~14 talents rollable on
+  either, confirmed via the pool data below, not guessed). `tier` is `"Perfect"` when the instance
+  id ends `_perfect`, else `"Standard"`.
+- **A non-Exotic item only ever rolls a Talent on Chest or Backpack — never Mask/Gloves/Holster/
+  Kneepads.** Confirmed two ways, not just asserted: the user's own in-game knowledge (this whole
+  sub-section exists because two early rounds of this pipeline got it wrong and the user caught
+  both), *and* structurally — every `configs_gear_mask_*`/`configs_gear_gloves_*`/
+  `configs_gear_holster_*`/`configs_gear_kneepads_*` file's own base `ItemGenerationConfig`
+  (`MaskBase`, etc.) has a completely empty `myTalentSlots {}` block, while `ChestBase`/
+  `BackPackBase` both populate theirs. This matches this codebase's own pre-existing Named Items
+  finding (those 4 slots get a Fixed attribute instead, never a talent) and now extends it to
+  regular/civilian gear too. Talent files literally named `talent_mask_*`/`talent_gloves_*`/etc.
+  with real names and descriptions do genuinely exist in the export (50+ of them) — they're
+  leftover/legacy data (same situation as the confirmed-cut "Watch" slot below), not real
+  obtainable content, and are excluded rather than shown on a slot that can't roll them.
+- **The authoritative source for "which talents actually roll on Chest vs. Backpack" is the
+  game's own random-roll talent-pool data, not the talent's own filename slot token — which is
+  frequently wrong, or absent entirely.** Discovered after the user caught two more misclassified
+  talents (Adrenaline Rush shown as "Universal/Other" when it's Backpack-only; Headhunter shown
+  the same way when it's Chest-only) that a first, filename-only fix couldn't have caught, since
+  neither file carries any slot token at all (`warlock_talent_nearby_enemies_grant_bonus_armor`,
+  `warlock_talent_headshot_kills_increase_next_weapon_hit`). Traced where the *real* per-slot
+  talent pool lives: a Chest/Backpack item's `ItemGenerationConfig` → `myTalentSlots` →
+  `QualityTalentSlots` (Orange and Purple both point at the same one) → `ItemTalentSlot` →
+  `myPossibleTalentLists` → a `TalentListContainer` *reference* (e.g. `= warlock_chest_talents
+  <guid>`), whose actual body — a flat list of `Talent "label" = <instance_id> <guid>` entries —
+  lives in a **separate directory**, `itemgeneration/talentlists/*.mitemgenerationtalentlists`
+  (parallel to the already-known `itemgeneration/attributelists/` for attribute value curves).
+  `build_gear_talent_pools` in `extract_all_talents.py` unions every `Talent = <id>` entry across
+  every declaration of the 4 real container names actually referenced by live Chest/Backpack
+  configs (`warlock_chest_talents`/`WarlockChestTalents`/`active_chest_talents`/
+  `common_chest_talents` for Chest, the `*back*`/`*backpack*` equivalents for Backpack — grepped
+  directly from every `configs_gear_chest_*`/`configs_gear_back_*` file's own `myTalentSlots`, not
+  guessed). Same "many near-duplicate files, index every declaration" pattern already established
+  for `configs/` — each container name is declared many times across different
+  `talentlist_code1_dataN.mitemgenerationtalentlists` shards with a *different* uid each time;
+  results are unioned across all of them rather than picking one. This pool override runs for
+  every non-exotic talent regardless of its filename-derived classification, and **only ever adds
+  or corrects a slot, never removes one an item actually confirms** (see the named-item
+  cross-check below) — it recovered real Chest talents filed under a `mask`/`holster`/`kneepads`
+  token (Tag Team = `talent_mask_hits_reduce_cooldown`, Trauma = `talent_mask_headshots_blind_target`,
+  Braced = `talent_kneepads_increase_weapon_handling_after_entering_cover`, and others), reclassified
+  several talents the filename-only pass had put in `weapon` (bare `weapon` token, e.g.
+  `warlock_talent_weapon_damage_grants_skill_damage`, which is actually a Backpack talent despite
+  the name), and rescued 25 of the original 50 excluded mask/gloves/holster/kneepads-filed talents
+  by confirming their real Chest/Backpack slot — the other 25 are in neither pool and stay excluded
+  as genuinely unresolvable/legacy. **Deliberately NOT used to *remove* an already-slotted talent
+  just because it's absent from the pool**: a named item's own preset talent (e.g. Festive
+  Delivery's `talent_gear_back_firecrackers`, already confirmed real and Backpack-slotted via its
+  item's own config) doesn't need to appear in the generic random-roll pool at all, since it's
+  assigned directly via `myPresetTalent`, a completely separate mechanism — absence from the pool
+  only means "not obtainable via random roll," a narrower question than "is this a real
+  currently-used talent." Only ever applied to non-exotic kinds; an Exotic's talent comes from its
+  own item config, never this general pool.
+  - A `talentlist_dev_testing_only_*.mitemgenerationtalentlists` family also exists, containing
+    plausible-looking containers (`dev_testing_backpack_talents`, etc.) with real-sounding talents
+    (Aegis, Second Primary Weapon) — but grepping every real Chest/Backpack config confirms *none*
+    of them ever reference these dev-testing containers. Deliberately excluded from the pool
+    query rather than trusted, even though some of their contents might be genuine — no structural
+    way to tell from this export alone, and the whole point of the pool approach is not to
+    reintroduce the same kind of guess it was built to replace.
+- **Exclusions, each checked by hand against real file content before being excluded** (see
+  `EXCLUDE_PREFIXES` in `extract_all_talents.py`), not guessed from the name alone:
+  - `talent_gearset_*` — already fully covered by `combined_sets.json` (4pc/companion talents);
+    showing them again here would just be a duplicate of the Attribute Finder tab's own cards.
+  - `talent_specialization_*` / bare `specialization_*` (case-insensitive — some files declare
+    their own instance id with a capital `S`, e.g. `Specialization_Ammo_GL`, even though the
+    filename itself is always lowercase) — the specialization skill tree, a different system.
+  - `warlock_skill_talent_*` — Skill Tier 7 unlocks (Adrenaline Rush's trap/pulse/shield variants
+    etc.), tied to a skill, not to equipped gear/weapon.
+  - `dz_*` — Dark Zone rank/reputation perks, account-level, not droppable gear.
+  - `boo_*` — battle-pass/account reward perks (extra inventory slots, extra loadouts, crafting
+    tiers) — a completely different reward system that happens to share the `.mtalent` format.
+  - `test*` — literal test data (`test_talentarmorbonus`).
+  - `talent_watch_*` — a "Watch" gear slot that was apparently planned and cut before launch
+    (never shipped in-game); this data is a leftover, not a real slot to filter by.
+  - `talent_sd_*` — a "Dungeon Arena" roguelike-mode temporary talent pool (confirmed by reading
+    the files' own `contextComment`, e.g. `"Dungeon Arena Talent Name: Armor increased by {0}"`),
+    not obtainable on regular gear.
+  - `talent_augment_*` — Skill Augments (Amalgam, Anomaly, Atomize, etc.), a distinct equip system
+    from weapon/gear talents.
+  - Placeholder/unfilled names (`(PH)`, `TBD`, `INSERT NAME`, or a bare `[...]`-wrapped label) —
+    only 6 files across the whole export, e.g. `"[AR Archetype Talent 4 (PH)]"` — real,
+    structurally-valid talent files whose display name was simply never finalized in this data
+    snapshot, same "don't fabricate" policy as everywhere else in this codebase.
+  - No usable description at all after `naive_substitute` (5 files) — nothing to show.
+- **Classification (`classify_talent`)**: strips one of several known prefix aliases first —
+  `virginia_talent_exotic_`, `warlock_talent_exotic_`, `talent_exotic_`, `talent_gear_`,
+  `warlock_talent_`, `talent_`, tried longest/most-specific first (`warlock_`/`virginia_` are
+  internal dev codenames that prefix an otherwise-normal `talent_exotic_`/`talent_gear_`/plain id
+  — e.g. `warlock_talent_exotic_backpack_mk1a` is a real exotic Backpack talent, not a skill
+  talent, despite starting the same way as the excluded `warlock_skill_talent_*` bucket). What's
+  left after stripping is matched against an ordered list of gear-slot and weapon-type prefixes
+  (longest-match-first so `assault_rifle` doesn't get eaten by a bare `rifle` match) — this is only
+  the *first pass* for non-exotic gear now; the pool override described above runs afterward and
+  is authoritative whenever it finds a match. No match at all (and no pool match either) →
+  `kind: "other"` — a real, in-scope talent that just isn't restricted to one slot/weapon, e.g. the
+  `talent_basic_*`/`talent_slot_*` families (Accurate, Allegro, Distance — universal weapon-stat
+  talents with no weapon-type restriction). One single hardcoded special case:
+  `ninja_backpack_talent_exotic` (Ninja Bike Messenger Bag's own talent) has no recognizable prefix
+  structure at all.
+- **Exotic gear talents whose filename carries no slot token at all** (e.g. Tinkerer mask's talent
+  is just `talent_exotic_abridged`, not `talent_exotic_mask_abridged`) are resolved the same way
+  `parse_named_item_file`/`find_generation_config_block`/`parse_preset_talent` already resolve a
+  named/exotic item's OWN talent in the other two pipelines — just inverted here
+  (`build_exotic_gear_talent_slots`): walk every exotic armor `.mitem` file (same glob
+  `extract_exotic_items.py` uses, including the 3 items that pipeline itself excludes — Rathbone's
+  Gloves, the "TBD" kneepad, Investor — since their raw `.mitem`/config still exist and still
+  correctly resolve a slot even though they don't ship as a card), resolve each one's own preset
+  Exotic-tier talent, and invert into `{talent_id: slot}`. Recovered 4 of the original 5
+  slot-less exotic entries (Abridged→Mask, Bob and Weave→Holster, Escape Plan→Kneepads,
+  Ostracize→Kneepads); the 5th (Ardent, a weapon heat-meter mechanic) is a genuine exotic *weapon*
+  talent, correctly left unresolved since this codebase has no weapon `.mitem` parsing at all.
+- **A bare `weapon` filename token on an exotic talent does NOT mean "Any Weapon."** Unlike the
+  real universal weapon-talent pool (`talent_weapon_*`, genuinely droppable on any weapon), an
+  exotic weapon's talent is always tied to exactly one specific gun (`talent_exotic_weapon_
+  big_alejandro` is Big Alejandro's own talent, not a generic pool entry) — matching it against the
+  same `("weapon", "Any Weapon")` fallback used for the real pool would be a straightforward lie.
+  `EXOTIC_WEAPON_PREFIXES` (a copy of `WEAPON_PREFIXES` with that one generic entry removed) is
+  used instead for the exotic path; a bare/unrecognized weapon token there falls through to the
+  same "try the item cross-reference, then give up honestly" path as slot-less exotic gear talents
+  above (`kind: "exotic-other"`, both `slot` and `weaponType` null) rather than mislabeling 12 real
+  exotic weapons' talents (Prima Donna, The Senate, Big Alejandro, Vindicator, Ouroboros, etc.) as
+  usable on literally any weapon. The page's own card renderer shows an honest "tied to one
+  specific item, not resolved in this dataset" instead of a slot/weapon-type claim for these.
+- **Known limitation, accepted rather than solved**: `naive_substitute`'s percent-vs-flat-number
+  heuristic (see the Gear Set section above) is applied to all ~357 included talents' description
+  text with no per-talent manual review — for the handful of gear-set talents shown elsewhere in
+  this tool, a human has checked each substitution once; for this much larger set, that wasn't
+  done. Occasionally produces a wrong-looking value (e.g. a 3-second duration rendered as `300%`)
+  since a value's *type* (percent/seconds/flat count) genuinely can't be inferred from the raw
+  number alone. Flagged in the page's own "About the Talent Browser" note rather than silently
+  shipped as if verified.
+- **Deliberately not attempted**: inferring which of these talents' conditional/situational
+  effects could be surfaced as a "potential" bonus type in the main Attribute Finder tab (e.g. a
+  talent whose tooltip grants Amplified Damage under some condition). That's explicitly a second,
+  separate piece of work the user asked for — see whatever session picks it up next for its own
+  notes; nothing in this section's pipeline does that classification.
 
 ## Data provenance / licensing
 
