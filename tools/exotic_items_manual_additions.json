@@ -1,0 +1,7 @@
+{
+  "player_gear_back_exotic_01": {
+    "name": "Acosta's Go Bag",
+    "isDarkZoneExclusive": false,
+    "note": "Confirmed by the user via in-game check (2026-08-22). This item's own .mitem file (name/flavor text) is missing from every export used so far -- only its blueprint craft recipe survives -- so extract_exotic_items.py can never find it by walking item files the normal way. Everything except the name and DZ flag comes straight from its ItemGenerationConfig (player_gear_back_exotic_01_config), which IS fully present: 2 guaranteed bonus slots, a Core, and -- confirmed by the user to be simultaneously active, not an unused alternate -- TWO preset talents at once (\"... Two in the Bag\" and \"One in Hand...\", which explains their wordplay pairing). See build_manual_config_items() in extract_exotic_items.py and 'Liveness filtering' / the manual-addition follow-up in CLAUDE.md's 'Potential Bonuses' section for the full story."
+  }
+}

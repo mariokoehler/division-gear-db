@@ -35,6 +35,7 @@
       "name": "Perfectly Wicked",
       "desc": "Applying a status effect increases total weapon damage by 18% for 27s."
     },
+    "talentId": "talent_gloves_damage_done_increased_to_status_affected_perfect",
     "source": "datamined"
   },
   {
@@ -73,6 +74,7 @@
       "name": "Perfect Energize",
       "desc": "Using an armor kit grants +1 skill tier for 15s. If already at skill tier 6, grants overcharge.\n\nCooldown: 60s"
     },
+    "talentId": "warlock_talent_armor_kits_overcharge_perfect",
     "source": "datamined"
   },
   {
@@ -111,6 +113,7 @@
       "name": "Perfectly Unstoppable Force",
       "desc": "Killing an enemy increases total weapon damage by 7% for 15s. Stacks up to 5 times.\nGrenade kills add 2 stacks."
     },
+    "talentId": "talent_chest_kills_increase_weapon_damage_based_on_armor_perfect",
     "source": "datamined"
   },
   {
@@ -149,6 +152,7 @@
       "name": "Perfectly Calculated",
       "desc": "Kills from cover reduce skill cooldowns by 15%."
     },
+    "talentId": "talent_kneepads_kills_in_cover_reduce_skill_cooldowns_perfect",
     "source": "datamined"
   },
   {
@@ -187,6 +191,7 @@
       "name": "Perfect Composure",
       "desc": "While in cover, increases total weapon damage by 20%."
     },
+    "talentId": "talent_kneepads_increase_total_damage_while_in_cover_perfect",
     "source": "datamined"
   },
   {
@@ -225,6 +230,7 @@
       "name": "Perfect Leadership",
       "desc": "Performing a cover to cover grants 20% of your armor as bonus armor to you and all allies for 10s.  \n\nThis is tripled if you end within 10m of an enemy.\n\nCooldown: 10s"
     },
+    "talentId": "warlock_talent_cover_to_cover_grants_group_bonus_armor_perfect",
     "source": "datamined"
   },
   {
@@ -263,6 +269,7 @@
       "name": "Perfect Clutch",
       "desc": "Critical hits repair 20% missing armor while below 2.5% armor."
     },
+    "talentId": "talent_gloves_damage_done_crits_restore_health_and_armor_perfect",
     "source": "datamined"
   },
   {
@@ -301,6 +308,7 @@
       "name": "Fireworks Show",
       "desc": "Concussion Grenades become Festive Grenades.\n\nHitting an enemy with a Festive Grenade will cause explosions to happen around two other enemies within 20m."
     },
+    "talentId": "talent_gear_back_firecrackers",
     "source": "datamined"
   },
   {
@@ -339,6 +347,7 @@
       "name": "Perfect Combined Arms",
       "desc": "Shooting an enemy increases total skill damage by 30% for 300%s."
     },
+    "talentId": "warlock_talent_weapon_damage_grants_skill_damage_perfect",
     "source": "datamined+manual_core_override"
   },
   {
@@ -377,6 +386,7 @@
       "name": "Perfect Overclock",
       "desc": "Allies within 15m of your deployed skills, gain +30% reload speed and reduces their active cooldowns by 60%s each second."
     },
+    "talentId": "warlock_talent_deployed_skills_boost_allies_Perfected",
     "source": "datamined"
   },
   {
@@ -415,6 +425,7 @@
       "name": "Perfect Galvanize",
       "desc": "Applying a Blind, Ensnare, Confuse, or Shock to an enemy grants 50% of your armor as bonus armor to you and all allies within 30m of that enemy for 10s."
     },
+    "talentId": "warlock_talent_disables_grants_nearby_bonus_armor_perfect",
     "source": "datamined"
   },
   {
@@ -453,6 +464,7 @@
       "name": "Perfect Bloodsucker",
       "desc": "Killing an enemy adds a stack of +12% bonus armor for 10s. Max stack is 10."
     },
+    "talentId": "talent_chest_bonus_health_increases_life_on_kill_perfect",
     "source": "datamined"
   },
   {
@@ -491,6 +503,7 @@
       "name": "Perfect Adrenaline Rush",
       "desc": "Whenever you are within 10m of an enemy, gain 23% bonus armor for 5s.  Stacks up to 300% times. \n\nCooldown: 5s"
     },
+    "talentId": "warlock_talent_nearby_enemies_grant_bonus_armor_perfect",
     "source": "datamined"
   },
   {
@@ -529,6 +542,7 @@
       "name": "Perfect Safeguard",
       "desc": "While at full armor, increases total skill repair by 160%."
     },
+    "talentId": "talent_back_kills_increases_healing_done_perfect",
     "source": "datamined"
   },
   {
@@ -567,6 +581,7 @@
       "name": "Perfect Tech Support",
       "desc": "Skill kills increase total skill damage by 25% for 27s."
     },
+    "talentId": "talent_back_skill_kills_increase_skill_duration_and_damage_perfect",
     "source": "datamined"
   },
   {
@@ -605,6 +620,7 @@
       "name": "Perfectly Tamper Proof",
       "desc": "Enemies that walk within 300%m of your hive, turret, remote pulse or decoy are shocked.\n\nArm time: 200%s\nCooldown per skill: 8s"
     },
+    "talentId": "warlock_talent_shock_enemies_near_deployed_skills_perfect",
     "source": "datamined"
   },
   {
@@ -643,6 +659,7 @@
       "name": "Perfect Shock and Awe",
       "desc": "Applying a status effect to an enemy increases total skill damage and repair by 20% for 27s."
     },
+    "talentId": "warlock_talent_status_effects_increase_skill_damage_and_repair_perfect",
     "source": "datamined"
   },
   {
@@ -681,6 +698,7 @@
       "name": "Perfect Creeping Death",
       "desc": "When you apply a status effect, it is also applied to all enemies within 10m of your target.  \n\nCooldown: 10s"
     },
+    "talentId": "talent_backpack_status_effects_spread_perfect",
     "source": "datamined"
   },
   {
@@ -719,6 +737,7 @@
       "name": "Perfect Vigilance",
       "desc": "Increases total weapon damage by 25%. Taking damage disables this buff for 300%s."
     },
+    "talentId": "talent_chest_increased_weapon_damage_while_not_getting_hit_perfect",
     "source": "datamined+manual_name_override"
   },
   {
@@ -757,6 +776,7 @@
       "name": "Perfectly Opportunistic",
       "desc": "Enemies you hit take 15% more damage from all sources for 5s."
     },
+    "talentId": "talent_gloves_destroy_weakpoint_increases_damage_done_from_all_sources_perfect",
     "source": "datamined"
   },
   {
@@ -795,6 +815,7 @@
       "name": "Perfect Versatile",
       "desc": "Amplifies total weapon damage for 10s when swapping between your primary and secondary weapons if they are different.\n\n45% to enemies within 15m for Shotguns and SMGs.\n\n40% to enemies further than 25m for Rifles and Marksman Rifles.\n\n15% to enemies between 15-25m for LMGs and Assault Rifles.\n\nAt most once per 5s per weapon type."
     },
+    "talentId": "warlock_talent_weapon_swap_to_different_weapon_grants_damage_perfect",
     "source": "datamined"
   },
   {
@@ -833,6 +854,7 @@
       "name": "Perfect Empathic Resolve",
       "desc": "Repairing an ally increases their total weapon and skill damage by 3%-20% for 20s.  1%-15% if self.\n\nEffectiveness increased by your skill tier."
     },
+    "talentId": "warlock_talent_healing_allies_buffs_them_perfect",
     "source": "datamined"
   },
   {
@@ -871,6 +893,7 @@
       "name": "Perfect Entrench",
       "desc": "If you are below 30% armor, headshots from cover repair 30% of your armor.\n\nCooldown: 100%s"
     },
+    "talentId": "talent_kneepads_headshots_in_cover_gives_armor_perfect",
     "source": "datamined"
   },
   {
@@ -909,6 +932,7 @@
       "name": "Perfectly Skilled",
       "desc": "Skill kills have a 30% chance to reset skill cooldowns."
     },
+    "talentId": "talent_back_skill_kills_reset_skill_cooldowns_perfect",
     "source": "datamined"
   },
   {
@@ -947,6 +971,7 @@
       "name": "Perfectly Mad Bomber",
       "desc": "Grenade radius is increased by +75%.  \n\nGrenades that kill an enemy are refunded.\n\nGrenades can now be \"cooked\" by holding the fire button, making them explode earlier.\n \nGain +15% bonus armor while aiming grenades."
     },
+    "talentId": "talent_chest_grenade_kills_refund_grenade_and_increased_radius_perfect",
     "source": "datamined"
   },
   {
@@ -985,6 +1010,7 @@
       "name": "Perfect Headhunter",
       "desc": "After killing an enemy with a headshot, your next weapon hit within 30s deals an additional 150% of that killing blow's damage.\n\nDamage is capped to 8% of your weapon damage. This is raised to 12.5% if your headshot damage is greater than 150%."
     },
+    "talentId": "warlock_talent_headshot_kills_increase_next_weapon_hit_perfect",
     "source": "datamined"
   },
   {
@@ -1023,6 +1049,7 @@
       "name": "Perfect Spotter",
       "desc": "Amplifies total weapon and skill damage by 20% to pulsed enemies."
     },
+    "talentId": "talent_mask_increased_damage_to_pulsed_perfect",
     "source": "datamined"
   },
   {
@@ -1061,6 +1088,7 @@
       "name": "Perfectly Explosive Delivery",
       "desc": "Whenever you throw a skill, 150% seconds after landing, it creates an explosion damaging enemies within 5m.\nAfterwards, explosions will occur every 5s.\n\nDamage scales with skill tier dealing 25%-100% damage of a concussion grenade."
     },
+    "talentId": "warlock_talent_thrown_skills_explode_perfect",
     "source": "datamined"
   },
   {
@@ -1099,6 +1127,7 @@
       "name": "Perfect Spark",
       "desc": "Damaging enemies with a skill increases total weapon damage by 18% for 20s."
     },
+    "talentId": "talent_back_skill_damage_increases_weapon_damage_perfect",
     "source": "datamined+manual_core_override"
   },
   {
@@ -1137,6 +1166,7 @@
       "name": "Perfect Obliterate",
       "desc": "Critical hits increase total weapon damage by 1% for 10s. Stacks up to 24 times."
     },
+    "talentId": "warlock_talent_crits_increase_damage_perfect",
     "source": "datamined"
   },
   {
@@ -1175,6 +1205,7 @@
       "name": "Perfectly Efficient",
       "desc": "Using an armor kit has a 75% chance to not consume the armor kit.\n\nSpecialization armor kit bonuses are increased by 100%.\n\nRequires 10 seconds to arm talent"
     },
+    "talentId": "talent_back_when_no_armor_has_chance_to_not_consume_armor_kit_perfect",
     "source": "datamined"
   },
   {
@@ -1213,6 +1244,7 @@
       "name": "Perfect Overwatch",
       "desc": "After staying in cover for 8s, increases you and your allies' total weapon and skill damage by 14% as long as you remain in cover or in a cover-to-cover move."
     },
+    "talentId": "warlock_talent_staying_in_cover_grants_group_damage_perfect",
     "source": "datamined"
   },
   {
@@ -1251,6 +1283,7 @@
       "name": "Perfect Companion",
       "desc": "While you are within 10m of an ally or skill, total weapon damage is increased by 20%"
     },
+    "talentId": "warlock_talent_standing_near_allies_increases_damage_perfect",
     "source": "datamined"
   },
   {
@@ -1289,6 +1322,7 @@
       "name": "Perfect Intimidate",
       "desc": "While you have bonus armor, gain 1 stack each second up to a max of 10. Each stack increases weapon damage by 4% to enemies within 10m.\n\nAll stacks are lost when you have no bonus armor."
     },
+    "talentId": "warlock_talent_bonus_armor_grants_damage_perfect",
     "source": "datamined"
   },
   {
@@ -1327,6 +1361,7 @@
       "name": "Perfect Kinetic Momentum",
       "desc": "When in combat, each skill generates a stack while active or not on cooldown.\n\nStacks increase your total skill damage by 1.5% and total skill repair by 2%. Up to 18 stacks per skill. Lost when on cooldown."
     },
+    "talentId": "warlock_talent_active_skills_increase_damage_perfect",
     "source": "datamined"
   },
   {
@@ -1365,6 +1400,7 @@
       "name": "Perfect Vanguard",
       "desc": "Deploying a shield makes it invulnerable for 5s and grants 50% of your armor as bonus armor to all other allies for 20s.  \n\nCooldown: 25s"
     },
+    "talentId": "warlock_talent_shield_grants_invulnerable_and_group_bonus_armor_perfect",
     "source": "datamined"
   },
   {
@@ -1403,6 +1439,7 @@
       "name": "Perfect Focus",
       "desc": "Increases total weapon damage by 6% every second you are aiming while scoped 8x or higher, up to 60%."
     },
+    "talentId": "warlock_talent_scope_aiming_increases_damage_perfect",
     "source": "datamined"
   },
   {
@@ -1441,6 +1478,7 @@
       "name": "Perfect Gunslinger",
       "desc": "Weapon swapping increases total weapon damage by 28% for 5s.  This buff is lost for 5s if you weapon swap while it is active."
     },
+    "talentId": "talent_holster_swap_weapons_after_kill_increases_weapon_damage_perfect",
     "source": "datamined"
   },
   {
@@ -1479,6 +1517,7 @@
       "name": "Perfect Protected Reload",
       "desc": "Grants +40% bonus armor while reloading.\n\nGrants 0%-30% of your armor as bonus armor to all other allies when they are reloading, based on your <img src=\"hunter/baked/ui/loose_images/ui_player_defense.dds\"> core attribute."
     },
+    "talentId": "talent_slot_equipped_armor_increased_while_reloading_perfect",
     "source": "datamined"
   },
   {
@@ -1517,6 +1556,7 @@
       "name": "Perfect Glass Cannon",
       "desc": "All damage you deal is amplified by 30%.  All damage you take is amplified by 60%."
     },
+    "talentId": "warlock_talent_damage_dealt_and_damage_taken_increased_perfect",
     "source": "datamined"
   },
   {
@@ -1555,6 +1595,7 @@
       "name": "Perfectly Unbreakable",
       "desc": "When your armor is depleted, repair 100% of your armor. \n\nCooldown: 55s"
     },
+    "talentId": "talent_chest_when_armor_breaks_get_free_repair_and_armor_kit_perfect",
     "source": "datamined"
   },
   {
@@ -1592,6 +1633,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1629,6 +1671,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1666,6 +1709,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1703,6 +1747,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1740,6 +1785,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1778,6 +1824,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1815,6 +1862,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1852,6 +1900,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1889,6 +1938,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1926,6 +1976,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -1963,6 +2014,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -2000,6 +2052,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -2037,6 +2090,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -2074,6 +2128,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -2112,6 +2167,7 @@
       "name": "Flurry",
       "desc": "Every Status Effect you apply will also apply snowfall to the target."
     },
+    "talentId": "talent_snowmaker_flurry",
     "source": "datamined"
   },
   {
@@ -2153,6 +2209,7 @@
       "name": "Bewildered",
       "desc": "When dealing Weapon Damage to an enemy, 50% of the damage will be dealt to another enemy within 30m instead. When there are no enemies nearby, deal damage normally.\nDoes not apply to Armor Plates."
     },
+    "talentId": "talent_kneepads_turmoil_bewildered",
     "source": "datamined"
   },
   {
@@ -2188,6 +2245,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -2225,6 +2283,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -2262,6 +2321,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -2299,6 +2359,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   },
   {
@@ -2336,6 +2397,7 @@
       }
     ],
     "talent": null,
+    "talentId": null,
     "source": "datamined"
   }
 ]

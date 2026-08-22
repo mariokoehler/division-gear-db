@@ -14,6 +14,7 @@ yourself before trusting the embedded result.
 """
 import argparse
 import glob
+import hashlib
 import json
 import os
 import re
@@ -23,7 +24,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from update_from_hunter_export import parse_mtalent_file, naive_substitute, extract_braced  # noqa: E402
 from extract_named_items import (  # noqa: E402
     strip_inline_markup, SLOT_MAP, parse_named_item_file,
-    find_generation_config_block, parse_preset_talent,
+    find_generation_config_block, parse_preset_talent, _index_generation_configs,
+    _load_config_body, _quality_blocks,
 )
 
 
@@ -96,6 +98,121 @@ def build_exotic_gear_talent_slots(raw_dir):
         if preset_talent and preset_talent.get("ref_file"):
             result[preset_talent["ref_file"].lower()] = entry["slot"]
     return result
+
+
+_PRESET_TALENT_RE = re.compile(r'myPresetTalent\s*<[^>]*>\s*=\s*(\S+)\s+[0-9A-Fa-f]{10,}')
+
+
+def build_exotic_gear_talent_slots_from_configs(raw_dir):
+    """A second, independent source for the same {talent_instance_id (lowercased): slot} map as
+    build_exotic_gear_talent_slots above -- this one keyed off every ItemGenerationConfig's own
+    declared name instead of the owning item's .mitem file. Exists because a real exotic item's
+    .mitem file can be missing from a given export (only its blueprint craft recipe survives) even
+    though its ItemGenerationConfig -- and therefore its slot and its talent reference(s) -- is
+    still fully present under itemgeneration/configs/. Found via a real example: a genuine,
+    fully-designed Backpack config (`player_gear_back_exotic_01_config` -- two guaranteed bonus
+    slots, a Core, TWO myPresetTalent entries) exists with no `player_gear_back_exotic_01.mitem`
+    anywhere in the export at all, so build_exotic_gear_talent_slots (which can only ever walk
+    real item files) has no way to ever find it -- its two talents, "... Two in the Bag" and
+    "One in Hand...", were being shown as unresolved/orphaned even though they're demonstrably
+    real, currently-designed content, not legacy/cut data (see CLAUDE.md's "Potential Bonuses"
+    section for the fuller story and how this was caught).
+
+    `_index_generation_configs` already indexes every `.mitemgenerationconfigs` file in the whole
+    configs/ directory flatly (including the `configs_exotics_*` family) -- nothing needed there.
+    This function's own job is just deriving the slot from the CONFIG's own name (same SLOT_MAP
+    token match `parse_named_item_file` uses on an item's filename) instead of from an item file
+    that might not exist, and -- unlike `parse_preset_talent`, which only ever returns the first
+    match -- collecting EVERY `myPresetTalent` in the Exotic-tier block, since a single config can
+    genuinely assign more than one (confirmed by the two-talent Backpack above)."""
+    configs_dir = os.path.join(raw_dir, "game system data", "juice", "itemgeneration", "configs")
+    result = {}
+    for name in _index_generation_configs(configs_dir):
+        tokens = name.lower().split("_")
+        slot = next((SLOT_MAP[t] for t in tokens if t in SLOT_MAP), None)
+        if not slot:
+            continue
+        body = _load_config_body(configs_dir, name)
+        if body is None:
+            continue
+        for qbody in _quality_blocks(body, "QualityTalentSlots", "Exotic"):
+            for m in _PRESET_TALENT_RE.finditer(qbody):
+                result[m.group(1).lower()] = slot
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Potential/conditional bonus-attribute inference -- Part 2 of the Talent Browser work.
+#
+# A talent's tooltip text often grants a bonus attribute (Weapon Damage, Skill Damage, Bonus
+# Armor, ...) conditionally -- e.g. "increases total weapon damage by 15% while in cover". No
+# script can reliably interpret free-form flavor text like that; only a human (or an AI reading
+# it, same as this codebase's own author did for tools/talent_bonus_inferences.json) can. So the
+# interpretation is done ONCE, by hand, and persisted in tools/talent_bonus_inferences.json --
+# {talent_id: {"fingerprint": md5(description), "bonuses": [{"attribute", "condition"}, ...]}} --
+# the same "persist the expensive judgment call, let the script only ever check for drift"
+# pattern already used by tools/attribute_uid_dictionary.json and
+# tools/named_items_manual_overrides.json.
+#
+# This script's own job is narrow: for every in-scope talent (kind in BONUS_INFERENCE_KINDS --
+# only gear/exotic-gear, since only those ever appear on an equippable Chest/Backpack/exotic
+# piece this tool can point a user at; weapon-side talents have no "which gear should I equip"
+# answer in this dataset and are deliberately left out of the inference dictionary entirely),
+# hash the CURRENT description and compare against the persisted fingerprint:
+#   - fingerprint matches  -> attach the persisted bonuses as `potentialBonuses`, done.
+#   - id missing entirely  -> flag as needing interpretation (new talent), no field attached.
+#   - fingerprint mismatch -> flag as needing interpretation (description changed since it was
+#                             last read), no field attached -- a changed description means the
+#                             conditions/numbers may no longer be accurate, so it's safer to show
+#                             nothing than a stale answer until it's re-interpreted by hand.
+# Never invents or edits an interpretation itself -- only the dictionary file, hand-maintained,
+# is allowed to change what a talent's potential bonuses are.
+BONUS_INFERENCE_KINDS = {"gear", "exotic-gear"}
+
+
+def load_bonus_inferences(repo_root):
+    path = os.path.join(repo_root, "tools", "talent_bonus_inferences.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def apply_bonus_inferences(results, repo_root):
+    """Attaches `potentialBonuses` to every in-scope talent whose persisted interpretation is
+    still fresh (fingerprint matches its current description); returns a report-lines list
+    covering everything that still needs a human/AI interpretation pass."""
+    inferences = load_bonus_inferences(repo_root)
+    needs_new = []
+    needs_refresh = []
+    applied = 0
+    for t in results:
+        if t["kind"] not in BONUS_INFERENCE_KINDS:
+            continue
+        entry = inferences.get(t["id"])
+        fingerprint = hashlib.md5(t["description"].encode("utf-8")).hexdigest()
+        if entry is None:
+            needs_new.append((t["id"], t["name"]))
+            continue
+        if entry["fingerprint"] != fingerprint:
+            needs_refresh.append((t["id"], t["name"]))
+            continue
+        t["potentialBonuses"] = entry["bonuses"]
+        applied += 1
+
+    lines = []
+    lines.append("\nPotential-bonus inference coverage (gear/exotic-gear talents only): "
+                  "%d applied, %d new, %d changed\n" % (applied, len(needs_new), len(needs_refresh)))
+    if needs_new:
+        lines.append("  Never interpreted -- add to tools/talent_bonus_inferences.json: %d\n" % len(needs_new))
+        for iid, name in needs_new:
+            lines.append("    - %s (%s)\n" % (iid, name))
+    if needs_refresh:
+        lines.append("  Description changed since last interpreted -- re-check in "
+                      "tools/talent_bonus_inferences.json: %d\n" % len(needs_refresh))
+        for iid, name in needs_refresh:
+            lines.append("    - %s (%s)\n" % (iid, name))
+    return "".join(lines)
 
 
 # ---------------------------------------------------------------------------
@@ -209,17 +326,47 @@ def classify_talent(instance_id):
     return "other", None, None
 
 
-def build_all_talents(raw_dir):
+def load_named_item_talent_ids(repo_root):
+    """{talentId, ...} for every Named Item with a preset talent -- the other place (besides an
+    Exotic Item's own preset, see build_exotic_gear_talent_slots) a "gear"-kind talent absent from
+    the live random-roll pool can still be genuinely obtainable rather than legacy/cut: it might be
+    one specific Named Item's own directly-assigned talent instead of a random roll (e.g. Festive
+    Delivery's Fireworks Show, `talent_gear_back_firecrackers` -- never in the Backpack pool, but
+    real, confirmed by this cross-reference rather than guessed)."""
+    path = os.path.join(repo_root, "data", "named_items.json")
+    if not os.path.exists(path):
+        return set()
+    with open(path, encoding="utf-8") as f:
+        items = json.load(f)
+    return {it["talentId"].lower() for it in items if it.get("talentId")}
+
+
+def build_all_talents(raw_dir, repo_root):
     talent_dir = os.path.join(raw_dir, "game system data", "juice", "talent")
     paths = sorted(glob.glob(os.path.join(talent_dir, "*.mtalent")))
-    exotic_gear_talent_slots = build_exotic_gear_talent_slots(raw_dir)
+    # Item-file-based first (has real item context to fall back on if ever needed), then the
+    # config-name-based map fills in any talent whose own item file is missing from this export
+    # (see build_exotic_gear_talent_slots_from_configs) -- .update() lets the item-based result
+    # win on the rare id both would resolve, though in practice they should never disagree. Kept
+    # as two separate maps (not just the merged one) so the report below can call out specifically
+    # which talents were ONLY resolvable via a config -- i.e. confirmed real (a full, live
+    # ItemGenerationConfig exists) but with no owning .mitem file in this export to name it, a
+    # genuine export gap rather than legacy/cut data.
+    exotic_gear_talent_slots_from_configs = build_exotic_gear_talent_slots_from_configs(raw_dir)
+    exotic_gear_talent_slots_from_items = build_exotic_gear_talent_slots(raw_dir)
+    exotic_gear_talent_slots = dict(exotic_gear_talent_slots_from_configs)
+    exotic_gear_talent_slots.update(exotic_gear_talent_slots_from_items)
+    confirmed_item_missing_file = sorted(set(exotic_gear_talent_slots_from_configs)
+                                          - set(exotic_gear_talent_slots_from_items))
     gear_pools = build_gear_talent_pools(raw_dir)
+    named_item_talent_ids = load_named_item_talent_ids(repo_root)
 
     results = []
     excluded_by_prefix = 0
     excluded_placeholder = []
     excluded_empty = []
     excluded_invalid_slot = []
+    excluded_unused_gear = []
     resolved_via_item_lookup = []
     resolved_via_pool = []
     parse_failures = []
@@ -255,7 +402,24 @@ def build_all_talents(raw_dir):
 
         kind, slot, weapon_type = classify_talent(instance_id)
 
-        # Authoritative override: the game's own Chest/Backpack random-roll talent pool (see
+        # Authoritative override #1: does this talent's id match some Exotic Item's OWN preset
+        # talent (see build_exotic_gear_talent_slots)? Checked universally, for every kind, not
+        # just ones classify_talent already suspected were exotic -- found by a real example:
+        # Collector's own talent is `talent_back_hoarder_grenade_enhancements` ("Hoarder"), an id
+        # with no "exotic" token anywhere in it, so classify_talent's prefix-alias step alone
+        # (which only looks for an exotic cross-reference when the "exotic" base was already
+        # detected from the filename) had no way to ever catch it -- it silently fell into the
+        # generic "gear" bucket instead, implying it's obtainable via random Chest/Backpack roll
+        # like any other, when it's really Collector's own unique, item-specific ability. An
+        # item-preset match always wins over anything classify_talent or the gear-pool guessed.
+        base_id = instance_id[:-len("_perfect")] if instance_id.endswith("_perfect") else instance_id
+        found_slot = exotic_gear_talent_slots.get(instance_id.lower()) or exotic_gear_talent_slots.get(base_id.lower())
+        if found_slot:
+            if kind != "exotic-gear" or slot != found_slot:
+                resolved_via_item_lookup.append((instance_id, kind, slot, found_slot))
+            kind, slot, weapon_type = "exotic-gear", found_slot, None
+
+        # Authoritative override #2: the game's own Chest/Backpack random-roll talent pool (see
         # build_gear_talent_pools) is ground truth for slot membership, and beats the filename
         # guess in both directions -- it rescues real Chest/Backpack talents classify_talent had
         # no slot token for (kind "other") or actively misclassified via a stale/wrong slot token
@@ -264,8 +428,8 @@ def build_all_talents(raw_dir):
         # in the pool (only its base talent is -- Perfect is a fixed upgrade, not a separate random
         # roll), so its base id is checked too. Only applied to non-exotic kinds -- an exotic's
         # talent comes from its own item config (myPresetTalent), never this general roll pool.
+        pool_slots = []
         if not kind.startswith("exotic"):
-            base_id = instance_id[:-len("_perfect")] if instance_id.endswith("_perfect") else instance_id
             pool_slots = sorted(s for s, ids in gear_pools.items()
                                  if base_id.lower() in ids or instance_id.lower() in ids)
             if pool_slots:
@@ -273,18 +437,29 @@ def build_all_talents(raw_dir):
                     resolved_via_pool.append((instance_id, kind, slot, pool_slots))
                 kind, slot = "gear", " / ".join(pool_slots)
 
+        # Liveness check: a "gear"-kind talent absent from the live random-roll pool AND not any
+        # Named Item's own preset talent (the two structurally-confirmable ways a Chest/Backpack
+        # talent is actually obtainable right now) is legacy/cut data -- classify_talent's filename
+        # guess or its own real .mtalent file existing in the export doesn't mean it's still live;
+        # this codebase's own dev-testing-only talent lists (see CLAUDE.md) are proof the raw
+        # export contains real, well-formed, but genuinely unused talent files. Excluded rather
+        # than shown as if obtainable, matching the user's explicit "don't surface currently-unused
+        # content" rule. Exotic-gear talents are exempt here (checked via override #1 above
+        # instead, since they're never in this pool by design) as is anything not "gear" at all.
+        if kind == "gear" and not pool_slots and instance_id.lower() not in named_item_talent_ids \
+                and base_id.lower() not in named_item_talent_ids:
+            excluded_unused_gear.append((instance_id, name))
+            continue
+
         if kind == "invalid-nonexotic-slot":
             excluded_invalid_slot.append((instance_id, slot))
             continue
         if kind == "exotic-unresolved":
-            # Filename carried no slot/weapon-type token at all (e.g. Tinkerer mask's talent is
-            # just talent_exotic_abridged) -- try the item-side cross-reference before giving up.
-            found_slot = exotic_gear_talent_slots.get(instance_id.lower())
-            if found_slot:
-                kind, slot = "exotic-gear", found_slot
-                resolved_via_item_lookup.append((instance_id, found_slot))
-            else:
-                kind = "exotic-other"
+            # Filename carried the "exotic" prefix but no slot/weapon-type token (e.g. Tinkerer
+            # mask's talent is just talent_exotic_abridged) AND override #1 above found no owning
+            # item either -- genuinely can't place this one (almost always an exotic WEAPON talent,
+            # out of scope structurally, see EXOTIC_WEAPON_PREFIXES).
+            kind = "exotic-other"
         tier = "Perfect" if instance_id.endswith("_perfect") else "Standard"
 
         results.append({
@@ -299,6 +474,7 @@ def build_all_talents(raw_dir):
         kind_counts[kind] = kind_counts.get(kind, 0) + 1
 
     results.sort(key=lambda t: (t["kind"], t["slot"] or "", t["weaponType"] or "", t["name"]))
+    bonus_inference_report = apply_bonus_inferences(results, repo_root)
 
     report_lines = []
     report_lines.append("# All-Talents extraction report\n")
@@ -315,20 +491,37 @@ def build_all_talents(raw_dir):
                          "by the user; likely legacy/cut data): %d\n" % len(excluded_invalid_slot))
     for iid, slot in excluded_invalid_slot:
         report_lines.append("  - %s (%s)\n" % (iid, slot))
+    report_lines.append("Excluded (Chest/Backpack talent absent from the live random-roll pool AND "
+                         "not any Named Item's own preset talent -- legacy/cut, not currently "
+                         "obtainable): %d\n" % len(excluded_unused_gear))
+    for iid, nm in excluded_unused_gear:
+        report_lines.append("  - %s (%s)\n" % (iid, nm))
     report_lines.append("Parse failures: %d\n" % len(parse_failures))
     for f in parse_failures:
         report_lines.append("  - %s\n" % f)
-    report_lines.append("Resolved to a slot via item-side cross-reference (filename carried no "
-                         "slot/weapon-type token): %d\n" % len(resolved_via_item_lookup))
-    for iid, slot in resolved_via_item_lookup:
-        report_lines.append("  - %s -> %s\n" % (iid, slot))
+    report_lines.append("Reclassified to exotic-gear via item-side cross-reference (this talent "
+                         "id is some Exotic Item's own preset talent, regardless of what its "
+                         "filename suggested): %d\n" % len(resolved_via_item_lookup))
+    for iid, old_kind, old_slot, slot in resolved_via_item_lookup:
+        report_lines.append("  - %s: was (%s, %s) -> (exotic-gear, %s)\n" % (iid, old_kind, old_slot, slot))
     report_lines.append("Slot set/corrected via the authoritative Chest/Backpack talent pool "
                          "(filename token was missing, wrong, or incomplete): %d\n" % len(resolved_via_pool))
     for iid, old_kind, old_slot, pool_slots in resolved_via_pool:
         report_lines.append("  - %s: was (%s, %s) -> %s\n" % (iid, old_kind, old_slot, " / ".join(pool_slots)))
+    if confirmed_item_missing_file:
+        results_by_id = {t["id"].lower(): t for t in results}
+        report_lines.append("\nConfirmed real (a full, live ItemGenerationConfig exists -- "
+                             "attribute slots, Core, talent reference) but the owning item's own "
+                             ".mitem file is missing from this export, so no name/flavor text is "
+                             "available -- NOT legacy/cut, just an export gap like several other "
+                             "already-documented ones (see CLAUDE.md): %d\n" % len(confirmed_item_missing_file))
+        for tid in confirmed_item_missing_file:
+            t = results_by_id.get(tid)
+            report_lines.append("  - %s (%s, %s)\n" % (tid, t["name"] if t else "?", t["slot"] if t else "?"))
     report_lines.append("\nIncluded: %d\n" % len(results))
     for k in sorted(kind_counts):
         report_lines.append("  %s: %d\n" % (k, kind_counts[k]))
+    report_lines.append(bonus_inference_report)
 
     return results, "".join(report_lines)
 
@@ -340,7 +533,7 @@ def main():
     args = ap.parse_args()
 
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    results, report = build_all_talents(args.raw_dir)
+    results, report = build_all_talents(args.raw_dir, repo_root)
 
     data_dir = os.path.join(repo_root, "data")
     pretty_path = os.path.join(data_dir, "all_talents.json")

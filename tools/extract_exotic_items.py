@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from extract_named_items import (
     extract_braced, strip_inline_markup, strip_color_tags, parse_named_item_file,
     find_generation_config_block, parse_preset_attributes, parse_preset_talent,
-    parse_core_attributes, build_talent_index,
+    parse_core_attributes, build_talent_index, SLOT_MAP, _quality_blocks,
 )
 
 # Exotics known to be unreleased/non-functional in every export seen so far -- excluded by
@@ -79,6 +79,7 @@ def build_exotic_items(raw_dir, uid_dict):
 
         bonuses = []
         talent = None
+        talent_id = None
         talent_status = None
         cores = []
 
@@ -121,6 +122,7 @@ def build_exotic_items(raw_dir, uid_dict):
 
             preset_talent = parse_preset_talent(config_body, quality="Exotic")
             if preset_talent:
+                talent_id = preset_talent["ref_file"]
                 t = talent_index.get(preset_talent["ref_file"])
                 if t:
                     desc = strip_inline_markup(naive_substitute(t["tooltip"], t["values"]))
@@ -147,10 +149,120 @@ def build_exotic_items(raw_dir, uid_dict):
             "bonuses": bonuses,
             "cores": cores,
             "talent": talent,
+            # The .mtalent instance id behind `talent` (present even when talent_status is
+            # "MISSING" -- it's the id that WAS referenced, just not resolvable from this export).
+            # Lets index.html cross-reference this item's own talent against ALL_TALENTS'
+            # `potentialBonuses` (see tools/talent_bonus_inferences.json) to show the item's
+            # conditional bonuses on its Attribute Finder card, not just its Talent Browser card.
+            "talentId": talent_id,
             "source": "datamined",
         }
         if talent_status == "MISSING":
             out["talentStatus"] = "needs_manual_research"
+        output.append(out)
+
+    return output, unresolved_uids, review_notes
+
+
+_PRESET_TALENT_RE = re.compile(r'myPresetTalent\s*<[^>]*>\s*=\s*(\S+)\s+[0-9A-Fa-f]{10,}')
+
+
+def load_exotic_manual_additions(repo_dir):
+    path = os.path.join(repo_dir, "tools", "exotic_items_manual_additions.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def build_manual_config_items(raw_dir, uid_dict, repo_dir, talent_index, naive_substitute):
+    """Reconstructs a full Exotic Item entry directly from its ItemGenerationConfig, for the rare
+    case where the item's own .mitem file (name, flavor text, DZ flag) is missing from every
+    export used so far but its config is fully present. See
+    tools/exotic_items_manual_additions.json for the confirmed name/DZ flag this can never
+    datamine on its own (a user in-game check, since there's no export data to read it from), and
+    CLAUDE.md's "Potential Bonuses" section for how this was discovered -- Acosta's Go Bag, found
+    because the user asked why its "orphaned" talent, "... Two in the Bag", showed up with no item
+    card at all. Everything else -- bonuses, cores, and (unlike build_exotic_items's single-talent
+    assumption, since this item genuinely has two active talents at once, confirmed by the user)
+    EVERY preset talent in the config -- comes straight from the config, same as the main
+    pipeline; nothing here is guessed."""
+    configs_dir = os.path.join(raw_dir, "game system data", "juice", "itemgeneration", "configs")
+    manual = load_exotic_manual_additions(repo_dir)
+    output = []
+    review_notes = []
+    unresolved_uids = set()
+
+    for instance_id, info in manual.items():
+        config_body = find_generation_config_block(configs_dir, instance_id)
+        if config_body is None:
+            review_notes.append(("MANUAL_ADDITION_FAILED", info["name"],
+                                  "no ItemGenerationConfig found for '%s' -- manual addition entry "
+                                  "is stale, remove it or re-check" % instance_id))
+            continue
+
+        slot = next((SLOT_MAP[t] for t in instance_id.lower().split("_") if t in SLOT_MAP), None)
+        if not slot:
+            review_notes.append(("MANUAL_ADDITION_FAILED", info["name"],
+                                  "could not derive a slot from instance_id '%s'" % instance_id))
+            continue
+
+        cores = parse_core_attributes(config_body, uid_dict, quality="Exotic")
+
+        bonuses = []
+        for bslot in parse_preset_attributes(config_body, quality="Exotic"):
+            if bslot["is_core"]:
+                continue
+            if re.match(r'^0+$', bslot["uid"]):
+                continue
+            stat = uid_dict.get(bslot["uid"])
+            if stat:
+                bonuses.append(stat)
+            else:
+                unresolved_uids.add(bslot["uid"])
+                bonuses.append("Unknown Attribute (%s)" % bslot["uid"])
+
+        # Unlike parse_preset_talent (which only ever returns the FIRST myPresetTalent match --
+        # correct for every other exotic, which has exactly one), this collects every one, since
+        # this item's config genuinely assigns two talent slots at once.
+        talents = []
+        for qbody in _quality_blocks(config_body, "QualityTalentSlots", "Exotic"):
+            for m in _PRESET_TALENT_RE.finditer(qbody):
+                ref_file = m.group(1)
+                t = talent_index.get(ref_file)
+                if not t:
+                    review_notes.append(("MANUAL_ADDITION_MISSING_TALENT", info["name"],
+                                          "talent file '%s.mtalent' referenced but not present in "
+                                          "this export" % ref_file))
+                    continue
+                desc = strip_inline_markup(naive_substitute(t["tooltip"], t["values"]))
+                talents.append({
+                    "name": strip_color_tags(t["ui_name"]) or "(unnamed)",
+                    "desc": desc,
+                    "talentId": ref_file,
+                })
+
+        if not talents:
+            review_notes.append(("MANUAL_ADDITION_FAILED", info["name"], "no talent resolved at all"))
+            continue
+
+        out = {
+            "instance_id": instance_id,
+            "name": info["name"],
+            "slot": slot,
+            "isDarkZoneExclusive": info.get("isDarkZoneExclusive", False),
+            "flavorText": None,
+            "bonuses": bonuses,
+            "cores": cores,
+            "talent": {"name": talents[0]["name"], "desc": talents[0]["desc"]},
+            "talentId": talents[0]["talentId"],
+            # Present only for the rare item with more than one simultaneously-active preset
+            # talent (see the docstring above) -- every other item's entry simply omits this, and
+            # index.html treats an absent/empty extraTalents exactly like the old schema.
+            "extraTalents": [{"name": t["name"], "desc": t["desc"], "talentId": t["talentId"]}
+                              for t in talents[1:]],
+            "source": "datamined+manual_item_reconstruction",
+        }
         output.append(out)
 
     return output, unresolved_uids, review_notes
@@ -171,6 +283,14 @@ def main():
     uid_dict = json.load(open(uid_dict_path, encoding='utf-8'))
 
     items, unresolved, review_notes = build_exotic_items(args.raw_dir, uid_dict)
+
+    talent_index, naive_substitute = build_talent_index(args.raw_dir)
+    manual_items, manual_unresolved, manual_notes = build_manual_config_items(
+        args.raw_dir, uid_dict, repo_dir, talent_index, naive_substitute)
+    items.extend(manual_items)
+    unresolved |= manual_unresolved
+    review_notes.extend(manual_notes)
+
     items.sort(key=lambda e: (e["slot"], e["name"]))
 
     json.dump(items, open(out_path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)

@@ -50,6 +50,14 @@ or from files the user has explicitly exported/copied elsewhere (e.g. `E:\Temp\H
   Items" section below for what's different from Named Items, and "Updating Exotic Items" in
   `README.md` for run instructions.
 - `tools/exotic_items_report.md` — gitignored, regenerated each run, not meant to be committed.
+- `tools/exotic_items_manual_additions.json` — persisted, hand-confirmed data for the rare Exotic
+  Item whose own `.mitem` file is missing from every export used so far but whose
+  `ItemGenerationConfig` is fully present (see "Liveness filtering" under "Potential Bonuses"
+  below for how the first entry, Acosta's Go Bag, was found and confirmed). Applied by
+  `build_manual_config_items()` in `extract_exotic_items.py`, which reconstructs a full entry
+  straight from the config (bonuses, cores, every preset talent) and only takes the item's name
+  and DZ-exclusivity flag from this file, since those two are the only fields the config itself
+  can never supply.
 - `data/all_talents.json` / `data/all_talents_min.json` — the full weapon/gear Talent catalog
   behind the page's "Talent Browser" tab, embedded as `const ALL_TALENTS = [...]`.
 - `tools/extract_all_talents.py` — walks every `.mtalent` file in a raw export (not just the ones
@@ -425,9 +433,16 @@ parsing machinery directly (imported, not copied) — the schema turned out to b
   `gearbrand_set_c.mgearbrand`, which is NOT actually Catharsis's brand. Exotics simply don't have
   a civilian brand; don't wire the returned `brand_code` into anything for this category.
 - **Config lookup**: same `find_generation_config_block` token-multiset matching as Named Items,
-  unchanged — exotics' real configs live in the same `itemgeneration/configs/` directory (a
-  dedicated `configs_exotics_code1_data*.mitemgenerationconfigs` family also exists but turned out
-  to be unnecessary; the regular per-slot config files already have what's needed).
+  unchanged — exotics' real configs live in the same `itemgeneration/configs/` directory, whose
+  index (`_index_generation_configs`) globs the whole directory flatly, so the dedicated
+  `configs_exotics_code1_data*.mitemgenerationconfigs` family was always included in the search
+  automatically, never a separate lookup step. It just never turned out to matter for any of the
+  28 items this pipeline resolves via their own `.mitem` file, since those 28 items' configs are
+  all duplicated in the regular per-slot files too — **but it does matter** for at least 2 real
+  exotic items (a Backpack, a pair of Kneepads) whose own `.mitem` file is missing from this
+  export entirely; their configs exist *only* in this family. See "Potential Bonuses" below
+  (the "later, same-session correction" bullet under "Liveness filtering") for how that was found
+  and what it means for `extract_all_talents.py`'s own exotic-talent classification.
 - **Talent**: exactly one `ItemTalentSlot` under `QualityTalentSlots Exotic` (not `Orange`) —
   `parse_preset_talent`/`_quality_blocks` both take a `quality` parameter for this (defaults to
   `"Orange"` for Named Items' existing callers, pass `"Exotic"` explicitly for this pipeline).
@@ -636,11 +651,253 @@ three pipelines, all of which start from a known reference and resolve outward.
   since a value's *type* (percent/seconds/flat count) genuinely can't be inferred from the raw
   number alone. Flagged in the page's own "About the Talent Browser" note rather than silently
   shipped as if verified.
-- **Deliberately not attempted**: inferring which of these talents' conditional/situational
-  effects could be surfaced as a "potential" bonus type in the main Attribute Finder tab (e.g. a
-  talent whose tooltip grants Amplified Damage under some condition). That's explicitly a second,
-  separate piece of work the user asked for — see whatever session picks it up next for its own
-  notes; nothing in this section's pipeline does that classification.
+- **Deliberately not attempted by this pipeline**: inferring which of these talents'
+  conditional/situational effects could be surfaced as a "potential" bonus type. That work exists
+  now — see "Potential Bonuses — inferred conditional attributes" below — but lives in its own
+  persisted dictionary and consumption step, not in `extract_all_talents.py`'s own classification
+  logic.
+
+## Potential Bonuses — inferred conditional attributes (Talent Browser, Part 2)
+
+A talent's tooltip text often grants a real bonus attribute (Weapon Damage, Skill Damage, Bonus
+Armor, ...) *conditionally* — e.g. Composure: "increases total weapon damage by 15% while in
+cover." This was always the second half of the original "add a Talent Browser" request (see the
+session note at the end of this file) — deliberately split off and started only once Part 1 (the
+Talent Browser tab itself, fully covered above) had shipped and been trusted through three rounds
+of user-caught classification bugs.
+
+- **No script can reliably do this interpretation.** Free-form flavor text ("while all skills are
+  on cooldown", "per stack up to 5, 15s") isn't structured data — deciding *which* named attribute
+  a given sentence maps to, and phrasing its trigger condition, is a judgment call. So it's done
+  **once**, by hand (an AI read every gear-slotted talent's description and classified it), and
+  the result is persisted in `tools/talent_bonus_inferences.json` — the same
+  "persist the one-time expensive judgment call, let the script only ever check for drift" pattern
+  already established by `tools/attribute_uid_dictionary.json` (attribute UID → name) and
+  `tools/named_items_manual_overrides.json` (named-item corrections). The user's own framing for
+  this session: interpret the text once, store it in a dictionary, and have the Python script only
+  ever *point out* new/changed talents for a future interpretation pass — never try to re-derive
+  the interpretation itself.
+- **Schema**: `{talent_id: {"fingerprint": md5(description), "bonuses": [{"attribute",
+  "condition"}, ...]}}`. `bonuses: []` is a real, meaningful answer — "this talent was reviewed
+  and genuinely grants nothing mappable to a named attribute" (e.g. a pure unlock like "Second
+  Primary Weapon", or a proc that doesn't cleanly correspond to any tracked stat, like a stun
+  immunity or a mark/debuff mechanic) — distinct from "not yet reviewed" (id simply absent from
+  the dictionary). `condition` is a short human-readable trigger description, not a parseable
+  format.
+- **Scope: `kind` in `{gear, exotic-gear}` only (138 talents)**, not all 357. This mirrors the
+  Attribute Finder's own scope: it only ever answers "which gear should I equip for bonus X", and
+  this tool tracks no weapons at all, so a weapon-side talent's potential bonus has no "equip
+  this" answer to attach it to. Deliberately excludes `weapon`/`exotic-weapon`/`exotic-other`/
+  `other` (219 talents) — those stay Talent-Browser-only, exactly as before this feature existed.
+- **Attribute vocabulary**: reuses the exact names in `tools/attribute_uid_dictionary.json`
+  (Weapon Damage, Skill Damage, Skill Repair, Critical Hit Chance, Headshot Damage, ...) wherever
+  a talent's wording matches a real guaranteed-bonus stat, but is **not limited to that
+  vocabulary** — talents also introduced their own new-but-consistent names not used anywhere
+  else in this dataset, because they describe mechanics no Brand/Gear Set/Named/Exotic Item ever
+  grants as a guaranteed roll: `Amplified Damage` (the game's own distinct "target takes X% more
+  damage" mechanic — kept separate from `Weapon Damage`/`Skill Damage` whenever a tooltip's own
+  wording says "amplifies"/"amplified", since Division 2 treats it as a different calculation
+  layer), `Bonus Armor` (temporary overshield procs — kept separate from `Armor Regeneration`,
+  which is reserved for talents that literally *repair/heal* a % of armor, since these are
+  different in-game mechanics that just sound similar), `Damage Resistance`, `Movement Speed`,
+  `Grenade Damage`/`Grenade Radius`/`Grenade Capacity`, `Armor Kit Capacity`, `Revive Speed`.
+  Deliberately reused the same name across every talent describing the same effect (rather than
+  inventing near-duplicate names per-talent) so a future Attribute-Finder cross-reference could
+  still meaningfully group them.
+- **Unconditional talent-granted bonuses are still recorded**, with `condition: "Always active"`
+  — a handful of talents (mostly exotics, e.g. "...Two in the Bag": +100% Armor Kit Capacity,
+  +300% Grenade Capacity, +25% Ammo Capacity, +10% Skill Repair, +10% Status Effects, all with no
+  trigger condition at all) grant a flat, guaranteed stat purely through their talent text, the
+  same way a Named Item's Fixed attribute slot does — worth surfacing even though there's no
+  "condition" in the everyday sense.
+- **Drift detection**: `extract_all_talents.py`'s `apply_bonus_inferences()` hashes each in-scope
+  talent's *current* description (md5) and compares against the fingerprint stored at
+  interpretation time. A mismatch (a rebalance patch changed the numbers/wording) or a missing id
+  (a new talent) means the persisted `bonuses` are stale or absent — the talent gets flagged in
+  `tools/all_talents_report.md`'s "Potential-bonus inference coverage" section and **no**
+  `potentialBonuses` field is attached to its `data/all_talents.json` entry until it's
+  re-interpreted by hand. The dictionary is never auto-edited by the script — only ever read and
+  diffed against.
+- **UI**: each Talent Browser card with a non-empty `potentialBonuses` array gets a
+  "Potential Bonuses (Conditional)" block (distinct dashed divider, `--accent2` cyan-blue color —
+  deliberately different from the orange `--accent` used elsewhere for a confirmed/guaranteed
+  bonus match, so a user can't mistake a conditional talent effect for a guaranteed one at a
+  glance). Talents with `bonuses: []` (reviewed, nothing mappable) simply show no such block, same
+  as a talent that was never in scope.
+- **Wired into the main Attribute Finder tab** (Part 2b, same session as Part 2a above, once the
+  user confirmed how each half should be represented):
+  - **Exotic Items**: `extract_exotic_items.py` now also emits `talentId` per item (the
+    `.mtalent` instance id behind its own unique talent — previously computed internally as
+    `preset_talent["ref_file"]` but never persisted to the output JSON). `index.html` builds
+    `TALENT_BY_ID` (an id → `ALL_TALENTS` entry map) and uses it to attach the item's own talent's
+    `potentialBonuses` as a `potentialTiers` array on that Exotic Item's existing
+    `EXOTIC_ITEM_ENTRIES` object — rendered as a "Potential bonuses (conditional)" block directly
+    on the item's card (`renderResults()`'s `b.kind === "Exotic Item"` branch), right where its
+    Fixed attributes and talent description already show. Exactly the user's own framing: "just
+    include it into the item card."
+  - **Generic (not-item-specific) talents**: the `gear`-kind Chest/Backpack talents (rollable on
+    any brand) plus the `exotic-gear` talents that turned out to have *no* matching Exotic Item in
+    this dataset at all (discovered while wiring this up, not previously known —
+    `extract_exotic_items.py` only ever produced 28 items; verified by checking every real Exotic
+    Item's own `talentId` and confirming none of these ids appear) get their own standalone result
+    card in the Attribute Finder's results list, styled identically to a Talent Browser card
+    (`GENERIC_TALENT_ENTRIES`, rendered by the `b.kind === "Talent"` branch) — exactly the user's
+    own framing for these: "surface the talent card... as an individual result." A `talentKind`
+    field (`"gear"` vs `"exotic-gear"`) picks the badge color/label so the orphaned exotics still
+    read as exotic content, not confused with the generic pool. **Important**: not having a
+    matching Exotic Item in this dataset does NOT mean legacy/cut — see "liveness filtering" below
+    (a same-session follow-up) for the full, corrected breakdown of exactly which of these are
+    confirmed real vs. genuinely unconfirmed, after an initial pass here wrongly generalized from
+    a couple of real examples to the whole set.
+  - **Chip vocabulary**: `ALL_STATS` (the full bonus-type chip list) now folds in `potentialTiers`
+    stats alongside `tiers` stats — otherwise a stat that ONLY ever comes from a conditional talent
+    effect (`Amplified Damage`, `Bonus Armor`, `Armor Kit Capacity`, ...) could never be selected
+    as a chip at all, and the whole point of this wiring (letting a user search "Amplified Damage"
+    and find what can grant it) would silently fail. Matching (`statsHere` in `renderResults()`)
+    was broadened the same way, so ANY/ALL mode both correctly treat a conditional match as a hit.
+  - Verified live in-browser (not just statically): selecting "Armor Kit Capacity" surfaces
+    "... Two in the Bag" as a standalone Exotic Gear Talent card (its only source, since it has no
+    matching item); selecting "Amplified Damage" surfaces both item cards (Overdogs, via its
+    Weakest Link talent) and standalone talent cards (Ostracize, Headhunter, Glass Cannon, Spotter,
+    ...) side by side, each with the matching row highlighted. No console errors, no regressions
+    to the pre-existing Attribute Finder or Talent Browser behavior.
+- **Liveness filtering** (same session, immediately after the wiring above — the user's own
+  explicit general rule: "don't surface any items or talents that are currently not actively used
+  in the game," recognized the same way everything else in this codebase is, from structural
+  references in the game's own files, never guessed from a name or a hunch):
+  - **`talent_back_hoarder_grenade_enhancements` ("Hoarder") turned out to be Collector's own
+    unique talent, misclassified as generic `gear`** — a real, previously-unknown bug, not a
+    liveness question. Its filename carries no "exotic" token at all, so `classify_talent`'s
+    prefix-alias step (which only even attempts an exotic-item cross-reference once it's already
+    decided the id *looks* exotic) never had a chance to catch it; it fell straight into the
+    generic Chest/Backpack bucket, implying random-roll availability on any brand, when it's
+    really Collector's own, item-specific ability. Fixed in `extract_all_talents.py`'s
+    `build_all_talents()` by running the `build_exotic_gear_talent_slots()` item-side
+    cross-reference **universally, first, for every kind** — not just ones `classify_talent`
+    already suspected were exotic — so an item-preset match always wins regardless of what the
+    talent's own filename suggested. Recovered 6 reclassifications total (5 were the
+    already-known `exotic-unresolved` → `exotic-gear` cases, now just resolved one step earlier;
+    Hoarder was the one genuinely new one). This is exactly why the exotic-gear talent *total*
+    went from 39 to 40 between the two bullets above and this one — Hoarder moved in, not a new
+    file appearing.
+  - **A later, same-session correction — the "11 orphaned exotic-gear talents" characterization
+    above was too broad.** The user searched "Grenade Capacity" in the Attribute Finder, got
+    "... Two in the Bag" as a hit (correct — it's a real talent with real potential bonuses) but
+    noticed no matching item card, and asked whether this was the same kind of "not associated
+    with an item" case. Investigating properly (not just repeating the earlier assumption) found
+    real content, not legacy data: `player_gear_back_exotic_01_config` exists as a complete,
+    live-looking `ItemGenerationConfig` — two guaranteed bonus slots (Skill Haste, Skill Damage), a
+    Core (Skill Power/Yellow), and **two** `myPresetTalent` entries (mk1a AND mk1b, both at once —
+    explaining their "One in Hand..." / "...Two in the Bag" wordplay pairing, a reference to "a
+    bird in hand is worth two in the bush"). Its owning item's actual `.mitem` file (which would
+    give its real name/flavor text) simply isn't present anywhere in this export — only
+    `blueprint_craft_player_gear_back_exotic_01.mitem` (the crafting recipe) survived. Same
+    situation confirmed for `talent_exotic_kneepads_mk1_a` ("Grace Under Fire") via
+    `player_gear_kneepads_exotic_01_config`. This is a genuine export-completeness gap — the same
+    kind already well-precedented in this codebase (Ongoing Directive's backpack talent, several
+    named items' once-missing `.mtalent` files) — **not** legacy/cut design content, despite the
+    `_mk1a`/`_mk1b`-style naming looking superficially similar to genuinely-dead variants.
+    - Root cause this exposed: `build_exotic_gear_talent_slots` (the existing item→talent reverse
+      lookup) can only ever walk real `.mitem` files, so it has no way to learn about a config
+      whose owning item file doesn't exist. Fixed by adding
+      `build_exotic_gear_talent_slots_from_configs()` — an independent second source for the same
+      `{talent_id: slot}` map, this one walking every `ItemGenerationConfig` declaration directly
+      (already indexed flatly across the whole `itemgeneration/configs/` directory by the existing
+      `_index_generation_configs` helper, including the `configs_exotics_code1_data*` family — an
+      earlier note in this file calling that family "unnecessary" was based on it never adding
+      anything *beyond* what the 28 already-found items' regular per-slot configs already had, not
+      on it being excluded from the search; it never was) and deriving the slot from the config's
+      own declared name via the same `SLOT_MAP` token match `parse_named_item_file` uses on an
+      item's filename, instead of requiring the item file at all. Also, unlike `parse_preset_talent`
+      (which only ever returns the first `myPresetTalent` match), this new function collects EVERY
+      one per config, since a single config can genuinely assign more than one (confirmed by the
+      two-talent Backpack above). Merged as a fallback under the existing item-based map (which
+      wins on the rare id both would resolve). In this export it changes zero `kind`/`slot` values
+      — mk1a/mk1b/kneepads_mk1_a's own filenames already carried a correct slot token, so
+      `classify_talent` had already gotten their slot right by itself — but it does let
+      `tools/all_talents_report.md` correctly flag exactly which orphaned exotic-gear talents are
+      *confirmed real* (own config found) versus genuinely unconfirmed, under a new "Confirmed
+      real... but the owning item's own .mitem file is missing" report section.
+    - Net correction to the 12 exotic-gear talents with no matching `EXOTIC_ITEMS` entry: **3 are
+      confirmed real** (`...Two in the Bag`, `One in Hand...`, `Grace Under Fire` — export gap,
+      not legacy), **2 belong to items already known and deliberately excluded for documented
+      reasons unrelated to liveness** (`talent_exotic_ostracize` → the "TBD" kneepads placeholder
+      item, `talent_exotic_mask_invested` → Investor, both per the Exotic Items section above —
+      confirmed by checking their own talent text against what's already documented for those two
+      items), and **7 remain genuinely unconfirmed** (gloves `mk1_b`/`mk1_c`, holster `mk1_b`/
+      `mk1_c`, kneepads `mk1_b`/`mk1_c`, `virginia_talent_exotic_mask_byzantine_inferno_wrath`) —
+      these only ever appear as a same-file `include` line across every `configs_exotics_*` shard,
+      never as an actual `myPresetTalent` assignment anywhere, the one structural signal that
+      distinguishes a real-but-unnamed item (like the 3 above) from a talent that was truly never
+      wired to anything. Only these 7 are accurately called "legacy/likely unused" — a narrower,
+      now-verified claim than the original blanket "11 are early/duplicate design variants."
+  - **Resolved, same session, immediately after**: the user checked in-game and confirmed the
+    Backpack's real name — **Acosta's Go Bag** — closing the gap the bullet above could only
+    describe, not fix. Also confirmed directly by the user: its two talents ("One in Hand...",
+    "...Two in the Bag") really are both simultaneously active, not one live/one-unused draft —
+    the config's own two `myPresetTalent` entries were telling the truth. Added
+    `tools/exotic_items_manual_additions.json` (instance_id → confirmed `name`/
+    `isDarkZoneExclusive`/`note`, same "persist the one fact datamining can never supply, verify
+    everything else structurally" pattern as `named_items_manual_overrides.json`) and
+    `build_manual_config_items()` in `extract_exotic_items.py`, which reconstructs a full
+    `EXOTIC_ITEMS` entry straight from the item's own `ItemGenerationConfig` for any instance_id
+    listed there — bonuses via the same `parse_preset_attributes` path every other exotic uses,
+    cores via `parse_core_attributes`, and **every** `myPresetTalent` in the config (not just the
+    first, unlike `parse_preset_talent` — this item is the reason a multi-match variant was
+    needed at all). Schema addition: an `extraTalents` array (empty for all 28 pre-existing items)
+    holds any talent beyond the first `talent`/`talentId` pair; `index.html`'s
+    `EXOTIC_ITEM_ENTRIES` folds every extra talent's `potentialBonuses` into the same
+    `potentialTiers` union as the primary one, and `EXOTIC_TALENT_IDS_WITH_ITEM` (which decides
+    whether an exotic-gear talent gets its own standalone `GENERIC_TALENT_ENTRIES` card or attaches
+    to an item) now checks `extraTalents` too — Acosta's Go Bag correctly absorbed both talents out
+    of the standalone-card pool once this landed. The Exotic Item card's own renderer gained a
+    loop over `extraTalents` for the summary row *and* the full description block, right alongside
+    the existing single-talent code path, which is untouched for every other item. Total Exotic
+    Items: 28 → 29. `talent_exotic_kneepads_mk1_a` ("Grace Under Fire") remains in the same state
+    the bullet above left it — confirmed real, config-resolvable, just not yet name-confirmed by
+    the user — and would take exactly the same one-entry addition to this same file if/when it is.
+  - **The remaining pool-absent `gear`-kind talents needed a second, independent liveness check**:
+    a Chest/Backpack talent absent from the random-roll pool isn't necessarily dead — it might be
+    one specific Named Item's own directly-assigned talent instead (confirmed real precedent:
+    Festive Delivery's Fireworks Show, `talent_gear_back_firecrackers`, never in the pool by
+    design). So `extract_named_items.py` got the same `talentId` treatment `extract_exotic_items.py`
+    already got (the `.mtalent` id behind a Named Item's own preset talent, previously computed
+    internally via `parse_preset_talent` but never persisted to `named_items.json`). With both
+    cross-references available, `build_all_talents()` now excludes any `gear`-kind talent that
+    matches **neither** the live pool **nor** a Named Item's own `talentId` — genuinely
+    legacy/cut data, not shown as if obtainable. Confirmed exactly 5 of the 7 originally
+    pool-absent talents fail both checks and are excluded: **Aegis, Lazarus, Patched, Second
+    Primary Weapon, Selfless** (two of the seven, Fireworks Show and Hoarder, are accounted for by
+    the two liveness signals respectively). Aegis and Second Primary Weapon's dead status has
+    independent corroboration already in this file: both names appear, verbatim, in the
+    `dev_testing_backpack_talents`/`dev_testing_chest_talents` containers documented above as
+    "confirmed never referenced by any real Chest/Backpack config" — i.e. this exclusion agrees
+    with a fact already established by a completely different piece of archaeology, not a new
+    guess. `data/all_talents.json`'s talent count dropped from 357 to 352 as a result (`gear`:
+    99 → 93; `exotic-gear`: 39 → 40). `tools/talent_bonus_inferences.json` keeps its now-orphaned
+    entries for these 5 rather than deleting them (same "never delete good data, overrides just go
+    inert" policy as `named_items_manual_overrides.json`) — if a future export or patch makes any
+    of them live again, the interpretation is already sitting there ready to apply.
+  - **Weapon-side liveness (kind `weapon`/`exotic-weapon`/`exotic-other`/`other`, ~259 talents) is
+    explicitly NOT attempted here** — the user asked to scope this session to the gear side only.
+    A quick investigation (grepping `itemgeneration/configs/configs_code1_data*.mitemgenerationconfigs`
+    for weapon `ItemGenerationConfig`s) confirmed weapon items DO have their own per-model talent
+    slot data, structurally similar in spirit to the Chest/Backpack pool mechanism — but the shape
+    is meaningfully different (a base weapon config like Carbine 7's assigns one `myPresetTalent`
+    directly at Orange quality rather than referencing a random pool, with Blue/Purple quality
+    referencing a shared, not-yet-traced `generic_*_weapon_talent_slots_definition` template) and
+    would need the same kind of careful, multi-round verification the Chest/Backpack pool itself
+    took (including two rounds of user-caught mistakes) before trusting it enough to exclude real
+    content. Left as a distinct, dedicated follow-up rather than rushed.
+  - **`kind: "other"` (the no-slot-token catch-all, 45 talents) renamed "Legacy / Removed"**
+    (was "Universal / Other") in `index.html` — both the Talent Browser's kind-toggle button and
+    its category chip, plus the `KIND_BADGE_LABEL`/`CATEGORY_ORDER` entries and card badge text.
+    Purely a label change on the user's own explicit say-so ("that'll do for now"), based on their
+    observation that this whole bucket looks like cut content — **not** independently structurally
+    verified the way Chest/Backpack liveness now is (that would need the weapon-side pool work
+    above, since these are unrestricted weapon-or-gear talents by definition). The page's own
+    "About the Talent Browser" note says so explicitly, so a future session (or a sharp-eyed user)
+    doesn't mistake the rename for a verified claim.
 
 ## Data provenance / licensing
 
@@ -968,3 +1225,81 @@ Backpack feature random Cores"). Handled with one general rule — union of ever
 across a set's 6 pieces — rather than special-casing the 3 exceptions, which reduces to the single
 common case automatically for the other 24. All 27 Gear Sets now show a Core; Brand entries
 deliberately don't (a civilian brand isn't one fixed item, so there's no single Core to show).
+
+## 2026-08-22 session: Talent Browser Part 2 — potential/conditional bonus attributes
+
+Picked up the explicitly-deferred "Part 2" from the Talent Browser work (see "All Talents" above):
+inferring which talents conditionally grant a real bonus attribute, and surfacing that in the main
+Attribute Finder tab. Landed in five steps within the same session, each confirmed with the user
+before moving to the next:
+
+1. **The interpretation dictionary + drift-detection plumbing** (`tools/talent_bonus_inferences.json`,
+   `extract_all_talents.py`'s `apply_bonus_inferences()`) — the user's own explicit design ask: do
+   the (AI) interpretation once, persist it, and have the script only ever flag new/changed talents
+   for a future pass rather than trying to re-derive the interpretation itself. Scoped to the 138
+   gear-slotted talents (`gear` + `exotic-gear` kinds) since only those can attach to something
+   equippable in this dataset. Full detail in "Potential Bonuses — inferred conditional attributes"
+   above, including the attribute-vocabulary decisions (`Amplified Damage` vs `Weapon Damage`,
+   `Bonus Armor` vs `Armor Regeneration`, etc.) and why unconditional talent-granted bonuses
+   (`condition: "Always active"`) are still recorded rather than treated as out of scope.
+2. **Wiring it into the Attribute Finder** — the user answered the fork left open at the end of
+   step 1 directly: exotic-gear talents should attach to their item's existing card, generic
+   (non-item-specific) talents should get their own standalone result card, same look as a Talent
+   Browser card. Implementing the first half surfaced a real, previously-unknown data fact: 11 of
+   the 39 `exotic-gear` talents in this dataset don't belong to any of the 28 extracted Exotic
+   Items at all — handled by falling those 11 back to the same standalone-card treatment as the
+   generic pool, rather than silently dropping their bonuses (and the chips for stats like
+   `Armor Kit Capacity` that *only* ever come from one of them) from the Attribute Finder entirely.
+   (At this point in the session they were assumed to be early/duplicate design variants; step 4
+   below found that assumption was wrong for several of them.) Full detail in "Potential Bonuses"
+   above.
+
+Both steps were verified live in a real browser (extension was connected this session, unlike
+earlier ones that had to fall back to static checks) — served the repo over a throwaway
+`python -m http.server` since `file://` navigation is blocked by the extension's own sandboxing,
+not because of anything in this codebase.
+
+3. **A third, same-session follow-up**: the user noticed the 11 orphaned exotic-gear talents from
+   step 2 and the Talent Browser's 45 "Universal / Other" talents both looked like cut content, and
+   stated a general rule — don't surface anything not currently live in the game — asking whether
+   this is recognizable from the game's own file references. It is, for gear: real archaeology
+   (not a guess) found a genuine bug (Collector's own talent, "Hoarder", was misclassified as
+   generic `gear` instead of `exotic-gear` because its filename carries no exotic-style token) and
+   a real 5-talent exclusion (Aegis, Lazarus, Patched, Second Primary Weapon, Selfless — confirmed
+   dead by checking them against both the random-roll pool and every Named Item's own preset
+   talent, the two structural ways a Chest/Backpack talent is actually obtainable). For weapons, a
+   quick investigation found the necessary data (`ItemGenerationConfig`s per weapon model) exists
+   but has a meaningfully different, unproven shape — the user chose to scope this session to gear
+   only and defer weapons as a dedicated follow-up, and to just rename the "Universal / Other"
+   bucket to "Legacy / Removed" for now as an honest-but-unverified interim label rather than wait
+   on the full weapon-side investigation. Full technical detail in "Potential Bonuses" above, under
+   "Liveness filtering".
+4. **A fourth, same-session correction**: the user then searched "Grenade Capacity" themselves,
+   found "... Two in the Bag" (one of the 11 talents from step 2) as a hit with no matching item
+   card, and asked the sharp follow-up — is this actually the same kind of unassociated-talent case
+   as step 3's exclusions? It wasn't. Proper investigation (not repeating the step-2 assumption)
+   found a real, fully-designed exotic Backpack config (two bonus slots, a Core, and genuinely
+   *two* preset talents at once) whose own `.mitem` file is simply missing from this export — a
+   real export gap, same class as several already-documented ones, not legacy/cut data. Confirmed
+   the same for one more (`talent_exotic_kneepads_mk1_a`, "Grace Under Fire"), and confirmed two
+   others from step 2 (Ostracize, Slotted) actually belong to items already known and deliberately
+   excluded for unrelated, already-documented reasons (the "TBD" kneepad, Investor) rather than
+   being unconfirmed. Net: only 7 of the original 11 are still accurately called
+   likely-legacy/unconfirmed. Added `build_exotic_gear_talent_slots_from_configs()` so a talent's
+   real config can be found even when its owning item's `.mitem` file can't be — this didn't change
+   any `kind`/`slot` value in this particular export (the 3 confirmed-real talents already had a
+   correct slot from their own filename), but it does make `tools/all_talents_report.md` correctly
+   distinguish "confirmed real, item file missing" from "genuinely unconfirmed" going forward, and
+   it's the right structural check to have regardless of what this one export happens to contain.
+   Full technical detail in "Potential Bonuses" above, under "Liveness filtering" — the "later,
+   same-session correction" bullet.
+5. **A fifth, same-session follow-up**: the user checked in-game and came back with the confirmed
+   name — Acosta's Go Bag — plus confirmation that both talents really are simultaneously active.
+   Built the mechanism to actually use that: `tools/exotic_items_manual_additions.json` +
+   `build_manual_config_items()`, reconstructing the full item straight from its
+   `ItemGenerationConfig` (bonuses, cores, both talents) with only the name/DZ-flag taken on the
+   user's word, plus a small `extraTalents` schema addition (`index.html`'s Exotic Item card,
+   `potentialTiers` union, and the "does this exotic-gear talent already belong to an item" check
+   all updated to fold it in). Exotic Items: 28 → 29. Full detail in "Potential Bonuses" above,
+   under "Liveness filtering" — the "Resolved, same session, immediately after" bullet.
+

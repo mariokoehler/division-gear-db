@@ -197,12 +197,25 @@ Same self-embedding behavior as `extract_named_items.py` — regenerates
 `const EXOTIC_ITEMS = [...]` line, and writes `tools/exotic_items_report.md`. Review the diff
 before committing.
 
+The same run also applies `tools/exotic_items_manual_additions.json` — confirmed
+name/DZ-exclusivity for the rare Exotic Item whose own `.mitem` file is missing from every export
+used so far but whose `ItemGenerationConfig` is fully present (bonuses, cores, and every talent
+reconstructed straight from that config; see "Liveness filtering" in `CLAUDE.md`'s "Potential
+Bonuses" section for how the first entry, Acosta's Go Bag, was found and confirmed). Add an entry
+there — instance_id → `{"name", "isDarkZoneExclusive", "note"}` — whenever a future
+`tools/all_talents_report.md`-flagged "confirmed real... but the owning item's own .mitem file is
+missing" talent gets a name confirmed in-game, then re-run this script to pick it up.
+
 ### Updating All Talents (the "Talent Browser" tab)
 
 Distinct pipeline from the three above: instead of following a reference from a gear-set/item
 file to one specific talent, this walks *every* `.mtalent` file in the export and classifies it
 (see `CLAUDE.md`'s "All Talents" section for the exclusion rules and slot/weapon-type
-classification taxonomy):
+classification taxonomy). **Run this one last**, after `extract_named_items.py` and
+`extract_exotic_items.py` — it reads their output (`data/named_items.json` /
+`data/exotic_items.json`) to recognize a Chest/Backpack talent as one specific item's own preset
+(rather than excluding it as legacy/cut, see "Liveness filtering" in `CLAUDE.md`) and to
+reclassify a talent as `exotic-gear` even when its own filename gives no hint of that:
 
 ```
 python tools/extract_all_talents.py --raw-dir "<path to the exported 'hunter' folder>"
@@ -212,4 +225,16 @@ Regenerates `data/all_talents.json` / `data/all_talents_min.json`, re-embeds int
 own `const ALL_TALENTS = [...]` line (same function-replacement, same-line-only match as the
 other two self-embedding scripts), and writes `tools/all_talents_report.md`. Review the report's
 exclusion counts before committing — a rebalance patch that renames a file or changes a talent's
-naming convention could shift something between the "included" and "other/excluded" buckets.
+naming convention could shift something between the "included" and "other/excluded" buckets. A
+Chest/Backpack talent absent from both the live random-roll pool and every Named Item's own
+preset talent is excluded outright as legacy/cut data (see the "Excluded (Chest/Backpack talent
+absent..." line in the report) — a rebalance patch that re-adds a removed talent to the pool would
+need this script re-run to pick it back up.
+
+The same run also cross-references every gear-slotted talent (`kind` = `gear` or `exotic-gear`)
+against `tools/talent_bonus_inferences.json` — a hand-maintained dictionary of each talent's
+*potential/conditional* bonus attributes (see "Potential Bonuses" in `CLAUDE.md`). The report's
+"Potential-bonus inference coverage" section lists any talent that's new or whose description
+changed since it was last interpreted — that dictionary needs a manual (AI-assisted) update pass
+before those talents will show a "Potential bonuses" section on their Talent Browser card. This
+never happens automatically; the script only ever detects the gap.

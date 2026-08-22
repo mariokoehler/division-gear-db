@@ -1,0 +1,1304 @@
+{
+  "warlock_talent_exotic_backpack_mk1a": {
+    "fingerprint": "e008a6083c0ee29acdc4ca3e46716bae",
+    "bonuses": [
+      {
+        "attribute": "Armor Kit Capacity",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Grenade Capacity",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Ammo Capacity",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Status Effects",
+        "condition": "Always active"
+      }
+    ]
+  },
+  "talent_exotic_backpack_quick_fix_combat_medic": {
+    "fingerprint": "914b63f41ef2158bbdb2bdba92ecf3d1",
+    "bonuses": [
+      {
+        "attribute": "Revive Speed",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Damage Resistance",
+        "condition": "while reviving or being revived, and for 10s after a successful revive"
+      },
+      {
+        "attribute": "Skill Tier",
+        "condition": "for 5s after a successful revive (Overcharge if revive happens at Skill Tier 6)"
+      }
+    ]
+  },
+  "warlock_talent_exotic_backpack_mk2": {
+    "fingerprint": "777a80c4e8931cbd0378c4731431b0d5",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "on collecting an enemy trophy (short buff), plus per stack up to 30, 300s (long buff) - scales with core attributes equipped"
+      },
+      {
+        "attribute": "Bonus Armor",
+        "condition": "on collecting an enemy trophy (short buff) - scales with core attributes equipped"
+      },
+      {
+        "attribute": "Skill Efficiency",
+        "condition": "on collecting an enemy trophy (short buff), plus per stack up to 30, 300s (long buff) - scales with core attributes equipped"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "per trophy stack (up to 30), 300s"
+      }
+    ]
+  },
+  "warlock_talent_exotic_backpack_mk1b": {
+    "fingerprint": "843e3091d3007bed16a61b43b24005b4",
+    "bonuses": [
+      {
+        "attribute": "Skill Tier",
+        "condition": "for 15s after damaging an enemy with a grenade (Overcharge if already at Skill Tier 6)"
+      }
+    ]
+  },
+  "talent_exotic_backpack_adaptation": {
+    "fingerprint": "714f8934f5a5c57c33d762fbcaabf523",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per Red stack (from kills/hits), or as a lump bonus per Blue stack on reaching the 80-stack cap"
+      },
+      {
+        "attribute": "Damage Resistance",
+        "condition": "per Blue stack (from being hit), or as a lump bonus per Red stack on reaching the 80-stack cap"
+      }
+    ]
+  },
+  "Ninja_Backpack_Talent_exotic": {
+    "fingerprint": "6d74572df15dee829e12a764f3451de4",
+    "bonuses": []
+  },
+  "warlock_talent_exotic_chest_mk1": {
+    "fingerprint": "ba46983801c24961f4a3b1baf0c04fc2",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "whenever your or an ally's armor breaks (45s cooldown per ally)"
+      }
+    ]
+  },
+  "warlock_talent_exotic_chest_mk2": {
+    "fingerprint": "82b11367af02bc790210777b162bc684",
+    "bonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "per second, scaling with number of bleeding enemies within 15m (shooting enemies within 15m applies bleed)"
+      }
+    ]
+  },
+  "talent_exotic_chest_bond": {
+    "fingerprint": "7a94a7e8f83665981aba898fb36544ce",
+    "bonuses": [
+      {
+        "attribute": "Critical Hit Damage",
+        "condition": "while an ally is within 10m (higher) or one of your skills is within 10m (lower) - only the strongest applies"
+      },
+      {
+        "attribute": "Skill Efficiency",
+        "condition": "while an ally is within 10m (higher) or one of your skills is within 10m (lower) - only the strongest applies"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "while an ally is within 10m (higher) or one of your skills is within 10m (lower) - only the strongest applies"
+      }
+    ]
+  },
+  "talent_exotic_chest_provocator_challenger": {
+    "fingerprint": "63626dc6d4d639457fdd5ce66be3c19f",
+    "bonuses": [
+      {
+        "attribute": "Damage Resistance",
+        "condition": "from enemies within 20m"
+      }
+    ]
+  },
+  "talent_exotic_gloves_mk1_c": {
+    "fingerprint": "c3c9ea0ac8e561256c45653621c0d603",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "to enemies affected by the infused status effect from your thrown skills"
+      }
+    ]
+  },
+  "talent_exotic_gloves_mk1_b": {
+    "fingerprint": "2d7a5a73c453f00515a0a76353888374",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "while infused with a status effect you applied, per point of Skill Efficiency (Yellow core), 60s"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "while infused with a status effect you applied, per point of Skill Efficiency (Yellow core), 60s"
+      },
+      {
+        "attribute": "Skill Duration",
+        "condition": "while infused with a status effect you applied, per point of Skill Efficiency (Yellow core), 60s"
+      }
+    ]
+  },
+  "talent_exotic_gloves_decrease_recoil_while_not_aiming": {
+    "fingerprint": "6baac5606cb1cae1d71140d02c21c9a1",
+    "bonuses": []
+  },
+  "talent_exotic_gloves_over_the_top": {
+    "fingerprint": "2dec3be819969534a7dd6ed5ab5b1674",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while Seeing Red is active (20s, after damaging with grenade or melee)"
+      },
+      {
+        "attribute": "Melee Damage",
+        "condition": "while Seeing Red is active (20s, after damaging with grenade or melee)"
+      }
+    ]
+  },
+  "talent_exotic_gloves_exodus_gloves_smoke_screen": {
+    "fingerprint": "33a0d48e67a3b15eb0366dd32ecaa89e",
+    "bonuses": []
+  },
+  "talent_exotic_gloves_mk1_a": {
+    "fingerprint": "033253a3ff9592a68d2973489279cd2f",
+    "bonuses": [
+      {
+        "attribute": "Skill Tier",
+        "condition": "grants Overcharge to all allies for 15s, on detonating a Booster or Artificer Hive (at most once per 120s)"
+      }
+    ]
+  },
+  "talent_exotic_holster_ac": {
+    "fingerprint": "a430f7d877e7836c612e8abef17c3b20",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "stacking on one skill each second (cap 10), transferring to the other skill after 10s at cap"
+      }
+    ]
+  },
+  "talent_exotic_bob_and_weave": {
+    "fingerprint": "58a4132658b8cfa558dd3204557695e0",
+    "bonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "per meter run during a cover-to-cover move"
+      }
+    ]
+  },
+  "talent_exotic_holster_equalizer_counterpoise": {
+    "fingerprint": "61243322a63b558a324a168b1e626492",
+    "bonuses": [
+      {
+        "attribute": "Rate of Fire",
+        "condition": "for 12s after a weapon swap (1st bonus group)"
+      },
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 12s after a weapon swap (1st bonus group)"
+      },
+      {
+        "attribute": "Magazine Size",
+        "condition": "for 12s after a second consecutive weapon swap (2nd bonus group, not to sidearm)"
+      },
+      {
+        "attribute": "Reload Speed",
+        "condition": "for 12s after a second consecutive weapon swap (2nd bonus group, not to sidearm)"
+      }
+    ]
+  },
+  "talent_exotic_holster_shocker_punch_defibrillator": {
+    "fingerprint": "14bb9ac8261637789dd54abee6ba32cf",
+    "bonuses": [
+      {
+        "attribute": "Melee Damage",
+        "condition": "using a shield or St. Elmo's Engine alongside this holster (specific exotic combo)"
+      }
+    ]
+  },
+  "warlock_talent_exotic_holster_mk2": {
+    "fingerprint": "867bbbe6ec61a8e01457cf54595e3315",
+    "bonuses": []
+  },
+  "talent_exotic_holster_mk1_c": {
+    "fingerprint": "2f611be4bc5a2e998565929599748929",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 8s (11s w/ revolver) after a pistol headshot kill"
+      }
+    ]
+  },
+  "talent_exotic_holster_mk1_a": {
+    "fingerprint": "488dcecfc6ef44d2a303f8923ea3a186",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "on first shot after swapping to pistol, per stack accumulated while holstered (up to 100)"
+      }
+    ]
+  },
+  "talent_exotic_holster_mk1_b": {
+    "fingerprint": "8f9ba452c7fe9ecd0824eea149436417",
+    "bonuses": [
+      {
+        "attribute": "Swap Speed",
+        "condition": "Always active"
+      }
+    ]
+  },
+  "talent_exotic_escape_plan": {
+    "fingerprint": "f4251c4215b111bbd94be9a4844439ae",
+    "bonuses": [
+      {
+        "attribute": "Movement Speed",
+        "condition": "after vaulting, after standing still 5s, or after being hit by a status effect (max 20%, does not stack with other sources)"
+      }
+    ]
+  },
+  "talent_exotic_kneepads_mk1_b": {
+    "fingerprint": "d60f0adef84568126bdf7c3b6738d438",
+    "bonuses": []
+  },
+  "talent_exotic_kneepads_mk1_a": {
+    "fingerprint": "7256826f92553b7aebe8c123ef8e5053",
+    "bonuses": [
+      {
+        "attribute": "Damage Resistance",
+        "condition": "while aiming, after staying in cover without firing for up to 10s (full immunity)"
+      }
+    ]
+  },
+  "talent_exotic_kneepads_impervious": {
+    "fingerprint": "fd107911aceed9209120d8b900263ffd",
+    "bonuses": [
+      {
+        "attribute": "Hazard Protection",
+        "condition": "you and allies within 10m"
+      }
+    ]
+  },
+  "talent_exotic_kneepads_mk1_c": {
+    "fingerprint": "452ebfabf4ff6916572c329c5aaf7cef",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "on completing a cover-to-cover swap while the deflect buff is active, scales with distance travelled"
+      }
+    ]
+  },
+  "talent_exotic_ostracize": {
+    "fingerprint": "23784b862e6bb46681263de24734d519",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "dealt to unmarked enemies while a mark is active on another enemy"
+      }
+    ]
+  },
+  "warlock_talent_exotic_kneepads_mk2": {
+    "fingerprint": "74f9b97765a49e23d6501ed68a01716f",
+    "bonuses": []
+  },
+  "talent_exotic_abridged": {
+    "fingerprint": "0c312e407a460c65a32277a22bcb8163",
+    "bonuses": []
+  },
+  "virginia_talent_exotic_mask_catalyst_chemical_agent": {
+    "fingerprint": "2229dada42598ab6bc13ba585a3efe61",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per Catalysis stack (max 12, built by dealing/receiving status effects)"
+      },
+      {
+        "attribute": "Status Effects",
+        "condition": "per Catalysis stack (max 12, built by dealing/receiving status effects)"
+      },
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 5s on killing a status-affected enemy at max Catalysis stacks"
+      },
+      {
+        "attribute": "Reload Speed",
+        "condition": "for 5s on killing a status-affected enemy at max Catalysis stacks"
+      }
+    ]
+  },
+  "virginia_talent_exotic_mask_byzantine_inferno_wrath": {
+    "fingerprint": "5d0d2bb264c9878d955ec9c77389c0e2",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per Wrath stack (max 50, built by fire damage hits), persists while in the fire source and 5s after"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "per Wrath stack (max 50, built by fire damage hits), persists while in the fire source and 5s after"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "repairs 20% of missing armor on defeating an enemy while burning"
+      }
+    ]
+  },
+  "warlock_talent_exotic_mask_mk1": {
+    "fingerprint": "a616bcedcf842b0c75ce13e8633607ad",
+    "bonuses": [
+      {
+        "attribute": "Critical Hit Damage",
+        "condition": "you and allies, scaling with distance to the last enemy you hit"
+      },
+      {
+        "attribute": "Critical Hit Chance",
+        "condition": "you and allies, scaling with distance to the last enemy you hit"
+      }
+    ]
+  },
+  "talent_exotic_mask_invested": {
+    "fingerprint": "62e086ef17ca9e522af07806ef15c51b",
+    "bonuses": [
+      {
+        "attribute": "Critical Hit Damage",
+        "condition": "per Red (Offensive) non-Core attribute rolled on this item"
+      },
+      {
+        "attribute": "Skill Efficiency",
+        "condition": "per Yellow (Utility) non-Core attribute rolled on this item"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "per Blue (Defensive) non-Core attribute rolled on this item"
+      }
+    ]
+  },
+  "warlock_talent_exotic_mask_mk2": {
+    "fingerprint": "e7c372029b41ce270280590ab60a151e",
+    "bonuses": []
+  },
+  "warlock_talent_exotic_mask_mk3": {
+    "fingerprint": "5e01ad1b7cea4487dd906a6296a4f6de",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per stack (max 30, built by taking damage)"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "from the healing cloud dropped when the stack cap purges (10s, all allies in the cloud)"
+      }
+    ]
+  },
+  "talent_exotic_mask_weakest_link": {
+    "fingerprint": "181c053e2e61848b7298faf6c86c0ca7",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "to Tier 3 (the lowest-ranking) enemies"
+      }
+    ]
+  },
+  "warlock_talent_nearby_enemies_grant_bonus_armor": {
+    "fingerprint": "1558a51be2edef7f0b5335d6b7df6a54",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 5s whenever within 10m of an enemy, stacks up to 300%, 5s cooldown"
+      }
+    ]
+  },
+  "talent_back_enemies_close_reduces_incoming_damage": {
+    "fingerprint": "6e73f064403d489c01a4eaa82993fefd",
+    "bonuses": [
+      {
+        "attribute": "Damage Resistance",
+        "condition": "while within 10m of a hostile (self +30%, allies +10%)"
+      }
+    ]
+  },
+  "talent_kneepads_kills_in_cover_reduce_skill_cooldowns": {
+    "fingerprint": "702d5217a70876c41cdef98a40e64acb",
+    "bonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "on kills while in cover"
+      }
+    ]
+  },
+  "talent_gloves_damage_done_crits_restore_health_and_armor": {
+    "fingerprint": "2138c0e4d0f56aafba0471a13beb0307",
+    "bonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "on critical hits while below 15% armor"
+      }
+    ]
+  },
+  "warlock_talent_standing_near_allies_increases_damage": {
+    "fingerprint": "bf4eb203afa2e203f1640495110a4e04",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while within 5m of an ally or skill"
+      }
+    ]
+  },
+  "talent_kneepads_increase_total_damage_while_in_cover": {
+    "fingerprint": "b677aab53231b10d0358d342648f82aa",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while in cover"
+      }
+    ]
+  },
+  "talent_mask_headshots_increase_headshot_damage": {
+    "fingerprint": "fb85ffff1b689cf9c5763a092a4e60cd",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "after a headshot (150s, 5s w/ marksman rifles), stronger and longer after a headshot kill (10s)"
+      }
+    ]
+  },
+  "talent_mask_status_effects_spread": {
+    "fingerprint": "2b19f6defbbf87299b5d98a7561bd458",
+    "bonuses": []
+  },
+  "warlock_talent_armor_kits_overcharge": {
+    "fingerprint": "9247a71bc6ee5645183fafc7621b1800",
+    "bonuses": [
+      {
+        "attribute": "Skill Tier",
+        "condition": "for 15s after using an armor kit (Overcharge if already at Skill Tier 6), 60s cooldown"
+      }
+    ]
+  },
+  "talent_gear_back_firecrackers": {
+    "fingerprint": "47ad1d9d7952b012d299304c628781be",
+    "bonuses": []
+  },
+  "warlock_talent_disables_grants_nearby_bonus_armor": {
+    "fingerprint": "b0f3f5bfb3ca1011e31ce855073a669a",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 10s to allies within 20m, on applying blind, ensnare, confuse, or shock to an enemy"
+      }
+    ]
+  },
+  "talent_back_kills_increases_healing_done": {
+    "fingerprint": "b0f9a3b45ddd632846a7ba373bb4bd5e",
+    "bonuses": [
+      {
+        "attribute": "Skill Repair",
+        "condition": "while at full armor"
+      }
+    ]
+  },
+  "talent_back_hoarder_grenade_enhancements": {
+    "fingerprint": "3c4651742f77cce4508290e777cbf057",
+    "bonuses": [
+      {
+        "attribute": "Grenade Capacity",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Grenade Damage",
+        "condition": "Always active, more per extra enemy caught in the blast"
+      },
+      {
+        "attribute": "Grenade Radius",
+        "condition": "Always active"
+      }
+    ]
+  },
+  "talent_back_revives_increase_healing_received": {
+    "fingerprint": "51d9c3528545388ab58238bff590009c",
+    "bonuses": [
+      {
+        "attribute": "Incoming Repairs",
+        "condition": "for 15s to party members within 10m, after reviving a teammate"
+      }
+    ]
+  },
+  "warlock_talent_cover_to_cover_grants_group_bonus_armor": {
+    "fingerprint": "0ff46e02172cf4e589360c6a4578697a",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 10s to you and allies on a cover-to-cover move, doubled if you end within 10m of an enemy, 10s cooldown"
+      }
+    ]
+  },
+  "talent_back_skills_on_cooldown_increase_weapon_damage": {
+    "fingerprint": "f07dd629c58fe7c7cdadc4ae40a8bf94",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while all skills are on cooldown"
+      }
+    ]
+  },
+  "talent_gloves_destroy_weakpoint_increases_damage_done_from_all_sources": {
+    "fingerprint": "192e48e1cf2f107b0c40db936edf3602",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "for 5s to enemies hit with shotguns or marksman rifles"
+      }
+    ]
+  },
+  "warlock_talent_deployed_skills_boost_allies": {
+    "fingerprint": "24c569da2572a8047742a6f22083f49e",
+    "bonuses": [
+      {
+        "attribute": "Reload Speed",
+        "condition": "for allies within 7m of your deployed skills"
+      },
+      {
+        "attribute": "Skill Haste",
+        "condition": "for allies within 7m of your deployed skills"
+      }
+    ]
+  },
+  "talent_back_armor_kits_also_heal_allies": {
+    "fingerprint": "13fe3148df71be00c5e02ee69979de47",
+    "bonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "for nearby group members, when you use an armor kit"
+      }
+    ]
+  },
+  "warlock_talent_nearby_enemies_grant_bonus_armor_perfect": {
+    "fingerprint": "154c180cd98daec6ad012eb589028e58",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 5s whenever within 10m of an enemy, stacks up to 300%, 5s cooldown"
+      }
+    ]
+  },
+  "talent_gloves_damage_done_crits_restore_health_and_armor_perfect": {
+    "fingerprint": "0f98663566b860c234f5acb78da36bd6",
+    "bonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "on critical hits while below 2.5% armor"
+      }
+    ]
+  },
+  "warlock_talent_standing_near_allies_increases_damage_perfect": {
+    "fingerprint": "68d89bca7d45acec92dd8aca96f3254e",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while within 10m of an ally or skill"
+      }
+    ]
+  },
+  "talent_kneepads_increase_total_damage_while_in_cover_perfect": {
+    "fingerprint": "bdc6ce0e8282d348f57f34a0b8f0a6fa",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while in cover"
+      }
+    ]
+  },
+  "talent_mask_headshots_increase_headshot_damage_perfect": {
+    "fingerprint": "cb3ae6d59f3004670bfcaee73009a53c",
+    "bonuses": [
+      {
+        "attribute": "Headshot Damage",
+        "condition": "for 200s (5s w/ marksman rifles) after a headshot"
+      }
+    ]
+  },
+  "warlock_talent_disables_grants_nearby_bonus_armor_perfect": {
+    "fingerprint": "bed4fb8681e64eb9e17655e55914459c",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 10s to you and allies within 30m, on applying blind, ensnare, confuse, or shock to an enemy"
+      }
+    ]
+  },
+  "warlock_talent_cover_to_cover_grants_group_bonus_armor_perfect": {
+    "fingerprint": "06f0ac277b0fb205fefd74b8dcb29608",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 10s to you and allies on a cover-to-cover move, tripled if you end within 10m of an enemy, 10s cooldown"
+      }
+    ]
+  },
+  "talent_back_kills_increases_healing_done_perfect": {
+    "fingerprint": "bf7080720bd79ac54b60712ab35ed9e1",
+    "bonuses": [
+      {
+        "attribute": "Skill Repair",
+        "condition": "while at full armor"
+      }
+    ]
+  },
+  "warlock_talent_status_effects_increase_skill_damage_and_repair_perfect": {
+    "fingerprint": "9a5c88d881d183abdda5823e851a23a9",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 27s after applying a status effect to an enemy"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "for 27s after applying a status effect to an enemy"
+      }
+    ]
+  },
+  "talent_back_skill_kills_increase_skill_duration_and_damage_perfect": {
+    "fingerprint": "08d5aff64217d5689bb004f6d04f3af8",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 27s after a skill kill"
+      }
+    ]
+  },
+  "talent_kneepads_kills_in_cover_reduce_skill_cooldowns_perfect": {
+    "fingerprint": "e0bd8a5e9962fe6675229498993e39e1",
+    "bonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "on kills while in cover"
+      }
+    ]
+  },
+  "talent_back_skills_on_cooldown_increase_weapon_damage_perfect": {
+    "fingerprint": "d6aee31ec2185a9b35bee669ce32d1ce",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while all skills are on cooldown"
+      }
+    ]
+  },
+  "talent_gloves_destroy_weakpoint_increases_damage_done_from_all_sources_perfect": {
+    "fingerprint": "1d4a75d0242ea122461ecb05795f92ad",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "for 5s to enemies hit with shotguns or marksman rifles"
+      }
+    ]
+  },
+  "talent_gloves_damage_done_increased_to_status_affected_perfect": {
+    "fingerprint": "656fb0c1424b7f67fc7093a7eee9b2e7",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 27s after applying a status effect"
+      }
+    ]
+  },
+  "warlock_talent_shield_damage_grants_group_bonus_armor": {
+    "fingerprint": "9d91ebeb8e326327fbdd6d8dc9e58799",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "when your shield takes damage: self +5%, allies +15% of your armor, on a cooldown"
+      }
+    ]
+  },
+  "talent_back_extra_weapon_slot": {
+    "fingerprint": "f6d3c8fe364268f958be46debcbbc309",
+    "bonuses": []
+  },
+  "talent_back_armor_kits_provide_overshield": {
+    "fingerprint": "78e372bffd57e6a0d12e97bbccf2cdf0",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "using an armor kit while already at full armor"
+      }
+    ]
+  },
+  "warlock_talent_status_effects_increase_skill_damage_and_repair": {
+    "fingerprint": "d85c1887c10d12b5e0c39d5d5dc5ae4d",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 20s after applying a status effect to an enemy"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "for 20s after applying a status effect to an enemy"
+      }
+    ]
+  },
+  "talent_back_skill_kills_increase_skill_duration_and_damage": {
+    "fingerprint": "7dfb81b8ebec1f8a1b7c28f20651a585",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 25s after a skill kill"
+      }
+    ]
+  },
+  "talent_gloves_damage_done_increased_to_status_affected": {
+    "fingerprint": "f5630ba66bc1272e9c2da3ef816b45be",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 20s after applying a status effect"
+      }
+    ]
+  },
+  "warlock_talent_weapon_damage_grants_skill_damage": {
+    "fingerprint": "7a11eca20dddd4629ad8bb9185a90c89",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 300s after shooting an enemy"
+      }
+    ]
+  },
+  "warlock_talent_weapon_damage_grants_skill_damage_perfect": {
+    "fingerprint": "654f7a774624684fd35d837fcf5b9caf",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 300s after shooting an enemy"
+      }
+    ]
+  },
+  "warlock_talent_weapon_swap_to_different_weapon_grants_damage_perfect": {
+    "fingerprint": "4a1c43d302545fb7c616734bf2948af0",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s after swapping between a different primary/secondary weapon type, strength varies by weapon type and range, once per 5s per type"
+      }
+    ]
+  },
+  "warlock_talent_weapon_swap_to_different_weapon_grants_damage": {
+    "fingerprint": "96daf003f9f515b899f37b4de3c29c46",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s after swapping between a different primary/secondary weapon type, strength varies by weapon type and range, once per 5s per type"
+      }
+    ]
+  },
+  "talent_chest_bonus_health_increases_life_on_kill": {
+    "fingerprint": "ef431403bd279788ab79fab2fd4bdc44",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "on kill, stacks up to 10, 10s per stack"
+      }
+    ]
+  },
+  "talent_back_when_no_armor_has_chance_to_not_consume_armor_kit": {
+    "fingerprint": "e80462e123a4f15ff958af0729f2422d",
+    "bonuses": []
+  },
+  "talent_chest_bonus_health_increases_life_on_kill_perfect": {
+    "fingerprint": "9cd1da801fcc5ba35dbaea7ce5c5cd68",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "on kill, stacks up to 10, 10s per stack"
+      }
+    ]
+  },
+  "talent_back_skill_damage_increases_weapon_damage_perfect": {
+    "fingerprint": "d4bdaaeaffd41d9b9d1be2c4ed25cfa2",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 20s after damaging enemies with a skill"
+      }
+    ]
+  },
+  "talent_chest_increased_weapon_damage_while_not_getting_hit_perfect": {
+    "fingerprint": "fd0260781466ecaaabf4a663e3c33c8d",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while not taking damage (disabled for 300s after being hit)"
+      }
+    ]
+  },
+  "talent_back_when_no_armor_has_chance_to_not_consume_armor_kit_perfect": {
+    "fingerprint": "3ae7b0efc1176284f2ae87bfdf71a867",
+    "bonuses": []
+  },
+  "talent_h_basic_hazardprotection_perfect": {
+    "fingerprint": "60580a2ee10ea2222312e9c4a890bf2b",
+    "bonuses": [
+      {
+        "attribute": "Hazard Protection",
+        "condition": "Always active"
+      }
+    ]
+  },
+  "talent_back_skill_kills_reset_skill_cooldowns_perfect": {
+    "fingerprint": "ef3621ee2287d3b1048d3f2c598826fc",
+    "bonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "30% chance on a skill kill to reset skill cooldowns"
+      }
+    ]
+  },
+  "talent_chest_kills_increase_weapon_damage_based_on_armor_perfect": {
+    "fingerprint": "eae9957359f7257c65affa2abf210876",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 15s per kill, stacks up to 5 (grenade kills add 2 stacks)"
+      }
+    ]
+  },
+  "talent_back_skill_kills_reset_skill_cooldowns": {
+    "fingerprint": "8598af5742ac43a1fbb09b3d6fe3031a",
+    "bonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "chance on a skill kill to reset skill cooldowns"
+      }
+    ]
+  },
+  "talent_back_skill_damage_increases_weapon_damage": {
+    "fingerprint": "c4768b0dacd9ba60d06a5ee9770694c8",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 15s after damaging enemies with a skill"
+      }
+    ]
+  },
+  "talent_chest_kills_increase_weapon_damage_based_on_armor": {
+    "fingerprint": "0e96e3a90e615958de42bd3d5ad82441",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 15s per kill, stacks up to 5"
+      }
+    ]
+  },
+  "talent_chest_increased_weapon_damage_while_not_getting_hit": {
+    "fingerprint": "29e577bd06cc4719554b2888b9227017",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while not taking damage (disabled for 400s after being hit)"
+      }
+    ]
+  },
+  "talent_chest_missing_armor_increases_weapon_damage": {
+    "fingerprint": "6c20b4eff28d2683742fed0f5b906691",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "increases as your armor is depleted"
+      }
+    ]
+  },
+  "talent_kneepads_increase_weapon_handling_after_entering_cover": {
+    "fingerprint": "46e55cd30d565df3a76fbc16a3cb3fbe",
+    "bonuses": [
+      {
+        "attribute": "Weapon Handling",
+        "condition": "after entering cover"
+      }
+    ]
+  },
+  "warlock_talent_healing_allies_buffs_them": {
+    "fingerprint": "7c9952f10618c9e8ad650c51da43cf36",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 15s (self 20s) after repairing an ally (or yourself)"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 15s (self 20s) after repairing an ally (or yourself)"
+      }
+    ]
+  },
+  "talent_kneepads_headshots_in_cover_gives_armor": {
+    "fingerprint": "26a1531bfc426cdf8403c3e2a969a441",
+    "bonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "on headshots from cover while below 30% armor, 200s cooldown"
+      }
+    ]
+  },
+  "warlock_talent_thrown_skills_explode": {
+    "fingerprint": "b32ca39822e5092737e37e85db07cf8c",
+    "bonuses": []
+  },
+  "warlock_talent_scope_aiming_increases_damage": {
+    "fingerprint": "2b8cdfe58a216f4eb115ac554de0f2f8",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per second while aiming scoped 8x or higher, up to 50%"
+      }
+    ]
+  },
+  "warlock_talent_damage_dealt_and_damage_taken_increased": {
+    "fingerprint": "35763919029c7349827e750e8cb16b4d",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "Always active (+25% dealt; also amplifies incoming damage taken by 50%)"
+      }
+    ]
+  },
+  "talent_chest_skill_proxy_kills_increase_grenade_and_all_resist": {
+    "fingerprint": "4a2d750f5b3fe35d6cfa656fde54f65a",
+    "bonuses": [
+      {
+        "attribute": "Grenade Damage",
+        "condition": "after destroying an enemy skill proxy (also boosts All Resistances)"
+      }
+    ]
+  },
+  "talent_holster_swap_weapons_after_kill_increases_weapon_damage": {
+    "fingerprint": "d11788d4aa86a406a08c9cdc4a975a34",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 5s after a weapon swap"
+      }
+    ]
+  },
+  "warlock_talent_headshot_kills_increase_next_weapon_hit": {
+    "fingerprint": "4687eb5d938effe63be1e0096b95a4e2",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "on your next weapon hit within 30s after a headshot kill (capped at 8% of your weapon damage)"
+      }
+    ]
+  },
+  "warlock_talent_bonus_armor_grants_damage": {
+    "fingerprint": "780f80b69c3558d60ad1a9fea227fb21",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "to enemies within 10m, per stack (up to 9) accumulated while you have bonus armor"
+      }
+    ]
+  },
+  "warlock_talent_active_skills_increase_damage": {
+    "fingerprint": "fd209cb4306249b1ef4d6bf3d415eb6c",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "per active/off-cooldown skill (lost while on cooldown)"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "per active/off-cooldown skill (lost while on cooldown)"
+      }
+    ]
+  },
+  "talent_chest_grenade_kills_refund_grenade_and_increased_radius": {
+    "fingerprint": "fc3f79f3814c2d1326139fa81ec8c083",
+    "bonuses": [
+      {
+        "attribute": "Grenade Radius",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Bonus Armor",
+        "condition": "while aiming a grenade"
+      }
+    ]
+  },
+  "warlock_talent_crits_increase_damage": {
+    "fingerprint": "8b5d0db771f7ac6e08285124532c74ba",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s per critical hit, stacks up to 20"
+      }
+    ]
+  },
+  "warlock_talent_staying_in_cover_grants_group_damage": {
+    "fingerprint": "29ba3dfba91da367d6a7d3d1068da6b7",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for you and allies, after staying in cover for 10s, lasts while still in cover or cover-to-cover"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "for you and allies, after staying in cover for 10s, lasts while still in cover or cover-to-cover"
+      }
+    ]
+  },
+  "talent_chest_missing_armor_increases_weapon_damage_perfect": {
+    "fingerprint": "952ec57fb239a473de71d570543b7957",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per 20% of max armor depleted"
+      }
+    ]
+  },
+  "talent_kneepads_increase_weapon_handling_after_entering_cover_perfect": {
+    "fingerprint": "faff21a5a4934619a40afa5135a13514",
+    "bonuses": [
+      {
+        "attribute": "Weapon Handling",
+        "condition": "while in cover"
+      }
+    ]
+  },
+  "warlock_talent_healing_allies_buffs_them_perfect": {
+    "fingerprint": "adf90f279ff3b0d18f5444c85b798a44",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 20s after repairing an ally (or yourself), scales with your skill tier"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 20s after repairing an ally (or yourself), scales with your skill tier"
+      }
+    ]
+  },
+  "talent_kneepads_headshots_in_cover_gives_armor_perfect": {
+    "fingerprint": "01502529654d52dcc0b0fc505a65d1df",
+    "bonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "on headshots from cover while below 30% armor, 100s cooldown"
+      }
+    ]
+  },
+  "warlock_talent_scope_aiming_increases_damage_perfect": {
+    "fingerprint": "52f3a9b678143bd81bd09e0e47713d6f",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per second while aiming scoped 8x or higher, up to 60%"
+      }
+    ]
+  },
+  "warlock_talent_damage_dealt_and_damage_taken_increased_perfect": {
+    "fingerprint": "858a4fccabb1d932fb2709702edac89e",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "Always active (+30% dealt; also amplifies incoming damage taken by 60%)"
+      }
+    ]
+  },
+  "talent_holster_swap_weapons_after_kill_increases_weapon_damage_perfect": {
+    "fingerprint": "6728a61772098f8da666ff72bad1dc84",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 5s after a weapon swap"
+      }
+    ]
+  },
+  "warlock_talent_headshot_kills_increase_next_weapon_hit_perfect": {
+    "fingerprint": "74e3f36e647e39ebc19c0052f25d30a9",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "on your next weapon hit within 30s after a headshot kill (capped at 8%, or 12.5% at high headshot damage, of your weapon damage)"
+      }
+    ]
+  },
+  "warlock_talent_bonus_armor_grants_damage_perfect": {
+    "fingerprint": "39873985335fd8081658ef0195691e82",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "to enemies within 10m, per stack (up to 10) accumulated while you have bonus armor"
+      }
+    ]
+  },
+  "warlock_talent_active_skills_increase_damage_perfect": {
+    "fingerprint": "ffa0af760b6ed258282e0b4a49e7e827",
+    "bonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "per active/off-cooldown skill (lost while on cooldown)"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "per active/off-cooldown skill (lost while on cooldown)"
+      }
+    ]
+  },
+  "warlock_talent_crits_increase_damage_perfect": {
+    "fingerprint": "0bc20dd95a627d38fabe70a5987011b8",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s per critical hit, stacks up to 24"
+      }
+    ]
+  },
+  "warlock_talent_staying_in_cover_grants_group_damage_perfect": {
+    "fingerprint": "506749a8c9bba69a017b0fe155c055bc",
+    "bonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for you and allies, after staying in cover for 8s, lasts while still in cover or cover-to-cover"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "for you and allies, after staying in cover for 8s, lasts while still in cover or cover-to-cover"
+      }
+    ]
+  },
+  "talent_slot_equipped_armor_increased_while_reloading_perfect": {
+    "fingerprint": "3748a39e45cf47ece0a0747a65fa8a78",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "while reloading (self +40%; allies get 0-30% of your armor when they reload, scaling with your Defense core)"
+      }
+    ]
+  },
+  "talent_mask_increased_damage_to_pulsed_perfect": {
+    "fingerprint": "dea93b27574f4359c4fa9318f6eb148d",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "to pulsed enemies (weapon and skill damage)"
+      }
+    ]
+  },
+  "warlock_talent_shield_grants_invulnerable_and_group_bonus_armor_perfect": {
+    "fingerprint": "ebc39a484494a85a089194e4c1116995",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 20s to allies, on deploying a shield, 25s cooldown"
+      }
+    ]
+  },
+  "warlock_talent_thrown_skills_explode_perfect": {
+    "fingerprint": "daa027c97afd0f6ce77b4aeb5a87c932",
+    "bonuses": []
+  },
+  "talent_chest_grenade_kills_refund_grenade_and_increased_radius_perfect": {
+    "fingerprint": "320a44a1ae3c694178bc7298a885302e",
+    "bonuses": [
+      {
+        "attribute": "Grenade Radius",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Bonus Armor",
+        "condition": "while aiming a grenade"
+      }
+    ]
+  },
+  "talent_holster_kill_status_effected_random_chance_grant_special_ammo_perfect": {
+    "fingerprint": "bafcfe314a74d7ddf6e7c4f5f885d158",
+    "bonuses": []
+  },
+  "warlock_talent_shock_enemies_near_deployed_skills_perfect": {
+    "fingerprint": "56f32e8e9a4631622625873050de0406",
+    "bonuses": []
+  },
+  "talent_chest_when_armor_breaks_get_free_repair_and_armor_kit_perfect": {
+    "fingerprint": "0911bd7d221f63d690658611e588e27d",
+    "bonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "repairs 100% of your armor when it's depleted, 55s cooldown"
+      }
+    ]
+  },
+  "talent_slot_equipped_armor_increased_while_reloading": {
+    "fingerprint": "a390c40b4ed976dbf8e3978867332080",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "while reloading"
+      }
+    ]
+  },
+  "talent_holster_kill_status_effected_random_chance_grant_special_ammo": {
+    "fingerprint": "bafcfe314a74d7ddf6e7c4f5f885d158",
+    "bonuses": []
+  },
+  "talent_mask_increased_damage_to_pulsed": {
+    "fingerprint": "1c5d72feed1163d2c5aa441a77dbbbb7",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "to pulsed enemies (weapon and skill damage)"
+      }
+    ]
+  },
+  "talent_mask_hits_reduce_cooldown": {
+    "fingerprint": "0d6b198be29a645e312b343ae55e3d0f",
+    "bonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "on dealing weapon damage to an enemy marked by your own skill, 400s cooldown"
+      }
+    ]
+  },
+  "warlock_talent_shock_enemies_near_deployed_skills": {
+    "fingerprint": "9168bf29b78f4dd9fea3c7e54c2b1927",
+    "bonuses": []
+  },
+  "talent_mask_headshots_blind_target": {
+    "fingerprint": "31a3b8bf94762001a62607d56b5d05d7",
+    "bonuses": []
+  },
+  "talent_chest_when_armor_breaks_get_free_repair_and_armor_kit": {
+    "fingerprint": "3754fc726faa7c2adf458941f8387685",
+    "bonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "repairs 95% of your armor when it's depleted, 60s cooldown"
+      }
+    ]
+  },
+  "warlock_talent_shield_grants_invulnerable_and_group_bonus_armor": {
+    "fingerprint": "d9d5510a2d5fa0cd3f8323040a08d344",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 20s to allies, on deploying a shield, 25s cooldown"
+      }
+    ]
+  }
+}

@@ -1,5 +1,35 @@
 [
   {
+    "instance_id": "player_gear_back_exotic_01",
+    "name": "Acosta's Go Bag",
+    "slot": "Backpack",
+    "isDarkZoneExclusive": false,
+    "flavorText": null,
+    "bonuses": [
+      "Skill Haste",
+      "Skill Damage"
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "One in Hand...",
+      "desc": "Damaging an enemy with a grenade grants +100% skill tier for 15s.  Grants overcharge if already at skill tier 6."
+    },
+    "talentId": "warlock_talent_exotic_backpack_mk1b",
+    "extraTalents": [
+      {
+        "name": "... Two in the Bag",
+        "desc": "+100% Armorkit Capacity\n+300% Grenade Capacity\n+25% Ammo Capacity\n+10% Repair-skills\n+10% Status Effects",
+        "talentId": "warlock_talent_exotic_backpack_mk1a"
+      }
+    ],
+    "source": "datamined+manual_item_reconstruction"
+  },
+  {
     "instance_id": "player_gear_back_exotic_04",
     "name": "Birdie's Quick Fix Pack",
     "slot": "Backpack",
@@ -19,6 +49,7 @@
       "name": "Combat Medic",
       "desc": "+80% Revive Speed\n-50% Weakened Debuff timer\nProvides +50% Damage Resistance to both agents while reviving or being revived, and for 10s after a successful revive.\nSuccessful revives provide +1 Skill Tier for 5s. Revives at Skill Tier 6 grant Overcharge for 15s."
     },
+    "talentId": "talent_exotic_backpack_quick_fix_combat_medic",
     "source": "datamined"
   },
   {
@@ -46,6 +77,7 @@
       "name": "Rebalance",
       "desc": "Getting kills and hitting enemies 300% times builds Red stacks. Each stack provides 0.5% Weapon Damage.\n\nGetting hit 300% times builds Blue stacks. Each stack provides 0.5% Damage Resistance.\n\nUpon reaching 80 stacks in total, lose all stacks and receive a separate bonus of 0.5% Damage Resistance per Red stack and 0.5% Weapon Damage per Blue stack until the next time the stack cap is reached."
     },
+    "talentId": "talent_exotic_backpack_adaptation",
     "source": "datamined"
   },
   {
@@ -73,6 +105,7 @@
       "name": "Kill Confirmed",
       "desc": "Enemies you kill drop a trophy on death. Collecting trophies provides both a short and long term buff, the first of which scales with the number of core attributes equipped, and lasts 10s.\n\n<img src=\"hunter/baked/ui/loose_images/ui_player_offense.dds\"> - +5% Weapon Damage\n<img src=\"hunter/baked/ui/loose_images/ui_player_defense.dds\"> - +10% Bonus Armor \n<img src=\"hunter/baked/ui/loose_images/ui_player_utility.dds\"> - +5% Skill Efficiency\n\nFor every trophy collected, gain an additional +1% weapon damage, +1% skill efficiency, and +0.1% armor regeneration for 300s.\n\nMaximum 30 stacks."
     },
+    "talentId": "warlock_talent_exotic_backpack_mk2",
     "source": "datamined"
   },
   {
@@ -100,6 +133,7 @@
       "name": "Versatile",
       "desc": "Slots in with any equipped Gear Set and or Brand Set item to fulfill a requirement towards unlocking a Gear Sets bonus. Can unlock bonuses from multiple sets simultaneously."
     },
+    "talentId": "Ninja_Backpack_Talent_exotic",
     "source": "datamined"
   },
   {
@@ -122,6 +156,7 @@
       "name": "Bond",
       "desc": "Both you and Allies receive +30% Critical Hit Damage, +15% Skill Efficiency and +2% Armor Regen when an Ally is within 10m of you.\n\nReceive +15% Critical Hit Damage, +7.5% Skill Efficiency and +1% Armor Regen when one of your Skills is within 10m of you.\n\nOnly the highest group of buffs can be active at one time."
     },
+    "talentId": "talent_exotic_chest_bond",
     "source": "datamined"
   },
   {
@@ -144,6 +179,7 @@
       "name": "Hoarder",
       "desc": "+300% Grenade Capacity\n+50% Grenade Radius\n+35% Grenade Damage\n+25% Grenade Damage for each extra enemy caught in the blast"
     },
+    "talentId": "talent_back_hoarder_grenade_enhancements",
     "source": "datamined"
   },
   {
@@ -166,6 +202,7 @@
       "name": "Challenger",
       "desc": "Receive +25% Damage Resistence from enemies within 20m."
     },
+    "talentId": "talent_exotic_chest_provocator_challenger",
     "source": "datamined"
   },
   {
@@ -188,6 +225,7 @@
       "name": "Bleeding Edge",
       "desc": "Shooting enemies within 15m applies bleed to the target.\n\nRepair 3%-48% of your armor per second for every enemy that is bleeding within 15m.\n\nRepair strength per number of bleeding enemies:\n\n1:3% 2:6% 3:12% 4:24% 5:48%"
     },
+    "talentId": "warlock_talent_exotic_chest_mk2",
     "source": "datamined"
   },
   {
@@ -210,6 +248,7 @@
       "name": "Ablative Nano-Plating",
       "desc": "Whenever your or any ally's armor breaks, they gain 80% of your armor as bonus armor for 10s.\n\nCooldown per ally: 45s\n\nKilling an enemy with your specialization weapon removes this cooldown for all allies."
     },
+    "talentId": "warlock_talent_exotic_chest_mk1",
     "source": "datamined"
   },
   {
@@ -232,6 +271,7 @@
       "name": "Transference Overclock",
       "desc": "Detonating a Booster or Artificer Hive refreshes all allies' skill cooldowns and grants them overcharge for 15s. This can occur at most once per 120s."
     },
+    "talentId": "talent_exotic_gloves_mk1_a",
     "source": "datamined"
   },
   {
@@ -254,6 +294,7 @@
       "name": "Over the top",
       "desc": "Damaging an enemy with a grenade or striking an enemy with a melee attack activates Seeing Red\n\nSeeing Red grants +25% weapon damage and +100% to melee damage. \n\nSeeing Red lasts 20 seconds and has a 60 second cooldown after completion.\n\nWhile in cooldown, damaging  an enemy with a melee attack or hitting an enemy with the effect of a grenade will complete the cooldown instantly."
     },
+    "talentId": "talent_exotic_gloves_over_the_top",
     "source": "datamined"
   },
   {
@@ -276,6 +317,7 @@
       "name": "Smoke Screen",
       "desc": "On Armor break, drop a Smoke Bomb at your feet, concealing you from enemies for 300%s.\nCooldown: 40s"
     },
+    "talentId": "talent_exotic_gloves_exodus_gloves_smoke_screen",
     "source": "datamined"
   },
   {
@@ -298,6 +340,7 @@
       "name": "Weakest Link",
       "desc": "Amplifies Weapon Damage by 30% to the lowest ranking enemies within the Tier hierarchy.\n\nTier 1: Hunter, Rogue, Leader, Tank, Shield, Heavy Weapons, RPG, Medic, Controller, Warhound, Marauder\n\nTier 2: Support, Engineer, Bodyguard, Immobilizer, Bomber, Mini Tank, Drone Operator\n\nTier 3: Any other enemy or skill proxy"
     },
+    "talentId": "talent_exotic_mask_weakest_link",
     "source": "datamined"
   },
   {
@@ -320,6 +363,7 @@
       "name": "Iron Grip",
       "desc": "-50% Recoil Penalty when hip-firing.\n-50% Recoil Penalty when blind-firing from cover."
     },
+    "talentId": "talent_exotic_gloves_decrease_recoil_while_not_aiming",
     "source": "datamined"
   },
   {
@@ -342,6 +386,7 @@
       "name": "Counter",
       "desc": "Swapping weapons will give the following groups of bonuses one by one, in order:\n\n1. +20% Rate of Fire, +20% Weapon Damage\n2. +50% Magazine Size, +50% Reload Speed\n\nThe bonuses remain active for 12s or until the next weapon swap.\nSwapping to your sidearm will not trigger the next group of bonuses."
     },
+    "talentId": "talent_exotic_holster_equalizer_counterpoise",
     "source": "datamined"
   },
   {
@@ -364,6 +409,7 @@
       "name": "Quick Draw",
       "desc": "While your pistol is holstered, gain a stacking buff every 30%s, up to 100.\n\nWhen you swap to it, your first shot consumes the buff and deals +10% damage per stack."
     },
+    "talentId": "talent_exotic_holster_mk1_a",
     "source": "datamined"
   },
   {
@@ -386,6 +432,7 @@
       "name": "Dragon's Glare",
       "desc": "While in combat, applies burn to the enemy closet to you within 20m.\n\nCooldown: 35s"
     },
+    "talentId": "warlock_talent_exotic_holster_mk2",
     "source": "datamined"
   },
   {
@@ -408,6 +455,7 @@
       "name": "Bob and Weave",
       "desc": "Receive repairs of 5% of your Total Armor for every 1m run in cover-to-cover.\nDamage taken while doing a cover-to-cover is healed over 10s."
     },
+    "talentId": "talent_exotic_bob_and_weave",
     "source": "datamined"
   },
   {
@@ -430,6 +478,7 @@
       "name": "Defibrillator",
       "desc": "While \"Shocker Punch\" is equipped, the stun received by the agent from the Shock status effect will be reduced by 50%.\n\nUsing a shield will give 100% to melee damage.\n\nUsing St. Elmo's Engine with the holster will give 100% extra melee dmg and will make the next melee attack to apply Shock to the target.\n\nUsing all three items will offer all of the above mentioned bonuses and the Shock from the melee attack will have a 5m radius, starting from the first target.\n\n15 seconds cooldown."
     },
+    "talentId": "talent_exotic_holster_shocker_punch_defibrillator",
     "source": "datamined"
   },
   {
@@ -452,6 +501,7 @@
       "name": "Alternating Current",
       "desc": "Generate a stack of 2.5% skill damage on one of your skills every second, capping at 10 stacks. After 10 seconds at the cap the stacks transfer to your other skill. The process then repeats ad-infinitum."
     },
+    "talentId": "talent_exotic_holster_ac",
     "source": "datamined"
   },
   {
@@ -471,6 +521,7 @@
       "name": "Escape Plan",
       "desc": "Vaulting grants +10% Movement Speed for 300%s.\nAfter not moving for 5s, receive +20% Movement Speed for 5s.\nBeing applied a Status Effect grants +10% Movement Speed for 5s.\nMax Movement Speed bonus is 20%. The bonuses do not stack with Movement Speed bonuses from other sources.\n-50% Movement Impairment penalty from Status Effects."
     },
+    "talentId": "talent_exotic_escape_plan",
     "source": "datamined"
   },
   {
@@ -493,6 +544,7 @@
       "name": "Parkour!",
       "desc": "Performing a cover to cover or vaulting reloads your drawn weapon."
     },
+    "talentId": "warlock_talent_exotic_kneepads_mk2",
     "source": "datamined"
   },
   {
@@ -515,6 +567,7 @@
       "name": "Impervious",
       "desc": "Both you and Allies within 10m of you receive +40% Hazard Protection."
     },
+    "talentId": "talent_exotic_kneepads_impervious",
     "source": "datamined"
   },
   {
@@ -537,6 +590,7 @@
       "name": "Vicious Cycle",
       "desc": "Taking damage builds stacks to a cap of 30. Each stack grants 1.5% Weapon Damage. Taking damage at max stacks triggers a purge, removing all stacks and Status Effects and then dropping a healing cloud which restores 5% of Max Armor for 10s to all allies in the cloud."
     },
+    "talentId": "warlock_talent_exotic_mask_mk3",
     "source": "datamined"
   },
   {
@@ -559,6 +613,7 @@
       "name": "Pack Instincts",
       "desc": "You and all allies gain a bonus based on the distance of the last enemy you hit.\n\n0-15m: +25% critical hit damage\n15-25m: +10% critical hit damage and +10% critical hit chance\n25m+: +25% critical hit chance"
     },
+    "talentId": "warlock_talent_exotic_mask_mk1",
     "source": "datamined"
   },
   {
@@ -581,6 +636,7 @@
       "name": "Chemical Agent",
       "desc": "Catalysis\nDealing and receiving status effects (Burn, Bleed, Shock, EMP/Disrupt, Poison, and Blind/Disorient) builds stacks of Catalysis to a maximum of 12. Each stack grants:\n    +2% weapon damage\n    +2% status effects\n\nEach enemy within 25 meters that is affected by a status effect grants +100% stack/sec. Being affected by status effects grants +200% stacks/sec.\nStacks decay at 100% stack/sec after 5s if no enemies in the radius or you are affected by status effects.\n\nReactant\nAt max stacks, killing a status-affected enemy grants bonuses for 5s:\n    +25% bonus armor\n    +20% reload speed\n\nStabilizer\nWhile burning, you can maintain ADS without disruption."
     },
+    "talentId": "virginia_talent_exotic_mask_catalyst_chemical_agent",
     "source": "datamined"
   },
   {
@@ -603,6 +659,7 @@
       "name": "Abridged",
       "desc": "If your Primary and Secondary weapons are not Exotic or Named and of the same type, the Secondary Weapon's talent will also be applied to the Primary Weapon.\nDoes not apply to Talents that include weapon swapping,"
     },
+    "talentId": "talent_exotic_abridged",
     "source": "datamined"
   },
   {
@@ -625,6 +682,7 @@
       "name": "Toxic Delivery",
       "desc": "Status effects also apply a damage over time debuff for 10s.\n\nTotal damage dealt is equal to 50% of your concussion grenade damage and increased by your status effect attributes."
     },
+    "talentId": "warlock_talent_exotic_mask_mk2",
     "source": "datamined"
   }
 ]

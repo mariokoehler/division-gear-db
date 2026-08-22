@@ -453,6 +453,7 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
 
         fixed_attrs = []
         talent = None
+        talent_id = None
         talent_status = None
         cores = []
         core_manual_override = False
@@ -498,6 +499,7 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
                     fixed_attrs.append("Unknown Attribute (%s)" % slot["uid"])
 
             preset_talent = parse_preset_talent(config_body)
+            talent_id = preset_talent["ref_file"] if preset_talent else None
             if preset_talent:
                 t = talent_index.get(preset_talent["ref_file"])
                 if t:
@@ -563,6 +565,13 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
             "fixedAttributes": fixed_attrs,
             "cores": cores,
             "talent": talent,
+            # The .mtalent instance id behind `talent` (present whenever a preset talent slot
+            # exists, even if talent_status ended up MISSING/manual_name_only) -- lets
+            # extract_all_talents.py recognize a Talent-Browser-catalog talent as "this Named
+            # Item's own preset" even when its filename carries no naming hint of that at all
+            # (e.g. Festive Delivery's Fireworks Show, `talent_gear_back_firecrackers`), the same
+            # class of gap `talentId` on Exotic Items was added to close.
+            "talentId": talent_id,
             "source": source,
         }
         if talent_status in ("MISSING", "manual_name_only"):

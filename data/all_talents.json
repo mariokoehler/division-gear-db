@@ -6,7 +6,29 @@
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Armor Kit Capacity",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Grenade Capacity",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Ammo Capacity",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Status Effects",
+        "condition": "Always active"
+      }
+    ]
   },
   {
     "id": "talent_exotic_backpack_quick_fix_combat_medic",
@@ -15,7 +37,21 @@
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Revive Speed",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Damage Resistance",
+        "condition": "while reviving or being revived, and for 10s after a successful revive"
+      },
+      {
+        "attribute": "Skill Tier",
+        "condition": "for 5s after a successful revive (Overcharge if revive happens at Skill Tier 6)"
+      }
+    ]
   },
   {
     "id": "warlock_talent_exotic_backpack_mk2",
@@ -24,7 +60,25 @@
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "on collecting an enemy trophy (short buff), plus per stack up to 30, 300s (long buff) - scales with core attributes equipped"
+      },
+      {
+        "attribute": "Bonus Armor",
+        "condition": "on collecting an enemy trophy (short buff) - scales with core attributes equipped"
+      },
+      {
+        "attribute": "Skill Efficiency",
+        "condition": "on collecting an enemy trophy (short buff), plus per stack up to 30, 300s (long buff) - scales with core attributes equipped"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "per trophy stack (up to 30), 300s"
+      }
+    ]
   },
   {
     "id": "warlock_talent_exotic_backpack_mk1b",
@@ -33,7 +87,13 @@
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Tier",
+        "condition": "for 15s after damaging an enemy with a grenade (Overcharge if already at Skill Tier 6)"
+      }
+    ]
   },
   {
     "id": "talent_exotic_backpack_adaptation",
@@ -42,7 +102,17 @@
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per Red stack (from kills/hits), or as a lump bonus per Blue stack on reaching the 80-stack cap"
+      },
+      {
+        "attribute": "Damage Resistance",
+        "condition": "per Blue stack (from being hit), or as a lump bonus per Red stack on reaching the 80-stack cap"
+      }
+    ]
   },
   {
     "id": "Ninja_Backpack_Talent_exotic",
@@ -51,7 +121,8 @@
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "warlock_talent_exotic_chest_mk1",
@@ -60,7 +131,13 @@
     "kind": "exotic-gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "whenever your or an ally's armor breaks (45s cooldown per ally)"
+      }
+    ]
   },
   {
     "id": "warlock_talent_exotic_chest_mk2",
@@ -69,7 +146,13 @@
     "kind": "exotic-gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "per second, scaling with number of bleeding enemies within 15m (shooting enemies within 15m applies bleed)"
+      }
+    ]
   },
   {
     "id": "talent_exotic_chest_bond",
@@ -78,7 +161,21 @@
     "kind": "exotic-gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Critical Hit Damage",
+        "condition": "while an ally is within 10m (higher) or one of your skills is within 10m (lower) - only the strongest applies"
+      },
+      {
+        "attribute": "Skill Efficiency",
+        "condition": "while an ally is within 10m (higher) or one of your skills is within 10m (lower) - only the strongest applies"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "while an ally is within 10m (higher) or one of your skills is within 10m (lower) - only the strongest applies"
+      }
+    ]
   },
   {
     "id": "talent_exotic_chest_provocator_challenger",
@@ -87,7 +184,36 @@
     "kind": "exotic-gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Damage Resistance",
+        "condition": "from enemies within 20m"
+      }
+    ]
+  },
+  {
+    "id": "talent_back_hoarder_grenade_enhancements",
+    "name": "Hoarder",
+    "description": "+300% Grenade Capacity\n+50% Grenade Radius\n+35% Grenade Damage\n+25% Grenade Damage for each extra enemy caught in the blast",
+    "kind": "exotic-gear",
+    "slot": "Chest",
+    "weaponType": null,
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Grenade Capacity",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Grenade Damage",
+        "condition": "Always active, more per extra enemy caught in the blast"
+      },
+      {
+        "attribute": "Grenade Radius",
+        "condition": "Always active"
+      }
+    ]
   },
   {
     "id": "talent_exotic_gloves_mk1_c",
@@ -96,7 +222,13 @@
     "kind": "exotic-gear",
     "slot": "Gloves",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "to enemies affected by the infused status effect from your thrown skills"
+      }
+    ]
   },
   {
     "id": "talent_exotic_gloves_mk1_b",
@@ -105,7 +237,21 @@
     "kind": "exotic-gear",
     "slot": "Gloves",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "while infused with a status effect you applied, per point of Skill Efficiency (Yellow core), 60s"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "while infused with a status effect you applied, per point of Skill Efficiency (Yellow core), 60s"
+      },
+      {
+        "attribute": "Skill Duration",
+        "condition": "while infused with a status effect you applied, per point of Skill Efficiency (Yellow core), 60s"
+      }
+    ]
   },
   {
     "id": "talent_exotic_gloves_decrease_recoil_while_not_aiming",
@@ -114,7 +260,8 @@
     "kind": "exotic-gear",
     "slot": "Gloves",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_exotic_gloves_over_the_top",
@@ -123,7 +270,17 @@
     "kind": "exotic-gear",
     "slot": "Gloves",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while Seeing Red is active (20s, after damaging with grenade or melee)"
+      },
+      {
+        "attribute": "Melee Damage",
+        "condition": "while Seeing Red is active (20s, after damaging with grenade or melee)"
+      }
+    ]
   },
   {
     "id": "talent_exotic_gloves_exodus_gloves_smoke_screen",
@@ -132,7 +289,8 @@
     "kind": "exotic-gear",
     "slot": "Gloves",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_exotic_gloves_mk1_a",
@@ -141,7 +299,28 @@
     "kind": "exotic-gear",
     "slot": "Gloves",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Tier",
+        "condition": "grants Overcharge to all allies for 15s, on detonating a Booster or Artificer Hive (at most once per 120s)"
+      }
+    ]
+  },
+  {
+    "id": "talent_exotic_mask_weakest_link",
+    "name": "Weakest Link",
+    "description": "Amplifies Weapon Damage by 30% to the lowest ranking enemies within the Tier hierarchy.\n\nTier 1: Hunter, Rogue, Leader, Tank, Shield, Heavy Weapons, RPG, Medic, Controller, Warhound, Marauder\n\nTier 2: Support, Engineer, Bodyguard, Immobilizer, Bomber, Mini Tank, Drone Operator\n\nTier 3: Any other enemy or skill proxy",
+    "kind": "exotic-gear",
+    "slot": "Gloves",
+    "weaponType": null,
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "to Tier 3 (the lowest-ranking) enemies"
+      }
+    ]
   },
   {
     "id": "talent_exotic_holster_ac",
@@ -150,7 +329,13 @@
     "kind": "exotic-gear",
     "slot": "Holster",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "stacking on one skill each second (cap 10), transferring to the other skill after 10s at cap"
+      }
+    ]
   },
   {
     "id": "talent_exotic_bob_and_weave",
@@ -159,7 +344,13 @@
     "kind": "exotic-gear",
     "slot": "Holster",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "per meter run during a cover-to-cover move"
+      }
+    ]
   },
   {
     "id": "talent_exotic_holster_equalizer_counterpoise",
@@ -168,7 +359,25 @@
     "kind": "exotic-gear",
     "slot": "Holster",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Rate of Fire",
+        "condition": "for 12s after a weapon swap (1st bonus group)"
+      },
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 12s after a weapon swap (1st bonus group)"
+      },
+      {
+        "attribute": "Magazine Size",
+        "condition": "for 12s after a second consecutive weapon swap (2nd bonus group, not to sidearm)"
+      },
+      {
+        "attribute": "Reload Speed",
+        "condition": "for 12s after a second consecutive weapon swap (2nd bonus group, not to sidearm)"
+      }
+    ]
   },
   {
     "id": "talent_exotic_holster_shocker_punch_defibrillator",
@@ -177,7 +386,13 @@
     "kind": "exotic-gear",
     "slot": "Holster",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Melee Damage",
+        "condition": "using a shield or St. Elmo's Engine alongside this holster (specific exotic combo)"
+      }
+    ]
   },
   {
     "id": "warlock_talent_exotic_holster_mk2",
@@ -186,7 +401,8 @@
     "kind": "exotic-gear",
     "slot": "Holster",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_exotic_holster_mk1_c",
@@ -195,7 +411,13 @@
     "kind": "exotic-gear",
     "slot": "Holster",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 8s (11s w/ revolver) after a pistol headshot kill"
+      }
+    ]
   },
   {
     "id": "talent_exotic_holster_mk1_a",
@@ -204,7 +426,13 @@
     "kind": "exotic-gear",
     "slot": "Holster",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "on first shot after swapping to pistol, per stack accumulated while holstered (up to 100)"
+      }
+    ]
   },
   {
     "id": "talent_exotic_holster_mk1_b",
@@ -213,7 +441,13 @@
     "kind": "exotic-gear",
     "slot": "Holster",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Swap Speed",
+        "condition": "Always active"
+      }
+    ]
   },
   {
     "id": "talent_exotic_escape_plan",
@@ -222,7 +456,13 @@
     "kind": "exotic-gear",
     "slot": "Kneepads",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Movement Speed",
+        "condition": "after vaulting, after standing still 5s, or after being hit by a status effect (max 20%, does not stack with other sources)"
+      }
+    ]
   },
   {
     "id": "talent_exotic_kneepads_mk1_b",
@@ -231,7 +471,8 @@
     "kind": "exotic-gear",
     "slot": "Kneepads",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_exotic_kneepads_mk1_a",
@@ -240,7 +481,13 @@
     "kind": "exotic-gear",
     "slot": "Kneepads",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Damage Resistance",
+        "condition": "while aiming, after staying in cover without firing for up to 10s (full immunity)"
+      }
+    ]
   },
   {
     "id": "talent_exotic_kneepads_impervious",
@@ -249,7 +496,13 @@
     "kind": "exotic-gear",
     "slot": "Kneepads",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Hazard Protection",
+        "condition": "you and allies within 10m"
+      }
+    ]
   },
   {
     "id": "talent_exotic_kneepads_mk1_c",
@@ -258,7 +511,13 @@
     "kind": "exotic-gear",
     "slot": "Kneepads",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "on completing a cover-to-cover swap while the deflect buff is active, scales with distance travelled"
+      }
+    ]
   },
   {
     "id": "talent_exotic_ostracize",
@@ -267,7 +526,13 @@
     "kind": "exotic-gear",
     "slot": "Kneepads",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "dealt to unmarked enemies while a mark is active on another enemy"
+      }
+    ]
   },
   {
     "id": "warlock_talent_exotic_kneepads_mk2",
@@ -276,7 +541,8 @@
     "kind": "exotic-gear",
     "slot": "Kneepads",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_exotic_abridged",
@@ -285,7 +551,8 @@
     "kind": "exotic-gear",
     "slot": "Mask",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "virginia_talent_exotic_mask_catalyst_chemical_agent",
@@ -294,7 +561,25 @@
     "kind": "exotic-gear",
     "slot": "Mask",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per Catalysis stack (max 12, built by dealing/receiving status effects)"
+      },
+      {
+        "attribute": "Status Effects",
+        "condition": "per Catalysis stack (max 12, built by dealing/receiving status effects)"
+      },
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 5s on killing a status-affected enemy at max Catalysis stacks"
+      },
+      {
+        "attribute": "Reload Speed",
+        "condition": "for 5s on killing a status-affected enemy at max Catalysis stacks"
+      }
+    ]
   },
   {
     "id": "virginia_talent_exotic_mask_byzantine_inferno_wrath",
@@ -303,7 +588,21 @@
     "kind": "exotic-gear",
     "slot": "Mask",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per Wrath stack (max 50, built by fire damage hits), persists while in the fire source and 5s after"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "per Wrath stack (max 50, built by fire damage hits), persists while in the fire source and 5s after"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "repairs 20% of missing armor on defeating an enemy while burning"
+      }
+    ]
   },
   {
     "id": "warlock_talent_exotic_mask_mk1",
@@ -312,7 +611,17 @@
     "kind": "exotic-gear",
     "slot": "Mask",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Critical Hit Damage",
+        "condition": "you and allies, scaling with distance to the last enemy you hit"
+      },
+      {
+        "attribute": "Critical Hit Chance",
+        "condition": "you and allies, scaling with distance to the last enemy you hit"
+      }
+    ]
   },
   {
     "id": "talent_exotic_mask_invested",
@@ -321,7 +630,21 @@
     "kind": "exotic-gear",
     "slot": "Mask",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Critical Hit Damage",
+        "condition": "per Red (Offensive) non-Core attribute rolled on this item"
+      },
+      {
+        "attribute": "Skill Efficiency",
+        "condition": "per Yellow (Utility) non-Core attribute rolled on this item"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "per Blue (Defensive) non-Core attribute rolled on this item"
+      }
+    ]
   },
   {
     "id": "warlock_talent_exotic_mask_mk2",
@@ -330,7 +653,8 @@
     "kind": "exotic-gear",
     "slot": "Mask",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "warlock_talent_exotic_mask_mk3",
@@ -339,16 +663,17 @@
     "kind": "exotic-gear",
     "slot": "Mask",
     "weaponType": null,
-    "tier": "Standard"
-  },
-  {
-    "id": "talent_exotic_mask_weakest_link",
-    "name": "Weakest Link",
-    "description": "Amplifies Weapon Damage by 30% to the lowest ranking enemies within the Tier hierarchy.\n\nTier 1: Hunter, Rogue, Leader, Tank, Shield, Heavy Weapons, RPG, Medic, Controller, Warhound, Marauder\n\nTier 2: Support, Engineer, Bodyguard, Immobilizer, Bomber, Mini Tank, Drone Operator\n\nTier 3: Any other enemy or skill proxy",
-    "kind": "exotic-gear",
-    "slot": "Mask",
-    "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per stack (max 30, built by taking damage)"
+      },
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "from the healing cloud dropped when the stack cap purges (10s, all allies in the cloud)"
+      }
+    ]
   },
   {
     "id": "talent_exotic_weapon_prima_donna_02",
@@ -906,16 +1231,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
-  },
-  {
-    "id": "talent_back_enemies_close_reduces_incoming_damage",
-    "name": "Aegis",
-    "description": "When within 10m of a hostile all incoming damage is reduced by 30% and 10% for all allies.",
-    "kind": "gear",
-    "slot": "Backpack",
-    "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 5s whenever within 10m of an enemy, stacks up to 300%, 5s cooldown"
+      }
+    ]
   },
   {
     "id": "talent_kneepads_kills_in_cover_reduce_skill_cooldowns",
@@ -924,7 +1246,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "on kills while in cover"
+      }
+    ]
   },
   {
     "id": "talent_gloves_damage_done_crits_restore_health_and_armor",
@@ -933,7 +1261,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "on critical hits while below 15% armor"
+      }
+    ]
   },
   {
     "id": "warlock_talent_standing_near_allies_increases_damage",
@@ -942,7 +1276,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while within 5m of an ally or skill"
+      }
+    ]
   },
   {
     "id": "talent_kneepads_increase_total_damage_while_in_cover",
@@ -951,7 +1291,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while in cover"
+      }
+    ]
   },
   {
     "id": "talent_mask_headshots_increase_headshot_damage",
@@ -960,7 +1306,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "after a headshot (150s, 5s w/ marksman rifles), stronger and longer after a headshot kill (10s)"
+      }
+    ]
   },
   {
     "id": "talent_mask_status_effects_spread",
@@ -969,7 +1321,8 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "warlock_talent_armor_kits_overcharge",
@@ -978,7 +1331,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Tier",
+        "condition": "for 15s after using an armor kit (Overcharge if already at Skill Tier 6), 60s cooldown"
+      }
+    ]
   },
   {
     "id": "talent_gear_back_firecrackers",
@@ -987,7 +1346,8 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "warlock_talent_disables_grants_nearby_bonus_armor",
@@ -996,7 +1356,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 10s to allies within 20m, on applying blind, ensnare, confuse, or shock to an enemy"
+      }
+    ]
   },
   {
     "id": "talent_back_kills_increases_healing_done",
@@ -1005,25 +1371,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
-  },
-  {
-    "id": "talent_back_hoarder_grenade_enhancements",
-    "name": "Hoarder",
-    "description": "+300% Grenade Capacity\n+50% Grenade Radius\n+35% Grenade Damage\n+25% Grenade Damage for each extra enemy caught in the blast",
-    "kind": "gear",
-    "slot": "Backpack",
-    "weaponType": null,
-    "tier": "Standard"
-  },
-  {
-    "id": "talent_back_revives_increase_healing_received",
-    "name": "Lazarus",
-    "description": "After reviving a teammate all party members within 10m have healing effects applied to them increased by 100% for 15 seconds.",
-    "kind": "gear",
-    "slot": "Backpack",
-    "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Repair",
+        "condition": "while at full armor"
+      }
+    ]
   },
   {
     "id": "warlock_talent_cover_to_cover_grants_group_bonus_armor",
@@ -1032,7 +1386,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 10s to you and allies on a cover-to-cover move, doubled if you end within 10m of an enemy, 10s cooldown"
+      }
+    ]
   },
   {
     "id": "talent_back_skills_on_cooldown_increase_weapon_damage",
@@ -1041,7 +1401,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while all skills are on cooldown"
+      }
+    ]
   },
   {
     "id": "talent_gloves_destroy_weakpoint_increases_damage_done_from_all_sources",
@@ -1050,7 +1416,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "for 5s to enemies hit with shotguns or marksman rifles"
+      }
+    ]
   },
   {
     "id": "warlock_talent_deployed_skills_boost_allies",
@@ -1059,16 +1431,17 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
-  },
-  {
-    "id": "talent_back_armor_kits_also_heal_allies",
-    "name": "Patched",
-    "description": "Using an Armor Kit repairs nearby group members Armor by the amount of Armor repaired.",
-    "kind": "gear",
-    "slot": "Backpack",
-    "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Reload Speed",
+        "condition": "for allies within 7m of your deployed skills"
+      },
+      {
+        "attribute": "Skill Haste",
+        "condition": "for allies within 7m of your deployed skills"
+      }
+    ]
   },
   {
     "id": "warlock_talent_nearby_enemies_grant_bonus_armor_perfect",
@@ -1077,7 +1450,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 5s whenever within 10m of an enemy, stacks up to 300%, 5s cooldown"
+      }
+    ]
   },
   {
     "id": "talent_gloves_damage_done_crits_restore_health_and_armor_perfect",
@@ -1086,7 +1465,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "on critical hits while below 2.5% armor"
+      }
+    ]
   },
   {
     "id": "warlock_talent_standing_near_allies_increases_damage_perfect",
@@ -1095,7 +1480,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while within 10m of an ally or skill"
+      }
+    ]
   },
   {
     "id": "talent_kneepads_increase_total_damage_while_in_cover_perfect",
@@ -1104,7 +1495,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while in cover"
+      }
+    ]
   },
   {
     "id": "talent_mask_headshots_increase_headshot_damage_perfect",
@@ -1113,7 +1510,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Headshot Damage",
+        "condition": "for 200s (5s w/ marksman rifles) after a headshot"
+      }
+    ]
   },
   {
     "id": "warlock_talent_disables_grants_nearby_bonus_armor_perfect",
@@ -1122,7 +1525,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 10s to you and allies within 30m, on applying blind, ensnare, confuse, or shock to an enemy"
+      }
+    ]
   },
   {
     "id": "warlock_talent_cover_to_cover_grants_group_bonus_armor_perfect",
@@ -1131,7 +1540,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 10s to you and allies on a cover-to-cover move, tripled if you end within 10m of an enemy, 10s cooldown"
+      }
+    ]
   },
   {
     "id": "talent_back_kills_increases_healing_done_perfect",
@@ -1140,7 +1555,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Repair",
+        "condition": "while at full armor"
+      }
+    ]
   },
   {
     "id": "warlock_talent_status_effects_increase_skill_damage_and_repair_perfect",
@@ -1149,7 +1570,17 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 27s after applying a status effect to an enemy"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "for 27s after applying a status effect to an enemy"
+      }
+    ]
   },
   {
     "id": "talent_back_skill_kills_increase_skill_duration_and_damage_perfect",
@@ -1158,7 +1589,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 27s after a skill kill"
+      }
+    ]
   },
   {
     "id": "talent_kneepads_kills_in_cover_reduce_skill_cooldowns_perfect",
@@ -1167,7 +1604,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "on kills while in cover"
+      }
+    ]
   },
   {
     "id": "talent_back_skills_on_cooldown_increase_weapon_damage_perfect",
@@ -1176,7 +1619,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while all skills are on cooldown"
+      }
+    ]
   },
   {
     "id": "talent_gloves_destroy_weakpoint_increases_damage_done_from_all_sources_perfect",
@@ -1185,7 +1634,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "for 5s to enemies hit with shotguns or marksman rifles"
+      }
+    ]
   },
   {
     "id": "talent_gloves_damage_done_increased_to_status_affected_perfect",
@@ -1194,7 +1649,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 27s after applying a status effect"
+      }
+    ]
   },
   {
     "id": "warlock_talent_shield_damage_grants_group_bonus_armor",
@@ -1203,25 +1664,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
-  },
-  {
-    "id": "talent_back_extra_weapon_slot",
-    "name": "Second Primary Weapon",
-    "description": "You can now equip a second primary weapon.",
-    "kind": "gear",
-    "slot": "Backpack",
-    "weaponType": null,
-    "tier": "Standard"
-  },
-  {
-    "id": "talent_back_armor_kits_provide_overshield",
-    "name": "Selfless",
-    "description": "Using a Armor Kit while at full armor applies a overshield.",
-    "kind": "gear",
-    "slot": "Backpack",
-    "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "when your shield takes damage: self +5%, allies +15% of your armor, on a cooldown"
+      }
+    ]
   },
   {
     "id": "warlock_talent_status_effects_increase_skill_damage_and_repair",
@@ -1230,7 +1679,17 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 20s after applying a status effect to an enemy"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "for 20s after applying a status effect to an enemy"
+      }
+    ]
   },
   {
     "id": "talent_back_skill_kills_increase_skill_duration_and_damage",
@@ -1239,7 +1698,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 25s after a skill kill"
+      }
+    ]
   },
   {
     "id": "talent_gloves_damage_done_increased_to_status_affected",
@@ -1248,7 +1713,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 20s after applying a status effect"
+      }
+    ]
   },
   {
     "id": "warlock_talent_weapon_damage_grants_skill_damage",
@@ -1257,7 +1728,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": "Any Weapon",
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 300s after shooting an enemy"
+      }
+    ]
   },
   {
     "id": "warlock_talent_weapon_damage_grants_skill_damage_perfect",
@@ -1266,7 +1743,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": "Any Weapon",
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 300s after shooting an enemy"
+      }
+    ]
   },
   {
     "id": "warlock_talent_weapon_swap_to_different_weapon_grants_damage_perfect",
@@ -1275,7 +1758,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": "Any Weapon",
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s after swapping between a different primary/secondary weapon type, strength varies by weapon type and range, once per 5s per type"
+      }
+    ]
   },
   {
     "id": "warlock_talent_weapon_swap_to_different_weapon_grants_damage",
@@ -1284,7 +1773,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": "Any Weapon",
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s after swapping between a different primary/secondary weapon type, strength varies by weapon type and range, once per 5s per type"
+      }
+    ]
   },
   {
     "id": "talent_chest_bonus_health_increases_life_on_kill",
@@ -1293,7 +1788,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "on kill, stacks up to 10, 10s per stack"
+      }
+    ]
   },
   {
     "id": "talent_back_when_no_armor_has_chance_to_not_consume_armor_kit",
@@ -1302,7 +1803,8 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_chest_bonus_health_increases_life_on_kill_perfect",
@@ -1311,7 +1813,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "on kill, stacks up to 10, 10s per stack"
+      }
+    ]
   },
   {
     "id": "talent_back_skill_damage_increases_weapon_damage_perfect",
@@ -1320,7 +1828,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 20s after damaging enemies with a skill"
+      }
+    ]
   },
   {
     "id": "talent_chest_increased_weapon_damage_while_not_getting_hit_perfect",
@@ -1329,7 +1843,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while not taking damage (disabled for 300s after being hit)"
+      }
+    ]
   },
   {
     "id": "talent_back_when_no_armor_has_chance_to_not_consume_armor_kit_perfect",
@@ -1338,7 +1858,8 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": []
   },
   {
     "id": "talent_h_basic_hazardprotection_perfect",
@@ -1347,7 +1868,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Hazard Protection",
+        "condition": "Always active"
+      }
+    ]
   },
   {
     "id": "talent_back_skill_kills_reset_skill_cooldowns_perfect",
@@ -1356,7 +1883,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "30% chance on a skill kill to reset skill cooldowns"
+      }
+    ]
   },
   {
     "id": "talent_chest_kills_increase_weapon_damage_based_on_armor_perfect",
@@ -1365,7 +1898,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 15s per kill, stacks up to 5 (grenade kills add 2 stacks)"
+      }
+    ]
   },
   {
     "id": "talent_back_skill_kills_reset_skill_cooldowns",
@@ -1374,7 +1913,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "chance on a skill kill to reset skill cooldowns"
+      }
+    ]
   },
   {
     "id": "talent_back_skill_damage_increases_weapon_damage",
@@ -1383,7 +1928,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 15s after damaging enemies with a skill"
+      }
+    ]
   },
   {
     "id": "talent_chest_kills_increase_weapon_damage_based_on_armor",
@@ -1392,7 +1943,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 15s per kill, stacks up to 5"
+      }
+    ]
   },
   {
     "id": "talent_chest_increased_weapon_damage_while_not_getting_hit",
@@ -1401,7 +1958,13 @@
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "while not taking damage (disabled for 400s after being hit)"
+      }
+    ]
   },
   {
     "id": "talent_chest_missing_armor_increases_weapon_damage",
@@ -1410,7 +1973,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "increases as your armor is depleted"
+      }
+    ]
   },
   {
     "id": "talent_kneepads_increase_weapon_handling_after_entering_cover",
@@ -1419,7 +1988,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Handling",
+        "condition": "after entering cover"
+      }
+    ]
   },
   {
     "id": "warlock_talent_healing_allies_buffs_them",
@@ -1428,7 +2003,17 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 15s (self 20s) after repairing an ally (or yourself)"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 15s (self 20s) after repairing an ally (or yourself)"
+      }
+    ]
   },
   {
     "id": "talent_kneepads_headshots_in_cover_gives_armor",
@@ -1437,7 +2022,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "on headshots from cover while below 30% armor, 200s cooldown"
+      }
+    ]
   },
   {
     "id": "warlock_talent_thrown_skills_explode",
@@ -1446,7 +2037,8 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "warlock_talent_scope_aiming_increases_damage",
@@ -1455,7 +2047,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per second while aiming scoped 8x or higher, up to 50%"
+      }
+    ]
   },
   {
     "id": "warlock_talent_damage_dealt_and_damage_taken_increased",
@@ -1464,7 +2062,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "Always active (+25% dealt; also amplifies incoming damage taken by 50%)"
+      }
+    ]
   },
   {
     "id": "talent_chest_skill_proxy_kills_increase_grenade_and_all_resist",
@@ -1473,7 +2077,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Grenade Damage",
+        "condition": "after destroying an enemy skill proxy (also boosts All Resistances)"
+      }
+    ]
   },
   {
     "id": "talent_holster_swap_weapons_after_kill_increases_weapon_damage",
@@ -1482,7 +2092,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 5s after a weapon swap"
+      }
+    ]
   },
   {
     "id": "warlock_talent_headshot_kills_increase_next_weapon_hit",
@@ -1491,7 +2107,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "on your next weapon hit within 30s after a headshot kill (capped at 8% of your weapon damage)"
+      }
+    ]
   },
   {
     "id": "warlock_talent_bonus_armor_grants_damage",
@@ -1500,7 +2122,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "to enemies within 10m, per stack (up to 9) accumulated while you have bonus armor"
+      }
+    ]
   },
   {
     "id": "warlock_talent_active_skills_increase_damage",
@@ -1509,7 +2137,17 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "per active/off-cooldown skill (lost while on cooldown)"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "per active/off-cooldown skill (lost while on cooldown)"
+      }
+    ]
   },
   {
     "id": "talent_chest_grenade_kills_refund_grenade_and_increased_radius",
@@ -1518,7 +2156,17 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Grenade Radius",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Bonus Armor",
+        "condition": "while aiming a grenade"
+      }
+    ]
   },
   {
     "id": "warlock_talent_crits_increase_damage",
@@ -1527,7 +2175,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s per critical hit, stacks up to 20"
+      }
+    ]
   },
   {
     "id": "warlock_talent_staying_in_cover_grants_group_damage",
@@ -1536,7 +2190,17 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for you and allies, after staying in cover for 10s, lasts while still in cover or cover-to-cover"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "for you and allies, after staying in cover for 10s, lasts while still in cover or cover-to-cover"
+      }
+    ]
   },
   {
     "id": "talent_chest_missing_armor_increases_weapon_damage_perfect",
@@ -1545,7 +2209,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per 20% of max armor depleted"
+      }
+    ]
   },
   {
     "id": "talent_kneepads_increase_weapon_handling_after_entering_cover_perfect",
@@ -1554,7 +2224,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Handling",
+        "condition": "while in cover"
+      }
+    ]
   },
   {
     "id": "warlock_talent_healing_allies_buffs_them_perfect",
@@ -1563,7 +2239,17 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 20s after repairing an ally (or yourself), scales with your skill tier"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "for 20s after repairing an ally (or yourself), scales with your skill tier"
+      }
+    ]
   },
   {
     "id": "talent_kneepads_headshots_in_cover_gives_armor_perfect",
@@ -1572,7 +2258,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "on headshots from cover while below 30% armor, 100s cooldown"
+      }
+    ]
   },
   {
     "id": "warlock_talent_scope_aiming_increases_damage_perfect",
@@ -1581,7 +2273,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "per second while aiming scoped 8x or higher, up to 60%"
+      }
+    ]
   },
   {
     "id": "warlock_talent_damage_dealt_and_damage_taken_increased_perfect",
@@ -1590,7 +2288,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "Always active (+30% dealt; also amplifies incoming damage taken by 60%)"
+      }
+    ]
   },
   {
     "id": "talent_holster_swap_weapons_after_kill_increases_weapon_damage_perfect",
@@ -1599,7 +2303,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 5s after a weapon swap"
+      }
+    ]
   },
   {
     "id": "warlock_talent_headshot_kills_increase_next_weapon_hit_perfect",
@@ -1608,7 +2318,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "on your next weapon hit within 30s after a headshot kill (capped at 8%, or 12.5% at high headshot damage, of your weapon damage)"
+      }
+    ]
   },
   {
     "id": "warlock_talent_bonus_armor_grants_damage_perfect",
@@ -1617,7 +2333,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "to enemies within 10m, per stack (up to 10) accumulated while you have bonus armor"
+      }
+    ]
   },
   {
     "id": "warlock_talent_active_skills_increase_damage_perfect",
@@ -1626,7 +2348,17 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Damage",
+        "condition": "per active/off-cooldown skill (lost while on cooldown)"
+      },
+      {
+        "attribute": "Skill Repair",
+        "condition": "per active/off-cooldown skill (lost while on cooldown)"
+      }
+    ]
   },
   {
     "id": "warlock_talent_crits_increase_damage_perfect",
@@ -1635,7 +2367,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s per critical hit, stacks up to 24"
+      }
+    ]
   },
   {
     "id": "warlock_talent_staying_in_cover_grants_group_damage_perfect",
@@ -1644,7 +2382,17 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for you and allies, after staying in cover for 8s, lasts while still in cover or cover-to-cover"
+      },
+      {
+        "attribute": "Skill Damage",
+        "condition": "for you and allies, after staying in cover for 8s, lasts while still in cover or cover-to-cover"
+      }
+    ]
   },
   {
     "id": "talent_slot_equipped_armor_increased_while_reloading_perfect",
@@ -1653,7 +2401,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "while reloading (self +40%; allies get 0-30% of your armor when they reload, scaling with your Defense core)"
+      }
+    ]
   },
   {
     "id": "talent_mask_increased_damage_to_pulsed_perfect",
@@ -1662,7 +2416,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "to pulsed enemies (weapon and skill damage)"
+      }
+    ]
   },
   {
     "id": "warlock_talent_shield_grants_invulnerable_and_group_bonus_armor_perfect",
@@ -1671,7 +2431,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 20s to allies, on deploying a shield, 25s cooldown"
+      }
+    ]
   },
   {
     "id": "warlock_talent_thrown_skills_explode_perfect",
@@ -1680,7 +2446,8 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": []
   },
   {
     "id": "talent_chest_grenade_kills_refund_grenade_and_increased_radius_perfect",
@@ -1689,7 +2456,17 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Grenade Radius",
+        "condition": "Always active"
+      },
+      {
+        "attribute": "Bonus Armor",
+        "condition": "while aiming a grenade"
+      }
+    ]
   },
   {
     "id": "talent_holster_kill_status_effected_random_chance_grant_special_ammo_perfect",
@@ -1698,7 +2475,8 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": []
   },
   {
     "id": "warlock_talent_shock_enemies_near_deployed_skills_perfect",
@@ -1707,7 +2485,8 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": []
   },
   {
     "id": "talent_chest_when_armor_breaks_get_free_repair_and_armor_kit_perfect",
@@ -1716,7 +2495,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "repairs 100% of your armor when it's depleted, 55s cooldown"
+      }
+    ]
   },
   {
     "id": "talent_slot_equipped_armor_increased_while_reloading",
@@ -1725,7 +2510,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "while reloading"
+      }
+    ]
   },
   {
     "id": "talent_holster_kill_status_effected_random_chance_grant_special_ammo",
@@ -1734,7 +2525,8 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_mask_increased_damage_to_pulsed",
@@ -1743,7 +2535,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "to pulsed enemies (weapon and skill damage)"
+      }
+    ]
   },
   {
     "id": "talent_mask_hits_reduce_cooldown",
@@ -1752,7 +2550,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "on dealing weapon damage to an enemy marked by your own skill, 400s cooldown"
+      }
+    ]
   },
   {
     "id": "warlock_talent_shock_enemies_near_deployed_skills",
@@ -1761,7 +2565,8 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_mask_headshots_blind_target",
@@ -1770,7 +2575,8 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_chest_when_armor_breaks_get_free_repair_and_armor_kit",
@@ -1779,7 +2585,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Armor Regeneration",
+        "condition": "repairs 95% of your armor when it's depleted, 60s cooldown"
+      }
+    ]
   },
   {
     "id": "warlock_talent_shield_grants_invulnerable_and_group_bonus_armor",
@@ -1788,7 +2600,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for 20s to allies, on deploying a shield, 25s cooldown"
+      }
+    ]
   },
   {
     "id": "talent_basic_increase_accuracy",
