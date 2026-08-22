@@ -1515,7 +1515,7 @@
     ],
     "talent": {
       "name": "Perfect Protected Reload",
-      "desc": "Grants +40% bonus armor while reloading.\n\nGrants 0%-30% of your armor as bonus armor to all other allies when they are reloading, based on your <img src=\"hunter/baked/ui/loose_images/ui_player_defense.dds\"> core attribute."
+      "desc": "Grants +40% bonus armor while reloading.\n\nGrants 0%-30% of your armor as bonus armor to all other allies when they are reloading, based on your Blue core attribute."
     },
     "talentId": "talent_slot_equipped_armor_increased_while_reloading_perfect",
     "source": "datamined"

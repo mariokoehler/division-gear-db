@@ -42,7 +42,7 @@
     ]
   },
   "warlock_talent_exotic_backpack_mk2": {
-    "fingerprint": "777a80c4e8931cbd0378c4731431b0d5",
+    "fingerprint": "7a8f9b8f1279d28e28d16f2573d60a9f",
     "bonuses": [
       {
         "attribute": "Weapon Damage",
@@ -142,7 +142,7 @@
     ]
   },
   "talent_exotic_gloves_mk1_b": {
-    "fingerprint": "2d7a5a73c453f00515a0a76353888374",
+    "fingerprint": "08262a6473c0445aa6fbc201b0bb1e25",
     "bonuses": [
       {
         "attribute": "Skill Damage",
@@ -1184,7 +1184,7 @@
     ]
   },
   "talent_slot_equipped_armor_increased_while_reloading_perfect": {
-    "fingerprint": "3748a39e45cf47ece0a0747a65fa8a78",
+    "fingerprint": "5815f482a7f73ce968615e8f53b2a27d",
     "bonuses": [
       {
         "attribute": "Bonus Armor",

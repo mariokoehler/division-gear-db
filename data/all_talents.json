@@ -56,7 +56,7 @@
   {
     "id": "warlock_talent_exotic_backpack_mk2",
     "name": "Kill Confirmed",
-    "description": "Enemies you kill drop a trophy on death. Collecting trophies provides both a short and long term buff, the first of which scales with the number of core attributes equipped, and lasts 10s.\n\n<img src=\"hunter/baked/ui/loose_images/ui_player_offense.dds\"> - +5% Weapon Damage\n<img src=\"hunter/baked/ui/loose_images/ui_player_defense.dds\"> - +10% Bonus Armor \n<img src=\"hunter/baked/ui/loose_images/ui_player_utility.dds\"> - +5% Skill Efficiency\n\nFor every trophy collected, gain an additional +1% weapon damage, +1% skill efficiency, and +0.1% armor regeneration for 300s.\n\nMaximum 30 stacks.",
+    "description": "Enemies you kill drop a trophy on death. Collecting trophies provides both a short and long term buff, the first of which scales with the number of core attributes equipped, and lasts 10s.\n\nRed - +5% Weapon Damage\nBlue - +10% Bonus Armor \nYellow - +5% Skill Efficiency\n\nFor every trophy collected, gain an additional +1% weapon damage, +1% skill efficiency, and +0.1% armor regeneration for 300s.\n\nMaximum 30 stacks.",
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -233,7 +233,7 @@
   {
     "id": "talent_exotic_gloves_mk1_b",
     "name": "Energy Infusion",
-    "description": "Whenever you apply a status effect, your gloves become infused with that effect for 60s.\n\nWhile infused, you gain +10% skill damage, +10% skill healing and repair, and +10% skill duration for each <img src=\"hunter/baked/ui/loose_images/ui_player_utility.dds\"> you have.\n\nApplying the same status effect while infused does not refresh the infusion.",
+    "description": "Whenever you apply a status effect, your gloves become infused with that effect for 60s.\n\nWhile infused, you gain +10% skill damage, +10% skill healing and repair, and +10% skill duration for each Yellow you have.\n\nApplying the same status effect while infused does not refresh the infusion.",
     "kind": "exotic-gear",
     "slot": "Gloves",
     "weaponType": null,
@@ -822,7 +822,7 @@
   {
     "id": "talent_exotic_assault_rifle_magpulpdr",
     "name": "Capacitance",
-    "description": "Shooting enemies builds stacks to a cap of 40. Each stack grants 1.5% Skill Damage. After 5 seconds, stacks decay 100% per second.\n\nFor each <img src=\"hunter/baked/ui/loose_images/ui_player_utility.dds\"> skill tier gain 7.5% weapon damage.",
+    "description": "Shooting enemies builds stacks to a cap of 40. Each stack grants 1.5% Skill Damage. After 5 seconds, stacks decay 100% per second.\n\nFor each Yellow skill tier gain 7.5% weapon damage.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "Assault Rifle",
@@ -831,7 +831,7 @@
   {
     "id": "talent_exotic_assault_rifle_magpulpdr_shield_Shader",
     "name": "Capacitance",
-    "description": "Shooting enemies builds stacks to a cap of 40. Each stack grants 1.5% Skill Damage. After 5 seconds, stacks decay 100% per second.\n\nFor each <img src=\"hunter/baked/ui/loose_images/ui_player_utility.dds\"> skill tier gain 7.5% weapon damage.",
+    "description": "Shooting enemies builds stacks to a cap of 40. Each stack grants 1.5% Skill Damage. After 5 seconds, stacks decay 100% per second.\n\nFor each Yellow skill tier gain 7.5% weapon damage.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "Assault Rifle",
@@ -2397,7 +2397,7 @@
   {
     "id": "talent_slot_equipped_armor_increased_while_reloading_perfect",
     "name": "Perfect Protected Reload",
-    "description": "Grants +40% bonus armor while reloading.\n\nGrants 0%-30% of your armor as bonus armor to all other allies when they are reloading, based on your <img src=\"hunter/baked/ui/loose_images/ui_player_defense.dds\"> core attribute.",
+    "description": "Grants +40% bonus armor while reloading.\n\nGrants 0%-30% of your armor as bonus armor to all other allies when they are reloading, based on your Blue core attribute.",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,

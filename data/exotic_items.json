@@ -9,6 +9,7 @@
       "Skill Haste",
       "Skill Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Skill Tier",
@@ -39,6 +40,7 @@
       "Skill Haste",
       "Skill Repair"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Skill Tier",
@@ -59,6 +61,7 @@
     "isDarkZoneExclusive": true,
     "flavorText": "\"Where Eagles score!\"",
     "bonuses": [],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -87,6 +90,7 @@
     "isDarkZoneExclusive": true,
     "flavorText": "\"I took from those who watched, hunted, and collected, until only their shadows remained. Now my watch has ended, so yours may begin.\"\n\n- Inscription by an unknown author",
     "bonuses": [],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -103,7 +107,7 @@
     ],
     "talent": {
       "name": "Kill Confirmed",
-      "desc": "Enemies you kill drop a trophy on death. Collecting trophies provides both a short and long term buff, the first of which scales with the number of core attributes equipped, and lasts 10s.\n\n<img src=\"hunter/baked/ui/loose_images/ui_player_offense.dds\"> - +5% Weapon Damage\n<img src=\"hunter/baked/ui/loose_images/ui_player_defense.dds\"> - +10% Bonus Armor \n<img src=\"hunter/baked/ui/loose_images/ui_player_utility.dds\"> - +5% Skill Efficiency\n\nFor every trophy collected, gain an additional +1% weapon damage, +1% skill efficiency, and +0.1% armor regeneration for 300s.\n\nMaximum 30 stacks."
+      "desc": "Enemies you kill drop a trophy on death. Collecting trophies provides both a short and long term buff, the first of which scales with the number of core attributes equipped, and lasts 10s.\n\nRed - +5% Weapon Damage\nBlue - +10% Bonus Armor \nYellow - +5% Skill Efficiency\n\nFor every trophy collected, gain an additional +1% weapon damage, +1% skill efficiency, and +0.1% armor regeneration for 300s.\n\nMaximum 30 stacks."
     },
     "talentId": "warlock_talent_exotic_backpack_mk2",
     "source": "datamined"
@@ -115,6 +119,7 @@
     "isDarkZoneExclusive": true,
     "flavorText": "\"From the depths of hell, this has been resurrected as if it cannot die.\" The Priest",
     "bonuses": [],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -146,6 +151,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -169,6 +175,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -192,6 +199,7 @@
       "Armor Regeneration",
       "Hazard Protection"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Total Armor",
@@ -215,6 +223,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -238,6 +247,7 @@
       "Explosive Resistance",
       "Armor Regeneration"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Total Armor",
@@ -261,6 +271,7 @@
       "Skill Haste",
       "Skill Repair"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Skill Tier",
@@ -284,6 +295,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -307,6 +319,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -330,6 +343,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -353,6 +367,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -376,6 +391,7 @@
       "Weapon Handling",
       "Critical Hit Chance"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -399,6 +415,7 @@
       "Weapon Handling",
       "Headshot Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -422,6 +439,7 @@
       "Status Effects",
       "Hazard Protection"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Skill Tier",
@@ -445,6 +463,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -468,6 +487,7 @@
       "Explosive Resistance",
       "Hazard Protection"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Total Armor",
@@ -491,6 +511,7 @@
       "Skill Damage",
       "Skill Haste"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Skill Tier",
@@ -511,6 +532,7 @@
     "isDarkZoneExclusive": false,
     "flavorText": "\"They got their asses caught by the JTF, but they don't have my mad parkour skills.\"\n- Eva Acosta",
     "bonuses": [],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Total Armor",
@@ -534,6 +556,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -557,6 +580,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -580,6 +604,7 @@
       "Incoming Repairs",
       "Armor Regeneration"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Total Armor",
@@ -603,6 +628,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -617,6 +643,22 @@
     "source": "datamined"
   },
   {
+    "instance_id": "player_gear_mask_exotic_06",
+    "name": "Investor",
+    "slot": "Mask",
+    "isDarkZoneExclusive": true,
+    "flavorText": "I always get the most out of my things.",
+    "bonuses": [],
+    "bonusesRandom": true,
+    "cores": [],
+    "talent": {
+      "name": "Slotted",
+      "desc": "Receive bonuses for each non-Core Attribute on this item, depending on their color:\nRed: +10% Critical Hit Damage\nYellow: +5% Skill Efficiency\nBlue: +1% Armor Regen\n\nThis item can feature any Core Attribute. This item features a third random Attribute instead of having a Gear Mod Slot.\nThis item cannot feature the Headshot Damage, Health or Skill Repair Attributes."
+    },
+    "talentId": "talent_exotic_mask_invested",
+    "source": "datamined"
+  },
+  {
     "instance_id": "player_gear_mask_exotic_04",
     "name": "The Catalyst",
     "slot": "Mask",
@@ -626,6 +668,7 @@
       "Hazard Protection",
       "Status Effects"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -649,6 +692,7 @@
       "Critical Hit Chance",
       "Critical Hit Damage"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Weapon Damage",
@@ -672,6 +716,7 @@
       "Status Effects",
       "Hazard Protection"
     ],
+    "bonusesRandom": false,
     "cores": [
       {
         "stat": "Skill Tier",

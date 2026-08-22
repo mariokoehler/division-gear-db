@@ -146,9 +146,25 @@ def extract_field_text(body, field_name, allow_comment_fallback=True):
     return text
 
 
+# A talent tooltip can inline one of exactly 3 small core-attribute icons instead of spelling out
+# the color (e.g. Capacitance: "For each <img .../ui_player_utility.dds> skill tier gain...",
+# meant to read as "For each Yellow skill tier..."). Confirmed exhaustive by grepping every
+# .mtalent file in a full raw export for every distinct <img> tag in use -- only these 3 filenames
+# ever occur, no other icon vocabulary exists to account for. Left unhandled, the raw `<img
+# src="hunter/baked/...">` tag survives into the page's own HTML as a literal broken image
+# reference (caught by the user on Kill Confirmed, but it silently affected 4 other talents too --
+# Energy Infusion, Capacitance, Perfect Protected Reload). Mapped to the color, never the word
+# "offense"/"defense"/"utility" itself, matching this codebase's own established
+# CORE_COLOR_BY_STAT convention (Red/Offensive, Blue/Defensive, Yellow/Utility) used everywhere
+# else a core attribute is shown.
+_CORE_ICON_RE = re.compile(r'<img[^>]*ui_player_(offense|defense|utility)\.dds[^>]*>')
+_CORE_ICON_COLOR = {"offense": "Red", "defense": "Blue", "utility": "Yellow"}
+
+
 def strip_inline_markup(s):
     if s is None:
         return None
+    s = _CORE_ICON_RE.sub(lambda m: _CORE_ICON_COLOR[m.group(1)], s)
     return re.sub(r'</?color[^>]*>', '', s).strip()
 
 

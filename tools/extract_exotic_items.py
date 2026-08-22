@@ -33,13 +33,27 @@ from extract_named_items import (
 #     for it, so this is actually excluded automatically (listed here only for documentation).
 #   - player_gear_kneepads_exotic_04: myUIName is literally "TBD" -- excluded automatically by
 #     the placeholder-name check below (same treatment as named items' "INSERT NAME HERE").
-#   - player_gear_mask_exotic_06 ("Investor"): a real, released Y8S1 item, but confirmed by the
-#     user (2026-08-18, from its own talent text) to be an intentionally fully-random exotic --
-#     "This item can feature any Core Attribute" / "features a third random Attribute instead of
-#     a mod slot" -- i.e. it has no fixed bonus types or fixed core at all, so it simply doesn't
-#     fit this database's "always X and Y" model. Excluded explicitly since there's no generic
-#     structural signal to detect this from (unlike the two above).
-EXCLUDED_INSTANCE_IDS = {"player_gear_mask_exotic_06"}
+EXCLUDED_INSTANCE_IDS = set()
+
+# player_gear_mask_exotic_06 ("Investor") used to be excluded outright (a real, released Y8S1
+# item, but its own talent text says "This item can feature any Core Attribute" / "features a
+# third random Attribute instead of a mod slot" -- confirmed by the user, 2026-08-18, to be
+# intentionally fully-random, with no fixed bonus types or fixed Core at all, unlike this
+# dataset's usual "always X and Y" model). That left its talent, "Slotted", permanently
+# unattachable to any card -- the same "orphaned talent" symptom Acosta's Go Bag had, but for a
+# different underlying reason (this item's own .mitem file IS present; it was a deliberate
+# design-fit exclusion, not a missing-file gap). The user asked to include it anyway once there
+# was something to connect "Slotted" to. Structurally this is safe: every one of its bonus/Core
+# slots really does carry the null-UID sentinel this codebase already uses everywhere else for
+# "not actually preset" (confirmed by reading its config directly), so `parse_core_attributes`
+# and the bonus-slot loop below both naturally produce an honest, correct `cores: []` /
+# `bonuses: []` -- nothing needs to be invented. The only real risk was the null-UID bonus slots
+# being logged as MISSING_BONUS_ATTRIBUTE (this codebase's usual meaning for that signal: a real
+# export gap needing research) when here it's neither a gap nor unresolved, so those 3 slots are
+# suppressed from that review-note path specifically for this item (see the loop below) and the
+# item instead carries `"bonusesRandom": true`, which index.html renders as an explicit note
+# instead of the misleading "not yet resolved" language used for genuine gaps.
+CONFIRMED_RANDOM_BONUS_ITEMS = {"player_gear_mask_exotic_06"}
 
 PLACEHOLDER_NAMES = {"TBD", "INSERT NAME HERE"}
 
@@ -106,6 +120,11 @@ def build_exotic_items(raw_dir, uid_dict):
                 if slot["is_core"]:
                     continue
                 if re.match(r'^0+$', slot["uid"]):
+                    if entry["instance_id"] in CONFIRMED_RANDOM_BONUS_ITEMS:
+                        # Investor: every bonus/Core slot is null-UID by design (confirmed by the
+                        # user, see CONFIRMED_RANDOM_BONUS_ITEMS above) -- not a gap, so no
+                        # MISSING_BONUS_ATTRIBUTE note here; bonuses_random gets set below instead.
+                        continue
                     # seen on Acosta's Kneepads: both bonus slots reference the null UID in this
                     # export, an export gap (the item is real, Y6S1) rather than a design quirk --
                     # flag it instead of silently shipping a 0- or 1-entry bonus list unexplained.
@@ -147,6 +166,11 @@ def build_exotic_items(raw_dir, uid_dict):
             "isDarkZoneExclusive": entry["is_dz"],
             "flavorText": flavor,
             "bonuses": bonuses,
+            # True only for items confirmed to have no fixed bonus types or Core at all by design
+            # (see CONFIRMED_RANDOM_BONUS_ITEMS) -- `bonuses`/`cores` are correctly empty for these,
+            # not unresolved, so index.html shows an explicit "fully random" note instead of the
+            # "not yet resolved" language used for a genuine export gap.
+            "bonusesRandom": entry["instance_id"] in CONFIRMED_RANDOM_BONUS_ITEMS,
             "cores": cores,
             "talent": talent,
             # The .mtalent instance id behind `talent` (present even when talent_status is
@@ -253,6 +277,7 @@ def build_manual_config_items(raw_dir, uid_dict, repo_dir, talent_index, naive_s
             "isDarkZoneExclusive": info.get("isDarkZoneExclusive", False),
             "flavorText": None,
             "bonuses": bonuses,
+            "bonusesRandom": False,
             "cores": cores,
             "talent": {"name": talents[0]["name"], "desc": talents[0]["desc"]},
             "talentId": talents[0]["talentId"],

@@ -140,6 +140,16 @@ Key facts, each learned the hard way:
   benefits from a human/AI read. The update script tracks a fingerprint of the raw values behind
   each talent description; if they haven't changed since last run, the hand-written text is kept
   untouched, so this only comes up for genuinely new/changed talents, not every run.
+- **A talent tooltip can also inline a small core-attribute icon instead of spelling out the
+  color** — `<img src="hunter/baked/ui/loose_images/ui_player_offense.dds">` and its
+  `defense`/`utility` siblings, no other icon vocabulary exists anywhere in `talent/*.mtalent`
+  (confirmed by grepping every file for every distinct `<img>` tag in use). `strip_inline_markup`
+  (shared by all three extraction scripts) only ever stripped `<color>` tags until a user caught a
+  literal broken `<img>` reference rendering on a live card — 5 occurrences across 4 talents were
+  silently affected. Fixed by mapping each icon to its color word (Red/Blue/Yellow, the same
+  `CORE_COLOR_BY_STAT` convention used everywhere else) rather than just deleting the tag, since
+  at least one occurrence uses the icon as a noun ("...for each `<img.../>` you have"), not a
+  decorative prefix — deleting it outright would've left a grammatically broken sentence.
 - **The raw text format itself has landmines**: brace-matching must be quote-aware. At least three
   of the game's own files (`gear_set_d/j/l.mgearset` — Negotiator's Dilemma, Striker's Battlegear,
   Hunter's Fury) have a literal `}` embedded inside a quoted string value
@@ -478,9 +488,14 @@ parsing machinery directly (imported, not copied) — the schema turned out to b
   - `player_gear_mask_exotic_06` ("Investor") — a real, released Y8S1 item, confirmed by the user
     (2026-08-18) via its own talent text to be intentionally fully-random: "This item can feature
     any Core Attribute" / "features a third random Attribute instead of a mod slot" / cannot roll
-    certain attributes. It simply doesn't fit this database's "always X and Y" model — no generic
-    structural signal distinguishes it from a real gap, so it's excluded by instance_id with a
-    comment rather than guessed at.
+    certain attributes. It simply doesn't fit this database's "always X and Y" model, and was
+    excluded outright at first (no generic structural signal distinguishes "no data" from
+    "intentionally no data" without the user's own confirmation of which one this is). **Included
+    since a later session** once the user pointed out its talent, "Slotted", had nothing to attach
+    to otherwise — see `CONFIRMED_RANDOM_BONUS_ITEMS` and the "Potential Bonuses" section's
+    "Liveness filtering" below for the mechanism that lets it show `bonuses: []`/`cores: []`
+    honestly (confirmed by its own config, not fabricated) with an explicit "fully random" note
+    instead of looking like an unresolved gap.
 - **Two more bugs surfaced by exotic-item flavor/description text specifically, both fixed in
   shared code** (`update_from_hunter_export.py`, so both this pipeline and the gear-set one
   benefit):
@@ -856,6 +871,24 @@ of user-caught classification bugs.
     Items: 28 → 29. `talent_exotic_kneepads_mk1_a` ("Grace Under Fire") remains in the same state
     the bullet above left it — confirmed real, config-resolvable, just not yet name-confirmed by
     the user — and would take exactly the same one-entry addition to this same file if/when it is.
+  - **A related but structurally different orphan, resolved the same way conceptually but not the
+    same mechanism**: the user noticed "Slotted" (Investor's own talent) was still orphaned too,
+    and asked whether Investor — excluded outright since the "Exotic Items — datamining notes"
+    section above, confirmed intentionally fully-random rather than following the "always X and Y"
+    model — could just be included now that there's a talent to connect it to. Unlike Acosta's Go
+    Bag, Investor's own `.mitem` file was never missing; it was a deliberate design-fit exclusion.
+    Re-reading its config directly confirmed every one of its Core/bonus slots really does carry
+    the usual null-UID "not preset" sentinel (not a fabricated or half-resolved state), so
+    un-excluding it produces an honest, correct `bonuses: []`/`cores: []` — nothing invented.
+    `EXCLUDED_INSTANCE_IDS` dropped to empty; a new `CONFIRMED_RANDOM_BONUS_ITEMS` set (currently
+    just this one id, with the full reasoning inline as a comment) suppresses the
+    `MISSING_BONUS_ATTRIBUTE` review-note path for its 3 null-UID bonus slots specifically (that
+    note's usual meaning — a real export gap needing research — would be wrong here) and sets a
+    new `"bonusesRandom": true` field instead. `index.html` renders that as an explicit "Any Core
+    (confirmed fully random)" badge and a "Bonus attributes fully random — no fixed types
+    (confirmed)" row, rather than the "not yet resolved" language used for a genuine gap, which
+    would have implied this was still missing data rather than a confirmed design fact. Exotic
+    Items: 29 → 30.
   - **The remaining pool-absent `gear`-kind talents needed a second, independent liveness check**:
     a Chest/Backpack talent absent from the random-roll pool isn't necessarily dead — it might be
     one specific Named Item's own directly-assigned talent instead (confirmed real precedent:
@@ -1230,7 +1263,7 @@ deliberately don't (a civilian brand isn't one fixed item, so there's no single 
 
 Picked up the explicitly-deferred "Part 2" from the Talent Browser work (see "All Talents" above):
 inferring which talents conditionally grant a real bonus attribute, and surfacing that in the main
-Attribute Finder tab. Landed in five steps within the same session, each confirmed with the user
+Attribute Finder tab. Landed in seven steps within the same session, each confirmed with the user
 before moving to the next:
 
 1. **The interpretation dictionary + drift-detection plumbing** (`tools/talent_bonus_inferences.json`,
@@ -1302,4 +1335,35 @@ not because of anything in this codebase.
    `potentialTiers` union, and the "does this exotic-gear talent already belong to an item" check
    all updated to fold it in). Exotic Items: 28 → 29. Full detail in "Potential Bonuses" above,
    under "Liveness filtering" — the "Resolved, same session, immediately after" bullet.
+6. **A sixth, same-session bug fix**: the user spotted a literal broken `<img
+   src="hunter/baked/...">` tag rendering in Kill Confirmed's description. Root cause:
+   `strip_inline_markup` (shared by all three extraction scripts) only ever stripped `<color>`
+   tags, never `<img>` ones — a talent tooltip can inline one of exactly 3 small core-attribute
+   icons instead of spelling out the color (confirmed exhaustive by grepping every `.mtalent` file
+   in a full export: `ui_player_offense/defense/utility.dds`, no other icon vocabulary exists).
+   Fixed by mapping each to the matching color word (Red/Blue/Yellow, this codebase's own
+   established `CORE_COLOR_BY_STAT` convention) instead of just deleting the tag, since at least
+   one occurrence (Energy Infusion: "...for each `<img.../ui_player_utility.dds>` you have") uses
+   the icon as a noun substitute, not a decorative prefix — stripping it outright would have left
+   a grammatically broken sentence. Affected 5 occurrences across 4 talents total, only 1 of which
+   (Kill Confirmed) the user happened to spot: Energy Infusion, Capacitance (exotic-weapon, out of
+   `tools/talent_bonus_inferences.json`'s scope but still needed the same text fix), and Perfect
+   Protected Reload. Re-running all three extraction scripts after the fix changed 3 talents'
+   description text (and therefore their fingerprint), which `apply_bonus_inferences()` correctly
+   flagged as drift — recomputed just the fingerprint for those 3 `tools/talent_bonus_inferences.json`
+   entries (their actual `bonuses` needed no changes; the interpretation already said "Yellow
+   core"/"Blue core" in its own condition text, unaffected by the raw description's own wording).
+7. **A seventh, same-session follow-up**: the user asked about one more orphaned exotic-gear
+   talent, "Slotted" — it belongs to Investor, which had been deliberately excluded (see "Exotic
+   Items — datamining notes" above) since it's confirmed intentionally fully-random rather than
+   following this dataset's usual "always X and Y" model. The user's own framing: now that there's
+   a talent to connect it to, does it make sense to include the item after all? It did — re-reading
+   Investor's own config confirmed every bonus/Core slot really does carry the null-UID sentinel,
+   so un-excluding it produces an honest `bonuses: []`/`cores: []`, not a fabricated one. Added
+   `CONFIRMED_RANDOM_BONUS_ITEMS` (currently just this one id) so its 3 null-UID bonus slots don't
+   get logged as `MISSING_BONUS_ATTRIBUTE` (that note's usual meaning — a real gap needing
+   research — doesn't apply here), and a `bonusesRandom` flag that `index.html` renders as an
+   explicit "confirmed fully random" note instead of the "not yet resolved" language used for a
+   genuine gap. Exotic Items: 29 → 30. Full detail in "Potential Bonuses" above, under "Liveness
+   filtering" — the "related but structurally different orphan" bullet.
 
