@@ -319,83 +319,50 @@
 
 <details class="gap-note">
   <summary>Data notes</summary>
-  <p>All 64 Brand Sets and Gear Sets below were extracted directly from the game's own data files
-     (Snowdrop engine <code>.sdftoc</code>/<code>.sdfdata</code> archives, via the community tool
-     <a href="https://tools.dtzxporter.com/">Hunter</a>), then cross-checked against wiki data. This
-     resolved every brand/gear set that was previously missing from community sources, caught a few
-     brands whose bonus values had changed in a balance patch since the wiki was last updated, and
-     (with an in-game assist for two final details — Unit Alloys' 1-piece stat and Refactor's 4-piece
-     talent tooltip) reached full coverage with no known gaps.</p>
-  <p><b>Named Items</b> (62 of them — gloves/kneepads/holsters/masks/chests/backpacks with a
-     unique name, like Deathgrips or Turmoil) were datamined the same way, from each item's own
-     <code>.mitem</code> file plus its loot-generation config. Gloves/Holster/Kneepads/Mask named
-     items always carry one or two <i>guaranteed, always-maxed</i> bonus attributes (shown as
-     "Fixed") — three of those (Reduced Threat, Damage to Targets Out of Cover, Melee Damage)
-     don't appear on any Brand Set or Gear Set, i.e. they're exclusive to that one named item.
-     Backpacks and Chest pieces don't roll a fixed attribute at all — their named identity is
-     purely a unique talent instead. Every named item with a talent now shows its full name and
-     description; the only remaining gap is Ongoing Directive's backpack companion talent, whose
-     <code>.mtalent</code> file genuinely doesn't exist in any export used so far.</p>
-  <p><b>Exotic Items</b> (30 of them — the small pool of gear pieces with their own always-unique
-     talent, like Catharsis or Deathgrips-tier gear but at Exotic quality) usually carry exactly
-     two guaranteed bonus <i>types</i> (shown as "Fixed") plus their unique talent — unlike a
-     named item's Fixed attribute, an exotic's actual rolled value is always random, so only the
-     stat type is shown, never a number. One item (Acosta's Kneepads) is missing both bonus types
-     from this export; a small number of unreleased/placeholder exotics found in the game's own
-     data (an item literally named "TBD", and one with a dead NULLREFERENCE config) are
-     deliberately excluded rather than shown incomplete or fabricated. <b>Investor</b> is a real
-     exception to the "always two types" rule rather than an export gap — its own talent, Slotted,
-     says outright that its Core and all 3 bonus slots are fully random by design, confirmed
-     structurally (every one of those slots carries this dataset's usual null-UID "not preset"
-     sentinel) — shown with an explicit "confirmed fully random" note instead of empty rows that
-     would otherwise look identical to an unresolved gap. One item, Acosta's Go Bag, has no
-     <code>.mitem</code> file at all in any export used so far (only its crafting-recipe blueprint
-     survives) — its bonuses/Core/talents were reconstructed straight from its still-fully-present
-     item-generation config, and its name confirmed by the user in-game; it's also the only Exotic
-     Item confirmed to carry two simultaneously-active talents at once ("One in Hand..." and
-     "... Two in the Bag"), both shown on its card.</p>
-  <p><b>Core attribute</b> (Red/Offensive, Blue/Defensive, Yellow/Utility) — a real property of
-     every item, never optional in-game — is shown for all 62 Named Items and all 30 Exotic Items
-     except Investor, which confirmed-randomly features any of the three (see above).
-     Backpack/Chest named items don't carry their own Core in their dedicated config (talent only,
-     same reason they have no Fixed attribute either); it's instead resolved from the regular,
-     non-named civilian-brand piece the named item's model and identity is drawn from, confirmed
-     correct in-game by the user for Chainkiller (Red) and Closer (Blue). Two items (Force
-     Multiplier, Door-Kicker's Knock) can't be resolved this way even so — their underlying base
-     piece itself rolls a random core in this data — so those two are confirmed instead from the
-     user's own in-game knowledge (Yellow and Red respectively) rather than datamined. A handful of
-     exotic Backpacks (confirmed by the user for Memento, and assumed the same for the two
-     structurally-identical Harrier Pride and Ninja Bike Messenger Bag) genuinely support all
-     three cores simultaneously rather than just one.</p>
-  <p>All 27 Gear Sets also show a Core attribute — each set's 6 pieces are ordinary items with
-     their own Core just like any Named/Exotic Item, confirmed correct in-game by the user for
-     Striker's Battlegear (Red) and Foundry Bulwark (Blue). 24 of 27 sets have one single Core
-     shared by every piece; the badge shows every distinct Core found across a set's pieces, so
-     3 real exceptions read correctly too: Refactor and System Corruption each genuinely split
-     two different Cores across their pieces (confirmed by each piece's own explicit, non-random
-     preset — not a data gap), and Core Strength is a deliberately flexible set — its own 4-piece
-     talent text says so directly ("All pieces except the Backpack feature random Cores"), and its
-     Backpack alone spans all three, the same "flexible core" pattern seen on a few exotic
-     Backpacks. Use the Red/Blue/Yellow filter above the bonus-type chips to see every Brand
-     entry drop out (a civilian brand spans many different items with no single fixed Core) while
-     Gear Sets, Named Items, and Exotic Items filter down to just that color.</p>
-  <p><b>Potential bonuses (conditional)</b> — many talents also grant a real bonus attribute, but
-     only under some condition (e.g. "+15% Weapon Damage while in cover"). These were interpreted
-     once, by hand, and are shown wherever they apply: an Exotic Item's own talent (or talents —
-     Acosta's Go Bag genuinely has two active at once) shows them right on that item's card, and a
-     talent not tied to any one item (82 generic Chest/Backpack talents rollable on any brand, plus
-     9 exotic talents this dataset can't yet name the parent item for — 1 of those, "Grace Under
-     Fire", is confirmed to belong to a real, currently-designed item whose own file is simply
-     missing from this export, same export gap Acosta's Go Bag itself had until confirmed; 1
-     belongs to the "TBD" placeholder kneepads item, already shown to be excluded for an unrelated
-     reason; the remaining 7 are genuinely unconfirmed. See the Talent Browser tab for the full
-     catalog) appears as its own "Talent" result card. These rows are
-     highlighted the same way a guaranteed bonus is when they match your selected chip(s), but
-     stay visually distinct (cyan, "conditional") since — unlike a Fixed/Npc bonus — they're never
-     guaranteed just by equipping the item. Only talents confirmed live (in the game's own
-     random-roll pool, or a specific item's own preset) are shown here or in the Talent Browser at
-     all — 5 Chest/Backpack talents found in the game's files (Aegis, Lazarus, Patched, Second
-     Primary Weapon, Selfless) matched neither and are excluded as legacy/cut content.</p>
+  <p>All 64 Brand Sets and Gear Sets, 62 Named Items, and 30 Exotic Items were extracted directly
+     from the game's own data files (Snowdrop engine <code>.sdftoc</code>/<code>.sdfdata</code>
+     archives, via the community tool <a href="https://tools.dtzxporter.com/">Hunter</a>) and
+     cross-checked against wiki data — this surfaced several brands/sets no community source had
+     documented, and caught a few whose values had drifted since a balance patch. No known gaps
+     remain in Brand/Gear Set coverage.</p>
+  <p><b>Named Items</b> (gloves/kneepads/holsters/masks/chests/backpacks with a unique name, like
+     Deathgrips or Turmoil) carry a guaranteed, always-maxed "Fixed" attribute (Gloves/Holster/
+     Kneepads/Mask only — Backpacks and Chests don't roll one at all, their named identity is
+     purely a unique talent instead, a real game-design fact rather than a data gap) and/or a
+     unique talent. Three Fixed attributes (Reduced Threat, Damage to Targets Out of Cover, Melee
+     Damage) are exclusive to their one named item — no Brand or Gear Set grants them. One gap
+     remains: Ongoing Directive's backpack companion talent has no <code>.mtalent</code> file in
+     any export used so far.</p>
+  <p><b>Exotic Items</b> (Catharsis, Memento, etc. — the small pool of gear whose talent never
+     appears on any Brand/Gear Set/Named Item) usually carry exactly two guaranteed bonus
+     <i>types</i> (shown as "Fixed") plus their talent; unlike a Named Item's Fixed attribute, the
+     actual rolled value is always random, so only the stat type is shown. <b>Investor</b> is a
+     confirmed exception — its own talent says its Core and all bonus slots are fully random by
+     design, shown with an explicit "confirmed fully random" note. <b>Acosta's Go Bag</b> is the
+     only item with two simultaneously-active talents ("One in Hand..." and "...Two in the Bag"),
+     both shown on its card. Acosta's Kneepads is missing both bonus types in this export (flagged,
+     not guessed); a few unreleased/placeholder items are deliberately excluded.</p>
+  <p><b>Core attribute</b> (Red/Offensive, Blue/Defensive, Yellow/Utility — a real property of
+     every item, never optional in-game) is shown for every Named Item, Exotic Item, and Gear Set
+     piece. Backpack/Chest named items don't carry their own Core in their dedicated config
+     (talent only, same reason as their missing Fixed attribute) — it's inherited instead from the
+     regular civilian-brand piece the named item is based on. A handful of exotic Backpacks
+     (Memento, Harrier Pride, Ninja Bike Messenger Bag) genuinely support all three Cores
+     simultaneously rather than just one.</p>
+  <p>Gear Sets show the union of every Core found across their 6 pieces: 24 of 27 sets share one
+     Core across all pieces, while Refactor and System Corruption each genuinely split two
+     different Cores by slot, and Core Strength is deliberately flexible — its own 4-piece talent
+     text says "All pieces except the Backpack feature random Cores". Use the Red/Blue/Yellow
+     filter above the chips to see this — Brand entries drop out entirely, since a civilian brand
+     spans many different items with no single fixed Core.</p>
+  <p><b>Potential bonuses (conditional)</b> — many talents also grant a real bonus attribute under
+     some condition (e.g. "+15% Weapon Damage while in cover"), interpreted by hand and shown
+     wherever they apply: on an Exotic Item's own card, or as a standalone "Talent" result card for
+     a talent not tied to any one item. These rows highlight like a guaranteed bonus when they
+     match your selected chip(s) but stay visually distinct (cyan, "conditional") since they're
+     never guaranteed just by equipping the item. Only talents confirmed live — in the game's own
+     random-roll pool, or a specific item's own preset — are shown here or in the Talent Browser;
+     a handful found in the game's files matched neither and are excluded as legacy/cut content.</p>
 </details>
 </div>
 
@@ -428,31 +395,26 @@
   <summary>About the Talent Browser</summary>
   <p>Every weapon and gear Talent datamined from the game's own files, not just the ones already
      referenced by a specific Brand/Gear Set/Named/Exotic Item elsewhere in this tool. Gear Set
-     4-piece/companion talents are deliberately excluded here since they're already shown on their
-     own Gear Set's card in the Attribute Finder tab; a talent that's also a Named/Exotic Item's
-     unique talent intentionally does still appear in both places.</p>
+     4-piece/companion talents are excluded here since they already have their own card in the
+     Attribute Finder tab; a talent that's also a Named/Exotic Item's unique talent intentionally
+     appears in both places.</p>
   <p><b>Gear slot</b> (Chest/Backpack — the only two slots a non-Exotic item can roll a Talent on
-     at all, confirmed by the user; Mask/Gloves/Holster/Kneepads only roll attributes) is read from
-     the game's own random-roll talent pool data, not the talent's filename — the filename is
-     frequently wrong or missing entirely (e.g. Headhunter, a Chest-only talent, is filed as
-     `warlock_talent_headshot_kills_increase_next_weapon_hit` with no slot token at all; Tag Team,
-     also Chest-only, is filed as `talent_mask_hits_reduce_cooldown`). A small number of talents
-     genuinely roll on either Chest or Backpack and show both. A Chest/Backpack talent absent from
-     that pool AND not any Named Item's own preset talent is excluded entirely as legacy/cut data
-     rather than shown as if obtainable. <b>Weapon type</b> and <b>Exotic item</b> categorization
-     is still filename/cross-reference-based rather than pool-verified the same way — see
-     `CLAUDE.md`'s "All Talents" section for exactly what's been checked.</p>
-  <p><b>"Legacy / Removed"</b> (previously labeled "Universal / Other") is every talent with no
-     recognizable slot or weapon-type token at all. Unlike the Chest/Backpack bucket above, these
-     haven't yet been checked against the game's own weapon-side talent pools (this tool has never
-     parsed weapon item files) — the rename reflects the user's own observation that this bucket
-     appears to be entirely cut/unused content, not an independently structurally-confirmed claim
-     the way Chest/Backpack liveness now is. Treat entries here as likely-but-not-verified legacy.</p>
-  <p><b>Numeric values</b> in descriptions are filled into the game's own text template using the
-     same best-effort heuristic already used elsewhere in this tool for Gear Set talents (guessing
-     percent vs. a flat number from the value's size) — for the ~352 talents here that heuristic
-     hasn't been manually reviewed per-talent, so an occasional value (e.g. a short buff duration)
-     may be mis-formatted as a percentage instead of seconds.</p>
+     at all; Mask/Gloves/Holster/Kneepads only roll attributes) is read from the game's own
+     random-roll talent pool data, not the talent's filename, which is frequently wrong or missing
+     entirely. A small number of talents genuinely roll on either Chest or Backpack and show both.
+     A Chest/Backpack talent absent from that pool <i>and</i> not any Named Item's own preset
+     talent is excluded entirely as legacy/cut data rather than shown as if obtainable. <b>Weapon
+     type</b> and <b>Exotic item</b> categorization is still filename/cross-reference-based rather
+     than pool-verified the same way — see `CLAUDE.md`'s "All Talents" section for what's been
+     checked.</p>
+  <p><b>"Legacy / Removed"</b> is every talent with no recognizable slot or weapon-type token at
+     all. Unlike the Chest/Backpack bucket above, these haven't yet been checked against the game's
+     own weapon-side talent pools (this tool has never parsed weapon item files) — treat entries
+     here as likely-but-not-verified legacy rather than a confirmed claim.</p>
+  <p><b>Numeric values</b> in descriptions are filled into the game's own text template using a
+     best-effort heuristic (guessing percent vs. a flat number from the value's size) that hasn't
+     been manually reviewed per-talent here — an occasional value (e.g. a short buff duration) may
+     be mis-formatted as a percentage instead of seconds.</p>
 </details>
 </div>
 
@@ -618,6 +580,49 @@ const GENERIC_TALENT_ENTRIES = TALENT_ENTRIES
   }));
 const ALL_ENTRIES = [...DATA, ...NAMED_ITEM_ENTRIES, ...EXOTIC_ITEM_ENTRIES, ...GENERIC_TALENT_ENTRIES];
 
+// Leading +/-N or +/-N% at the start of a tier's raw text, e.g. "+12% Weapon Damage" -> "+12%".
+// Shared by Named Item and Brand/Gear Set tier rows; returns "" when the text has no leading amount.
+function firstAmount(text) {
+  const m = text.match(/^[+\-][\d.]+%?/);
+  return m ? m[0] : "";
+}
+
+// b.cores is only present at all on Named/Exotic/Gear Set entries (undefined on Brand entries,
+// which correctly renders as no badge -- a civilian brand spans many items with no single Core).
+// An empty array is a real, confirmed data fact for Backpack/Chest named items (their config has
+// no myAttributeSlots block at all, so no Core to resolve -- not a lookup failure), so it's called
+// out explicitly rather than just silently showing nothing, which would look identical to a bug.
+function renderCoreBadges(b) {
+  if (b.bonusesRandom) {
+    return `<div class="core-badges"><span class="core-badge none">Any Core (confirmed fully random)</span></div>`;
+  } else if (b.cores && b.cores.length) {
+    return `<div class="core-badges">${b.cores.map(c => `<span class="core-badge ${c.color.toLowerCase()}">${c.color} — ${c.stat}</span>`).join("")}</div>`;
+  } else if (Array.isArray(b.cores)) {
+    return `<div class="core-badges"><span class="core-badge none">Core attribute not yet resolved</span></div>`;
+  }
+  return "";
+}
+
+// A Named/Exotic Item's own unique talent, rendered as a summary row (parallel to its Fixed-bonus
+// rows) so the talent name is visible/greppable without opening the full description below, and a
+// separate description block. Shared by both card kinds and by an Exotic Item's `extraTalents`.
+function talentSummaryRow(talent, talentStatus) {
+  if (talent) {
+    return `<div class="bonus-row"><span class="pieces fixed">Talent</span><span class="stat">${talent.name}</span></div>`;
+  } else if (talentStatus === "needs_manual_research") {
+    return `<div class="bonus-row"><span class="pieces fixed">Talent</span><span class="stat" style="color:var(--muted)">(name not yet catalogued)</span></div>`;
+  }
+  return "";
+}
+function talentDescriptionBlock(talent, talentStatus) {
+  if (talent && talent.desc) {
+    return `<div class="talents"><div class="t">${talent.desc}</div></div>`;
+  } else if (talentStatus === "needs_manual_research") {
+    return `<div class="talents"><div class="t unresolved">Full talent text not yet catalogued.</div></div>`;
+  }
+  return "";
+}
+
 const selected = new Set();
 let matchMode = "any"; // "any" | "all"
 let kindFilter = "all"; // "all" | "Brand" | "Gear Set" | "Named Item"
@@ -739,19 +744,7 @@ function renderResults() {
       return;
     }
 
-    // b.cores is only present at all on Named/Exotic Item entries (undefined elsewhere, which
-    // this correctly renders as no badge). An empty array there is a real, confirmed data fact
-    // for Backpack/Chest named items (their config has no myAttributeSlots block at all, so no
-    // Core to resolve -- not a lookup failure), so it's called out explicitly rather than just
-    // silently showing nothing, which would look identical to a bug.
-    let coreBadgesHtml = "";
-    if (b.bonusesRandom) {
-      coreBadgesHtml = `<div class="core-badges"><span class="core-badge none">Any Core (confirmed fully random)</span></div>`;
-    } else if (b.cores && b.cores.length) {
-      coreBadgesHtml = `<div class="core-badges">${b.cores.map(c => `<span class="core-badge ${c.color.toLowerCase()}">${c.color} — ${c.stat}</span>`).join("")}</div>`;
-    } else if (Array.isArray(b.cores)) {
-      coreBadgesHtml = `<div class="core-badges"><span class="core-badge none">Core attribute not yet resolved</span></div>`;
-    }
+    const coreBadgesHtml = renderCoreBadges(b);
 
     if (b.kind === "Exotic Item") {
       let rows = b.tiers.map(x => {
@@ -766,30 +759,17 @@ function renderResults() {
         rows += `<div class="bonus-row"><span class="stat" style="color:var(--muted)">Bonus attributes fully random — no fixed types (confirmed)</span></div>`;
       }
 
-      if (b.talent) {
-        rows += `<div class="bonus-row"><span class="pieces fixed">Talent</span><span class="stat">${b.talent.name}</span></div>`;
-      } else if (b.talentStatus === "needs_manual_research") {
-        rows += `<div class="bonus-row"><span class="pieces fixed">Talent</span><span class="stat" style="color:var(--muted)">(name not yet catalogued)</span></div>`;
-      }
+      rows += talentSummaryRow(b.talent, b.talentStatus);
       // Only ever populated for the one item confirmed to carry more than one simultaneously-active
       // preset talent (see tools/exotic_items_manual_additions.json) -- each gets its own summary
       // row here, same shape as the primary talent's, and its own full description block below.
-      (b.extraTalents || []).forEach(t => {
-        rows += `<div class="bonus-row"><span class="pieces fixed">Talent</span><span class="stat">${t.name}</span></div>`;
-      });
+      (b.extraTalents || []).forEach(t => { rows += talentSummaryRow(t); });
       if (!rows) {
         rows = `<div class="bonus-row"><span class="stat" style="color:var(--muted)">No bonus attribute or talent found</span></div>`;
       }
 
-      let talentHtml = "";
-      if (b.talent && b.talent.desc) {
-        talentHtml = `<div class="talents"><div class="t">${b.talent.desc}</div></div>`;
-      } else if (b.talentStatus === "needs_manual_research") {
-        talentHtml = `<div class="talents"><div class="t unresolved">Full talent text not yet catalogued.</div></div>`;
-      }
-      (b.extraTalents || []).forEach(t => {
-        talentHtml += `<div class="talents"><div class="t">${t.desc}</div></div>`;
-      });
+      let talentHtml = talentDescriptionBlock(b.talent, b.talentStatus);
+      (b.extraTalents || []).forEach(t => { talentHtml += talentDescriptionBlock(t); });
 
       const flavorHtml = b.flavorText ? `<div class="flavor">${b.flavorText.replace(/\n/g, "<br>")}</div>` : "";
 
@@ -810,7 +790,7 @@ function renderResults() {
         // pieces === null marks the item's own guaranteed "Fixed" attribute; anything else is a
         // normal Npc bonus inherited from the item's civilian brand (see NAMED_ITEM_ENTRIES).
         const pieceLabel = x.pieces === null ? "Fixed" : `${x.pieces}pc`;
-        const val = x.pieces === null ? "" : (x.text.match(/^[+\-][\d.]+%?/) ? x.text.match(/^[+\-][\d.]+%?/)[0] : "");
+        const val = x.pieces === null ? "" : firstAmount(x.text);
         return `<div class="bonus-row${hit ? " hit" : ""}">
           <span class="pieces${x.pieces === null ? " fixed" : ""}">${pieceLabel}</span>
           <span class="stat">${x.stat}</span>
@@ -821,21 +801,12 @@ function renderResults() {
       // Talent name gets its own summary row (parallel to the "Fixed" rows above) so it's
       // visible without opening the card's full talent description -- also gives future
       // talent-name search something to key off even before the description exists.
-      if (b.talent) {
-        rows += `<div class="bonus-row"><span class="pieces fixed">Talent</span><span class="stat">${b.talent.name}</span></div>`;
-      } else if (b.talentStatus === "needs_manual_research") {
-        rows += `<div class="bonus-row"><span class="pieces fixed">Talent</span><span class="stat" style="color:var(--muted)">(name not yet catalogued)</span></div>`;
-      }
+      rows += talentSummaryRow(b.talent, b.talentStatus);
       if (!rows) {
         rows = `<div class="bonus-row"><span class="stat" style="color:var(--muted)">No fixed attribute or talent found</span></div>`;
       }
 
-      let talentHtml = "";
-      if (b.talent && b.talent.desc) {
-        talentHtml = `<div class="talents"><div class="t">${b.talent.desc}</div></div>`;
-      } else if (b.talentStatus === "needs_manual_research") {
-        talentHtml = `<div class="talents"><div class="t unresolved">Full talent text not yet catalogued.</div></div>`;
-      }
+      let talentHtml = talentDescriptionBlock(b.talent, b.talentStatus);
 
       const noteText = b.dropNote || b.flavorText;
       const flavorHtml = noteText ? `<div class="flavor">${noteText.replace(/\n/g, "<br>")}</div>` : "";
@@ -860,7 +831,7 @@ function renderResults() {
       return `<div class="bonus-row${hit ? " hit" : ""}">
         <span class="pieces">${x.pieces}pc</span>
         <span class="stat">${x.stat}</span>
-        <span class="val">${x.text.match(/^[+\-][\d.]+%?/) ? x.text.match(/^[+\-][\d.]+%?/)[0] : ""}</span>
+        <span class="val">${firstAmount(x.text)}</span>
       </div>`;
     }).join("");
 
@@ -957,35 +928,32 @@ function render() {
 
 searchEl.addEventListener("input", () => renderChips(searchEl.value));
 document.getElementById("clear-btn").onclick = () => { selected.clear(); render(); };
-document.getElementById("mode-any").onclick = () => { matchMode = "any"; setModeButtons(); render(); };
-document.getElementById("mode-all").onclick = () => { matchMode = "all"; setModeButtons(); render(); };
-function setModeButtons() {
-  document.getElementById("mode-any").classList.toggle("active", matchMode === "any");
-  document.getElementById("mode-all").classList.toggle("active", matchMode === "all");
-}
-document.getElementById("kind-all").onclick = () => { kindFilter = "all"; setKindButtons(); render(); };
-document.getElementById("kind-brand").onclick = () => { kindFilter = "Brand"; setKindButtons(); render(); };
-document.getElementById("kind-gearset").onclick = () => { kindFilter = "Gear Set"; setKindButtons(); render(); };
-document.getElementById("kind-nameditem").onclick = () => { kindFilter = "Named Item"; setKindButtons(); render(); };
-document.getElementById("kind-exoticitem").onclick = () => { kindFilter = "Exotic Item"; setKindButtons(); render(); };
-function setKindButtons() {
-  document.getElementById("kind-all").classList.toggle("active", kindFilter === "all");
-  document.getElementById("kind-brand").classList.toggle("active", kindFilter === "Brand");
-  document.getElementById("kind-gearset").classList.toggle("active", kindFilter === "Gear Set");
-  document.getElementById("kind-nameditem").classList.toggle("active", kindFilter === "Named Item");
-  document.getElementById("kind-exoticitem").classList.toggle("active", kindFilter === "Exotic Item");
+
+// Wires a group of mutually-exclusive toggle buttons (id -> value) to one onChange callback, which
+// owns updating state; each button's "active" class is then reapplied by comparing against
+// getCurrent(). Shared by the three groups below so they don't each need their own click handler +
+// setXButtons() pair. (The Talent Browser's own toggle groups use a parallel data-attribute +
+// querySelectorAll pattern instead, since their buttons share one container rather than individual ids.)
+function wireToggleGroup(pairs, getCurrent, onChange) {
+  const buttons = pairs.map(([id]) => document.getElementById(id));
+  const apply = () => pairs.forEach(([, value], i) => buttons[i].classList.toggle("active", value === getCurrent()));
+  pairs.forEach(([, value], i) => { buttons[i].onclick = () => { onChange(value); apply(); render(); }; });
+  apply();
 }
 
-document.getElementById("core-all").onclick = () => { coreFilter = "all"; setCoreButtons(); render(); };
-document.getElementById("core-red").onclick = () => { coreFilter = "Red"; setCoreButtons(); render(); };
-document.getElementById("core-blue").onclick = () => { coreFilter = "Blue"; setCoreButtons(); render(); };
-document.getElementById("core-yellow").onclick = () => { coreFilter = "Yellow"; setCoreButtons(); render(); };
-function setCoreButtons() {
-  document.getElementById("core-all").classList.toggle("active", coreFilter === "all");
-  document.getElementById("core-red").classList.toggle("active", coreFilter === "Red");
-  document.getElementById("core-blue").classList.toggle("active", coreFilter === "Blue");
-  document.getElementById("core-yellow").classList.toggle("active", coreFilter === "Yellow");
-}
+wireToggleGroup(
+  [["mode-any", "any"], ["mode-all", "all"]],
+  () => matchMode, v => { matchMode = v; }
+);
+wireToggleGroup(
+  [["kind-all", "all"], ["kind-brand", "Brand"], ["kind-gearset", "Gear Set"],
+   ["kind-nameditem", "Named Item"], ["kind-exoticitem", "Exotic Item"]],
+  () => kindFilter, v => { kindFilter = v; }
+);
+wireToggleGroup(
+  [["core-all", "all"], ["core-red", "Red"], ["core-blue", "Blue"], ["core-yellow", "Yellow"]],
+  () => coreFilter, v => { coreFilter = v; }
+);
 
 document.getElementById("view-tab-finder").onclick = () => setView("finder");
 document.getElementById("view-tab-talents").onclick = () => setView("talents");

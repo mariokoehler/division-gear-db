@@ -72,24 +72,30 @@ in the fuller export, but the "value" there is a gear-score-dependent curve/form
 number — reporting a single fixed percentage wouldn't actually be accurate without a target gear
 score to evaluate it at, so this is a deliberate scope limit now, not an export gap.
 
-28 Exotic Items are also covered (Catharsis, Memento, Deathgrips-tier gear but at Exotic quality,
+30 Exotic Items are also covered (Catharsis, Memento, Deathgrips-tier gear but at Exotic quality,
 etc.) — the small pool of gear pieces whose talent never appears on any other Brand Set, Gear Set,
-or Named Item. Every exotic always carries exactly two guaranteed bonus *types* plus its unique
+or Named Item. Every exotic usually carries exactly two guaranteed bonus *types* plus its unique
 talent, all fully datamined with real names and descriptions. Unlike a Named Item's Fixed
 attribute, an exotic's actual rolled value is always random by design, so only the stat type is
-shown, never a number — that's not a data gap, it's how the game generates these items. One item
-(Acosta's Kneepads) is missing both bonus types in this export (flagged, not guessed at). A few
-items found in the game's own data are deliberately excluded: an unreleased kneepad piece whose
-name is literally the placeholder text "TBD", a pair of gloves whose entire generation config is a
-dead `NULLREFERENCE`, and Investor (a real, released mask) — confirmed by the user to be
-intentionally fully-random by design (its own talent text says "This item can feature any Core
-Attribute" / "features a third random Attribute"), so it simply doesn't fit this database's
-"always X and Y" model. See `tools/extract_exotic_items.py`'s docstring and
-`tools/exotic_items_report.md` (regenerated each run, gitignored) for the current list.
+shown, never a number — that's not a data gap, it's how the game generates these items. Two real
+exceptions are included rather than excluded: **Investor** is confirmed intentionally
+fully-random by design (its own talent text says "This item can feature any Core Attribute" /
+"features a third random Attribute"), shown with an explicit "confirmed fully random" note instead
+of empty rows; **Acosta's Go Bag** has no `.mitem` file in any export used so far (only its
+crafting-recipe blueprint survives), so its bonuses/Core/talents were reconstructed straight from
+its still-fully-present item-generation config and its name confirmed in-game — it's also the only
+Exotic Item confirmed to carry two simultaneously-active talents at once ("One in Hand..." and
+"...Two in the Bag"). Acosta's Kneepads is missing both bonus types in this export (flagged, not
+guessed at). A couple of unreleased/placeholder items found in the game's own data (a kneepad piece
+whose name is literally the placeholder text "TBD", and a pair of gloves whose entire generation
+config is a dead `NULLREFERENCE`) are deliberately excluded. See
+`tools/extract_exotic_items.py`'s docstring and `tools/exotic_items_report.md` (regenerated each
+run, gitignored) for the current list.
 
 Every Named Item, Exotic Item, and Gear Set also shows its **Core attribute** (Red/Offensive,
-Blue/Defensive, Yellow/Utility — a real property of every item, never optional in-game). All 28
-Exotic Items and all 62 Named Items show one; Backpack/Chest named items don't carry it in their
+Blue/Defensive, Yellow/Utility — a real property of every item, never optional in-game). All
+Exotic Items except Investor (confirmed fully random, see above) and all 62 Named Items show one;
+Backpack/Chest named items don't carry it in their
 own dedicated config (talent only) so it's inherited from the regular civilian-brand piece the
 named item is based on instead, confirmed correct in-game by the user for Chainkiller (Red) and
 Closer (Blue). 2 items (Force Multiplier, Door-Kicker's Knock) can't be resolved that way — their
