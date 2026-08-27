@@ -696,6 +696,30 @@ companion talents do in `combined_sets.json` — named/exotic/all-talents descri
 freshly regenerated) — re-apply this same review pass (or equivalent hand fixes) afterward rather
 than assuming today's fixes persist across a future run.
 
+### Ember Engine's "Flashpoint" (chest) looks backwards from its own patch notes — likely a real game bug, left as-is (2026-08-27)
+
+Ember Engine's base 4pc talent "Spontaneous Combustion" and its Chest talent "Flashpoint" both come
+from the raw files with an internally-consistent set of numbers that nonetheless read as backwards:
+the 4pc's own `myBonusList` sets `burn_chance` to `0.4` (40%), while Flashpoint's own `myBonusList`
+sets the *same* attribute UID to `0.2` (20%) — and Flashpoint's own tooltip literally reads "Increase
+the chance of applying Burn of Spontaneous Combustion to {0}%," i.e. an *upgrade* piece that actually
+lowers the proc chance from 40% to 20%. The user found the official patch notes for this set, which
+state the intended design as the reverse — 20% base, 40% via Flashpoint — matching neither number's
+*position* in our data but confirming the *values themselves* (20/40) are the right pair, just
+seemingly swapped between the two talent files in what actually shipped.
+
+This was checked directly against the raw `.mtalent` file bytes (not just the extracted JSON) and
+confirmed **not** a parsing/extraction bug on this project's side — `talent_gearset_
+spontaneous_combustion_4pc`'s own `myBonusList` really does contain `0.4`, and `talent_gearset_
+spontaneous_combustion_chest`'s own `myBonusList` really does contain `0.2`, for the identical
+attribute UID (`EACD811D6A622A8400037D4A2609EF8E`). Given a chest-slot "upgrade" that's a strict
+downgrade would make the piece actively harmful to equip, this looks like the developers swapped the
+two `myValue` fields when implementing the set — a bug in the shipped game data, not in its design
+intent. **Deliberately left un-"fixed" here** (per the user, 2026-08-27) since this tool's job is to
+reflect what's actually live in the game, and Massive is likely to patch this themselves soon — if a
+future rebalance changes these two specific values, treat it as this bug being fixed upstream rather
+than a normal balance pass, and this note can be retired once that happens.
+
 ## Session history
 
 Condensed changelog — see the topical sections above for full technical detail on any of these.
