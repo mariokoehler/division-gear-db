@@ -1,6 +1,6 @@
 {
   "warlock_talent_exotic_backpack_mk1a": {
-    "fingerprint": "e008a6083c0ee29acdc4ca3e46716bae",
+    "fingerprint": "cdd35f424af468f2ae1cbe5b9a9b3212",
     "bonuses": [
       {
         "attribute": "Armor Kit Capacity",
@@ -63,7 +63,7 @@
     ]
   },
   "warlock_talent_exotic_backpack_mk1b": {
-    "fingerprint": "843e3091d3007bed16a61b43b24005b4",
+    "fingerprint": "b9d37d6b61f0327b973daf89751be592",
     "bonuses": [
       {
         "attribute": "Skill Tier",
@@ -72,7 +72,7 @@
     ]
   },
   "talent_exotic_backpack_adaptation": {
-    "fingerprint": "714f8934f5a5c57c33d762fbcaabf523",
+    "fingerprint": "5284812db2c487d2d1c9b15a4e6ffc2f",
     "bonuses": [
       {
         "attribute": "Weapon Damage",
@@ -133,7 +133,7 @@
     ]
   },
   "talent_exotic_gloves_mk1_c": {
-    "fingerprint": "c3c9ea0ac8e561256c45653621c0d603",
+    "fingerprint": "47e6872933b064fc18144e2d428754ba",
     "bonuses": [
       {
         "attribute": "Skill Damage",
@@ -176,7 +176,7 @@
     ]
   },
   "talent_exotic_gloves_exodus_gloves_smoke_screen": {
-    "fingerprint": "33a0d48e67a3b15eb0366dd32ecaa89e",
+    "fingerprint": "c75b7ad208b4e38d5ec2b582d72f07c6",
     "bonuses": []
   },
   "talent_exotic_gloves_mk1_a": {
@@ -250,7 +250,7 @@
     ]
   },
   "talent_exotic_holster_mk1_a": {
-    "fingerprint": "488dcecfc6ef44d2a303f8923ea3a186",
+    "fingerprint": "8ef6de8b9894fcc6f2294e2a05727f14",
     "bonuses": [
       {
         "attribute": "Weapon Damage",
@@ -268,7 +268,7 @@
     ]
   },
   "talent_exotic_escape_plan": {
-    "fingerprint": "f4251c4215b111bbd94be9a4844439ae",
+    "fingerprint": "18bed3f9c6e3db96f49e908725074de7",
     "bonuses": [
       {
         "attribute": "Movement Speed",
@@ -325,7 +325,7 @@
     "bonuses": []
   },
   "virginia_talent_exotic_mask_catalyst_chemical_agent": {
-    "fingerprint": "2229dada42598ab6bc13ba585a3efe61",
+    "fingerprint": "c6ef6c44993ed1232a3d9ee8e4915a4d",
     "bonuses": [
       {
         "attribute": "Weapon Damage",
@@ -419,11 +419,11 @@
     ]
   },
   "warlock_talent_nearby_enemies_grant_bonus_armor": {
-    "fingerprint": "1558a51be2edef7f0b5335d6b7df6a54",
+    "fingerprint": "053ecac241c9f531dff2d0fa4e620c7a",
     "bonuses": [
       {
         "attribute": "Bonus Armor",
-        "condition": "for 5s whenever within 10m of an enemy, stacks up to 300%, 5s cooldown"
+        "condition": "for 5s whenever within 10m of an enemy, stacks up to 3, 5s cooldown"
       }
     ]
   },
@@ -473,11 +473,11 @@
     ]
   },
   "talent_mask_headshots_increase_headshot_damage": {
-    "fingerprint": "fb85ffff1b689cf9c5763a092a4e60cd",
+    "fingerprint": "b8bc376cb9bb897a75109ce3789cbab5",
     "bonuses": [
       {
         "attribute": "Weapon Damage",
-        "condition": "after a headshot (150s, 5s w/ marksman rifles), stronger and longer after a headshot kill (10s)"
+        "condition": "after a headshot (1.5s, 5s w/ marksman rifles), stronger and longer after a headshot kill (10s)"
       }
     ]
   },
@@ -517,7 +517,7 @@
     ]
   },
   "talent_back_hoarder_grenade_enhancements": {
-    "fingerprint": "3c4651742f77cce4508290e777cbf057",
+    "fingerprint": "ff4c259c75901c55479d9bf799745c61",
     "bonuses": [
       {
         "attribute": "Grenade Capacity",
@@ -570,7 +570,7 @@
     ]
   },
   "warlock_talent_deployed_skills_boost_allies": {
-    "fingerprint": "24c569da2572a8047742a6f22083f49e",
+    "fingerprint": "6f540fd521a8e871364c06b0880cfa5e",
     "bonuses": [
       {
         "attribute": "Reload Speed",
@@ -592,11 +592,11 @@
     ]
   },
   "warlock_talent_nearby_enemies_grant_bonus_armor_perfect": {
-    "fingerprint": "154c180cd98daec6ad012eb589028e58",
+    "fingerprint": "7a9634ba82fc93dafa13d1e21205d1f2",
     "bonuses": [
       {
         "attribute": "Bonus Armor",
-        "condition": "for 5s whenever within 10m of an enemy, stacks up to 300%, 5s cooldown"
+        "condition": "for 5s whenever within 10m of an enemy, stacks up to 3, 5s cooldown"
       }
     ]
   },
@@ -628,11 +628,15 @@
     ]
   },
   "talent_mask_headshots_increase_headshot_damage_perfect": {
-    "fingerprint": "cb3ae6d59f3004670bfcaee73009a53c",
+    "fingerprint": "82e14c25cba1bbdc5c690c4375b513b1",
     "bonuses": [
       {
-        "attribute": "Headshot Damage",
-        "condition": "for 200s (5s w/ marksman rifles) after a headshot"
+        "attribute": "Weapon Damage",
+        "condition": "for 1.5s after a headshot (5s with Marksman Rifles)"
+      },
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s after a headshot kill"
       }
     ]
   },
@@ -722,7 +726,7 @@
     ]
   },
   "warlock_talent_shield_damage_grants_group_bonus_armor": {
-    "fingerprint": "9d91ebeb8e326327fbdd6d8dc9e58799",
+    "fingerprint": "a3104815245d731e55a0b93adb5817bb",
     "bonuses": [
       {
         "attribute": "Bonus Armor",
@@ -757,11 +761,11 @@
     ]
   },
   "talent_back_skill_kills_increase_skill_duration_and_damage": {
-    "fingerprint": "7dfb81b8ebec1f8a1b7c28f20651a585",
+    "fingerprint": "eba106d837f55ad3fba39df1cc4d3952",
     "bonuses": [
       {
         "attribute": "Skill Damage",
-        "condition": "for 25s after a skill kill"
+        "condition": "for 20s after a skill kill"
       }
     ]
   },
@@ -775,20 +779,20 @@
     ]
   },
   "warlock_talent_weapon_damage_grants_skill_damage": {
-    "fingerprint": "7a11eca20dddd4629ad8bb9185a90c89",
+    "fingerprint": "5b53977574dd1c466a2975ae3bc2d77b",
     "bonuses": [
       {
         "attribute": "Skill Damage",
-        "condition": "for 300s after shooting an enemy"
+        "condition": "for 3s after shooting an enemy"
       }
     ]
   },
   "warlock_talent_weapon_damage_grants_skill_damage_perfect": {
-    "fingerprint": "654f7a774624684fd35d837fcf5b9caf",
+    "fingerprint": "ba8dd0790d8fbd704206c9924a46d2bb",
     "bonuses": [
       {
         "attribute": "Skill Damage",
-        "condition": "for 300s after shooting an enemy"
+        "condition": "for 3s after shooting an enemy"
       }
     ]
   },
@@ -842,11 +846,11 @@
     ]
   },
   "talent_chest_increased_weapon_damage_while_not_getting_hit_perfect": {
-    "fingerprint": "fd0260781466ecaaabf4a663e3c33c8d",
+    "fingerprint": "541f256c80c04b8a8ba8d28d0e9b3ebc",
     "bonuses": [
       {
         "attribute": "Weapon Damage",
-        "condition": "while not taking damage (disabled for 300s after being hit)"
+        "condition": "while not taking damage (disabled for 3s after being hit)"
       }
     ]
   },
@@ -909,11 +913,11 @@
     ]
   },
   "talent_chest_increased_weapon_damage_while_not_getting_hit": {
-    "fingerprint": "29e577bd06cc4719554b2888b9227017",
+    "fingerprint": "5554be9d77760018d267ff99b0f51883",
     "bonuses": [
       {
         "attribute": "Weapon Damage",
-        "condition": "while not taking damage (disabled for 400s after being hit)"
+        "condition": "while not taking damage (disabled for 4s after being hit)"
       }
     ]
   },
@@ -936,7 +940,7 @@
     ]
   },
   "warlock_talent_healing_allies_buffs_them": {
-    "fingerprint": "7c9952f10618c9e8ad650c51da43cf36",
+    "fingerprint": "75aee23666b7516afc8f710112e599fb",
     "bonuses": [
       {
         "attribute": "Weapon Damage",
@@ -949,16 +953,16 @@
     ]
   },
   "talent_kneepads_headshots_in_cover_gives_armor": {
-    "fingerprint": "26a1531bfc426cdf8403c3e2a969a441",
+    "fingerprint": "8c67eeec71579ddc188957b210166c45",
     "bonuses": [
       {
         "attribute": "Armor Regeneration",
-        "condition": "on headshots from cover while below 30% armor, 200s cooldown"
+        "condition": "on headshots from cover while below 30% armor, 2s cooldown"
       }
     ]
   },
   "warlock_talent_thrown_skills_explode": {
-    "fingerprint": "b32ca39822e5092737e37e85db07cf8c",
+    "fingerprint": "137132099078a213f58449e299ab6374",
     "bonuses": []
   },
   "warlock_talent_scope_aiming_increases_damage": {
@@ -1016,7 +1020,7 @@
     ]
   },
   "warlock_talent_active_skills_increase_damage": {
-    "fingerprint": "fd209cb4306249b1ef4d6bf3d415eb6c",
+    "fingerprint": "a71650f7d59f7370634a4151a1602b77",
     "bonuses": [
       {
         "attribute": "Skill Damage",
@@ -1095,11 +1099,11 @@
     ]
   },
   "talent_kneepads_headshots_in_cover_gives_armor_perfect": {
-    "fingerprint": "01502529654d52dcc0b0fc505a65d1df",
+    "fingerprint": "65c3e7a0cdc0245b0b044caf49a36107",
     "bonuses": [
       {
         "attribute": "Armor Regeneration",
-        "condition": "on headshots from cover while below 30% armor, 100s cooldown"
+        "condition": "on headshots from cover while below 30% armor, 1s cooldown"
       }
     ]
   },
@@ -1211,7 +1215,7 @@
     ]
   },
   "warlock_talent_thrown_skills_explode_perfect": {
-    "fingerprint": "daa027c97afd0f6ce77b4aeb5a87c932",
+    "fingerprint": "c280c9cc351725ea0c9b7dccb89ae58d",
     "bonuses": []
   },
   "talent_chest_grenade_kills_refund_grenade_and_increased_radius_perfect": {
@@ -1228,11 +1232,11 @@
     ]
   },
   "talent_holster_kill_status_effected_random_chance_grant_special_ammo_perfect": {
-    "fingerprint": "bafcfe314a74d7ddf6e7c4f5f885d158",
+    "fingerprint": "1a64f27f3aad0fa82dceb30f902b5da4",
     "bonuses": []
   },
   "warlock_talent_shock_enemies_near_deployed_skills_perfect": {
-    "fingerprint": "56f32e8e9a4631622625873050de0406",
+    "fingerprint": "1d02f554e5d542895409bbf462f79cdd",
     "bonuses": []
   },
   "talent_chest_when_armor_breaks_get_free_repair_and_armor_kit_perfect": {
@@ -1254,7 +1258,7 @@
     ]
   },
   "talent_holster_kill_status_effected_random_chance_grant_special_ammo": {
-    "fingerprint": "bafcfe314a74d7ddf6e7c4f5f885d158",
+    "fingerprint": "c36c03e3af307eb0440373d5840eecdc",
     "bonuses": []
   },
   "talent_mask_increased_damage_to_pulsed": {
@@ -1267,16 +1271,16 @@
     ]
   },
   "talent_mask_hits_reduce_cooldown": {
-    "fingerprint": "0d6b198be29a645e312b343ae55e3d0f",
+    "fingerprint": "e6b1bd2926d1afab603810f99f6b850a",
     "bonuses": [
       {
         "attribute": "Skill Haste",
-        "condition": "on dealing weapon damage to an enemy marked by your own skill, 400s cooldown"
+        "condition": "on dealing weapon damage to an enemy marked by your own skill, 4s cooldown"
       }
     ]
   },
   "warlock_talent_shock_enemies_near_deployed_skills": {
-    "fingerprint": "9168bf29b78f4dd9fea3c7e54c2b1927",
+    "fingerprint": "23f8362acbe3d9fedf97c29807189c82",
     "bonuses": []
   },
   "talent_mask_headshots_blind_target": {
@@ -1298,6 +1302,28 @@
       {
         "attribute": "Bonus Armor",
         "condition": "for 20s to allies, on deploying a shield, 25s cooldown"
+      }
+    ]
+  },
+  "talent_exotic_chest_firm_intent": {
+    "fingerprint": "e7f49dfe49ccbaa2b0d0952f341b7647",
+    "bonuses": []
+  },
+  "warlock_talent_shield_damage_grants_group_bonus_armor_perfect": {
+    "fingerprint": "c296d4f2faf41c0ddf6ec244f464e428",
+    "bonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for you and nearby allies for 3s when your shield is damaged (3s cooldown)"
+      }
+    ]
+  },
+  "talent_mask_hits_reduce_cooldown_perfect": {
+    "fingerprint": "26e9bbfe16b489573a612007aac85bd7",
+    "bonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "consumes a mark (placed on the last enemy damaged by a skill) via a weapon hit, reducing active cooldowns by 12s (4s cooldown)"
       }
     ]
   }

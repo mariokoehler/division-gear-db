@@ -18,13 +18,13 @@
     ],
     "talent": {
       "name": "One in Hand...",
-      "desc": "Damaging an enemy with a grenade grants +100% skill tier for 15s.  Grants overcharge if already at skill tier 6."
+      "desc": "Damaging an enemy with a grenade grants +1 skill tier for 15s.  Grants overcharge if already at skill tier 6."
     },
     "talentId": "warlock_talent_exotic_backpack_mk1b",
     "extraTalents": [
       {
         "name": "... Two in the Bag",
-        "desc": "+100% Armorkit Capacity\n+300% Grenade Capacity\n+25% Ammo Capacity\n+10% Repair-skills\n+10% Status Effects",
+        "desc": "+1 Armorkit Capacity\n+3 Grenade Capacity\n+25% Ammo Capacity\n+10% Repair-skills\n+10% Status Effects",
         "talentId": "warlock_talent_exotic_backpack_mk1a"
       }
     ],
@@ -78,7 +78,7 @@
     ],
     "talent": {
       "name": "Rebalance",
-      "desc": "Getting kills and hitting enemies 300% times builds Red stacks. Each stack provides 0.5% Weapon Damage.\n\nGetting hit 300% times builds Blue stacks. Each stack provides 0.5% Damage Resistance.\n\nUpon reaching 80 stacks in total, lose all stacks and receive a separate bonus of 0.5% Damage Resistance per Red stack and 0.5% Weapon Damage per Blue stack until the next time the stack cap is reached."
+      "desc": "Getting kills and hitting enemies 3 times builds Red stacks. Each stack provides 0.5% Weapon Damage.\n\nGetting hit 3 times builds Blue stacks. Each stack provides 0.5% Damage Resistance.\n\nUpon reaching 80 stacks in total, lose all stacks and receive a separate bonus of 0.5% Damage Resistance per Red stack and 0.5% Weapon Damage per Blue stack until the next time the stack cap is reached."
     },
     "talentId": "talent_exotic_backpack_adaptation",
     "source": "datamined"
@@ -184,9 +184,33 @@
     ],
     "talent": {
       "name": "Hoarder",
-      "desc": "+300% Grenade Capacity\n+50% Grenade Radius\n+35% Grenade Damage\n+25% Grenade Damage for each extra enemy caught in the blast"
+      "desc": "+3 Grenade Capacity\n+50% Grenade Radius\n+35% Grenade Damage\n+25% Grenade Damage for each extra enemy caught in the blast"
     },
     "talentId": "talent_back_hoarder_grenade_enhancements",
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_chest_exotic_06",
+    "name": "Iron Will",
+    "slot": "Chest",
+    "isDarkZoneExclusive": false,
+    "flavorText": "I find your lack of determination disturbing.",
+    "bonuses": [
+      "Headshot Damage",
+      "Weapon Handling"
+    ],
+    "bonusesRandom": false,
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Resolved",
+      "desc": "Your next body shot will be considered a headshot.\n\nCooldown: 2s"
+    },
+    "talentId": "talent_exotic_chest_firm_intent",
     "source": "datamined"
   },
   {
@@ -328,7 +352,7 @@
     ],
     "talent": {
       "name": "Smoke Screen",
-      "desc": "On Armor break, drop a Smoke Bomb at your feet, concealing you from enemies for 300%s.\nCooldown: 40s"
+      "desc": "On Armor break, drop a Smoke Bomb at your feet, concealing you from enemies for 3s.\nCooldown: 40s"
     },
     "talentId": "talent_exotic_gloves_exodus_gloves_smoke_screen",
     "source": "datamined"
@@ -424,7 +448,7 @@
     ],
     "talent": {
       "name": "Quick Draw",
-      "desc": "While your pistol is holstered, gain a stacking buff every 30%s, up to 100.\n\nWhen you swap to it, your first shot consumes the buff and deals +10% damage per stack."
+      "desc": "While your pistol is holstered, gain a stacking buff every 0.3s, up to 100.\n\nWhen you swap to it, your first shot consumes the buff and deals +10% damage per stack."
     },
     "talentId": "talent_exotic_holster_mk1_a",
     "source": "datamined"
@@ -541,7 +565,7 @@
     ],
     "talent": {
       "name": "Escape Plan",
-      "desc": "Vaulting grants +10% Movement Speed for 300%s.\nAfter not moving for 5s, receive +20% Movement Speed for 5s.\nBeing applied a Status Effect grants +10% Movement Speed for 5s.\nMax Movement Speed bonus is 20%. The bonuses do not stack with Movement Speed bonuses from other sources.\n-50% Movement Impairment penalty from Status Effects."
+      "desc": "Vaulting grants +10% Movement Speed for 3s.\nAfter not moving for 5s, receive +20% Movement Speed for 5s.\nBeing applied a Status Effect grants +10% Movement Speed for 5s.\nMax Movement Speed bonus is 20%. The bonuses do not stack with Movement Speed bonuses from other sources.\n-50% Movement Impairment penalty from Status Effects."
     },
     "talentId": "talent_exotic_escape_plan",
     "source": "datamined"
@@ -677,7 +701,7 @@
     ],
     "talent": {
       "name": "Chemical Agent",
-      "desc": "Catalysis\nDealing and receiving status effects (Burn, Bleed, Shock, EMP/Disrupt, Poison, and Blind/Disorient) builds stacks of Catalysis to a maximum of 12. Each stack grants:\n    +2% weapon damage\n    +2% status effects\n\nEach enemy within 25 meters that is affected by a status effect grants +100% stack/sec. Being affected by status effects grants +200% stacks/sec.\nStacks decay at 100% stack/sec after 5s if no enemies in the radius or you are affected by status effects.\n\nReactant\nAt max stacks, killing a status-affected enemy grants bonuses for 5s:\n    +25% bonus armor\n    +20% reload speed\n\nStabilizer\nWhile burning, you can maintain ADS without disruption."
+      "desc": "Catalysis\nDealing and receiving status effects (Burn, Bleed, Shock, EMP/Disrupt, Poison, and Blind/Disorient) builds stacks of Catalysis to a maximum of 12. Each stack grants:\n    +2% weapon damage\n    +2% status effects\n\nEach enemy within 25 meters that is affected by a status effect grants +1 stack/sec. Being affected by status effects grants +2 stacks/sec.\nStacks decay at 1 stack/sec after 5s if no enemies in the radius or you are affected by status effects.\n\nReactant\nAt max stacks, killing a status-affected enemy grants bonuses for 5s:\n    +25% bonus armor\n    +20% reload speed\n\nStabilizer\nWhile burning, you can maintain ADS without disruption."
     },
     "talentId": "virginia_talent_exotic_mask_catalyst_chemical_agent",
     "source": "datamined"

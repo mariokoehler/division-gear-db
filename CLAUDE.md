@@ -573,10 +573,11 @@ interpretation itself.
   Damage`/`Radius`/`Capacity`, `Armor Kit Capacity`, `Revive Speed`. The same name is deliberately
   reused across every talent describing the same effect so a future cross-reference can group them.
 - **Unconditional talent-granted bonuses are still recorded**, with `condition: "Always active"` —
-  a handful of talents (mostly exotics, e.g. "...Two in the Bag": +100% Armor Kit Capacity, +300%
-  Grenade Capacity, etc.) grant a flat, guaranteed stat purely through their talent text, the same
-  way a Named Item's Fixed attribute slot does, and are worth surfacing even with no everyday
-  "condition."
+  a handful of talents (mostly exotics, e.g. "...Two in the Bag": +1 Armor Kit Capacity, +3 Grenade
+  Capacity, +25% Ammo Capacity, etc.) grant a flat, guaranteed stat purely through their talent
+  text, the same way a Named Item's Fixed attribute slot does, and are worth surfacing even with no
+  everyday "condition." (The Armor Kit/Grenade Capacity numbers here were corrected 2026-08-27 —
+  see the `naive_substitute` bug note above; they used to incorrectly show as +100%/+300%.)
 - **Drift detection**: `apply_bonus_inferences()` hashes each in-scope talent's *current*
   description and compares against the stored fingerprint. A mismatch (rebalance changed the
   wording) or missing id (new talent) means the persisted `bonuses` are stale/absent — flagged in
@@ -642,15 +643,58 @@ content, distinct from the tool's own MIT-licensed code — see `LICENSE` and `R
 
 ## Current state
 
-64 Brand Set / Gear Set entries (37 Brand Sets, 27 Gear Sets), 62 Named Items (43 with a unique
-talent, all fully datamined name + description), 30 Exotic Items (28 via the normal per-item
-pipeline, plus Acosta's Go Bag and Investor via the manual-reconstruction paths described above),
-and 352 catalogued Talents in the Talent Browser (133 of them gear-slotted and interpreted for
-conditional/potential bonuses). No known data gaps remain except: Ongoing Directive's backpack
-companion talent (`.mtalent` file missing from every export so far), Grace Under Fire's owning
-item name (confirmed real, not yet name-confirmed in-game), and 7 genuinely-unconfirmed
-exotic-gear talent variants (see "Potential Bonuses" above) — all flagged in-page rather than
-guessed at.
+65 Brand Set / Gear Set entries (37 Brand Sets, 28 Gear Sets — Ember Engine added in the 2026-08-27
+rebalance), 66 Named Items (47 with a unique talent, all fully datamined name + description; Keeper,
+Melon Baller, Rushdown, and Trick Shot added in the same update), 31 Exotic Items (29 via the normal
+per-item pipeline — Iron Will added in the same update — plus Acosta's Go Bag and Investor via the
+manual-reconstruction paths described above), and 359 catalogued Talents in the Talent Browser (136
+of them gear-slotted and interpreted for conditional/potential bonuses). No known data gaps remain
+except: Ongoing Directive's backpack companion talent (`.mtalent` file missing from every export so
+far), Grace Under Fire's owning item name (confirmed real, not yet name-confirmed in-game), and 7
+genuinely-unconfirmed exotic-gear talent variants (see "Potential Bonuses" above) — all flagged
+in-page rather than guessed at.
+
+### `naive_substitute`'s percent-vs-flat heuristic — a real, partially-fixed bug (2026-08-27)
+
+`naive_substitute` (shared by all four extraction scripts) decides whether a `{n}` placeholder's
+`myValue` should be formatted as a percent (`v*100`, e.g. `0.35` → `"35%"`) purely from the value's
+own **magnitude** (`abs(v) < 5`), not from anything in the template itself. This silently breaks on
+any talent whose {n} is a genuinely small flat number rather than a fraction-of-one — a duration
+under 5 seconds (`2.0` → wrongly `"200%"`), a small stack/kill/mark count (`3.0` → wrongly `"300%"`),
+a small distance in meters, etc. — because those also satisfy `abs(v) < 5`. This turned out to be a
+long-standing bug, not something the 2026-08-27 update introduced: **~70 pre-existing talent
+descriptions had this wrong before this session**, most invisibly (e.g. Rushdown's "Perfect Tag
+Team" showed `"Cooldown: 400%s"` instead of `"Cooldown: 4s"`; Adrenaline Rush's stack cap showed
+`"300%"` instead of `"3"`). This session hand-fixed every instance found — see `git log` for the
+2026-08-27 commit — using the following, more reliable signal instead: **does the template have a
+literal `%` character right after the placeholder** (skipping any `</color>` tag in between, and
+allowing for a `{a}-{b}%` range where only the trailing `{b}` carries the visible `%`)? If yes,
+format as percent (still gated on `abs(v) < 5`, to avoid re-breaking a talent like Autentico's
+`"+{0}% Weapon Damage"` where `{0}` is *already* a whole percent number, `35.0`, not a fraction);
+if no, format as a raw number.
+
+**This new rule is not itself airtight** — a handful of confirmed exceptions where the template has
+*no* `%` marker at all but the value still needed `*100` to read sensibly were found and hand-fixed
+individually (not via the rule): Empathic Resolve's buff duration, Kinetic Momentum's stack cap
+(base *and* Perfect), Breathe Free's stack cap, Gangland Hit's mark cap. Conversely, two talents
+were found where the template has *no* `%` marker for a value that plausibly should still read as a
+percent (Combat Medic's "Damage Resistance", Symbiosis's shield-repair share) but the correct
+answer couldn't be confirmed either way — left as literal flat numbers (the template's own literal
+reading), flagged here rather than guessed. One raw-data typo was also found and hand-fixed:
+`talent_back_skill_kills_increase_skill_duration_and_damage` ("Tech Support")'s own tooltip reuses
+`{0}` for both its percent *and* its duration placeholder (should be `{0}%`/`{1}s`) — confirmed via
+the file's own `contextComment` and cross-checked against Percussive Maintenance's "Perfect Tech
+Support" (a different, correctly-templated file) landing on the same ballpark duration.
+**`naive_substitute` itself was deliberately left unpatched** — the exceptions above make "template
+has an adjacent `%`" not a fully general rule either, and this class of ambiguity is exactly what
+the "Known limitation, accepted rather than solved" note (Talent Browser section, above) already
+describes as needing human judgment per-talent rather than a better one-size-fits-all heuristic. A
+future session re-running any of the four extraction scripts will regenerate every touched talent's
+description **from scratch** with the *original* buggy heuristic (none of the four scripts have a
+"keep hand-reviewed text" fingerprint mechanism for talent descriptions the way gear-set 4pc/
+companion talents do in `combined_sets.json` — named/exotic/all-talents descriptions are always
+freshly regenerated) — re-apply this same review pass (or equivalent hand fixes) afterward rather
+than assuming today's fixes persist across a future run.
 
 ## Session history
 
@@ -682,3 +726,16 @@ Condensed changelog — see the topical sections above for full technical detail
   Exotic Items: 28 → 30.
 - Fixed a broken inline `<img>` core-attribute icon tag rendering as raw HTML in 4 talent
   descriptions (the shared markup-stripping helper only handled `<color>` tags before this).
+- Ran a full rescan against the 2026-08-27 game update (a major itemization rebalance): re-ran all
+  four extraction scripts in order, resolved one new attribute UID (`Defence from Elites`), picked
+  up 1 new Gear Set (Ember Engine), 4 new Named Items (Keeper, Melon Baller, Rushdown, Trick Shot),
+  and 1 new Exotic Item (Iron Will). While reviewing the auto-drafted talent text this triggered,
+  found and fixed `naive_substitute`'s percent-vs-flat formatting bug — see the dedicated note under
+  "Current state" above — both in the ~25 talents the update itself touched and, once the pattern
+  was recognized, in ~70 more pre-existing talent descriptions across all four datasets that had
+  been silently wrong since long before this session (durations/counts showing as absurd 3-digit
+  percentages, e.g. `"Cooldown: 400%s"` instead of `"Cooldown: 4s"`). Also caught and fixed one
+  raw-game-data authoring typo (Tech Support's tooltip reuses `{0}` for two different placeholders)
+  and one index-misalignment bug (Overflowing/Perfectly Overflowing's tooltip references `{1}`/`{2}`
+  but the first `BonusAttributeRef` in its `myBonusList` has no `myValue` at all, shifting every
+  later index down by one).

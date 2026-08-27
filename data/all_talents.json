@@ -2,7 +2,7 @@
   {
     "id": "warlock_talent_exotic_backpack_mk1a",
     "name": "... Two in the Bag",
-    "description": "+100% Armorkit Capacity\n+300% Grenade Capacity\n+25% Ammo Capacity\n+10% Repair-skills\n+10% Status Effects",
+    "description": "+1 Armorkit Capacity\n+3 Grenade Capacity\n+25% Ammo Capacity\n+10% Repair-skills\n+10% Status Effects",
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -83,7 +83,7 @@
   {
     "id": "warlock_talent_exotic_backpack_mk1b",
     "name": "One in Hand...",
-    "description": "Damaging an enemy with a grenade grants +100% skill tier for 15s.  Grants overcharge if already at skill tier 6.",
+    "description": "Damaging an enemy with a grenade grants +1 skill tier for 15s.  Grants overcharge if already at skill tier 6.",
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -98,7 +98,7 @@
   {
     "id": "talent_exotic_backpack_adaptation",
     "name": "Rebalance",
-    "description": "Getting kills and hitting enemies 300% times builds Red stacks. Each stack provides 0.5% Weapon Damage.\n\nGetting hit 300% times builds Blue stacks. Each stack provides 0.5% Damage Resistance.\n\nUpon reaching 80 stacks in total, lose all stacks and receive a separate bonus of 0.5% Damage Resistance per Red stack and 0.5% Weapon Damage per Blue stack until the next time the stack cap is reached.",
+    "description": "Getting kills and hitting enemies 3 times builds Red stacks. Each stack provides 0.5% Weapon Damage.\n\nGetting hit 3 times builds Blue stacks. Each stack provides 0.5% Damage Resistance.\n\nUpon reaching 80 stacks in total, lose all stacks and receive a separate bonus of 0.5% Damage Resistance per Red stack and 0.5% Weapon Damage per Blue stack until the next time the stack cap is reached.",
     "kind": "exotic-gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -195,7 +195,7 @@
   {
     "id": "talent_back_hoarder_grenade_enhancements",
     "name": "Hoarder",
-    "description": "+300% Grenade Capacity\n+50% Grenade Radius\n+35% Grenade Damage\n+25% Grenade Damage for each extra enemy caught in the blast",
+    "description": "+3 Grenade Capacity\n+50% Grenade Radius\n+35% Grenade Damage\n+25% Grenade Damage for each extra enemy caught in the blast",
     "kind": "exotic-gear",
     "slot": "Chest",
     "weaponType": null,
@@ -216,9 +216,18 @@
     ]
   },
   {
+    "id": "talent_exotic_chest_firm_intent",
+    "name": "Resolved",
+    "description": "Your next body shot will be considered a headshot.\n\nCooldown: 2s",
+    "kind": "exotic-gear",
+    "slot": "Chest",
+    "weaponType": null,
+    "tier": "Standard"
+  },
+  {
     "id": "talent_exotic_gloves_mk1_c",
     "name": "Charged Proxies",
-    "description": "Whenever you throw a skill, 125% seconds after landing, it creates an explosion applying the infused status effect to all enemies within 6m. \n\nEnemies affected by the infused status effect take 50% more damage from your skills.",
+    "description": "Whenever you throw a skill, 1.25 seconds after landing, it creates an explosion applying the infused status effect to all enemies within 6m. \n\nEnemies affected by the infused status effect take 50% more damage from your skills.",
     "kind": "exotic-gear",
     "slot": "Gloves",
     "weaponType": null,
@@ -285,7 +294,7 @@
   {
     "id": "talent_exotic_gloves_exodus_gloves_smoke_screen",
     "name": "Smoke Screen",
-    "description": "On Armor break, drop a Smoke Bomb at your feet, concealing you from enemies for 300%s.\nCooldown: 40s",
+    "description": "On Armor break, drop a Smoke Bomb at your feet, concealing you from enemies for 3s.\nCooldown: 40s",
     "kind": "exotic-gear",
     "slot": "Gloves",
     "weaponType": null,
@@ -422,7 +431,7 @@
   {
     "id": "talent_exotic_holster_mk1_a",
     "name": "Quick Draw",
-    "description": "While your pistol is holstered, gain a stacking buff every 30%s, up to 100.\n\nWhen you swap to it, your first shot consumes the buff and deals +10% damage per stack.",
+    "description": "While your pistol is holstered, gain a stacking buff every 0.3s, up to 100.\n\nWhen you swap to it, your first shot consumes the buff and deals +10% damage per stack.",
     "kind": "exotic-gear",
     "slot": "Holster",
     "weaponType": null,
@@ -452,7 +461,7 @@
   {
     "id": "talent_exotic_escape_plan",
     "name": "Escape Plan",
-    "description": "Vaulting grants +10% Movement Speed for 300%s.\nAfter not moving for 5s, receive +20% Movement Speed for 5s.\nBeing applied a Status Effect grants +10% Movement Speed for 5s.\nMax Movement Speed bonus is 20%. The bonuses do not stack with Movement Speed bonuses from other sources.\n-50% Movement Impairment penalty from Status Effects.",
+    "description": "Vaulting grants +10% Movement Speed for 3s.\nAfter not moving for 5s, receive +20% Movement Speed for 5s.\nBeing applied a Status Effect grants +10% Movement Speed for 5s.\nMax Movement Speed bonus is 20%. The bonuses do not stack with Movement Speed bonuses from other sources.\n-50% Movement Impairment penalty from Status Effects.",
     "kind": "exotic-gear",
     "slot": "Kneepads",
     "weaponType": null,
@@ -557,7 +566,7 @@
   {
     "id": "virginia_talent_exotic_mask_catalyst_chemical_agent",
     "name": "Chemical Agent",
-    "description": "Catalysis\nDealing and receiving status effects (Burn, Bleed, Shock, EMP/Disrupt, Poison, and Blind/Disorient) builds stacks of Catalysis to a maximum of 12. Each stack grants:\n    +2% weapon damage\n    +2% status effects\n\nEach enemy within 25 meters that is affected by a status effect grants +100% stack/sec. Being affected by status effects grants +200% stacks/sec.\nStacks decay at 100% stack/sec after 5s if no enemies in the radius or you are affected by status effects.\n\nReactant\nAt max stacks, killing a status-affected enemy grants bonuses for 5s:\n    +25% bonus armor\n    +20% reload speed\n\nStabilizer\nWhile burning, you can maintain ADS without disruption.",
+    "description": "Catalysis\nDealing and receiving status effects (Burn, Bleed, Shock, EMP/Disrupt, Poison, and Blind/Disorient) builds stacks of Catalysis to a maximum of 12. Each stack grants:\n    +2% weapon damage\n    +2% status effects\n\nEach enemy within 25 meters that is affected by a status effect grants +1 stack/sec. Being affected by status effects grants +2 stacks/sec.\nStacks decay at 1 stack/sec after 5s if no enemies in the radius or you are affected by status effects.\n\nReactant\nAt max stacks, killing a status-affected enemy grants bonuses for 5s:\n    +25% bonus armor\n    +20% reload speed\n\nStabilizer\nWhile burning, you can maintain ADS without disruption.",
     "kind": "exotic-gear",
     "slot": "Mask",
     "weaponType": null,
@@ -676,9 +685,18 @@
     ]
   },
   {
+    "id": "talent_exotic_weapon_voracious",
+    "name": "-",
+    "description": "-",
+    "kind": "exotic-other",
+    "slot": null,
+    "weaponType": null,
+    "tier": "Standard"
+  },
+  {
     "id": "talent_exotic_weapon_prima_donna_02",
     "name": "...but you can't touch",
-    "description": "100% stack is automatically consumed to fully repair one instance of damage you receive.\n1 stack replenishes every 300%s.",
+    "description": "1 stack is automatically consumed to fully repair one instance of damage you receive.\n1 stack replenishes every 3s.",
     "kind": "exotic-other",
     "slot": null,
     "weaponType": null,
@@ -739,6 +757,15 @@
     "tier": "Standard"
   },
   {
+    "id": "talent_exotic_weapon_dragons_breath",
+    "name": "Dragon's Breath",
+    "description": "This weapon fires Dragon's Breath shells.\n\nEach shot has a 40% chance of applying Burn to the enemy. An enemy cannot be applied Burn if they are burning already.\n\nWeapon Damage is Amplified by 50% of your Status Effects bonus.",
+    "kind": "exotic-other",
+    "slot": null,
+    "weaponType": null,
+    "tier": "Standard"
+  },
+  {
     "id": "talent_exotic_weapon_vindicator",
     "name": "Ortiz Assault Interface",
     "description": "While scoped, the weapon will highlight a random body section of each enemy.\nThe weapon deals +75% Weapon Damage to highlighted body sections.",
@@ -759,7 +786,7 @@
   {
     "id": "talent_exotic_weapon_confirm_execute",
     "name": "Shakedown",
-    "description": "Body shots add 1 stack to the enemy for 10s. Max stacks: 300%. \nHitting a different enemy removes all stacks.\n\nThis weapon deals +4% Amplified Damage per stack.\n\nYour next headshot on an enemy with stacks consumes all stacks, dealing +11% Amplified Damage per stack.\n\nDestroying an enemy's weakpoint causes them to take +10% Amplified Damage from you for 5s.",
+    "description": "Body shots add 1 stack to the enemy for 10s. Max stacks: 4. \nHitting a different enemy removes all stacks.\n\nThis weapon deals +4% Amplified Damage per stack.\n\nYour next headshot on an enemy with stacks consumes all stacks, dealing +11% Amplified Damage per stack.\n\nDestroying an enemy's weakpoint causes them to take +30% Amplified Damage from you for 5s.",
     "kind": "exotic-other",
     "slot": null,
     "weaponType": null,
@@ -804,7 +831,7 @@
   {
     "id": "warlock_talent_exotic_assault_rifle_mk3",
     "name": "Big Game Hunter",
-    "description": "When scoped, switches to semi-automatic fire mode, dealing 450% weapon damage with each shot.\n\nHeadshots grant +6% headshot damage. Stacks up to 25 times. Once at full stacks, 10 stacks decay every 400% seconds until all stacks have been removed. Headshots delay decaying of stacks.",
+    "description": "When scoped, switches to semi-automatic fire mode, dealing 450% weapon damage with each shot.\n\nHeadshots grant +6% headshot damage. Stacks up to 25 times. Once at full stacks, 10 stacks decay every 4 seconds until all stacks have been removed. Headshots delay decaying of stacks.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "Assault Rifle",
@@ -822,7 +849,7 @@
   {
     "id": "talent_exotic_assault_rifle_magpulpdr",
     "name": "Capacitance",
-    "description": "Shooting enemies builds stacks to a cap of 40. Each stack grants 1.5% Skill Damage. After 5 seconds, stacks decay 100% per second.\n\nFor each Yellow skill tier gain 7.5% weapon damage.",
+    "description": "Shooting enemies builds stacks to a cap of 40. Each stack grants 1.5% Skill Damage. After 5 seconds, stacks decay 1 per second.\n\nFor each Yellow skill tier gain 7.5% weapon damage.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "Assault Rifle",
@@ -831,7 +858,7 @@
   {
     "id": "talent_exotic_assault_rifle_magpulpdr_shield_Shader",
     "name": "Capacitance",
-    "description": "Shooting enemies builds stacks to a cap of 40. Each stack grants 1.5% Skill Damage. After 5 seconds, stacks decay 100% per second.\n\nFor each Yellow skill tier gain 7.5% weapon damage.",
+    "description": "Shooting enemies builds stacks to a cap of 40. Each stack grants 1.5% Skill Damage. After 5 seconds, stacks decay 1 per second.\n\nFor each Yellow skill tier gain 7.5% weapon damage.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "Assault Rifle",
@@ -867,7 +894,7 @@
   {
     "id": "talent_exotic_assault_rifle_mk1_b",
     "name": "Tenacity",
-    "description": "40%-80% of damage taken is delayed until the buff expires.\n\nAll of the total delayed damage is reduced for each enemy killed while the buff is active, up to 100% with 300% kills.",
+    "description": "40-80% of damage taken is delayed until the buff expires.\n\nAll of the total delayed damage is reduced for each enemy killed while the buff is active, up to 100% with 3 kills.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "Assault Rifle",
@@ -903,7 +930,7 @@
   {
     "id": "talent_exotic_lmg_rpk74_pakhan",
     "name": "Pakhan",
-    "description": "Each kill with this weapon gains a stack of 75% Magazine Size increase to the next magazine, up to 400% stacks.",
+    "description": "Each kill with this weapon gains a stack of 75% Magazine Size increase to the next magazine, up to 4 stacks.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "LMG",
@@ -1101,7 +1128,7 @@
   {
     "id": "talent_exotic_rifle_mk3_holstered",
     "name": "Shedding Skin",
-    "description": "While drawn, each time a round is loaded, gain +20% bonus armor for 300%s.  \n\nWhile holstered, each time you reload or cycle your current weapon, gain +8% bonus armor for 200%s.",
+    "description": "While drawn, each time a round is loaded, gain +20% bonus armor for 3s.  \n\nWhile holstered, each time you reload or cycle your current weapon, gain +8% bonus armor for 2s.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "Rifle",
@@ -1128,7 +1155,7 @@
   {
     "id": "talent_exotic_smg_mk1_b",
     "name": "Box Magazine",
-    "description": "Kills with this weapon refill 75% of its magazine and grants a buff for 10s.  \n\nWhile the buff is active, every shot landed increases magazine capacity by 300% to a max of 60.  Killing a target consumes the buff to fully refill the increased magazine.",
+    "description": "Kills with this weapon refill 75% of its magazine and grants a buff for 10s.  \n\nWhile the buff is active, every shot landed increases magazine capacity by 3 to a max of 60.  Killing a target consumes the buff to fully refill the increased magazine.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "SMG",
@@ -1137,7 +1164,7 @@
   {
     "id": "warlock_talent_exotic_smg_mk2",
     "name": "Breathe Free",
-    "description": "When moving, gain 400% stacks per second, or 8 stacks if sprinting, up to 75% stacks total.\n\nEach round fired consumes a stack, amplifying damage by 20%.\n\nKills grant +10% movement speed for {5}s.",
+    "description": "When moving, gain 4 stacks per second, or 8 stacks if sprinting, up to 75 stacks total.\n\nEach round fired consumes a stack, amplifying damage by 20%.\n\nKills grant +10% movement speed for {5}s.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "SMG",
@@ -1155,7 +1182,7 @@
   {
     "id": "talent_exotic_smg_gangland_hit",
     "name": "Gangland Hit",
-    "description": "Shooting an enemy with this weapon applies a <mark. You can only apply one mark at a time. Shooting another enemy will transfer the mark.\n\nMore marks can be applied on the same enemy by other agents using this weapon. Maximum amount of marks that can be applied on an enemy is 20%.\n\nThis weapon deals +5% Amplified Damage to marked enemies. The bonus is increased by 400% for each extra mark on the enemy other than your own.",
+    "description": "Shooting an enemy with this weapon applies a <mark. You can only apply one mark at a time. Shooting another enemy will transfer the mark.\n\nMore marks can be applied on the same enemy by other agents using this weapon. Maximum amount of marks that can be applied on an enemy is 20.\n\nThis weapon deals +5% Amplified Damage to marked enemies. The bonus is increased by 4% for each extra mark on the enemy other than your own.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "SMG",
@@ -1218,7 +1245,7 @@
   {
     "id": "talent_exotic_shotgun_cryesix12",
     "name": "Septic Shock",
-    "description": "Shooting a target applies stacks of venom, which last for 10s. Increasing stacks adds more severe debuffs to the target.\n \n200% - Poison\n400% - Disorient\n6 - Shock\n9 - Target takes additional 20% damage (from all sources). Stacks no longer increase.\n\nDuration of Status Effects is based on percentage of pellets hit on applying shot.",
+    "description": "Shooting a target applies stacks of venom, which last for 10s. Increasing stacks adds more severe debuffs to the target.\n \n2 - Poison\n4 - Disorient\n6 - Shock\n9 - Target takes additional 20% damage (from all sources). Stacks no longer increase.\n\nDuration of Status Effects is based on percentage of pellets hit on applying shot.",
     "kind": "exotic-weapon",
     "slot": null,
     "weaponType": "Shotgun",
@@ -1227,7 +1254,7 @@
   {
     "id": "warlock_talent_nearby_enemies_grant_bonus_armor",
     "name": "Adrenaline Rush",
-    "description": "Whenever you are within 10m of an enemy, gain 20% bonus armor for 5s.  Stacks up to 300% times. \n\nCooldown: 5s",
+    "description": "Whenever you are within 10m of an enemy, gain 20% bonus armor for 5s.  Stacks up to 3 times. \n\nCooldown: 5s",
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -1302,7 +1329,7 @@
   {
     "id": "talent_mask_headshots_increase_headshot_damage",
     "name": "Concussion",
-    "description": "Headshots increase total weapon damage by 10% for 150%s. 5s with marksman rifles.\n\nHeadshot kills increase total weapon damage by 15% for 10s.",
+    "description": "Headshots increase total weapon damage by 10% for 1.5s. 5s with marksman rifles.\n\nHeadshot kills increase total weapon damage by 15% for 10s.",
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -1427,7 +1454,7 @@
   {
     "id": "warlock_talent_deployed_skills_boost_allies",
     "name": "Overclock",
-    "description": "Allies within 7m of your deployed skills, gain +25% reload speed and reduces their active cooldowns by 20%s each second.",
+    "description": "Allies within 7m of your deployed skills, gain +25% reload speed and reduces their active cooldowns by 0.2s each second.",
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -1446,7 +1473,7 @@
   {
     "id": "warlock_talent_nearby_enemies_grant_bonus_armor_perfect",
     "name": "Perfect Adrenaline Rush",
-    "description": "Whenever you are within 10m of an enemy, gain 23% bonus armor for 5s.  Stacks up to 300% times. \n\nCooldown: 5s",
+    "description": "Whenever you are within 10m of an enemy, gain 23% bonus armor for 5s.  Stacks up to 3 times. \n\nCooldown: 5s",
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -1506,17 +1533,11 @@
   {
     "id": "talent_mask_headshots_increase_headshot_damage_perfect",
     "name": "Perfect Concussion",
-    "description": "Headshots grant +20% headshot damage for 200%s. 5s with marksman rifles.",
+    "description": "Headshots increase total weapon damage by 20% for 1.5s. 5s with marksman rifles.\n\nHeadshot kills increase total weapon damage by 15% for 10s.",
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect",
-    "potentialBonuses": [
-      {
-        "attribute": "Headshot Damage",
-        "condition": "for 200s (5s w/ marksman rifles) after a headshot"
-      }
-    ]
+    "tier": "Perfect"
   },
   {
     "id": "warlock_talent_disables_grants_nearby_bonus_armor_perfect",
@@ -1547,6 +1568,15 @@
         "condition": "for 10s to you and allies on a cover-to-cover move, tripled if you end within 10m of an enemy, 10s cooldown"
       }
     ]
+  },
+  {
+    "id": "warlock_talent_shield_damage_grants_group_bonus_armor_perfect",
+    "name": "Perfect Protector",
+    "description": "When your shield is damaged, you gain +25% bonus armor and all other allies gain 35% of your armor as bonus armor for 3s. \n\nCooldown: 3s",
+    "kind": "gear",
+    "slot": "Backpack",
+    "weaponType": null,
+    "tier": "Perfect"
   },
   {
     "id": "talent_back_kills_increases_healing_done_perfect",
@@ -1660,7 +1690,7 @@
   {
     "id": "warlock_talent_shield_damage_grants_group_bonus_armor",
     "name": "Protector",
-    "description": "When your shield is damaged, you gain +5% bonus armor and all other allies gain 15% of your armor as bonus armor for 300%s. \n\nCooldown: 300%s",
+    "description": "When your shield is damaged, you gain +5% bonus armor and all other allies gain 15% of your armor as bonus armor for 3s. \n\nCooldown: 3s",
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -1694,7 +1724,7 @@
   {
     "id": "talent_back_skill_kills_increase_skill_duration_and_damage",
     "name": "Tech Support",
-    "description": "Skill kills increase total skill damage by 25% for 25%s.",
+    "description": "Skill kills increase total skill damage by 25% for 20s.",
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
@@ -1724,7 +1754,7 @@
   {
     "id": "warlock_talent_weapon_damage_grants_skill_damage",
     "name": "Combined Arms",
-    "description": "Shooting an enemy increases total skill damage by 25% for 300%s.",
+    "description": "Shooting an enemy increases total skill damage by 25% for 3s.",
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": "Any Weapon",
@@ -1739,7 +1769,7 @@
   {
     "id": "warlock_talent_weapon_damage_grants_skill_damage_perfect",
     "name": "Perfect Combined Arms",
-    "description": "Shooting an enemy increases total skill damage by 30% for 300%s.",
+    "description": "Shooting an enemy increases total skill damage by 30% for 3s.",
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": "Any Weapon",
@@ -1839,7 +1869,7 @@
   {
     "id": "talent_chest_increased_weapon_damage_while_not_getting_hit_perfect",
     "name": "Perfect Vigilance",
-    "description": "Increases total weapon damage by 25%. Taking damage disables this buff for 300%s.",
+    "description": "Increases total weapon damage by 25%. Taking damage disables this buff for 3s.",
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
@@ -1954,7 +1984,7 @@
   {
     "id": "talent_chest_increased_weapon_damage_while_not_getting_hit",
     "name": "Vigilance",
-    "description": "Increases total weapon damage by 25%. Taking damage disables this buff for 400%s.",
+    "description": "Increases total weapon damage by 25%. Taking damage disables this buff for 4s.",
     "kind": "gear",
     "slot": "Backpack / Chest",
     "weaponType": null,
@@ -1999,7 +2029,7 @@
   {
     "id": "warlock_talent_healing_allies_buffs_them",
     "name": "Empathic Resolve",
-    "description": "When you repair an ally, increases their total weapon and skill damage by 3% for 15%s.  20% if self.",
+    "description": "When you repair an ally, increases their total weapon and skill damage by 3% for 15s.  20% if self.",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -2018,7 +2048,7 @@
   {
     "id": "talent_kneepads_headshots_in_cover_gives_armor",
     "name": "Entrench",
-    "description": "If you are below 30% armor, headshots from cover repair 20% of your armor.\n\nCooldown: 200%s",
+    "description": "If you are below 30% armor, headshots from cover repair 20% of your armor.\n\nCooldown: 2s",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -2033,7 +2063,7 @@
   {
     "id": "warlock_talent_thrown_skills_explode",
     "name": "Explosive Delivery",
-    "description": "Whenever you throw a skill, 150% seconds after landing, it creates an explosion damaging enemies within 5m.\n\nDamage scales with skill tier dealing 25%-100% damage of a concussion grenade.\n\nAt most once per skill.",
+    "description": "Whenever you throw a skill, 1.5 seconds after landing, it creates an explosion damaging enemies within 5m.\n\nDamage scales with skill tier dealing 25%-100% damage of a concussion grenade.\n\nAt most once per skill.",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -2133,7 +2163,7 @@
   {
     "id": "warlock_talent_active_skills_increase_damage",
     "name": "Kinetic Momentum",
-    "description": "When in combat, each skill generates a stack while active or not on cooldown.\n\nStacks increase your total skill damage and repair by 1.5%. Up to 2% stacks per skill. Lost when on cooldown.",
+    "description": "When in combat, each skill generates a stack while active or not on cooldown.\n\nStacks increase your total skill damage and repair by 1.5%. Up to 15 stacks per skill. Lost when on cooldown.",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -2254,7 +2284,7 @@
   {
     "id": "talent_kneepads_headshots_in_cover_gives_armor_perfect",
     "name": "Perfect Entrench",
-    "description": "If you are below 30% armor, headshots from cover repair 30% of your armor.\n\nCooldown: 100%s",
+    "description": "If you are below 30% armor, headshots from cover repair 30% of your armor.\n\nCooldown: 1s",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -2425,6 +2455,15 @@
     ]
   },
   {
+    "id": "talent_mask_hits_reduce_cooldown_perfect",
+    "name": "Perfect Tag Team",
+    "description": "The last enemy you have damaged with a skill is marked.\n\nDealing weapon damage to that enemy consumes the mark to reduce active  cooldowns by 12s.\n\nCooldown: 4s",
+    "kind": "gear",
+    "slot": "Chest",
+    "weaponType": null,
+    "tier": "Perfect"
+  },
+  {
     "id": "warlock_talent_shield_grants_invulnerable_and_group_bonus_armor_perfect",
     "name": "Perfect Vanguard",
     "description": "Deploying a shield makes it invulnerable for 5s and grants 50% of your armor as bonus armor to all other allies for 20s.  \n\nCooldown: 25s",
@@ -2442,7 +2481,7 @@
   {
     "id": "warlock_talent_thrown_skills_explode_perfect",
     "name": "Perfectly Explosive Delivery",
-    "description": "Whenever you throw a skill, 150% seconds after landing, it creates an explosion damaging enemies within 5m.\nAfterwards, explosions will occur every 5s.\n\nDamage scales with skill tier dealing 25%-100% damage of a concussion grenade.",
+    "description": "Whenever you throw a skill, 1.5 seconds after landing, it creates an explosion damaging enemies within 5m.\nAfterwards, explosions will occur every 5s.\n\nDamage scales with skill tier dealing 25%-100% damage of a concussion grenade.",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -2471,17 +2510,16 @@
   {
     "id": "talent_holster_kill_status_effected_random_chance_grant_special_ammo_perfect",
     "name": "Perfectly Reassigned",
-    "description": "Killing an enemy adds 100% round of a random special ammo into your sidearm.  \n\nCooldown: 15s",
+    "description": "Killing an enemy adds 1 round of a random special ammo into your sidearm.  \n\nCooldown: 8s",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect",
-    "potentialBonuses": []
+    "tier": "Perfect"
   },
   {
     "id": "warlock_talent_shock_enemies_near_deployed_skills_perfect",
     "name": "Perfectly Tamper Proof",
-    "description": "Enemies that walk within 300%m of your hive, turret, remote pulse or decoy are shocked.\n\nArm time: 200%s\nCooldown per skill: 8s",
+    "description": "Enemies that walk within 3m of your hive, turret, remote pulse or decoy are shocked.\n\nArm time: 2s\nCooldown per skill: 8s",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -2521,7 +2559,7 @@
   {
     "id": "talent_holster_kill_status_effected_random_chance_grant_special_ammo",
     "name": "Reassigned",
-    "description": "Killing an enemy adds 100% round of a random special ammo into your sidearm.  \n\nCooldown: 15s",
+    "description": "Killing an enemy adds 1 round of a random special ammo into your sidearm.  \n\nCooldown: 15s",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -2546,7 +2584,7 @@
   {
     "id": "talent_mask_hits_reduce_cooldown",
     "name": "Tag Team",
-    "description": "The last enemy you have damaged with a skill is marked.\n\nDealing weapon damage to that enemy consumes the mark to reduce active  cooldowns by 6s.\n\nCooldown: 400%s",
+    "description": "The last enemy you have damaged with a skill is marked.\n\nDealing weapon damage to that enemy consumes the mark to reduce active  cooldowns by 6s.\n\nCooldown: 4s",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -2561,7 +2599,7 @@
   {
     "id": "warlock_talent_shock_enemies_near_deployed_skills",
     "name": "Tamper proof",
-    "description": "Enemies that walk within 300%m of your hive, turret, or remote pulse are shocked.\n\nArm time: 200%s\nCooldown per skill: 10s",
+    "description": "Enemies that walk within 3m of your hive, turret, or remote pulse are shocked.\n\nArm time: 2s\nCooldown per skill: 10s",
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
@@ -3041,6 +3079,15 @@
     "tier": "Standard"
   },
   {
+    "id": "talent_weapon_boiling_point",
+    "name": "Boiling Point",
+    "description": "The first 47% of your magazine will have -100% Crititcal Hit Chance. The rest will have 100%.",
+    "kind": "weapon",
+    "slot": null,
+    "weaponType": "Any Weapon",
+    "tier": "Standard"
+  },
+  {
     "id": "talent_weapon_brazen",
     "name": "Brazen",
     "description": "Receive +3.5% Amplified Damage  on the next shot with the weapon for each pellet that hits the target, if at least 6 pellets hit.",
@@ -3097,7 +3144,7 @@
   {
     "id": "talent_weapon_flatline",
     "name": "Flatline",
-    "description": "Amplifies weapon damage by 15% to pulsed enemies.\n\nAfter 400% kills, applies pulse to the next enemy you hit.",
+    "description": "Amplifies weapon damage by 15% to pulsed enemies.\n\nAfter 4 kills, applies pulse to the next enemy you hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3124,7 +3171,7 @@
   {
     "id": "warlock_talent_weapon_kills_grant_skill_tier",
     "name": "Future Perfect",
-    "description": "Weapon kills grant +1 skill tier for 15s. Stacks up to 300% times.\n\nWeapon kills at skill tier 6 grant overcharge for 15s.  \nOvercharge Cooldown: 90s",
+    "description": "Weapon kills grant +1 skill tier for 15s. Stacks up to 3 times.\n\nWeapon kills at skill tier 6 grant overcharge for 15s.  \nOvercharge Cooldown: 90s",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3133,7 +3180,7 @@
   {
     "id": "talent_weapon_addle",
     "name": "Head Scratcher",
-    "description": "Amplifies weapon damage by 30% to confused enemies.\n\nAfter 400% kills, applies Confuse to the next enemy you hit.",
+    "description": "Amplifies weapon damage by 30% to confused enemies.\n\nAfter 4 kills, applies Confuse to the next enemy you hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3160,7 +3207,7 @@
   {
     "id": "talent_weapon_immobilize",
     "name": "Immobilize",
-    "description": "Amplifies weapon damage by 20% to foamed enemies.\n\nAfter 400% kills, applies Foam to the next enemy you hit.",
+    "description": "Amplifies weapon damage by 20% to foamed enemies.\n\nAfter 4 kills, applies Foam to the next enemy you hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3178,7 +3225,7 @@
   {
     "id": "talent_weapon_headshots_increase_vulnerability_damage",
     "name": "Jeopardy",
-    "description": "Headshots and weak point hits build and refresh stacks which grant +10% vulnerability applied by weapons. 1 Stack is removed every 300%s.  Max stack is 50.",
+    "description": "Headshots and weak point hits build and refresh stacks which grant +10% vulnerability applied by weapons. 1 Stack is removed every 3s.  Max stack is 50.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3223,7 +3270,7 @@
   {
     "id": "talent_weapon_reload_from_empty_increases_mag_capacity",
     "name": "Overflowing",
-    "description": "Every {2} reloads from empty increases your magazine capacity by 300%%.",
+    "description": "Every 3 reloads from empty increases your magazine capacity by 100%.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3232,7 +3279,7 @@
   {
     "id": "talent_weapon_suppression_increase_weapon_damage",
     "name": "Overwhelm",
-    "description": "Suppressing an enemy grants +10% weapon damage for 12 seconds. Max stack is 400%.",
+    "description": "Suppressing an enemy grants +10% weapon damage for 12 seconds. Max stack is 4.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3248,9 +3295,18 @@
     "tier": "Perfect"
   },
   {
+    "id": "talent_weapon_boiling_point_perfect",
+    "name": "Perfect Boiling Point",
+    "description": "The first 52% of your magazine will have -100% Crititcal Hit Chance. The rest will have 100%.",
+    "kind": "weapon",
+    "slot": null,
+    "weaponType": "Any Weapon",
+    "tier": "Perfect"
+  },
+  {
     "id": "talent_weapon_brazen_perfect",
     "name": "Perfect Brazen",
-    "description": "Receive +3.5% Amplified Damage  on the next shot with the weapon for each pellet that hits the target, if at least 400% pellets hit.",
+    "description": "Receive +3.5% Amplified Damage  on the next shot with the weapon for each pellet that hits the target, if at least 4 pellets hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3259,7 +3315,7 @@
   {
     "id": "talent_weapon_bodyshots_increase_headshot_damage_perfect",
     "name": "Perfect Breadbasket",
-    "description": "Landing body shots adds a stack of bonus +70% headshot damage to the next headshot for 10s.  Max stack is 200%.",
+    "description": "Landing body shots adds a stack of bonus +70% headshot damage to the next headshot for 10s.  Max stack is 2.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3268,7 +3324,7 @@
   {
     "id": "talent_weapon_increased_damage_to_blind_perfect",
     "name": "Perfect Eyeless",
-    "description": "Deal +35% weapon damage to blinded enemies.\n \nAfter 300% kills, applies blind to the next enemy you hit.",
+    "description": "Deal +35% weapon damage to blinded enemies.\n \nAfter 3 kills, applies blind to the next enemy you hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3286,7 +3342,7 @@
   {
     "id": "talent_weapon_flatline_perfect",
     "name": "Perfect Flatline",
-    "description": "Amplifies weapon damage by 20% to pulsed enemies.\n\nAfter 300% kills, applies pulse to the next enemy you hit.",
+    "description": "Amplifies weapon damage by 20% to pulsed enemies.\n\nAfter 3 kills, applies pulse to the next enemy you hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3304,7 +3360,7 @@
   {
     "id": "talent_weapon_addle_perfect",
     "name": "Perfect Head Scratcher",
-    "description": "Amplifies weapon damage by 35% to confused enemies.\n\nAfter 300% kills, applies Confuse to the next enemy you hit.",
+    "description": "Amplifies weapon damage by 35% to confused enemies.\n\nAfter 3 kills, applies Confuse to the next enemy you hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3313,7 +3369,7 @@
   {
     "id": "talent_weapon_immobilize_perfect",
     "name": "Perfect Immobilize",
-    "description": "Amplifies weapon damage by 25% to foamed enemies.\n\nAfter 300% kills, applies Foam to the next enemy you hit.",
+    "description": "Amplifies weapon damage by 25% to foamed enemies.\n\nAfter 3 kills, applies Foam to the next enemy you hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3322,7 +3378,7 @@
   {
     "id": "talent_weapon_headshots_increase_vulnerability_damage_perfect",
     "name": "Perfect Jeopardy",
-    "description": "Headshots and weak point hits build and refresh stacks which grant +20% vulnerability applied by weapons. 1 Stack is removed every 300%s.  Max stack is 50.",
+    "description": "Headshots and weak point hits build and refresh stacks which grant +20% vulnerability applied by weapons. 1 Stack is removed every 3s.  Max stack is 50.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3358,7 +3414,7 @@
   {
     "id": "talent_weapon_suppression_increase_weapon_damage_perfect",
     "name": "Perfect Overwhelm",
-    "description": "Suppressing an enemy grants +12% weapon damage for 12 seconds. Max stack is 400%.",
+    "description": "Suppressing an enemy grants +12% weapon damage for 12 seconds. Max stack is 4.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3376,7 +3432,7 @@
   {
     "id": "talent_weapon_precision_strike_perfect",
     "name": "Perfect Precision Strike",
-    "description": "Killing enemies farther than 20m builds up stacks. Max stack is 200%.\nHitting an enemy within 20m will use all stacks to provide +35% Amplified Damage to enemies within 20m for 5s.",
+    "description": "Killing enemies farther than 20m builds up stacks. Max stack is 2.\nHitting an enemy within 20m will use all stacks to provide +35% Amplified Damage to enemies within 20m for 5s.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3403,7 +3459,7 @@
   {
     "id": "talent_weapon_damage_increased_by_range_perfect",
     "name": "Perfect Ranger",
-    "description": "Amplifies weapon damage by 2% for every 300%m you are away from your target.",
+    "description": "Amplifies weapon damage by 2% for every 3m you are away from your target.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3421,7 +3477,7 @@
   {
     "id": "talent_weapon_increased_damage_to_status_affected_perfect",
     "name": "Perfect Sadist",
-    "description": "Deal +35% weapon damage to bleeding enemies.\n \nAfter 300% kills, applies bleed to the next enemy you hit.",
+    "description": "Deal +35% weapon damage to bleeding enemies.\n \nAfter 3 kills, applies bleed to the next enemy you hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3493,7 +3549,7 @@
   {
     "id": "warlock_talent_weapon_kills_grant_skill_tier_perfect",
     "name": "Perfectly Future Perfect",
-    "description": "Weapon kills grant +1 skill tier for 19s. Stacks up to 400% times.\n\nWeapon kills at skill tier 6 grant overcharge for 15s.  \nOvercharge Cooldown: 90s",
+    "description": "Weapon kills grant +1 skill tier for 19s. Stacks up to 4 times.\n\nWeapon kills at skill tier 6 grant overcharge for 15s.  \nOvercharge Cooldown: 90s",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3502,7 +3558,7 @@
   {
     "id": "talent_weapon_increased_damage_to_burn_perfect",
     "name": "Perfectly Ignited",
-    "description": "Deal +30% weapon damage to burning enemies.\n \nAfter 300% kills, applies burning to the next enemy you hit.",
+    "description": "Deal +30% weapon damage to burning enemies.\n \nAfter 3 kills, applies burning to the next enemy you hit.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3529,7 +3585,7 @@
   {
     "id": "talent_weapon_reload_from_empty_increases_mag_capacity_perfect",
     "name": "Perfectly Overflowing",
-    "description": "Every {2} reloads from empty increases your magazine capacity by 200%%.",
+    "description": "Every 2 reloads from empty increases your magazine capacity by 100%.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3547,7 +3603,7 @@
   {
     "id": "talent_weapon_missing_armor_increases_critical_hit_damage_perfect",
     "name": "Perfectly Strained",
-    "description": "Gain +10% critical hit damage for every 50%s you are firing.  Stacks up to up to 8 times.",
+    "description": "Gain +10% critical hit damage for every 0.5s you are firing.  Stacks up to up to 8 times.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3574,7 +3630,7 @@
   {
     "id": "talent_weapon_precision_strike",
     "name": "Precision Strike",
-    "description": "Killing enemies farther than 20m builds up stacks. Max stack is 300%.\nHitting an enemy within 20m will use all stacks to provide +20% Amplified Damage to enemies within 20m for 5s.",
+    "description": "Killing enemies farther than 20m builds up stacks. Max stack is 3.\nHitting an enemy within 20m will use all stacks to provide +20% Amplified Damage to enemies within 20m for 5s.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3601,7 +3657,7 @@
   {
     "id": "talent_weapon_damage_increased_by_range",
     "name": "Ranger",
-    "description": "Amplifies weapon damage by 2% for every 400%m you are away from your target.",
+    "description": "Amplifies weapon damage by 2% for every 4m you are away from your target.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3619,7 +3675,7 @@
   {
     "id": "talent_weapon_watergun",
     "name": "Refreshing",
-    "description": "The weapon fires a stream of water. Hitting an ally agent builds stacks on them. Max stack is 5. Stacks deplete every 200%s.\nWhile having at least 1 stack, the ally will have +50% Hazard Protection.",
+    "description": "The weapon fires a stream of water. Hitting an ally agent builds stacks on them. Max stack is 5. Stacks deplete every 2s.\nWhile having at least 1 stack, the ally will have +50% Hazard Protection.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3673,7 +3729,7 @@
   {
     "id": "talent_weapon_stabilize",
     "name": "Stabilize",
-    "description": "Shooting gives +1% Weapon Accuracy and +1% Weapon Stability per bullet shot, up to 60%.\nStopping shooting will start a timer of 400% seconds, after which the bonuses reset.",
+    "description": "Shooting gives +1% Weapon Accuracy and +1% Weapon Stability per bullet shot, up to 60%.\nStopping shooting will start a timer of 4 seconds, after which the bonuses reset.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3691,7 +3747,7 @@
   {
     "id": "talent_weapon_missing_armor_increases_critical_hit_damage",
     "name": "Strained",
-    "description": "Gain +10% critical hit damage for every 50%s you are firing.  Stacks up to up to 5 times.",
+    "description": "Gain +10% critical hit damage for every 0.5s you are firing.  Stacks up to up to 5 times.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Any Weapon",
@@ -3961,7 +4017,7 @@
   {
     "id": "talent_shotgun_body_kills_refill_magazine_and_increase_damage_perfect",
     "name": "Perfect Pummel",
-    "description": "200% consecutive body shot kills refills the magazine and grants +40% weapon damage for 10s.",
+    "description": "2 consecutive body shot kills refills the magazine and grants +40% weapon damage for 10s.",
     "kind": "weapon",
     "slot": null,
     "weaponType": "Shotgun",

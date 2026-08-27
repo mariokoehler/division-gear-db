@@ -6,13 +6,13 @@
     "tiers": [
       {
         "pieces": 1,
-        "stat": "Health",
-        "text": "+30% Health"
+        "stat": "Defence from Elites",
+        "text": "+12% Defence from Elites"
       },
       {
         "pieces": 2,
-        "stat": "Incoming Repairs",
-        "text": "+30% Incoming Repairs"
+        "stat": "Increased Threat",
+        "text": "+100% Increased Threat"
       },
       {
         "pieces": 3,
@@ -30,12 +30,12 @@
       {
         "pieces": 1,
         "stat": "Marksman Rifle Damage",
-        "text": "+10% Marksman Rifle Damage"
+        "text": "+12% Marksman Rifle Damage"
       },
       {
         "pieces": 2,
         "stat": "Headshot Damage",
-        "text": "+13% Headshot Damage"
+        "text": "+26% Headshot Damage"
       },
       {
         "pieces": 3,
@@ -99,17 +99,17 @@
       {
         "pieces": 1,
         "stat": "Shotgun Damage",
-        "text": "+10% Shotgun Damage"
+        "text": "+12% Shotgun Damage"
       },
       {
         "pieces": 2,
-        "stat": "Total Armor",
-        "text": "+5% Total Armor"
+        "stat": "Armor on Kill",
+        "text": "+10% Armor on Kill"
       },
       {
         "pieces": 3,
-        "stat": "Armor on Kill",
-        "text": "+15% Armor on Kill"
+        "stat": "Total Armor",
+        "text": "+15% Total Armor"
       }
     ],
     "source": "datamined"
@@ -126,13 +126,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Armor on Kill",
-        "text": "+10% Armor on Kill"
+        "stat": "Increased Threat",
+        "text": "+100% Increased Threat"
       },
       {
         "pieces": 3,
-        "stat": "Incoming Repairs",
-        "text": "+45% Incoming Repairs"
+        "stat": "Defence from Elites",
+        "text": "+36% Defence from Elites"
       }
     ],
     "source": "datamined"
@@ -149,13 +149,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Skill Haste",
-        "text": "+20% Skill Haste"
+        "stat": "Status Effects",
+        "text": "+20% Status Effects"
       },
       {
         "pieces": 3,
-        "stat": "Status Effects",
-        "text": "+25% Status Effects"
+        "stat": "Skill Haste",
+        "text": "+30% Skill Haste"
       }
     ],
     "source": "datamined"
@@ -168,12 +168,12 @@
       {
         "pieces": 1,
         "stat": "Pistol Damage",
-        "text": "+20% Pistol Damage"
+        "text": "+24% Pistol Damage"
       },
       {
         "pieces": 2,
-        "stat": "Stability",
-        "text": "+30% Stability"
+        "stat": "Skill Health",
+        "text": "+20% Skill Health"
       },
       {
         "pieces": 3,
@@ -218,13 +218,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Shock Resistance",
-        "text": "+20% Shock Resistance"
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
       },
       {
         "pieces": 3,
-        "stat": "SMG Damage",
-        "text": "+30% SMG Damage"
+        "stat": "Skill Efficiency",
+        "text": "+8% Skill Efficiency"
       }
     ],
     "source": "datamined"
@@ -242,7 +242,7 @@
       {
         "pieces": 2,
         "stat": "Skill Damage",
-        "text": "+10% Skill Damage"
+        "text": "+13% Skill Damage"
       },
       {
         "pieces": 3,
@@ -260,12 +260,12 @@
       {
         "pieces": 1,
         "stat": "Assault Rifle Damage",
-        "text": "+10% Assault Rifle Damage"
+        "text": "+12% Assault Rifle Damage"
       },
       {
         "pieces": 2,
-        "stat": "Reload Speed",
-        "text": "+30% Reload Speed"
+        "stat": "Magazine Size",
+        "text": "+32% Magazine Size"
       },
       {
         "pieces": 3,
@@ -282,8 +282,8 @@
     "tiers": [
       {
         "pieces": 1,
-        "stat": "Status Effects",
-        "text": "+10% Status Effects"
+        "stat": "Explosive Resistance",
+        "text": "+20% Explosive Resistance"
       },
       {
         "pieces": 2,
@@ -292,8 +292,8 @@
       },
       {
         "pieces": 3,
-        "stat": "Total Armor",
-        "text": "+10% Total Armor"
+        "stat": "Increased Threat",
+        "text": "+150% Increased Threat"
       }
     ],
     "source": "datamined"
@@ -316,7 +316,7 @@
       {
         "pieces": 3,
         "stat": "Headshot Damage",
-        "text": "+13% Headshot Damage"
+        "text": "+39% Headshot Damage"
       }
     ],
     "source": "datamined"
@@ -334,7 +334,7 @@
       {
         "pieces": 2,
         "stat": "Marksman Rifle Damage",
-        "text": "+20% Marksman Rifle Damage"
+        "text": "+24% Marksman Rifle Damage"
       },
       {
         "pieces": 3,
@@ -357,12 +357,12 @@
       {
         "pieces": 2,
         "stat": "Skill Damage",
-        "text": "+10% Skill Damage"
+        "text": "+13% Skill Damage"
       },
       {
         "pieces": 3,
         "stat": "Weapon Damage",
-        "text": "+15% Weapon Damage"
+        "text": "+18% Weapon Damage"
       }
     ],
     "source": "datamined"
@@ -375,17 +375,17 @@
       {
         "pieces": 1,
         "stat": "Weapon Damage",
-        "text": "+5% Weapon Damage"
+        "text": "+6% Weapon Damage"
       },
       {
         "pieces": 2,
-        "stat": "Increased Threat",
-        "text": "+100% Increased Threat"
+        "stat": "Pistol Damage",
+        "text": "+48% Pistol Damage"
       },
       {
         "pieces": 3,
-        "stat": "Pistol Damage",
-        "text": "+60% Pistol Damage"
+        "stat": "Skill Health",
+        "text": "+30% Skill Health"
       }
     ],
     "source": "datamined"
@@ -397,18 +397,18 @@
     "tiers": [
       {
         "pieces": 1,
-        "stat": "Swap Speed",
-        "text": "+30% Swap Speed"
+        "stat": "Magazine Size",
+        "text": "+15% Magazine Size"
       },
       {
         "pieces": 2,
-        "stat": "Optimal Range",
-        "text": "+70% Optimal Range"
+        "stat": "SMG Damage",
+        "text": "+24% SMG Damage"
       },
       {
         "pieces": 3,
-        "stat": "Weapon Damage",
-        "text": "+15% Weapon Damage"
+        "stat": "Optimal Range",
+        "text": "+105% Optimal Range"
       }
     ],
     "source": "datamined"
@@ -420,18 +420,18 @@
     "tiers": [
       {
         "pieces": 1,
-        "stat": "Explosive Resistance",
-        "text": "+20% Explosive Resistance"
+        "stat": "Reload Speed",
+        "text": "+15% Reload Speed"
       },
       {
         "pieces": 2,
-        "stat": "Skill Health",
-        "text": "+20% Skill Health"
+        "stat": "LMG Damage",
+        "text": "+24% LMG Damage"
       },
       {
         "pieces": 3,
-        "stat": "LMG Damage",
-        "text": "+30% LMG Damage"
+        "stat": "Weapon Handling",
+        "text": "+30% Weapon Handling"
       }
     ],
     "source": "datamined"
@@ -467,7 +467,7 @@
       {
         "pieces": 1,
         "stat": "Rifle Damage",
-        "text": "+10% Rifle Damage"
+        "text": "+12% Rifle Damage"
       },
       {
         "pieces": 2,
@@ -494,8 +494,8 @@
       },
       {
         "pieces": 2,
-        "stat": "Health",
-        "text": "+60% Health"
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
       },
       {
         "pieces": 3,
@@ -517,8 +517,8 @@
       },
       {
         "pieces": 2,
-        "stat": "Health",
-        "text": "+60% Health"
+        "stat": "Defence from Elites",
+        "text": "+24% Defence from Elites"
       },
       {
         "pieces": 3,
@@ -536,7 +536,7 @@
       {
         "pieces": 1,
         "stat": "LMG Damage",
-        "text": "+10% LMG Damage"
+        "text": "+12% LMG Damage"
       },
       {
         "pieces": 2,
@@ -581,8 +581,8 @@
     "tiers": [
       {
         "pieces": 1,
-        "stat": "Incoming Repairs",
-        "text": "+15% Incoming Repairs"
+        "stat": "Skill Haste",
+        "text": "+10% Skill Haste"
       },
       {
         "pieces": 2,
@@ -609,13 +609,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Magazine Size",
-        "text": "+32% Magazine Size"
+        "stat": "LMG Damage",
+        "text": "+24% LMG Damage"
       },
       {
         "pieces": 3,
-        "stat": "Critical Hit Damage",
-        "text": "+13% Critical Hit Damage"
+        "stat": "Accuracy",
+        "text": "+50% Accuracy"
       }
     ],
     "source": "datamined"
@@ -651,7 +651,7 @@
       {
         "pieces": 1,
         "stat": "SMG Damage",
-        "text": "+10% SMG Damage"
+        "text": "+12% SMG Damage"
       },
       {
         "pieces": 2,
@@ -679,7 +679,7 @@
       {
         "pieces": 2,
         "stat": "Assault Rifle Damage",
-        "text": "+20% Assault Rifle Damage"
+        "text": "+24% Assault Rifle Damage"
       },
       {
         "pieces": 3,
@@ -696,18 +696,18 @@
     "tiers": [
       {
         "pieces": 1,
-        "stat": "Accuracy",
-        "text": "+10% Accuracy"
+        "stat": "Weapon Handling",
+        "text": "+5% Weapon Handling"
       },
       {
         "pieces": 2,
-        "stat": "Skill Duration",
-        "text": "+30% Skill Duration"
+        "stat": "Marksman Rifle Damage",
+        "text": "+24% Marksman Rifle Damage"
       },
       {
         "pieces": 3,
-        "stat": "Marksman Rifle Damage",
-        "text": "+30% Marksman Rifle Damage"
+        "stat": "Skill Duration",
+        "text": "+45% Skill Duration"
       }
     ],
     "source": "datamined"
@@ -743,7 +743,7 @@
       {
         "pieces": 1,
         "stat": "Weapon Damage",
-        "text": "+5% Weapon Damage"
+        "text": "+6% Weapon Damage"
       },
       {
         "pieces": 2,
@@ -771,7 +771,7 @@
       {
         "pieces": 2,
         "stat": "Status Effects",
-        "text": "+18% Status Effects"
+        "text": "+20% Status Effects"
       },
       {
         "pieces": 3,
@@ -794,7 +794,7 @@
       {
         "pieces": 2,
         "stat": "Weapon Damage",
-        "text": "+10% Weapon Damage"
+        "text": "+12% Weapon Damage"
       },
       {
         "pieces": 3,
@@ -817,7 +817,7 @@
       {
         "pieces": 2,
         "stat": "Rifle Damage",
-        "text": "+20% Rifle Damage"
+        "text": "+24% Rifle Damage"
       },
       {
         "pieces": 3,
@@ -839,13 +839,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Hazard Protection",
-        "text": "+20% Hazard Protection"
+        "stat": "Shotgun Damage",
+        "text": "+24% Shotgun Damage"
       },
       {
         "pieces": 3,
-        "stat": "Health",
-        "text": "+90% Health"
+        "stat": "Hazard Protection",
+        "text": "+30% Hazard Protection"
       }
     ],
     "source": "datamined"
@@ -858,17 +858,22 @@
       {
         "pieces": 2,
         "stat": "Marksman Rifle Damage",
-        "text": "+15% Marksman Rifle Damage"
+        "text": "+30% Marksman Rifle Damage"
       },
       {
         "pieces": 2,
         "stat": "Rifle Damage",
-        "text": "+15% Rifle Damage"
+        "text": "+30% Rifle Damage"
       },
       {
         "pieces": 3,
         "stat": "Headshot Damage",
         "text": "+30% Headshot Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Weapon Handling",
+        "text": "+30% Weapon Handling"
       }
     ],
     "cores": [
@@ -880,10 +885,10 @@
     "source": "datamined",
     "talent4": {
       "name": "Dead Man's Hand",
-      "desc": "DEAD MANS HAND: draw cards on rifle hits and headshots. After 5 cards, amp the next 1-4 shots, based on the 5 card hand drawn.",
+      "desc": "Flip a card when landing shots with a Rifle or Marksman Rifle. \n\nAfter <color name=\"orange\">5</color> cards are flipped, the damage of your next shot is amplified by <color name=\"orange\">75%</color>. More shots are enhanced the better the hand revealed.\n\nFour of a Kind: <color name=\"orange\">4</color> shots.\n\nFull House: <color name=\"orange\">3</color> shots.\n\nAces and Eights: <color name=\"orange\">2</color> shots.\n\nFlip an additional card on <color name=\"orange\">headshots</color>.",
       "_values": [
         5.0,
-        0.3,
+        0.75,
         4.0,
         3.0,
         2.0,
@@ -902,11 +907,11 @@
     },
     "chestTalent": {
       "name": "No Limit",
-      "desc": "Amp is increased from 30% to 50%.",
+      "desc": "Increases Dead Man's Hand damage bonus from <color name=\"orange\">75%</color> to <color name=\"orange\">100%</color>.",
       "_values": [
-        0.3,
-        0.5,
-        0.2
+        0.75,
+        1.0,
+        0.25
       ]
     }
   },
@@ -968,12 +973,12 @@
       {
         "pieces": 2,
         "stat": "Rifle Damage",
-        "text": "+25% Rifle Damage"
+        "text": "+30% Rifle Damage"
       },
       {
         "pieces": 2,
         "stat": "Marksman Rifle Damage",
-        "text": "+25% Marksman Rifle Damage"
+        "text": "+30% Marksman Rifle Damage"
       },
       {
         "pieces": 3,
@@ -983,7 +988,7 @@
       {
         "pieces": 3,
         "stat": "Weapon Handling",
-        "text": "+15% Weapon Handling"
+        "text": "+30% Weapon Handling"
       }
     ],
     "cores": [
@@ -995,28 +1000,28 @@
     "source": "datamined",
     "talent4": {
       "name": "On Point",
-      "desc": "ON POINT: Reloading after Rifle or MMR hits grants Handling and Damage per stack, for 10 seconds",
+      "desc": "<color name=\"orange\">Hitting</color> a shot with a <color name=\"orange\">Rifle or MMR</color> grants a stack. Max stack is equal to the weapon's <color name=\"orange\">Magazine Size</color>. <color name=\"orange\">Reloading</color> will grant <color name=\"orange\">+2% Weapon Handling</color> and <color name=\"orange\">+4% Weapon Damage</color> per stack, for <color name=\"orange\">20s</color>.\nNo stacks are acquired while the bonuses are active. The timer running out will <color name=\"orange\">refill</color> your magazine.\nSwitching weapons while the bonuses are active will stop the effect and refill your magazine. Switching weapons while the bonuses are not active will remove all stacks and refill your magazine.",
       "_values": [
         0.02,
         0.04,
-        10.0
+        20.0
       ]
     },
     "backpackTalent": {
       "name": "Point of Honor",
-      "desc": "Increases On Point Weapon dmg bonus from 4% to 6%.",
+      "desc": "Increase <color name=\"orange\">On Point</color> Weapon Damage bonus from <color name=\"orange\">2%</color> to <color name=\"orange\">9%</color>.",
       "_values": [
         0.04,
-        0.072,
-        0.032
+        0.09,
+        0.05
       ]
     },
     "chestTalent": {
       "name": "Point of No Return",
-      "desc": "Increase On Point bonuses timer from 10s to 15s.",
+      "desc": "Increase <color name=\"orange\">On Point</color> bonuses timer from <color name=\"orange\">10s</color> to <color name=\"orange\">40s</color>.",
       "_values": [
-        15.0,
-        5.0
+        40.0,
+        20.0
       ]
     }
   },
@@ -1096,24 +1101,24 @@
     "source": "datamined",
     "talent4": {
       "name": "Camaraderie",
-      "desc": "Shooting an enemy marks them for 7s. When a marked enemy dies, gain a stack of +3% Weapon Damage for each ally/Skill that contributed. Max 35 stacks, decaying every 10s. Up to 4 enemies can be marked at once.",
+      "desc": "Shooting an enemy marks them for <color name=\"orange\">10s</color>.\nWhen a marked enemy dies, receive one stack of <color name=\"orange\">3% Weapon Damage</color> for each Ally or Skill that has contributed to killing that enemy.\n\nMax stacks is <color name=\"orange\">35</color>. Stacks decay every <color name=\"orange\">10s</color>.\nMaximum amount of marks that can be placed is <color name=\"orange\">4</color>.",
       "_values": [
-        7.0,
+        10.0,
         0.03,
         35.0,
         4.0,
         1.0,
         10.0,
-        0.02
+        0.03
       ]
     },
     "backpackTalent": {
       "name": "One for All",
-      "desc": "Increases the Weapon Damage bonus per stack from 3% to 5%.",
+      "desc": "Increase the Weapon Damage bonus per stack from <color name=\"orange\">3%</color> to <color name=\"orange\">6%</color>.",
       "_values": [
-        0.02,
         0.03,
-        0.05
+        0.03,
+        0.06
       ]
     },
     "chestTalent": {
@@ -1245,6 +1250,53 @@
         0.75,
         5.0,
         0.25
+      ]
+    }
+  },
+  {
+    "instance_id": "gear_set_b1",
+    "name": "Ember Engine",
+    "kind": "Gear Set",
+    "tiers": [
+      {
+        "pieces": 2,
+        "stat": "Skill Efficiency",
+        "text": "+8% Skill Efficiency"
+      },
+      {
+        "pieces": 3,
+        "stat": "Status Effects",
+        "text": "+30% Status Effects"
+      }
+    ],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "source": "datamined",
+    "talent4": {
+      "name": "Spontaneous Combustion",
+      "desc": "Every Status Effect you apply has a <color name=\"orange\">40%</color> chance of also applying <color name=\"orange\">Burn</color> to the enemy.\n\nIf the Status Effect initially applied was Burn, the enemy will receive <color name=\"orange\">+25% Burn Damage</color> for the duration of the Burn.",
+      "_values": [
+        0.4,
+        0.25
+      ]
+    },
+    "backpackTalent": {
+      "name": "White Hot",
+      "desc": "Increase the Duration of the Burn Damage debuff of <color name=\"orange\">Spontaneous Combustion</color> by <color name=\"orange\">+50%</color>.",
+      "_values": [
+        0.0,
+        0.5
+      ]
+    },
+    "chestTalent": {
+      "name": "Flashpoint",
+      "desc": "Increase the chance of applying Burn of <color name=\"orange\">Spontaneous Combustion</color> to <color name=\"orange\">20%</color>.",
+      "_values": [
+        0.2
       ]
     }
   },
@@ -1485,14 +1537,14 @@
         "text": "+30% Marksman Rifle Damage"
       },
       {
-        "pieces": 2,
-        "stat": "Weapon Handling",
-        "text": "+30% Weapon Handling"
-      },
-      {
         "pieces": 3,
         "stat": "Headshot Damage",
         "text": "+30% Headshot Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Weapon Handling",
+        "text": "+30% Weapon Handling"
       }
     ],
     "cores": [
@@ -1504,9 +1556,9 @@
     "source": "datamined",
     "talent4": {
       "name": "Headache",
-      "desc": "HEADACHE: 1st HeadShot: 20% damage to next headshot. 2nd HS: gives 10% repair, or 10% bonus armor, max 50%. 3rd HS: refills the mag. 4th+ HS: grants all 3. Missing resets the sequence.",
+      "desc": "First Headshot with a MR will increase next headshot by 20%, second consecutive headshot with a MR will give +10% armor (if at full armor it will give bonus armor max +50% of current armor value), third consecutive headshot will refill magazine.\n\nFrom the 4th headshot forward agents will get all 3 bonuses for each consecutive headshot kill. Missing a headshot will reset the cycle.",
       "_values": [
-        0.2,
+        0.8,
         0.1,
         0.5
       ]
@@ -1674,14 +1726,14 @@
     ],
     "source": "datamined",
     "talent4": {
-      "name": "Hostile Negotiations",
-      "desc": "HOSTILE NEGOTIATIONS: Critical hits mark up to 3 enemies for 20s. When you critically hit a marked enemy, share 60% of the damage to other marks. Gain +2% critical hit damage poer marked enemy tha dies, stacking up to 20 times while in combat.",
+      "name": "Crowd Control",
+      "desc": "Critical hits mark enemies for <color name=\"orange\">20s</color>, up to <color name=\"orange\">3</color> marks total.\n\nWhen you critically hit a marked enemy, all other marked enemies take <color name=\"orange\">60%</color> of the damage dealt.\n\nWhenever a marked enemy dies, gain <color name=\"orange\">+10%</color> critical hit damage, stacking up to <color name=\"orange\">10</color> times, until combat ends.",
       "_values": [
         20.0,
         3.0,
         0.6,
-        0.02,
-        20.0,
+        0.1,
+        10.0,
         15.0
       ]
     },
@@ -1729,9 +1781,9 @@
     "source": "datamined",
     "talent4": {
       "name": "Rules of Engagement",
-      "desc": "RULES OF ENGAGEMENT: Mark any status affected enemy with a shot. Kills/assists against a marked enemy grants 1 mag of HP Ammo (bleed) for your active weapon, and half a clip to all allies. Mark lasts for 10 seconds.",
+      "desc": "Shooting a status affected enemy will apply a mark.\n\nKilling a marked enemy grants a full clip of <color name=\"orange\">Hollow-Point Ammo</color> for your active weapon, and half a clip of the agent's active weapon to the rest of the party\n\nMark lasts for <color name=\"orange\">10</color> seconds.\n\n<color name=\"orange\">Hollow-Point Ammo</color> amplifies <color name=\"orange\">weapon damage</color> by <color name=\"orange\">40%</color> and applies <color name=\"orange\">bleed</color> on hit.",
       "_values": [
-        0.2,
+        0.4,
         10.0
       ]
     },
@@ -1740,11 +1792,11 @@
       "desc": "Increases the duration of your bleed status effects by 50% and all bleed dmg done by 100%."
     },
     "chestTalent": {
-      "name": "parabellum Rounds",
-      "desc": "Increases Hollow-Point Ammo dmg to 50%, for you only.",
+      "name": "Parabellum Rounds",
+      "desc": "Increases <color name=\"orange\">Hollow-Point Ammo</color> weapon damage amplification to <color name=\"orange\">60%</color>.\n\nThis bonus does not apply to party members.",
       "_values": [
-        0.5,
-        0.3
+        0.6,
+        0.2
       ]
     }
   },
@@ -1778,27 +1830,27 @@
     "source": "datamined",
     "talent4": {
       "name": "Ortiz Incinerator Turret Prototype",
-      "desc": "ORTIZ INCINERATOR TURRET PROTOTYPE: Flame turret spins 360°, and you are immune to its fire. Explodes when disabled.",
+      "desc": "The Incinerator Turret spins <color name=\"orange\">360°</color>.\nThe Incinerator Turret <color name=\"orange\">explodes when disabled</color>.",
       "_values": [
         1.0,
-        2.0,
+        5.0,
         100.0,
         200.0
       ]
     },
     "backpackTalent": {
       "name": "Heatstroke",
-      "desc": "+25% Weapon dmg to enemies ignited by the Flame Turret. +25% Flame Turret Range.",
+      "desc": "<color name=\"orange\">+15% Weapon Damage</color> to enemies set on fire by the <color name=\"orange\">Ortiz Incinerator Turret Prototype</color>.\n\n<color name=\"orange\">+25% Ortiz Incinerator Turret Prototype Range</color>",
       "_values": [
         0.25,
-        0.25
+        0.4
       ]
     },
     "chestTalent": {
       "name": "Chain Combustion",
-      "desc": "Enemies set on fire by the Flame Turret ignite other enemies within 2m.",
+      "desc": "Enemies set ablaze by the <color name=\"orange\">Ortiz Incinerator Turret Prototype ignite</color>  other enemies within <color name=\"orange\">1m</color>.",
       "_values": [
-        2.0
+        10.0
       ]
     }
   },
@@ -2166,22 +2218,22 @@
     "source": "datamined",
     "talent4": {
       "name": "Throttle Control",
-      "desc": "Shooting builds stacks up to 50. Each stack grants +0.5% Weapon Handling and +4% Critical Hit Damage. Lose 6 stacks/s while not shooting (no loss while an enemy is Suppressed).",
+      "desc": "Shooting builds stacks to a max of 50. Each stack provides +0.5% Weapon Handling and +5% Critical Hit Damage.\nLose 6 stacks per second while not shooting. No stacks are lost if an enemy is Suppressed.",
       "_values": [
         50.0,
         0.005,
-        0.04,
+        0.05,
         6.0,
         5.0
       ]
     },
     "backpackTalent": {
       "name": "Snowball",
-      "desc": "Increases the Critical Hit Damage granted per stack from 4% to 7%.",
+      "desc": "Increase the Critical Hit Damage received per stack from 5% to 8%.",
       "_values": [
         0.03,
-        0.04,
-        0.07
+        0.05,
+        0.08
       ]
     },
     "chestTalent": {
@@ -2201,8 +2253,8 @@
     "tiers": [
       {
         "pieces": 2,
-        "stat": "Ammo Capacity",
-        "text": "+30% Ammo Capacity"
+        "stat": "Weapon Handling",
+        "text": "+15% Weapon Handling"
       },
       {
         "pieces": 3,
@@ -2218,37 +2270,37 @@
     ],
     "source": "datamined",
     "talent4": {
-      "name": "Red, White and Blue",
-      "desc": "RED, WHITE, AND BLUE: Every 2s, enemies you shoot receive a stacking color debuff. Red - enemy takes 8% amped damage. White - Shooting this enemy repairs 2% armor, once per second. Blue - Enemy deals 8% reduced damage. FULL FLAG: Enemies that die by all 3 debuffs, dealing their total health and armor as damage. (Explosion damage reduced on Named enemy deaths.)",
+      "name": "<color name=\"red\">Red</color>, <color name=\"white\">White</color> and <color name=\"blue\">Blue</color>",
+      "desc": "Enemies you shoot receive a stacking debuff of <color name=\"red\">Red</color>/<color name=\"white\">White</color>/<color name=\"blue\">Blue</color>, cycling every <color name=\"orange\">2s</color>.\n\n<color name=\"red\">Red:</color> Amplifies the enemy's damage taken by <color name=\"orange\">15%</color>.\n\n<color name=\"white\">White:</color> Hitting the enemy restores you and your allies' armor by <color name=\"orange\">2%</color> (1s cooldown).\n\n<color name=\"blue\">Blue:</color> Decreases the enemy's damage dealt by <color name=\"orange\">10%</color>.\n\nFull Flag: Enemies that die while under the effect of all 3 debuffs create a <color name=\"orange\">5m</color> explosion, dealing damage equal to their total health and armor. (Explosion strength reduced on Named enemy deaths)",
       "_values": [
         2.0,
-        0.08,
+        0.15,
         0.02,
-        0.08,
+        0.1,
         5.0
       ]
     },
     "backpackTalent": {
       "name": "Patriotic Boost",
-      "desc": "Increases debuff strength. Red - 8% to 12%. White - 2% to 3%. Blue - 8% to 12%.",
+      "desc": "Increases \"<color name=\"red\">Red</color>, <color name=\"white\">White</color> and <color name=\"blue\">Blue</color>\" debuff strength.\n\n<color name=\"red\">Red</color>: <color name=\"orange\">15%</color> to <color name=\"orange\">30%</color>\n<color name=\"white\">White</color>: <color name=\"orange\">2%</color> to <color name=\"orange\">5%</color>\n<color name=\"blue\">Blue</color>: <color name=\"orange\">10%</color> to <color name=\"orange\">20%</color>",
       "_values": [
-        0.08,
-        0.12,
+        0.15,
+        0.3,
         0.02,
+        0.05,
+        0.1,
+        0.2,
+        0.15,
         0.03,
-        0.08,
-        0.12,
-        0.04,
-        0.01,
-        0.04
+        0.1
       ]
     },
     "chestTalent": {
       "name": "Waving the Flag",
-      "desc": "RED, WHITE, AND BLUE cycles every 1.5s, down from 2s",
+      "desc": "Increases \"<color name=\"red\">Red</color>, <color name=\"white\">White</color> and <color name=\"blue\">Blue</color>\" rotation speed to <color name=\"orange\">1s</color>.",
       "_values": [
-        -0.5,
-        1.5
+        -1.0,
+        1.0
       ]
     }
   },

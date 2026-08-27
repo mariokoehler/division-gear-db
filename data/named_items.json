@@ -7,8 +7,8 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Status Effects",
-        "text": "+10% Status Effects"
+        "stat": "Explosive Resistance",
+        "text": "+20% Explosive Resistance"
       },
       {
         "pieces": 2,
@@ -17,8 +17,8 @@
       },
       {
         "pieces": 3,
-        "stat": "Total Armor",
-        "text": "+10% Total Armor"
+        "stat": "Increased Threat",
+        "text": "+150% Increased Threat"
       }
     ],
     "isDarkZoneExclusive": true,
@@ -85,18 +85,18 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Explosive Resistance",
-        "text": "+20% Explosive Resistance"
+        "stat": "Reload Speed",
+        "text": "+15% Reload Speed"
       },
       {
         "pieces": 2,
-        "stat": "Skill Health",
-        "text": "+20% Skill Health"
+        "stat": "LMG Damage",
+        "text": "+24% LMG Damage"
       },
       {
         "pieces": 3,
-        "stat": "LMG Damage",
-        "text": "+30% LMG Damage"
+        "stat": "Weapon Handling",
+        "text": "+30% Weapon Handling"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -130,7 +130,7 @@
       {
         "pieces": 2,
         "stat": "Skill Damage",
-        "text": "+10% Skill Damage"
+        "text": "+13% Skill Damage"
       },
       {
         "pieces": 3,
@@ -168,13 +168,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Magazine Size",
-        "text": "+32% Magazine Size"
+        "stat": "LMG Damage",
+        "text": "+24% LMG Damage"
       },
       {
         "pieces": 3,
-        "stat": "Critical Hit Damage",
-        "text": "+13% Critical Hit Damage"
+        "stat": "Accuracy",
+        "text": "+50% Accuracy"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -203,17 +203,17 @@
       {
         "pieces": 1,
         "stat": "Weapon Damage",
-        "text": "+5% Weapon Damage"
+        "text": "+6% Weapon Damage"
       },
       {
         "pieces": 2,
-        "stat": "Increased Threat",
-        "text": "+100% Increased Threat"
+        "stat": "Pistol Damage",
+        "text": "+48% Pistol Damage"
       },
       {
         "pieces": 3,
-        "stat": "Pistol Damage",
-        "text": "+60% Pistol Damage"
+        "stat": "Skill Health",
+        "text": "+30% Skill Health"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -246,13 +246,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Hazard Protection",
-        "text": "+20% Hazard Protection"
+        "stat": "Shotgun Damage",
+        "text": "+24% Shotgun Damage"
       },
       {
         "pieces": 3,
-        "stat": "Health",
-        "text": "+90% Health"
+        "stat": "Hazard Protection",
+        "text": "+30% Hazard Protection"
       }
     ],
     "isDarkZoneExclusive": true,
@@ -291,7 +291,7 @@
       {
         "pieces": 3,
         "stat": "Headshot Damage",
-        "text": "+13% Headshot Damage"
+        "text": "+39% Headshot Damage"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -325,12 +325,12 @@
       {
         "pieces": 2,
         "stat": "Skill Damage",
-        "text": "+10% Skill Damage"
+        "text": "+13% Skill Damage"
       },
       {
         "pieces": 3,
         "stat": "Weapon Damage",
-        "text": "+15% Weapon Damage"
+        "text": "+18% Weapon Damage"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -345,7 +345,7 @@
     ],
     "talent": {
       "name": "Perfect Combined Arms",
-      "desc": "Shooting an enemy increases total skill damage by 30% for 300%s."
+      "desc": "Shooting an enemy increases total skill damage by 30% for 3s."
     },
     "talentId": "warlock_talent_weapon_damage_grants_skill_damage_perfect",
     "source": "datamined+manual_core_override"
@@ -384,9 +384,48 @@
     ],
     "talent": {
       "name": "Perfect Overclock",
-      "desc": "Allies within 15m of your deployed skills, gain +30% reload speed and reduces their active cooldowns by 60%s each second."
+      "desc": "Allies within 15m of your deployed skills, gain +30% reload speed and reduces their active cooldowns by 0.6s each second."
     },
     "talentId": "warlock_talent_deployed_skills_boost_allies_Perfected",
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_back_511_01_named",
+    "name": "Keeper",
+    "slot": "Backpack",
+    "brand": "5.11 Tactical",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Defence from Elites",
+        "text": "+12% Defence from Elites"
+      },
+      {
+        "pieces": 2,
+        "stat": "Increased Threat",
+        "text": "+100% Increased Threat"
+      },
+      {
+        "pieces": 3,
+        "stat": "Hazard Protection",
+        "text": "+30% Hazard Protection"
+      }
+    ],
+    "isDarkZoneExclusive": false,
+    "flavorText": "Sharing is caring.",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      }
+    ],
+    "talent": {
+      "name": "Perfect Protector",
+      "desc": "When your shield is damaged, you gain +25% bonus armor and all other allies gain 35% of your armor as bonus armor for 3s. \n\nCooldown: 3s"
+    },
+    "talentId": "warlock_talent_shield_damage_grants_group_bonus_armor_perfect",
     "source": "datamined"
   },
   {
@@ -402,13 +441,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Shock Resistance",
-        "text": "+20% Shock Resistance"
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
       },
       {
         "pieces": 3,
-        "stat": "SMG Damage",
-        "text": "+30% SMG Damage"
+        "stat": "Skill Efficiency",
+        "text": "+8% Skill Efficiency"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -436,8 +475,8 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Status Effects",
-        "text": "+10% Status Effects"
+        "stat": "Explosive Resistance",
+        "text": "+20% Explosive Resistance"
       },
       {
         "pieces": 2,
@@ -446,8 +485,8 @@
       },
       {
         "pieces": 3,
-        "stat": "Total Armor",
-        "text": "+10% Total Armor"
+        "stat": "Increased Threat",
+        "text": "+150% Increased Threat"
       }
     ],
     "isDarkZoneExclusive": true,
@@ -475,8 +514,8 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Status Effects",
-        "text": "+10% Status Effects"
+        "stat": "Explosive Resistance",
+        "text": "+20% Explosive Resistance"
       },
       {
         "pieces": 2,
@@ -485,8 +524,8 @@
       },
       {
         "pieces": 3,
-        "stat": "Total Armor",
-        "text": "+10% Total Armor"
+        "stat": "Increased Threat",
+        "text": "+150% Increased Threat"
       }
     ],
     "isDarkZoneExclusive": true,
@@ -501,9 +540,48 @@
     ],
     "talent": {
       "name": "Perfect Adrenaline Rush",
-      "desc": "Whenever you are within 10m of an enemy, gain 23% bonus armor for 5s.  Stacks up to 300% times. \n\nCooldown: 5s"
+      "desc": "Whenever you are within 10m of an enemy, gain 23% bonus armor for 5s.  Stacks up to 3 times. \n\nCooldown: 5s"
     },
     "talentId": "warlock_talent_nearby_enemies_grant_bonus_armor_perfect",
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_back_r_01_named",
+    "name": "Melon Baller",
+    "slot": "Backpack",
+    "brand": "Airaldi Holdings",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Marksman Rifle Damage",
+        "text": "+12% Marksman Rifle Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Headshot Damage",
+        "text": "+26% Headshot Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Damage to Armor",
+        "text": "+5% Damage to Armor"
+      }
+    ],
+    "isDarkZoneExclusive": false,
+    "flavorText": "Any gun will do.",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Perfect Concussion",
+      "desc": "Headshots increase total weapon damage by 20% for 1.5s. 5s with marksman rifles.\n\nHeadshot kills increase total weapon damage by 15% for 10s."
+    },
+    "talentId": "talent_mask_headshots_increase_headshot_damage_perfect",
     "source": "datamined"
   },
   {
@@ -597,8 +675,8 @@
       },
       {
         "pieces": 2,
-        "stat": "Health",
-        "text": "+60% Health"
+        "stat": "Defence from Elites",
+        "text": "+24% Defence from Elites"
       },
       {
         "pieces": 3,
@@ -618,7 +696,7 @@
     ],
     "talent": {
       "name": "Perfectly Tamper Proof",
-      "desc": "Enemies that walk within 300%m of your hive, turret, remote pulse or decoy are shocked.\n\nArm time: 200%s\nCooldown per skill: 8s"
+      "desc": "Enemies that walk within 3m of your hive, turret, remote pulse or decoy are shocked.\n\nArm time: 2s\nCooldown per skill: 8s"
     },
     "talentId": "warlock_talent_shock_enemies_near_deployed_skills_perfect",
     "source": "datamined"
@@ -636,13 +714,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Skill Haste",
-        "text": "+20% Skill Haste"
+        "stat": "Status Effects",
+        "text": "+20% Status Effects"
       },
       {
         "pieces": 3,
-        "stat": "Status Effects",
-        "text": "+25% Status Effects"
+        "stat": "Skill Haste",
+        "text": "+30% Skill Haste"
       }
     ],
     "isDarkZoneExclusive": true,
@@ -676,7 +754,7 @@
       {
         "pieces": 2,
         "stat": "Marksman Rifle Damage",
-        "text": "+20% Marksman Rifle Damage"
+        "text": "+24% Marksman Rifle Damage"
       },
       {
         "pieces": 3,
@@ -735,7 +813,7 @@
     ],
     "talent": {
       "name": "Perfect Vigilance",
-      "desc": "Increases total weapon damage by 25%. Taking damage disables this buff for 300%s."
+      "desc": "Increases total weapon damage by 25%. Taking damage disables this buff for 3s."
     },
     "talentId": "talent_chest_increased_weapon_damage_while_not_getting_hit_perfect",
     "source": "datamined+manual_name_override"
@@ -787,18 +865,18 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Swap Speed",
-        "text": "+30% Swap Speed"
+        "stat": "Magazine Size",
+        "text": "+15% Magazine Size"
       },
       {
         "pieces": 2,
-        "stat": "Optimal Range",
-        "text": "+70% Optimal Range"
+        "stat": "SMG Damage",
+        "text": "+24% SMG Damage"
       },
       {
         "pieces": 3,
-        "stat": "Weapon Damage",
-        "text": "+15% Weapon Damage"
+        "stat": "Optimal Range",
+        "text": "+105% Optimal Range"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -871,7 +949,7 @@
       {
         "pieces": 2,
         "stat": "Rifle Damage",
-        "text": "+20% Rifle Damage"
+        "text": "+24% Rifle Damage"
       },
       {
         "pieces": 3,
@@ -891,7 +969,7 @@
     ],
     "talent": {
       "name": "Perfect Entrench",
-      "desc": "If you are below 30% armor, headshots from cover repair 30% of your armor.\n\nCooldown: 100%s"
+      "desc": "If you are below 30% armor, headshots from cover repair 30% of your armor.\n\nCooldown: 1s"
     },
     "talentId": "talent_kneepads_headshots_in_cover_gives_armor_perfect",
     "source": "datamined"
@@ -910,7 +988,7 @@
       {
         "pieces": 2,
         "stat": "Skill Damage",
-        "text": "+10% Skill Damage"
+        "text": "+13% Skill Damage"
       },
       {
         "pieces": 3,
@@ -943,18 +1021,18 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Explosive Resistance",
-        "text": "+20% Explosive Resistance"
+        "stat": "Reload Speed",
+        "text": "+15% Reload Speed"
       },
       {
         "pieces": 2,
-        "stat": "Skill Health",
-        "text": "+20% Skill Health"
+        "stat": "LMG Damage",
+        "text": "+24% LMG Damage"
       },
       {
         "pieces": 3,
-        "stat": "LMG Damage",
-        "text": "+30% LMG Damage"
+        "stat": "Weapon Handling",
+        "text": "+30% Weapon Handling"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -982,8 +1060,8 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Status Effects",
-        "text": "+10% Status Effects"
+        "stat": "Explosive Resistance",
+        "text": "+20% Explosive Resistance"
       },
       {
         "pieces": 2,
@@ -992,8 +1070,8 @@
       },
       {
         "pieces": 3,
-        "stat": "Total Armor",
-        "text": "+10% Total Armor"
+        "stat": "Increased Threat",
+        "text": "+150% Increased Threat"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -1065,8 +1143,8 @@
       },
       {
         "pieces": 2,
-        "stat": "Health",
-        "text": "+60% Health"
+        "stat": "Defence from Elites",
+        "text": "+24% Defence from Elites"
       },
       {
         "pieces": 3,
@@ -1086,7 +1164,7 @@
     ],
     "talent": {
       "name": "Perfectly Explosive Delivery",
-      "desc": "Whenever you throw a skill, 150% seconds after landing, it creates an explosion damaging enemies within 5m.\nAfterwards, explosions will occur every 5s.\n\nDamage scales with skill tier dealing 25%-100% damage of a concussion grenade."
+      "desc": "Whenever you throw a skill, 1.5 seconds after landing, it creates an explosion damaging enemies within 5m.\nAfterwards, explosions will occur every 5s.\n\nDamage scales with skill tier dealing 25%-100% damage of a concussion grenade."
     },
     "talentId": "warlock_talent_thrown_skills_explode_perfect",
     "source": "datamined"
@@ -1110,7 +1188,7 @@
       {
         "pieces": 3,
         "stat": "Headshot Damage",
-        "text": "+13% Headshot Damage"
+        "text": "+39% Headshot Damage"
       }
     ],
     "isDarkZoneExclusive": true,
@@ -1144,7 +1222,7 @@
       {
         "pieces": 2,
         "stat": "Assault Rifle Damage",
-        "text": "+20% Assault Rifle Damage"
+        "text": "+24% Assault Rifle Damage"
       },
       {
         "pieces": 3,
@@ -1182,13 +1260,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Armor on Kill",
-        "text": "+10% Armor on Kill"
+        "stat": "Increased Threat",
+        "text": "+100% Increased Threat"
       },
       {
         "pieces": 3,
-        "stat": "Incoming Repairs",
-        "text": "+45% Incoming Repairs"
+        "stat": "Defence from Elites",
+        "text": "+36% Defence from Elites"
       }
     ],
     "isDarkZoneExclusive": true,
@@ -1217,12 +1295,12 @@
       {
         "pieces": 1,
         "stat": "Assault Rifle Damage",
-        "text": "+10% Assault Rifle Damage"
+        "text": "+12% Assault Rifle Damage"
       },
       {
         "pieces": 2,
-        "stat": "Reload Speed",
-        "text": "+30% Reload Speed"
+        "stat": "Magazine Size",
+        "text": "+32% Magazine Size"
       },
       {
         "pieces": 3,
@@ -1260,13 +1338,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Shock Resistance",
-        "text": "+20% Shock Resistance"
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
       },
       {
         "pieces": 3,
-        "stat": "SMG Damage",
-        "text": "+30% SMG Damage"
+        "stat": "Skill Efficiency",
+        "text": "+8% Skill Efficiency"
       }
     ],
     "isDarkZoneExclusive": true,
@@ -1294,8 +1372,8 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Status Effects",
-        "text": "+10% Status Effects"
+        "stat": "Explosive Resistance",
+        "text": "+20% Explosive Resistance"
       },
       {
         "pieces": 2,
@@ -1304,8 +1382,8 @@
       },
       {
         "pieces": 3,
-        "stat": "Total Armor",
-        "text": "+10% Total Armor"
+        "stat": "Increased Threat",
+        "text": "+150% Increased Threat"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -1339,7 +1417,7 @@
       {
         "pieces": 2,
         "stat": "Status Effects",
-        "text": "+18% Status Effects"
+        "text": "+20% Status Effects"
       },
       {
         "pieces": 3,
@@ -1377,8 +1455,8 @@
       },
       {
         "pieces": 2,
-        "stat": "Health",
-        "text": "+60% Health"
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
       },
       {
         "pieces": 3,
@@ -1412,12 +1490,12 @@
       {
         "pieces": 1,
         "stat": "Marksman Rifle Damage",
-        "text": "+10% Marksman Rifle Damage"
+        "text": "+12% Marksman Rifle Damage"
       },
       {
         "pieces": 2,
         "stat": "Headshot Damage",
-        "text": "+13% Headshot Damage"
+        "text": "+26% Headshot Damage"
       },
       {
         "pieces": 3,
@@ -1455,13 +1533,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Magazine Size",
-        "text": "+32% Magazine Size"
+        "stat": "LMG Damage",
+        "text": "+24% LMG Damage"
       },
       {
         "pieces": 3,
-        "stat": "Critical Hit Damage",
-        "text": "+13% Critical Hit Damage"
+        "stat": "Accuracy",
+        "text": "+50% Accuracy"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -1482,6 +1560,45 @@
     "source": "datamined"
   },
   {
+    "instance_id": "player_gear_chest_c_01_named",
+    "name": "Rushdown",
+    "slot": "Chest",
+    "brand": "Richter & Kaiser GmbH",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Skill Haste",
+        "text": "+10% Skill Haste"
+      },
+      {
+        "pieces": 2,
+        "stat": "Explosive Resistance",
+        "text": "+40% Explosive Resistance"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Repair",
+        "text": "+52% Skill Repair"
+      }
+    ],
+    "isDarkZoneExclusive": false,
+    "flavorText": "Not the spotter I thought I'd be with.",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Perfect Tag Team",
+      "desc": "The last enemy you have damaged with a skill is marked.\n\nDealing weapon damage to that enemy consumes the mark to reduce active  cooldowns by 12s.\n\nCooldown: 4s"
+    },
+    "talentId": "talent_mask_hits_reduce_cooldown_perfect",
+    "source": "datamined"
+  },
+  {
     "instance_id": "player_gear_chest_g1_01_named",
     "name": "Sleight",
     "slot": "Chest",
@@ -1489,18 +1606,18 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Accuracy",
-        "text": "+10% Accuracy"
+        "stat": "Weapon Handling",
+        "text": "+5% Weapon Handling"
       },
       {
         "pieces": 2,
-        "stat": "Skill Duration",
-        "text": "+30% Skill Duration"
+        "stat": "Marksman Rifle Damage",
+        "text": "+24% Marksman Rifle Damage"
       },
       {
         "pieces": 3,
-        "stat": "Marksman Rifle Damage",
-        "text": "+30% Marksman Rifle Damage"
+        "stat": "Skill Duration",
+        "text": "+45% Skill Duration"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -1560,6 +1677,45 @@
     "source": "datamined"
   },
   {
+    "instance_id": "player_gear_chest_f1_01_named",
+    "name": "Trick Shot",
+    "slot": "Chest",
+    "brand": "Imminence Armaments",
+    "brandBonuses": [
+      {
+        "pieces": 1,
+        "stat": "Weapon Damage",
+        "text": "+6% Weapon Damage"
+      },
+      {
+        "pieces": 2,
+        "stat": "Pistol Damage",
+        "text": "+48% Pistol Damage"
+      },
+      {
+        "pieces": 3,
+        "stat": "Skill Health",
+        "text": "+30% Skill Health"
+      }
+    ],
+    "isDarkZoneExclusive": false,
+    "flavorText": "One of them has to work.",
+    "dropNote": null,
+    "fixedAttributes": [],
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Perfectly Reassigned",
+      "desc": "Killing an enemy adds 1 round of a random special ammo into your sidearm.  \n\nCooldown: 8s"
+    },
+    "talentId": "talent_holster_kill_status_effected_random_chance_grant_special_ammo_perfect",
+    "source": "datamined"
+  },
+  {
     "instance_id": "player_gear_chest_h_named_01",
     "name": "Zero F’s",
     "slot": "Chest",
@@ -1568,17 +1724,17 @@
       {
         "pieces": 1,
         "stat": "Shotgun Damage",
-        "text": "+10% Shotgun Damage"
+        "text": "+12% Shotgun Damage"
       },
       {
         "pieces": 2,
-        "stat": "Total Armor",
-        "text": "+5% Total Armor"
+        "stat": "Armor on Kill",
+        "text": "+10% Armor on Kill"
       },
       {
         "pieces": 3,
-        "stat": "Armor on Kill",
-        "text": "+15% Armor on Kill"
+        "stat": "Total Armor",
+        "text": "+15% Total Armor"
       }
     ],
     "isDarkZoneExclusive": true,
@@ -1607,7 +1763,7 @@
       {
         "pieces": 1,
         "stat": "LMG Damage",
-        "text": "+10% LMG Damage"
+        "text": "+12% LMG Damage"
       },
       {
         "pieces": 2,
@@ -1644,13 +1800,13 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Health",
-        "text": "+30% Health"
+        "stat": "Defence from Elites",
+        "text": "+12% Defence from Elites"
       },
       {
         "pieces": 2,
-        "stat": "Incoming Repairs",
-        "text": "+30% Incoming Repairs"
+        "stat": "Increased Threat",
+        "text": "+100% Increased Threat"
       },
       {
         "pieces": 3,
@@ -1688,7 +1844,7 @@
       {
         "pieces": 2,
         "stat": "Rifle Damage",
-        "text": "+20% Rifle Damage"
+        "text": "+24% Rifle Damage"
       },
       {
         "pieces": 3,
@@ -1721,7 +1877,7 @@
       {
         "pieces": 1,
         "stat": "SMG Damage",
-        "text": "+10% SMG Damage"
+        "text": "+12% SMG Damage"
       },
       {
         "pieces": 2,
@@ -1759,17 +1915,17 @@
       {
         "pieces": 1,
         "stat": "Shotgun Damage",
-        "text": "+10% Shotgun Damage"
+        "text": "+12% Shotgun Damage"
       },
       {
         "pieces": 2,
-        "stat": "Total Armor",
-        "text": "+5% Total Armor"
+        "stat": "Armor on Kill",
+        "text": "+10% Armor on Kill"
       },
       {
         "pieces": 3,
-        "stat": "Armor on Kill",
-        "text": "+15% Armor on Kill"
+        "stat": "Total Armor",
+        "text": "+15% Total Armor"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -1802,7 +1958,7 @@
       {
         "pieces": 2,
         "stat": "Status Effects",
-        "text": "+18% Status Effects"
+        "text": "+20% Status Effects"
       },
       {
         "pieces": 3,
@@ -1835,8 +1991,8 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Incoming Repairs",
-        "text": "+15% Incoming Repairs"
+        "stat": "Skill Haste",
+        "text": "+10% Skill Haste"
       },
       {
         "pieces": 2,
@@ -1917,7 +2073,7 @@
       {
         "pieces": 2,
         "stat": "Assault Rifle Damage",
-        "text": "+20% Assault Rifle Damage"
+        "text": "+24% Assault Rifle Damage"
       },
       {
         "pieces": 3,
@@ -1949,18 +2105,18 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Accuracy",
-        "text": "+10% Accuracy"
+        "stat": "Weapon Handling",
+        "text": "+5% Weapon Handling"
       },
       {
         "pieces": 2,
-        "stat": "Skill Duration",
-        "text": "+30% Skill Duration"
+        "stat": "Marksman Rifle Damage",
+        "text": "+24% Marksman Rifle Damage"
       },
       {
         "pieces": 3,
-        "stat": "Marksman Rifle Damage",
-        "text": "+30% Marksman Rifle Damage"
+        "stat": "Skill Duration",
+        "text": "+45% Skill Duration"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -1988,17 +2144,17 @@
       {
         "pieces": 1,
         "stat": "Weapon Damage",
-        "text": "+5% Weapon Damage"
+        "text": "+6% Weapon Damage"
       },
       {
         "pieces": 2,
-        "stat": "Increased Threat",
-        "text": "+100% Increased Threat"
+        "stat": "Pistol Damage",
+        "text": "+48% Pistol Damage"
       },
       {
         "pieces": 3,
-        "stat": "Pistol Damage",
-        "text": "+60% Pistol Damage"
+        "stat": "Skill Health",
+        "text": "+30% Skill Health"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -2064,7 +2220,7 @@
       {
         "pieces": 1,
         "stat": "Rifle Damage",
-        "text": "+10% Rifle Damage"
+        "text": "+12% Rifle Damage"
       },
       {
         "pieces": 2,
@@ -2144,13 +2300,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Shock Resistance",
-        "text": "+20% Shock Resistance"
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
       },
       {
         "pieces": 3,
-        "stat": "SMG Damage",
-        "text": "+30% SMG Damage"
+        "stat": "Skill Efficiency",
+        "text": "+8% Skill Efficiency"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -2183,13 +2339,13 @@
       },
       {
         "pieces": 2,
-        "stat": "Hazard Protection",
-        "text": "+20% Hazard Protection"
+        "stat": "Shotgun Damage",
+        "text": "+24% Shotgun Damage"
       },
       {
         "pieces": 3,
-        "stat": "Health",
-        "text": "+90% Health"
+        "stat": "Hazard Protection",
+        "text": "+30% Hazard Protection"
       }
     ],
     "isDarkZoneExclusive": false,
@@ -2225,8 +2381,8 @@
       },
       {
         "pieces": 2,
-        "stat": "Health",
-        "text": "+60% Health"
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
       },
       {
         "pieces": 3,
@@ -2261,8 +2417,8 @@
       },
       {
         "pieces": 2,
-        "stat": "Health",
-        "text": "+60% Health"
+        "stat": "Hazard Protection",
+        "text": "+20% Hazard Protection"
       },
       {
         "pieces": 3,
@@ -2295,12 +2451,12 @@
       {
         "pieces": 1,
         "stat": "Pistol Damage",
-        "text": "+20% Pistol Damage"
+        "text": "+24% Pistol Damage"
       },
       {
         "pieces": 2,
-        "stat": "Stability",
-        "text": "+30% Stability"
+        "stat": "Skill Health",
+        "text": "+20% Skill Health"
       },
       {
         "pieces": 3,
@@ -2338,7 +2494,7 @@
       {
         "pieces": 2,
         "stat": "Weapon Damage",
-        "text": "+10% Weapon Damage"
+        "text": "+12% Weapon Damage"
       },
       {
         "pieces": 3,
@@ -2370,18 +2526,18 @@
     "brandBonuses": [
       {
         "pieces": 1,
-        "stat": "Swap Speed",
-        "text": "+30% Swap Speed"
+        "stat": "Magazine Size",
+        "text": "+15% Magazine Size"
       },
       {
         "pieces": 2,
-        "stat": "Optimal Range",
-        "text": "+70% Optimal Range"
+        "stat": "SMG Damage",
+        "text": "+24% SMG Damage"
       },
       {
         "pieces": 3,
-        "stat": "Weapon Damage",
-        "text": "+15% Weapon Damage"
+        "stat": "Optimal Range",
+        "text": "+105% Optimal Range"
       }
     ],
     "isDarkZoneExclusive": false,
