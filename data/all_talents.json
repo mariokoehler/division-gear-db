@@ -222,7 +222,8 @@
     "kind": "exotic-gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Standard"
+    "tier": "Standard",
+    "potentialBonuses": []
   },
   {
     "id": "talent_exotic_gloves_mk1_c",
@@ -1262,7 +1263,7 @@
     "potentialBonuses": [
       {
         "attribute": "Bonus Armor",
-        "condition": "for 5s whenever within 10m of an enemy, stacks up to 300%, 5s cooldown"
+        "condition": "for 5s whenever within 10m of an enemy, stacks up to 3, 5s cooldown"
       }
     ]
   },
@@ -1337,7 +1338,7 @@
     "potentialBonuses": [
       {
         "attribute": "Weapon Damage",
-        "condition": "after a headshot (150s, 5s w/ marksman rifles), stronger and longer after a headshot kill (10s)"
+        "condition": "after a headshot (1.5s, 5s w/ marksman rifles), stronger and longer after a headshot kill (10s)"
       }
     ]
   },
@@ -1481,7 +1482,7 @@
     "potentialBonuses": [
       {
         "attribute": "Bonus Armor",
-        "condition": "for 5s whenever within 10m of an enemy, stacks up to 300%, 5s cooldown"
+        "condition": "for 5s whenever within 10m of an enemy, stacks up to 3, 5s cooldown"
       }
     ]
   },
@@ -1537,7 +1538,17 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 1.5s after a headshot (5s with Marksman Rifles)"
+      },
+      {
+        "attribute": "Weapon Damage",
+        "condition": "for 10s after a headshot kill"
+      }
+    ]
   },
   {
     "id": "warlock_talent_disables_grants_nearby_bonus_armor_perfect",
@@ -1576,7 +1587,13 @@
     "kind": "gear",
     "slot": "Backpack",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Bonus Armor",
+        "condition": "for you and nearby allies for 3s when your shield is damaged (3s cooldown)"
+      }
+    ]
   },
   {
     "id": "talent_back_kills_increases_healing_done_perfect",
@@ -1732,7 +1749,7 @@
     "potentialBonuses": [
       {
         "attribute": "Skill Damage",
-        "condition": "for 25s after a skill kill"
+        "condition": "for 20s after a skill kill"
       }
     ]
   },
@@ -1762,7 +1779,7 @@
     "potentialBonuses": [
       {
         "attribute": "Skill Damage",
-        "condition": "for 300s after shooting an enemy"
+        "condition": "for 3s after shooting an enemy"
       }
     ]
   },
@@ -1777,7 +1794,7 @@
     "potentialBonuses": [
       {
         "attribute": "Skill Damage",
-        "condition": "for 300s after shooting an enemy"
+        "condition": "for 3s after shooting an enemy"
       }
     ]
   },
@@ -1877,7 +1894,7 @@
     "potentialBonuses": [
       {
         "attribute": "Weapon Damage",
-        "condition": "while not taking damage (disabled for 300s after being hit)"
+        "condition": "while not taking damage (disabled for 3s after being hit)"
       }
     ]
   },
@@ -1992,7 +2009,7 @@
     "potentialBonuses": [
       {
         "attribute": "Weapon Damage",
-        "condition": "while not taking damage (disabled for 400s after being hit)"
+        "condition": "while not taking damage (disabled for 4s after being hit)"
       }
     ]
   },
@@ -2056,7 +2073,7 @@
     "potentialBonuses": [
       {
         "attribute": "Armor Regeneration",
-        "condition": "on headshots from cover while below 30% armor, 200s cooldown"
+        "condition": "on headshots from cover while below 30% armor, 2s cooldown"
       }
     ]
   },
@@ -2292,7 +2309,7 @@
     "potentialBonuses": [
       {
         "attribute": "Armor Regeneration",
-        "condition": "on headshots from cover while below 30% armor, 100s cooldown"
+        "condition": "on headshots from cover while below 30% armor, 1s cooldown"
       }
     ]
   },
@@ -2461,7 +2478,13 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": [
+      {
+        "attribute": "Skill Haste",
+        "condition": "consumes a mark (placed on the last enemy damaged by a skill) via a weapon hit, reducing active cooldowns by 12s (4s cooldown)"
+      }
+    ]
   },
   {
     "id": "warlock_talent_shield_grants_invulnerable_and_group_bonus_armor_perfect",
@@ -2514,7 +2537,8 @@
     "kind": "gear",
     "slot": "Chest",
     "weaponType": null,
-    "tier": "Perfect"
+    "tier": "Perfect",
+    "potentialBonuses": []
   },
   {
     "id": "warlock_talent_shock_enemies_near_deployed_skills_perfect",
@@ -2592,7 +2616,7 @@
     "potentialBonuses": [
       {
         "attribute": "Skill Haste",
-        "condition": "on dealing weapon damage to an enemy marked by your own skill, 400s cooldown"
+        "condition": "on dealing weapon damage to an enemy marked by your own skill, 4s cooldown"
       }
     ]
   },

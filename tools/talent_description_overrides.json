@@ -1,0 +1,46 @@
+{
+  "talent_back_skill_kills_increase_skill_duration_and_damage": {
+    "desc": "Skill kills increase total skill damage by 25% for 20s.",
+    "fingerprint": "490bc1403c1c97143ded5dcdd526dad7"
+  },
+  "talent_exotic_assault_rifle_mk1_b": {
+    "desc": "40-80% of damage taken is delayed until the buff expires.\n\nAll of the total delayed damage is reduced for each enemy killed while the buff is active, up to 100% with 3 kills.",
+    "fingerprint": "b7182d2eb20393387f93284b258d5a73"
+  },
+  "talent_exotic_backpack_quick_fix_combat_medic": {
+    "desc": "+80% Revive Speed\n-50% Weakened Debuff timer\nProvides +50% Damage Resistance to both agents while reviving or being revived, and for 10s after a successful revive.\nSuccessful revives provide +1 Skill Tier for 5s. Revives at Skill Tier 6 grant Overcharge for 15s.",
+    "fingerprint": "18df488b5dd4b481c7d85cff94275573"
+  },
+  "talent_exotic_kneepads_mk1_a": {
+    "desc": "Cannot be staggered by explosions.\n\nStaying in cover without firing for 10-{3}s provides damage immunity while aiming for 3%-10s.",
+    "fingerprint": "c53c72408993017552d59f27744ea658"
+  },
+  "talent_exotic_smg_gangland_hit": {
+    "desc": "Shooting an enemy with this weapon applies a <mark. You can only apply one mark at a time. Shooting another enemy will transfer the mark.\n\nMore marks can be applied on the same enemy by other agents using this weapon. Maximum amount of marks that can be applied on an enemy is 20.\n\nThis weapon deals +5% Amplified Damage to marked enemies. The bonus is increased by 4% for each extra mark on the enemy other than your own.",
+    "fingerprint": "b0be0bf27ee2ef9c6ed59ffe87e93083"
+  },
+  "talent_weapon_reload_from_empty_increases_mag_capacity": {
+    "desc": "Every 3 reloads from empty increases your magazine capacity by 100%.",
+    "fingerprint": "60a956efd11a8ad028d54a978235c020"
+  },
+  "talent_weapon_reload_from_empty_increases_mag_capacity_perfect": {
+    "desc": "Every 2 reloads from empty increases your magazine capacity by 100%.",
+    "fingerprint": "dd3766d57094891979a91a1c752a923d"
+  },
+  "talent_weapon_shield_healed_by_weapon_damage": {
+    "desc": "While having a Shield deployed, lose Shield Health at a rate of 10% per second.\nYour Shield receives repairs of 25% of the damage dealt by this weapon.",
+    "fingerprint": "a0fa94e4681a97a3126d6435b589e872"
+  },
+  "warlock_talent_active_skills_increase_damage": {
+    "desc": "When in combat, each skill generates a stack while active or not on cooldown.\n\nStacks increase your total skill damage and repair by 1.5%. Up to 15 stacks per skill. Lost when on cooldown.",
+    "fingerprint": "ad6b3dbfef99d6b0cae116bb14a23e3e"
+  },
+  "warlock_talent_exotic_smg_mk2": {
+    "desc": "When moving, gain 4 stacks per second, or 8 stacks if sprinting, up to 75 stacks total.\n\nEach round fired consumes a stack, amplifying damage by 20%.\n\nKills grant +10% movement speed for {5}s.",
+    "fingerprint": "ad70f8d3321a16b166277c07e596621d"
+  },
+  "warlock_talent_healing_allies_buffs_them": {
+    "desc": "When you repair an ally, increases their total weapon and skill damage by 3% for 15s.  20% if self.",
+    "fingerprint": "1bf08e78be0027226ceaee448d663c8c"
+  }
+}

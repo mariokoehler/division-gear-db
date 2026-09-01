@@ -24,6 +24,7 @@ from extract_named_items import (
     extract_braced, strip_inline_markup, strip_color_tags, parse_named_item_file,
     find_generation_config_block, parse_preset_attributes, parse_preset_talent,
     parse_core_attributes, build_talent_index, SLOT_MAP, _quality_blocks,
+    resolved_talent_desc,
 )
 
 # Exotics known to be unreleased/non-functional in every export seen so far -- excluded by
@@ -58,13 +59,14 @@ CONFIRMED_RANDOM_BONUS_ITEMS = {"player_gear_mask_exotic_06"}
 PLACEHOLDER_NAMES = {"TBD", "INSERT NAME HERE"}
 
 
-def build_exotic_items(raw_dir, uid_dict):
+def build_exotic_items(raw_dir, uid_dict, desc_overrides=None):
     item_dir = os.path.join(raw_dir, "game system data", "juice", "item")
     configs_dir = os.path.join(raw_dir, "game system data", "juice", "itemgeneration", "configs")
     talent_index, naive_substitute = build_talent_index(raw_dir)
 
     unresolved_uids = set()
     review_notes = []
+    stale_desc_ids = []
     output = []
 
     paths = sorted(glob.glob(os.path.join(item_dir, "player_gear_*exotic*.mitem")))
@@ -144,7 +146,7 @@ def build_exotic_items(raw_dir, uid_dict):
                 talent_id = preset_talent["ref_file"]
                 t = talent_index.get(preset_talent["ref_file"])
                 if t:
-                    desc = strip_inline_markup(naive_substitute(t["tooltip"], t["values"]))
+                    desc = resolved_talent_desc(t, desc_overrides, stale_desc_ids)
                     talent = {"name": strip_color_tags(t["ui_name"]) or "(unnamed)", "desc": desc}
                     talent_status = "datamined"
                 else:
@@ -185,6 +187,11 @@ def build_exotic_items(raw_dir, uid_dict):
             out["talentStatus"] = "needs_manual_research"
         output.append(out)
 
+    for tid in stale_desc_ids:
+        review_notes.append(("DESC_OVERRIDE_STALE", tid,
+                              "persisted description override in talent_description_overrides.json "
+                              "no longer matches this talent's current raw values -- needs re-review"))
+
     return output, unresolved_uids, review_notes
 
 
@@ -199,7 +206,7 @@ def load_exotic_manual_additions(repo_dir):
         return json.load(f)
 
 
-def build_manual_config_items(raw_dir, uid_dict, repo_dir, talent_index, naive_substitute):
+def build_manual_config_items(raw_dir, uid_dict, repo_dir, talent_index, naive_substitute, desc_overrides=None):
     """Reconstructs a full Exotic Item entry directly from its ItemGenerationConfig, for the rare
     case where the item's own .mitem file (name, flavor text, DZ flag) is missing from every
     export used so far but its config is fully present. See
@@ -216,6 +223,7 @@ def build_manual_config_items(raw_dir, uid_dict, repo_dir, talent_index, naive_s
     output = []
     review_notes = []
     unresolved_uids = set()
+    stale_desc_ids = []
 
     for instance_id, info in manual.items():
         config_body = find_generation_config_block(configs_dir, instance_id)
@@ -259,7 +267,7 @@ def build_manual_config_items(raw_dir, uid_dict, repo_dir, talent_index, naive_s
                                           "talent file '%s.mtalent' referenced but not present in "
                                           "this export" % ref_file))
                     continue
-                desc = strip_inline_markup(naive_substitute(t["tooltip"], t["values"]))
+                desc = resolved_talent_desc(t, desc_overrides, stale_desc_ids)
                 talents.append({
                     "name": strip_color_tags(t["ui_name"]) or "(unnamed)",
                     "desc": desc,
@@ -290,6 +298,11 @@ def build_manual_config_items(raw_dir, uid_dict, repo_dir, talent_index, naive_s
         }
         output.append(out)
 
+    for tid in stale_desc_ids:
+        review_notes.append(("DESC_OVERRIDE_STALE", tid,
+                              "persisted description override in talent_description_overrides.json "
+                              "no longer matches this talent's current raw values -- needs re-review"))
+
     return output, unresolved_uids, review_notes
 
 
@@ -305,13 +318,16 @@ def main():
     min_path = os.path.join(repo_dir, "data", "exotic_items_min.json")
     report_path = os.path.join(repo_dir, "tools", "exotic_items_report.md")
 
-    uid_dict = json.load(open(uid_dict_path, encoding='utf-8'))
+    from update_from_hunter_export import load_description_overrides
 
-    items, unresolved, review_notes = build_exotic_items(args.raw_dir, uid_dict)
+    uid_dict = json.load(open(uid_dict_path, encoding='utf-8'))
+    desc_overrides = load_description_overrides(repo_dir)
+
+    items, unresolved, review_notes = build_exotic_items(args.raw_dir, uid_dict, desc_overrides)
 
     talent_index, naive_substitute = build_talent_index(args.raw_dir)
     manual_items, manual_unresolved, manual_notes = build_manual_config_items(
-        args.raw_dir, uid_dict, repo_dir, talent_index, naive_substitute)
+        args.raw_dir, uid_dict, repo_dir, talent_index, naive_substitute, desc_overrides)
     items.extend(manual_items)
     unresolved |= manual_unresolved
     review_notes.extend(manual_notes)

@@ -11,6 +11,7 @@ diff yourself, then commit as usual.
 """
 import argparse
 import glob
+import hashlib
 import json
 import os
 import re
@@ -293,6 +294,22 @@ def decode_tiers(entry, uid_dict, unresolved, allowed_pieces=None):
     return out
 
 
+def _template_marks_percent(template, pos):
+    """Does the template show a literal '%' right after a placeholder ending at `pos`? More
+    reliable than the value's raw magnitude alone (abs(v) < 5) for deciding percent-vs-flat --
+    that magnitude-only rule also matches a small flat duration/count (a 3s cooldown, a 3-stack
+    cap), which silently turned into "300%"/"400%s" for ~85 real talents across two sessions
+    before this was traced to its root cause (see CLAUDE.md's naive_substitute bug note). Skips
+    an inline `</color>` tag that can sit between the placeholder and its '%', and recognizes a
+    "{a}-{b}%" range where only the trailing {b} carries the visible '%'."""
+    rest = template[pos:]
+    if rest.startswith("</color>"):
+        rest = rest[len("</color>"):]
+    if rest[:1] == '%':
+        return True
+    return bool(re.match(r'-\{\d+\}%', rest))
+
+
 def naive_substitute(template, values):
     if not template:
         return "(no tooltip text found)"
@@ -301,7 +318,7 @@ def naive_substitute(template, values):
         if idx >= len(values):
             return m.group(0)
         v = values[idx]
-        if abs(v) < 5:
+        if abs(v) < 5 and _template_marks_percent(template, m.end()):
             num = "%g" % round(v * 100, 2)
             # Some templates already carry their own literal "%" right after the placeholder
             # (e.g. Perfect-tier talents: "...by {0}%..."); appending another produced "7%%".
@@ -312,6 +329,45 @@ def naive_substitute(template, values):
             return num + "%"
         return "%g" % v
     return re.sub(r'\{(\d+)\}', repl, template)
+
+
+# ---------------------------------------------------------------------------
+# Persisted hand-reviewed description overrides (named/exotic/all-talents descriptions have no
+# fingerprint mechanism of their own the way gear-set 4pc/companion talents do via
+# build_talent_field's `_values` check -- they're always regenerated from scratch by
+# naive_substitute on every run, which silently reverts any hand fix the moment the script is
+# re-run, even when nothing about that talent actually changed. This is the general safety net:
+# tools/talent_description_overrides.json persists the final hand-approved text per talent id,
+# keyed to a fingerprint of that talent's raw myBonusList values, and is meant for the handful of
+# cases _template_marks_percent still can't get right on its own (a value that needs *100 despite
+# no visible '%' in the template, or a genuine authoring typo in the game's own tooltip data --
+# see CLAUDE.md). Not needed for combined_sets.json's own gear-set talents, which already keep
+# hand-written text via their own `_values` fingerprint in build_talent_field.
+# ---------------------------------------------------------------------------
+
+def values_fingerprint(values):
+    return hashlib.md5(json.dumps(values, sort_keys=True).encode("utf-8")).hexdigest()
+
+
+def load_description_overrides(repo_dir):
+    path = os.path.join(repo_dir, "tools", "talent_description_overrides.json")
+    if not os.path.exists(path):
+        return {}
+    return json.load(open(path, encoding="utf-8"))
+
+
+def apply_description_override(instance_id, values, generated_desc, overrides, stale_ids):
+    """Swap in the persisted hand-reviewed text when the talent's raw values still match what the
+    override was recorded against; otherwise fall back to the freshly-generated text and flag the
+    id in `stale_ids` so a rebalance that actually touches one of these talents gets re-reviewed
+    instead of silently trusting now-outdated hand text forever."""
+    entry = overrides.get(instance_id)
+    if not entry:
+        return generated_desc
+    if entry.get("fingerprint") == values_fingerprint(values):
+        return entry["desc"]
+    stale_ids.append(instance_id)
+    return generated_desc
 
 
 # ---------------------------------------------------------------------------

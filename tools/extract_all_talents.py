@@ -21,11 +21,13 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from update_from_hunter_export import parse_mtalent_file, naive_substitute, extract_braced  # noqa: E402
+from update_from_hunter_export import (  # noqa: E402
+    parse_mtalent_file, naive_substitute, extract_braced, load_description_overrides,
+)
 from extract_named_items import (  # noqa: E402
     strip_inline_markup, SLOT_MAP, parse_named_item_file,
     find_generation_config_block, parse_preset_talent, _index_generation_configs,
-    _load_config_body, _quality_blocks,
+    _load_config_body, _quality_blocks, resolved_talent_desc,
 )
 
 
@@ -360,6 +362,8 @@ def build_all_talents(raw_dir, repo_root):
                                           - set(exotic_gear_talent_slots_from_items))
     gear_pools = build_gear_talent_pools(raw_dir)
     named_item_talent_ids = load_named_item_talent_ids(repo_root)
+    desc_overrides = load_description_overrides(repo_root)
+    stale_desc_ids = []
 
     results = []
     excluded_by_prefix = 0
@@ -395,7 +399,7 @@ def build_all_talents(raw_dir, repo_root):
             excluded_placeholder.append((instance_id, raw_name))
             continue
 
-        description = strip_inline_markup(naive_substitute(parsed["tooltip"], parsed["values"]))
+        description = resolved_talent_desc(parsed, desc_overrides, stale_desc_ids)
         if not description or description == "(no tooltip text found)":
             excluded_empty.append(instance_id)
             continue
@@ -521,6 +525,11 @@ def build_all_talents(raw_dir, repo_root):
     report_lines.append("\nIncluded: %d\n" % len(results))
     for k in sorted(kind_counts):
         report_lines.append("  %s: %d\n" % (k, kind_counts[k]))
+    if stale_desc_ids:
+        report_lines.append("\nDescription overrides no longer matching current raw values -- "
+                             "re-review tools/talent_description_overrides.json: %d\n" % len(stale_desc_ids))
+        for tid in stale_desc_ids:
+            report_lines.append("  - %s\n" % tid)
     report_lines.append(bonus_inference_report)
 
     return results, "".join(report_lines)

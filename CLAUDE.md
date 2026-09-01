@@ -61,6 +61,11 @@ or from files the user has explicitly exported/copied elsewhere (e.g. `E:\Temp\H
   (bonuses, cores, every preset talent) straight from the config — see "Exotic Items" below.
 - `tools/talent_bonus_inferences.json` — persisted, hand-interpreted map of talent id → inferred
   conditional bonus attribute(s). See "Potential Bonuses" below.
+- `tools/talent_description_overrides.json` — persisted, hand-approved talent description text
+  keyed by talent id, fingerprinted against that talent's raw `myBonusList` values. Applied by
+  `apply_description_override()` (`update_from_hunter_export.py`, used by all three of the other
+  extraction scripts) whenever `naive_substitute`'s own formatting heuristic still can't be trusted
+  for that specific talent — see the `naive_substitute` note under "Current state" below.
 - `tools/*_report.md` — gitignored, regenerated each run, not meant to be committed.
 
 ## Where the data actually comes from
@@ -654,7 +659,7 @@ far), Grace Under Fire's owning item name (confirmed real, not yet name-confirme
 genuinely-unconfirmed exotic-gear talent variants (see "Potential Bonuses" above) — all flagged
 in-page rather than guessed at.
 
-### `naive_substitute`'s percent-vs-flat heuristic — a real, partially-fixed bug (2026-08-27)
+### `naive_substitute`'s percent-vs-flat heuristic — bug found 2026-08-27, hardened 2026-09-01
 
 `naive_substitute` (shared by all four extraction scripts) decides whether a `{n}` placeholder's
 `myValue` should be formatted as a percent (`v*100`, e.g. `0.35` → `"35%"`) purely from the value's
@@ -673,8 +678,8 @@ format as percent (still gated on `abs(v) < 5`, to avoid re-breaking a talent li
 `"+{0}% Weapon Damage"` where `{0}` is *already* a whole percent number, `35.0`, not a fraction);
 if no, format as a raw number.
 
-**This new rule is not itself airtight** — a handful of confirmed exceptions where the template has
-*no* `%` marker at all but the value still needed `*100` to read sensibly were found and hand-fixed
+**This rule is not itself airtight** — a handful of confirmed exceptions where the template has *no*
+`%` marker at all but the value still needed `*100` to read sensibly were found and hand-fixed
 individually (not via the rule): Empathic Resolve's buff duration, Kinetic Momentum's stack cap
 (base *and* Perfect), Breathe Free's stack cap, Gangland Hit's mark cap. Conversely, two talents
 were found where the template has *no* `%` marker for a value that plausibly should still read as a
@@ -685,16 +690,45 @@ reading), flagged here rather than guessed. One raw-data typo was also found and
 `{0}` for both its percent *and* its duration placeholder (should be `{0}%`/`{1}s`) — confirmed via
 the file's own `contextComment` and cross-checked against Percussive Maintenance's "Perfect Tech
 Support" (a different, correctly-templated file) landing on the same ballpark duration.
-**`naive_substitute` itself was deliberately left unpatched** — the exceptions above make "template
-has an adjacent `%`" not a fully general rule either, and this class of ambiguity is exactly what
-the "Known limitation, accepted rather than solved" note (Talent Browser section, above) already
-describes as needing human judgment per-talent rather than a better one-size-fits-all heuristic. A
-future session re-running any of the four extraction scripts will regenerate every touched talent's
-description **from scratch** with the *original* buggy heuristic (none of the four scripts have a
-"keep hand-reviewed text" fingerprint mechanism for talent descriptions the way gear-set 4pc/
-companion talents do in `combined_sets.json` — named/exotic/all-talents descriptions are always
-freshly regenerated) — re-apply this same review pass (or equivalent hand fixes) afterward rather
-than assuming today's fixes persist across a future run.
+
+**Two-part fix landed 2026-09-01, after this exact bug recurred on the very next rebalance-check
+session** (a routine "did today's patch change anything" run silently reverted every hand fix above,
+since none of the four scripts had ever persisted hand-reviewed description text — see "Session
+history" below for how this was caught):
+
+1. **`naive_substitute` itself now codes the better heuristic directly** (`_template_marks_percent`
+   in `update_from_hunter_export.py`) instead of leaving it as a one-time manual pass — the `abs(v) <
+   5` magnitude check is now gated on the template actually showing a `%` marker (skipping an
+   inline `</color>` tag, recognizing a `{a}-{b}%` range) before treating a value as a fraction to
+   multiply by 100. This alone auto-corrects the large majority of future new talents with no
+   per-talent review needed — confirmed by regenerating every currently-committed talent
+   description from the raw export and diffing against the hand-approved text: only 11 talents still
+   disagreed (see below), down from ~85 under the old magnitude-only rule.
+2. **`tools/talent_description_overrides.json`** is the general safety net for the rest: a persisted
+   `{talent_id: {"fingerprint": md5(raw values), "desc": "<hand-approved text>"}}` map, applied by
+   `apply_description_override()` and consumed via `resolved_talent_desc()` (both in
+   `extract_named_items.py`, imported by the other two scripts) at every one of the 4 call sites that
+   generate a talent description (extract_named_items.py's item talent, extract_exotic_items.py's
+   item talent + its `build_manual_config_items` reconstruction path, extract_all_talents.py's
+   per-talent description). This is the same "trust hand text until the underlying raw values
+   change" pattern `build_talent_field`'s own `_values` fingerprint already uses for gear-set 4pc/
+   companion talents in `combined_sets.json` — generalized here since named/exotic/all-talents
+   descriptions never had an equivalent mechanism of their own. A mismatched fingerprint (the
+   talent's raw values genuinely changed in a rebalance) falls back to the freshly-generated text and
+   surfaces a `DESC_OVERRIDE_STALE` review note instead of silently trusting stale hand text forever.
+   The 11 entries seeded into this file (found by the same diff-against-raw-export approach above)
+   cover exactly the confirmed exceptions from the original 2026-08-27 pass (Empathic Resolve,
+   Kinetic Momentum, Breathe Free — folded into the same entry as its stack cap, Gangland Hit, the
+   Tech Support typo) plus a few more the broader recheck also caught (two magazine-capacity reload
+   weapon talents referencing an out-of-range `{2}` placeholder, a shield-heal weapon talent with no
+   `%` marker at all) — Combat Medic and Symbiosis's ambiguous cases are included too, protecting
+   whatever their currently-committed (still-unconfirmed) reading is rather than re-litigating it.
+
+Re-running any of the four extraction scripts is now safe and idempotent for descriptions: verified
+by running all four twice in a row against the same export and diffing — zero further changes on the
+second run. A **new** talent with no override entry yet still gets the same "best-effort draft, flag
+for review" treatment as before if its raw values are new/changed; this only prevents *already
+hand-approved* text from being silently reverted.
 
 ### Ember Engine's "Flashpoint" (chest) looks backwards from its own patch notes — likely a real game bug, left as-is (2026-08-27)
 
@@ -763,3 +797,15 @@ Condensed changelog — see the topical sections above for full technical detail
   and one index-misalignment bug (Overflowing/Perfectly Overflowing's tooltip references `{1}`/`{2}`
   but the first `BonusAttributeRef` in its `myBonusList` has no `myValue` at all, shifting every
   later index down by one).
+- Ran a rebalance-check for a same-day (2026-09-01) patch: fresh raw export, all four scripts, zero
+  actual dataset changes (0 added/removed/changed across Brand/Gear Sets, Named Items, Exotic Items,
+  Talent Browser). The run did surface a real problem though — it silently re-triggered the
+  `naive_substitute` bug from the entry above, reverting every hand fix from that session, because
+  none of the four scripts had ever persisted hand-reviewed description text. Discarded that run's
+  diff (nothing real to keep), then landed the actual fix described in the dedicated note under
+  "Current state": `_template_marks_percent` codifies the better heuristic directly in
+  `naive_substitute` instead of leaving it a one-off manual pass, and the new
+  `tools/talent_description_overrides.json` persists hand-approved text (fingerprinted against raw
+  values) as a general safety net for the cases the heuristic still can't get right on its own.
+  Verified by rerunning all four scripts twice in a row against the same export: zero diff on the
+  second run, confirming the pipeline is now idempotent for talent descriptions.

@@ -414,6 +414,12 @@ def build_talent_index(raw_dir):
     return _build_talent_index(raw_dir), naive_substitute
 
 
+def resolved_talent_desc(t, desc_overrides, stale_desc_ids):
+    from update_from_hunter_export import naive_substitute, apply_description_override
+    desc = strip_inline_markup(naive_substitute(t["tooltip"], t["values"]))
+    return apply_description_override(t["instance_id"], t["values"], desc, desc_overrides or {}, stale_desc_ids)
+
+
 DESC_TALENT_RE = re.compile(r'Talent:\s*([^\n]+)\n(.+)$', re.DOTALL)
 
 
@@ -430,13 +436,14 @@ def fallback_talent_from_description(description):
 # Main build
 # ---------------------------------------------------------------------------
 
-def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overrides=None):
+def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overrides=None, desc_overrides=None):
     item_dir = os.path.join(raw_dir, "game system data", "juice", "item")
     configs_dir = os.path.join(raw_dir, "game system data", "juice", "itemgeneration", "configs")
     talent_index, naive_substitute = build_talent_index(raw_dir)
 
     unresolved_uids = set()
     review_notes = []
+    stale_desc_ids = []
     output = []
 
     paths = sorted(glob.glob(os.path.join(item_dir, "player_gear_*_named*.mitem")))
@@ -519,7 +526,7 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
             if preset_talent:
                 t = talent_index.get(preset_talent["ref_file"])
                 if t:
-                    desc = strip_inline_markup(naive_substitute(t["tooltip"], t["values"]))
+                    desc = resolved_talent_desc(t, desc_overrides, stale_desc_ids)
                     talent = {"name": strip_color_tags(t["ui_name"]) or "(unnamed)", "desc": desc}
                     talent_status = "datamined"
                 else:
@@ -596,6 +603,11 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
             out["talentStatus"] = "needs_manual_research"
         output.append(out)
 
+    for tid in stale_desc_ids:
+        review_notes.append(("DESC_OVERRIDE_STALE", tid,
+                              "persisted description override in talent_description_overrides.json "
+                              "no longer matches this talent's current raw values -- needs re-review"))
+
     return output, unresolved_uids, review_notes
 
 
@@ -613,9 +625,12 @@ def main():
     min_path = os.path.join(repo_dir, "data", "named_items_min.json")
     report_path = os.path.join(repo_dir, "tools", "named_items_report.md")
 
+    from update_from_hunter_export import load_description_overrides
+
     uid_dict = json.load(open(uid_dict_path, encoding='utf-8'))
     combined = json.load(open(combined_path, encoding='utf-8'))
     manual_overrides = json.load(open(overrides_path, encoding='utf-8')) if os.path.exists(overrides_path) else {}
+    desc_overrides = load_description_overrides(repo_dir)
     brand_names = {}
     brand_tiers = {}
     for e in combined:
@@ -624,7 +639,7 @@ def main():
             brand_names[code] = e["name"]
             brand_tiers[code] = e["tiers"]
 
-    items, unresolved, review_notes = build_named_items(args.raw_dir, uid_dict, brand_names, brand_tiers, manual_overrides)
+    items, unresolved, review_notes = build_named_items(args.raw_dir, uid_dict, brand_names, brand_tiers, manual_overrides, desc_overrides)
     items.sort(key=lambda e: (e["slot"], e["name"]))
 
     json.dump(items, open(out_path, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
