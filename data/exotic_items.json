@@ -142,6 +142,35 @@
     "source": "datamined"
   },
   {
+    "instance_id": "player_gear_back_exotic_06",
+    "name": "Sarru",
+    "slot": "Backpack",
+    "isDarkZoneExclusive": false,
+    "flavorText": "This decoy will fool even a god.",
+    "bonuses": [],
+    "bonusesRandom": false,
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      },
+      {
+        "stat": "Total Armor",
+        "color": "Blue"
+      },
+      {
+        "stat": "Skill Tier",
+        "color": "Yellow"
+      }
+    ],
+    "talent": {
+      "name": "Decoy King",
+      "desc": "While in combat, the Moon will cycle through its phases every 5s. There are 8 Moon phases.\n\nStarting from a New Moon, all damage you deal will be Amplified by 5%. The value of the Amplifier will increase by 5% each phase until reaching 25% during a Full Moon, then it will decrease as the Moon returns to being a New Moon, restarting the cycle.\n\nDuring a Full Moon, deploying a Decoy will grant it Overcharge and the cycle will pause for 10s."
+    },
+    "talentId": "talent_exotic_backpack_redmoon",
+    "source": "datamined"
+  },
+  {
     "instance_id": "player_gear_chest_exotic_05",
     "name": "Beacon",
     "slot": "Chest",
@@ -355,6 +384,30 @@
       "desc": "On Armor break, drop a Smoke Bomb at your feet, concealing you from enemies for 3s.\nCooldown: 40s"
     },
     "talentId": "talent_exotic_gloves_exodus_gloves_smoke_screen",
+    "source": "datamined"
+  },
+  {
+    "instance_id": "player_gear_gloves_exotic_07",
+    "name": "Loaded for Bear",
+    "slot": "Gloves",
+    "isDarkZoneExclusive": false,
+    "flavorText": "This will hurt later.",
+    "bonuses": [
+      "Critical Hit Chance",
+      "Critical Hit Damage"
+    ],
+    "bonusesRandom": false,
+    "cores": [
+      {
+        "stat": "Weapon Damage",
+        "color": "Red"
+      }
+    ],
+    "talent": {
+      "name": "Weakest Link",
+      "desc": "Amplifies Weapon Damage by 30% to the lowest ranking enemies within the Tier hierarchy.\n\nTier 1: Hunter, Rogue, Leader, Tank, Shield, Heavy Weapons, RPG, Medic, Controller, Warhound, Marauder\n\nTier 2: Support, Engineer, Bodyguard, Immobilizer, Bomber, Mini Tank, Drone Operator\n\nTier 3: Any other enemy or skill proxy"
+    },
+    "talentId": "talent_exotic_mask_weakest_link",
     "source": "datamined"
   },
   {

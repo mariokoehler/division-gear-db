@@ -469,6 +469,10 @@ def parse_gearset_cores(raw_dir, gearset_instance_id, uid_dict):
     return sorted(seen.values(), key=lambda c: order.get(c["color"], 9))
 
 
+# myUIName values meaning "no real name written yet" -- the item/set is unreleased content.
+PLACEHOLDER_NAMES = {"-", "TBD", "INSERT NAME HERE"}
+
+
 def build_dataset(raw_dir, uid_dict, old_by_key, used_name_fallback):
     item_dir = os.path.join(raw_dir, "game system data", "juice", "item")
     talent_index = build_talent_index(raw_dir)
@@ -498,6 +502,12 @@ def build_dataset(raw_dir, uid_dict, old_by_key, used_name_fallback):
         entry = parse_mgearset_file(path)
         if not entry or not entry["ui_name"]:
             review_notes.append(("STRUCTURAL", os.path.basename(path), "could not parse name/tiers"))
+            continue
+        if entry["ui_name"].strip().upper() in PLACEHOLDER_NAMES:
+            # unreleased/unfinished set (e.g. gear_set_c1's myUIName text is literally "-") --
+            # the files ship in the export but the set isn't live in the game yet.
+            review_notes.append(("SKIPPED_PLACEHOLDER", entry["instance_id"],
+                                 "myUIName is the placeholder %r -- unreleased, excluded" % entry["ui_name"].strip()))
             continue
         tiers = decode_tiers(entry, uid_dict, unresolved, allowed_pieces={2, 3})
         out = {

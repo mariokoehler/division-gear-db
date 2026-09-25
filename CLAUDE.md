@@ -650,9 +650,10 @@ content, distinct from the tool's own MIT-licensed code — see `LICENSE` and `R
 
 65 Brand Set / Gear Set entries (37 Brand Sets, 28 Gear Sets — Ember Engine added in the 2026-08-27
 rebalance), 66 Named Items (47 with a unique talent, all fully datamined name + description; Keeper,
-Melon Baller, Rushdown, and Trick Shot added in the same update), 31 Exotic Items (29 via the normal
-per-item pipeline — Iron Will added in the same update — plus Acosta's Go Bag and Investor via the
-manual-reconstruction paths described above), and 359 catalogued Talents in the Talent Browser (136
+Melon Baller, Rushdown, and Trick Shot added in the same update), 33 Exotic Items (31 via the normal
+per-item pipeline — Iron Will added in the 2026-08-27 update, Sarru and Loaded for Bear in the
+2026-09-25 one — plus Acosta's Go Bag and Investor via the
+manual-reconstruction paths described above), and 361 catalogued Talents in the Talent Browser (137
 of them gear-slotted and interpreted for conditional/potential bonuses). No known data gaps remain
 except: Ongoing Directive's backpack companion talent (`.mtalent` file missing from every export so
 far), Grace Under Fire's owning item name (confirmed real, not yet name-confirmed in-game), and 7
@@ -809,3 +810,15 @@ Condensed changelog — see the topical sections above for full technical detail
   values) as a general safety net for the cases the heuristic still can't get right on its own.
   Verified by rerunning all four scripts twice in a row against the same export: zero diff on the
   second run, confirming the pipeline is now idempotent for talent descriptions.
+- Ran a fresh-export update on 2026-09-25 (export at `E:\Temp\Hunter\raw_files`): all four scripts,
+  in order. Real additions: 2 Exotic Items (Sarru, a Backpack with talent "Decoy King"; Loaded for Bear,
+  Gloves with talent "Weakest Link", which already existed) and 2 talents (Decoy King, plus Startling,
+  an exotic LMG talent). "Decoy King" was interpreted by hand into `talent_bonus_inferences.json`
+  (Amplified Damage, 5-25% by Moon phase). The export also contained two **unreleased, unfinished**
+  entries whose `myUIName` text is literally `"-"`: Gear Set `gear_set_c1` (no talent name/tooltip
+  either) and Named Item `player_gear_gloves_t_01_named` (no talent). Both are now skipped by a
+  placeholder-name check (`PLACEHOLDER_NAMES` in `update_from_hunter_export.py`, an equivalent check
+  in `extract_named_items.py`) and logged as `SKIPPED_PLACEHOLDER` in the reports — same treatment as
+  the exotic "TBD" kneepad. **Revisit if a later export gives them real names.** Known leftover: one
+  pre-existing Talent Browser entry (`talent_exotic_weapon_voracious`) also has name `"-"`, not caught
+  by `extract_all_talents.py`'s `PLACEHOLDER_NAME_RE`; left untouched.

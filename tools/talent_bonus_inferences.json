@@ -1326,5 +1326,14 @@
         "condition": "consumes a mark (placed on the last enemy damaged by a skill) via a weapon hit, reducing active cooldowns by 12s (4s cooldown)"
       }
     ]
+  },
+  "talent_exotic_backpack_redmoon": {
+    "fingerprint": "b596c2622d7b28ffce09b3a309f4b80a",
+    "bonuses": [
+      {
+        "attribute": "Amplified Damage",
+        "condition": "while in combat, cycles every 5s through 8 Moon phases: 5% at New Moon rising by 5% per phase to 25% at Full Moon, then back down"
+      }
+    ]
   }
 }

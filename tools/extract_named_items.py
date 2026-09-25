@@ -465,6 +465,13 @@ def build_named_items(raw_dir, uid_dict, brand_names, brand_tiers, manual_overri
                                   % (override["name"], override.get("note", "no note"))))
             entry["name"] = override["name"]
 
+        if entry["name"].strip().upper() in ("-", "TBD"):
+            # unreleased item (e.g. player_gear_gloves_t_01_named's myUIName text is literally
+            # "-") -- files ship in the export but the item isn't live in the game yet.
+            review_notes.append(("SKIPPED_PLACEHOLDER", entry["instance_id"],
+                                 "myUIName is the placeholder %r -- unreleased, excluded" % entry["name"].strip()))
+            continue
+
         brand = brand_names.get(entry["brand_code"]) if entry["brand_code"] else None
         # Every named item is also a member of its civilian brand and gets that brand's normal
         # piece-count bonuses on top of its own "Fixed" attribute/talent -- e.g. Salvo (a Unit
